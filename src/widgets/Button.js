@@ -8,12 +8,12 @@
 
 
 /**
- * @class Ext.Button
- * @extends Ext.BoxComponent
+ * @class Ext2.Button
+ * @extends Ext2.BoxComponent
  * Simple Button class
  * @cfg {String} text The button text
  * @cfg {String} icon The path to an image to display in the button (the image will be set as the background-image
- * CSS property of the button by default, so if you want a mixed icon/text button, set cls:"x-btn-text-icon")
+ * CSS property of the button by default, so if you want a mixed icon/text button, set cls:"x2-btn-text-icon")
  * @cfg {Function} handler A function called when the button is clicked (can be used instead of click event).
  * The handler is passed the following parameters:<div class="mdetail-params"><ul>
  * <li><code>b</code> : Button<div class="sub-desc">This Button.</div></li>
@@ -27,12 +27,12 @@
  * @cfg {Boolean} pressed True to start pressed (only if enableToggle = true)
  * @cfg {String} toggleGroup The group this toggle button is a member of (only 1 per group can be pressed)
  * @cfg {Boolean/Object} repeat True to repeat fire the click event while the mouse is down. This can also be
- * a {@link Ext.util.ClickRepeater ClickRepeater} config object (defaults to false).
+ * a {@link Ext2.util.ClickRepeater ClickRepeater} config object (defaults to false).
  * @constructor
  * Create a new button
  * @param {Object} config The config object
  */
-Ext.Button = Ext.extend(Ext.Component, {
+Ext2.Button = Ext2.extend(Ext2.Component, {
     /**
      * Read-only. True if this button is hidden
      * @type Boolean
@@ -49,9 +49,9 @@ Ext.Button = Ext.extend(Ext.Component, {
      */
     pressed : false,
     /**
-     * The Button's owner {@link Ext.Panel} (defaults to undefined, and is set automatically when
+     * The Button's owner {@link Ext2.Panel} (defaults to undefined, and is set automatically when
      * the Button is added to a container).  Read-only.
-     * @type Ext.Panel
+     * @type Ext2.Panel
      * @property ownerCt
      */
 
@@ -72,7 +72,7 @@ Ext.Button = Ext.extend(Ext.Component, {
     /**
      * @cfg {Function} toggleHandler
      * Function called when a Button with {@link #enableToggle} set to true is clicked. Two arguments are passed:<ul class="mdetail-params">
-     * <li><b>button</b> : Ext.Button<div class="sub-desc">this Button object</div></li>
+     * <li><b>button</b> : Ext2.Button<div class="sub-desc">this Button object</div></li>
      * <li><b>state</b> : Boolean<div class="sub-desc">The next state if the Button, true means pressed.</div></li>
      * </ul>
      */
@@ -82,7 +82,7 @@ Ext.Button = Ext.extend(Ext.Component, {
      */
     /**
      * @cfg {String} menuAlign
-     * The position to align the menu to (see {@link Ext.Element#alignTo} for more details, defaults to 'tl-bl?').
+     * The position to align the menu to (see {@link Ext2.Element#alignTo} for more details, defaults to 'tl-bl?').
      */
     menuAlign : "tl-bl?",
 
@@ -119,7 +119,7 @@ Ext.Button = Ext.extend(Ext.Component, {
 
     /**
      * @cfg {String} buttonSelector
-     * <p>(Optional) A {@link Ext.DomQuery DomQuery} selector which is used to extract the active, clickable element from the
+     * <p>(Optional) A {@link Ext2.DomQuery DomQuery} selector which is used to extract the active, clickable element from the
      * DOM structure created.</p>
      * <p>When a custom {@link #template} is used, you  must ensure that this selector results in the selection of
      * a focussable element.</p>
@@ -128,8 +128,8 @@ Ext.Button = Ext.extend(Ext.Component, {
     buttonSelector : "button:first-child",
 
     /**
-     * @cfg {Ext.Template} template
-     * (Optional) An {@link Ext.Template} with which to create the Button's main element. This Template must
+     * @cfg {Ext2.Template} template
+     * (Optional) An {@link Ext2.Template} with which to create the Button's main element. This Template must
      * contain numeric substitution parameter 0 if it is to display the text property. Changing the template could
      * require code modifications if required elements (e.g. a button) aren't present.
      */
@@ -140,11 +140,11 @@ Ext.Button = Ext.extend(Ext.Component, {
     /**
      * @property menu
      * @type Menu
-     * The {@link Ext.menu.Menu Menu} object associated with this Button when configured with the {@link #menu} config option.
+     * The {@link Ext2.menu.Menu Menu} object associated with this Button when configured with the {@link #menu} config option.
      */
 
     initComponent : function(){
-        Ext.Button.superclass.initComponent.call(this);
+        Ext2.Button.superclass.initComponent.call(this);
 
         this.addEvents(
             /**
@@ -207,7 +207,7 @@ Ext.Button = Ext.extend(Ext.Component, {
             'menutriggerout'
         );
         if(this.menu){
-            this.menu = Ext.menu.MenuMgr.get(this.menu);
+            this.menu = Ext2.menu.MenuMgr.get(this.menu);
         }
         if(typeof this.toggleGroup === 'string'){
             this.enableToggle = true;
@@ -217,14 +217,14 @@ Ext.Button = Ext.extend(Ext.Component, {
     // private
     onRender : function(ct, position){
         if(!this.template){
-            if(!Ext.Button.buttonTemplate){
+            if(!Ext2.Button.buttonTemplate){
                 // hideous table template
-                Ext.Button.buttonTemplate = new Ext.Template(
-                    '<table border="0" cellpadding="0" cellspacing="0" class="x-btn-wrap"><tbody><tr>',
-                    '<td class="x-btn-left"><i>&#160;</i></td><td class="x-btn-center"><em unselectable="on"><button class="x-btn-text" type="{1}">{0}</button></em></td><td class="x-btn-right"><i>&#160;</i></td>',
+                Ext2.Button.buttonTemplate = new Ext2.Template(
+                    '<table border="0" cellpadding="0" cellspacing="0" class="x2-btn-wrap"><tbody><tr>',
+                    '<td class="x2-btn-left"><i>&#160;</i></td><td class="x2-btn-center"><em unselectable="on"><button class="x2-btn-text" type="{1}">{0}</button></em></td><td class="x2-btn-right"><i>&#160;</i></td>',
                     "</tr></tbody></table>");
             }
-            this.template = Ext.Button.buttonTemplate;
+            this.template = Ext2.Button.buttonTemplate;
         }
         var btn, targs = [this.text || '&#160;', this.type];
 
@@ -234,9 +234,9 @@ Ext.Button = Ext.extend(Ext.Component, {
             btn = this.template.append(ct, targs, true);
         }
         /**
-         * An {@link Ext.Element Element} encapsulating the Button's clickable element. This references
+         * An {@link Ext2.Element Element} encapsulating the Button's clickable element. This references
          * a <tt>&lt;button&gt;</tt> element. Read only.
-         * @type Ext.Element
+         * @type Ext2.Element
          * @property btnEl
          */
         var btnEl = this.btnEl = btn.child(this.buttonSelector);
@@ -246,20 +246,20 @@ Ext.Button = Ext.extend(Ext.Component, {
         this.initButtonEl(btn, btnEl);
 
         if(this.menu){
-            this.el.child(this.menuClassTarget).addClass("x-btn-with-menu");
+            this.el.child(this.menuClassTarget).addClass("x2-btn-with-menu");
         }
-        Ext.ButtonToggleMgr.register(this);
+        Ext2.ButtonToggleMgr.register(this);
     },
 
     // private
     initButtonEl : function(btn, btnEl){
 
         this.el = btn;
-        btn.addClass("x-btn");
+        btn.addClass("x2-btn");
 
         if(this.id){
             var d = this.el.dom,
-                c = Ext.Element.cache;
+                c = Ext2.Element.cache;
                 
             delete c[d.id];
             d.id = this.el.id = this.id;
@@ -271,7 +271,7 @@ Ext.Button = Ext.extend(Ext.Component, {
         if(this.iconCls){
             btnEl.addClass(this.iconCls);
             if(!this.cls){
-                btn.addClass(this.text ? 'x-btn-text-icon' : 'x-btn-icon');
+                btn.addClass(this.text ? 'x2-btn-text-icon' : 'x2-btn-icon');
             }
         }
         if(this.tabIndex !== undefined){
@@ -279,7 +279,7 @@ Ext.Button = Ext.extend(Ext.Component, {
         }
         if(this.tooltip){
             if(typeof this.tooltip == 'object'){
-                Ext.QuickTips.register(Ext.apply({
+                Ext2.QuickTips.register(Ext2.apply({
                       target: btnEl.id
                 }, this.tooltip));
             } else {
@@ -288,7 +288,7 @@ Ext.Button = Ext.extend(Ext.Component, {
         }
 
         if(this.pressed){
-            this.el.addClass("x-btn-pressed");
+            this.el.addClass("x2-btn-pressed");
         }
 
         if(this.handleMouseEvents){
@@ -304,7 +304,7 @@ Ext.Button = Ext.extend(Ext.Component, {
         }
 
         if(this.repeat){
-            var repeater = new Ext.util.ClickRepeater(btn,
+            var repeater = new Ext2.util.ClickRepeater(btn,
                 typeof this.repeat == "object" ? this.repeat : {}
             );
             repeater.on("click", this.onClick,  this);
@@ -315,8 +315,8 @@ Ext.Button = Ext.extend(Ext.Component, {
 
     // private
     afterRender : function(){
-        Ext.Button.superclass.afterRender.call(this);
-        if(Ext.isIE6){
+        Ext2.Button.superclass.afterRender.call(this);
+        if(Ext2.isIE6){
             this.autoWidth.defer(1, this);
         }else{
             this.autoWidth();
@@ -340,21 +340,21 @@ Ext.Button = Ext.extend(Ext.Component, {
         if(this.rendered){
             if(this.btnEl){
                 if(typeof this.tooltip == 'object'){
-                    Ext.QuickTips.unregister(this.btnEl);
+                    Ext2.QuickTips.unregister(this.btnEl);
                 }
-                Ext.destroy(this.btnEl);
+                Ext2.destroy(this.btnEl);
             }
         }
-        Ext.destroy(this.menu, this.repeater);
+        Ext2.destroy(this.menu, this.repeater);
     },
 
     // private
     onDestroy : function(){
-        var doc = Ext.getDoc();
+        var doc = Ext2.getDoc();
         doc.un('mouseover', this.monitorMouseOver, this);
         doc.un('mouseup', this.onMouseUp, this);
         if(this.rendered){
-            Ext.ButtonToggleMgr.unregister(this);
+            Ext2.ButtonToggleMgr.unregister(this);
         }
     },
 
@@ -362,11 +362,11 @@ Ext.Button = Ext.extend(Ext.Component, {
     autoWidth : function(){
         if(this.el){
             this.el.setWidth("auto");
-            if(Ext.isIE7 && Ext.isStrict){
+            if(Ext2.isIE7 && Ext2.isStrict){
                 var ib = this.btnEl;
                 if(ib && ib.getWidth() > 20){
                     ib.clip();
-                    ib.setWidth(Ext.util.TextMetrics.measure(ib, this.text).width+ib.getFrameWidth('lr'));
+                    ib.setWidth(Ext2.util.TextMetrics.measure(ib, this.text).width+ib.getFrameWidth('lr'));
                 }
             }
             if(this.minWidth){
@@ -394,7 +394,7 @@ Ext.Button = Ext.extend(Ext.Component, {
     setText : function(text){
         this.text = text;
         if(this.el){
-            this.el.child("td.x-btn-center " + this.buttonSelector).update(text);
+            this.el.child("td.x2-btn-center " + this.buttonSelector).update(text);
         }
         this.autoWidth();
     },
@@ -416,7 +416,7 @@ Ext.Button = Ext.extend(Ext.Component, {
         state = state === undefined ? !this.pressed : !!state;
         if(state != this.pressed){
             if(this.rendered){
-                this.el[state ? 'addClass' : 'removeClass']("x-btn-pressed");
+                this.el[state ? 'addClass' : 'removeClass']("x2-btn-pressed");
             }
             this.pressed = state;
             if(!suppressEvent){
@@ -448,7 +448,7 @@ Ext.Button = Ext.extend(Ext.Component, {
     // private
     onDisableChange : function(disabled){
         if(this.el){
-            if(!Ext.isIE6 || !this.text){
+            if(!Ext2.isIE6 || !this.text){
                 this.el[disabled ? 'addClass' : 'removeClass'](this.disabledClass);
             }
             this.el.dom.disabled = disabled;    
@@ -501,7 +501,7 @@ Ext.Button = Ext.extend(Ext.Component, {
             }
             this.fireEvent("click", this, e);
             if(this.handler){
-                //this.el.removeClass("x-btn-over");
+                //this.el.removeClass("x2-btn-over");
                 this.handler.call(this.scope || this, this, e);
             }
         }
@@ -522,9 +522,9 @@ Ext.Button = Ext.extend(Ext.Component, {
         if(!this.disabled){
             var internal = e.within(this.el,  true);
             if(!internal){
-                this.el.addClass("x-btn-over");
+                this.el.addClass("x2-btn-over");
                 if(!this.monitoringMouseOver){
-                    Ext.getDoc().on('mouseover', this.monitorMouseOver, this);
+                    Ext2.getDoc().on('mouseover', this.monitorMouseOver, this);
                     this.monitoringMouseOver = true;
                 }
                 this.fireEvent('mouseover', this, e);
@@ -539,7 +539,7 @@ Ext.Button = Ext.extend(Ext.Component, {
     monitorMouseOver : function(e){
         if(e.target != this.el.dom && !e.within(this.el)){
             if(this.monitoringMouseOver){
-                Ext.getDoc().un('mouseover', this.monitorMouseOver, this);
+                Ext2.getDoc().un('mouseover', this.monitorMouseOver, this);
                 this.monitoringMouseOver = false;
             }
             this.onMouseOut(e);
@@ -549,7 +549,7 @@ Ext.Button = Ext.extend(Ext.Component, {
     // private
     onMouseOut : function(e){
         var internal = e.within(this.el) && e.target != this.el.dom;
-        this.el.removeClass("x-btn-over");
+        this.el.removeClass("x2-btn-over");
         this.fireEvent('mouseout', this, e);
         if(this.isMenuTriggerOut(e, internal)){
             this.fireEvent('menutriggerout', this, this.menu, e);
@@ -558,12 +558,12 @@ Ext.Button = Ext.extend(Ext.Component, {
     // private
     onFocus : function(e){
         if(!this.disabled){
-            this.el.addClass("x-btn-focus");
+            this.el.addClass("x2-btn-focus");
         }
     },
     // private
     onBlur : function(e){
-        this.el.removeClass("x-btn-focus");
+        this.el.removeClass("x2-btn-focus");
     },
 
     // private
@@ -574,26 +574,26 @@ Ext.Button = Ext.extend(Ext.Component, {
     // private
     onMouseDown : function(e){
         if(!this.disabled && e.button == 0){
-            this.getClickEl(e).addClass("x-btn-click");
-            Ext.getDoc().on('mouseup', this.onMouseUp, this);
+            this.getClickEl(e).addClass("x2-btn-click");
+            Ext2.getDoc().on('mouseup', this.onMouseUp, this);
         }
     },
     // private
     onMouseUp : function(e){
         if(e.button == 0){
-            this.getClickEl(e, true).removeClass("x-btn-click");
-            Ext.getDoc().un('mouseup', this.onMouseUp, this);
+            this.getClickEl(e, true).removeClass("x2-btn-click");
+            Ext2.getDoc().un('mouseup', this.onMouseUp, this);
         }
     },
     // private
     onMenuShow : function(e){
         this.ignoreNextClick = 0;
-        this.el.addClass("x-btn-menu-active");
+        this.el.addClass("x2-btn-menu-active");
         this.fireEvent('menushow', this, this.menu);
     },
     // private
     onMenuHide : function(e){
-        this.el.removeClass("x-btn-menu-active");
+        this.el.removeClass("x2-btn-menu-active");
         this.ignoreNextClick = this.restoreClick.defer(250, this);
         this.fireEvent('menuhide', this, this.menu);
     },
@@ -609,10 +609,10 @@ Ext.Button = Ext.extend(Ext.Component, {
      * @cfg {String} autoEl @hide
      */
 });
-Ext.reg('button', Ext.Button);
+Ext2.reg('button', Ext2.Button);
 
 // Private utility class used by Button
-Ext.ButtonToggleMgr = function(){
+Ext2.ButtonToggleMgr = function(){
    var groups = {};
 
    function toggleGroup(btn, state){

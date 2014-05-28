@@ -7,8 +7,8 @@
  */
 
 /**
- * @class Ext.Resizable
- * @extends Ext.util.Observable
+ * @class Ext2.Resizable
+ * @extends Ext2.util.Observable
  * <p>Applies drag handles to an element to make it resizable. The drag handles are inserted into the element 
  * and positioned absolute. Some elements, such as a textarea or image, don't support this. To overcome that, you can wrap
  * the textarea in a div and set "resizeChild" to true (or to the id of the element), <b>or</b> set wrap:true in your config and
@@ -29,7 +29,7 @@ Value   Description
 </pre>
  * <p>Here's an example showing the creation of a typical Resizable:</p>
  * <pre><code>
-var resizer = new Ext.Resizable("element-id", {
+var resizer = new Ext2.Resizable("element-id", {
     handles: 'all',
     minWidth: 200,
     minHeight: 100,
@@ -74,8 +74,8 @@ resizer.on("resize", myHandler);
  * @param {Mixed} el The id or element to resize
  * @param {Object} config configuration options
   */
-Ext.Resizable = function(el, config){
-    this.el = Ext.get(el);
+Ext2.Resizable = function(el, config){
+    this.el = Ext2.get(el);
     
     if(config && config.wrap){
         config.resizeChild = this.el;
@@ -95,20 +95,20 @@ Ext.Resizable = function(el, config){
 
     /**
      * The proxy Element that is resized in place of the real Element during the resize operation.
-     * This may be queried using {@link Ext.Element#getBox} to provide the new area to resize to.
+     * This may be queried using {@link Ext2.Element#getBox} to provide the new area to resize to.
      * Read only.
-     * @type Ext.Element.
+     * @type Ext2.Element.
      * @property proxy
      */
-    this.proxy = this.el.createProxy({tag: "div", cls: "x-resizable-proxy", id: this.el.id + "-rzproxy"}, Ext.getBody());
+    this.proxy = this.el.createProxy({tag: "div", cls: "x2-resizable-proxy", id: this.el.id + "-rzproxy"}, Ext2.getBody());
     this.proxy.unselectable();
     this.proxy.enableDisplayMode('block');
 
-    Ext.apply(this, config);
+    Ext2.apply(this, config);
     
     if(this.pinned){
         this.disableTrackOver = true;
-        this.el.addClass("x-resizable-pinned");
+        this.el.addClass("x2-resizable-pinned");
     }
     // if the element isn't positioned, make it relative
     var position = this.el.getStyle("position");
@@ -125,11 +125,11 @@ Ext.Resizable = function(el, config){
         this.handles = "n s e w ne nw se sw";
     }
     var hs = this.handles.split(/\s*?[,;]\s*?| /);
-    var ps = Ext.Resizable.positions;
+    var ps = Ext2.Resizable.positions;
     for(var i = 0, len = hs.length; i < len; i++){
         if(hs[i] && ps[hs[i]]){
             var pos = ps[hs[i]];
-            this[pos] = new Ext.Resizable.Handle(this, pos, this.disableTrackOver, this.transparent);
+            this[pos] = new Ext2.Resizable.Handle(this, pos, this.disableTrackOver, this.transparent);
         }
     }
     // legacy
@@ -143,9 +143,9 @@ Ext.Resizable = function(el, config){
     
     if(this.resizeChild){
         if(typeof this.resizeChild == "boolean"){
-            this.resizeChild = Ext.get(this.el.dom.firstChild, true);
+            this.resizeChild = Ext2.get(this.el.dom.firstChild, true);
         }else{
-            this.resizeChild = Ext.get(this.resizeChild, true);
+            this.resizeChild = Ext2.get(this.resizeChild, true);
         }
     }
     
@@ -180,13 +180,13 @@ Ext.Resizable = function(el, config){
     }else{
         this.updateChildSize();
     }
-    if(Ext.isIE){
+    if(Ext2.isIE){
         this.el.dom.style.zoom = 1;
     }
-    Ext.Resizable.superclass.constructor.call(this);
+    Ext2.Resizable.superclass.constructor.call(this);
 };
 
-Ext.extend(Ext.Resizable, Ext.util.Observable, {
+Ext2.extend(Ext2.Resizable, Ext2.util.Observable, {
         resizeChild : false,
         adjustments : [0, 0],
         minWidth : 5,
@@ -216,22 +216,22 @@ Ext.extend(Ext.Resizable, Ext.util.Observable, {
          * @cfg {Mixed} constrainTo Constrain the resize to a particular element
          */
         /**
-         * @cfg {Ext.lib.Region} resizeRegion Constrain the resize to a particular region
+         * @cfg {Ext2.lib.Region} resizeRegion Constrain the resize to a particular region
          */
 
         /**
          * @event beforeresize
          * Fired before resize is allowed. Set enabled to false to cancel resize.
-         * @param {Ext.Resizable} this
-         * @param {Ext.EventObject} e The mousedown event
+         * @param {Ext2.Resizable} this
+         * @param {Ext2.EventObject} e The mousedown event
          */
         /**
          * @event resize
          * Fired after a resize.
-         * @param {Ext.Resizable} this
+         * @param {Ext2.Resizable} this
          * @param {Number} width The new width
          * @param {Number} height The new height
-         * @param {Ext.EventObject} e The mouseup event
+         * @param {Ext2.EventObject} e The mouseup event
          */
     
     /**
@@ -251,7 +251,7 @@ Ext.extend(Ext.Resizable, Ext.util.Observable, {
         if(this.enabled){ // 2nd enabled check in case disabled before beforeresize handler
 
             if(!this.overlay){
-                this.overlay = this.el.createProxy({tag: "div", cls: "x-resizable-overlay", html: "&#160;"}, Ext.getBody());
+                this.overlay = this.el.createProxy({tag: "div", cls: "x2-resizable-overlay", html: "&#160;"}, Ext2.getBody());
                 this.overlay.unselectable();
                 this.overlay.enableDisplayMode("block");
                 this.overlay.on("mousemove", this.onMouseMove, this);
@@ -265,11 +265,11 @@ Ext.extend(Ext.Resizable, Ext.util.Observable, {
             this.offsets = [(this.startBox.x + this.startBox.width) - this.startPoint[0],
                             (this.startBox.y + this.startBox.height) - this.startPoint[1]];
 
-            this.overlay.setSize(Ext.lib.Dom.getViewWidth(true), Ext.lib.Dom.getViewHeight(true));
+            this.overlay.setSize(Ext2.lib.Dom.getViewWidth(true), Ext2.lib.Dom.getViewHeight(true));
             this.overlay.show();
 
             if(this.constrainTo) {
-                var ct = Ext.get(this.constrainTo);
+                var ct = Ext2.get(this.constrainTo);
                 this.resizeRegion = ct.getRegion().adjust(
                     ct.getFrameWidth('t'),
                     ct.getFrameWidth('l'),
@@ -321,7 +321,7 @@ Ext.extend(Ext.Resizable, Ext.util.Observable, {
             // The first call enables instant resizing and
             // the second call corrects scroll bars if they
             // exist
-            if(Ext.isIE){
+            if(Ext2.isIE){
                 setTimeout(function(){
                     if(el.dom.offsetWidth){
                         var b = el.getSize(true);
@@ -357,18 +357,18 @@ Ext.extend(Ext.Resizable, Ext.util.Observable, {
      * <p>The new area to be resized to is available by examining the state of the {@link #proxy}
      * Element. Example:
 <pre><code>
-new Ext.Panel({
+new Ext2.Panel({
     title: 'Resize me',
     x: 100,
     y: 100,
-    renderTo: Ext.getBody(),
+    renderTo: Ext2.getBody(),
     floating: true,
     frame: true,
     width: 400,
     height: 200,
     listeners: {
         render: function(p) {
-            new Ext.Resizable(p.getEl(), {
+            new Ext2.Resizable(p.getEl(), {
                 handles: 'all',
                 pinned: true,
                 transparent: true,
@@ -574,20 +574,20 @@ new Ext.Panel({
     // private
     handleOver : function(){
         if(this.enabled){
-            this.el.addClass("x-resizable-over");
+            this.el.addClass("x2-resizable-over");
         }
     },
 
     // private
     handleOut : function(){
         if(!this.resizing){
-            this.el.removeClass("x-resizable-over");
+            this.el.removeClass("x2-resizable-over");
         }
     },
     
     /**
      * Returns the element this component is bound to.
-     * @return {Ext.Element}
+     * @return {Ext2.Element}
      */
     getEl : function(){
         return this.el;
@@ -595,7 +595,7 @@ new Ext.Panel({
     
     /**
      * Returns the resizeChild element (or null).
-     * @return {Ext.Element}
+     * @return {Ext2.Element}
      */
     getResizeChild : function(){
         return this.resizeChild;
@@ -607,11 +607,11 @@ new Ext.Panel({
      * @param {Boolean} removeEl (optional) true to remove the element from the DOM
      */
     destroy : function(removeEl){
-        Ext.destroy(this.dd, this.overlay, this.proxy);
+        Ext2.destroy(this.dd, this.overlay, this.proxy);
         this.overlay = null;
         this.proxy = null;
         
-        var ps = Ext.Resizable.positions;
+        var ps = Ext2.Resizable.positions;
         for(var k in ps){
             if(typeof ps[k] != "function" && this[ps[k]]){
                 this[ps[k]].destroy();
@@ -619,7 +619,7 @@ new Ext.Panel({
         }
         if(removeEl){
             this.el.update("");
-            Ext.destroy(this.el);
+            Ext2.destroy(this.el);
             this.el = null;
         }
         this.purgeListeners();
@@ -638,19 +638,19 @@ new Ext.Panel({
 
 // private
 // hash to map config positions to true positions
-Ext.Resizable.positions = {
+Ext2.Resizable.positions = {
     n: "north", s: "south", e: "east", w: "west", se: "southeast", sw: "southwest", nw: "northwest", ne: "northeast"
 };
 
 // private
-Ext.Resizable.Handle = function(rz, pos, disableTrackOver, transparent){
+Ext2.Resizable.Handle = function(rz, pos, disableTrackOver, transparent){
     if(!this.tpl){
         // only initialize the template if resizable is used
-        var tpl = Ext.DomHelper.createTemplate(
-            {tag: "div", cls: "x-resizable-handle x-resizable-handle-{0}"}
+        var tpl = Ext2.DomHelper.createTemplate(
+            {tag: "div", cls: "x2-resizable-handle x2-resizable-handle-{0}"}
         );
         tpl.compile();
-        Ext.Resizable.Handle.prototype.tpl = tpl;
+        Ext2.Resizable.Handle.prototype.tpl = tpl;
     }
     this.position = pos;
     this.rz = rz;
@@ -667,7 +667,7 @@ Ext.Resizable.Handle = function(rz, pos, disableTrackOver, transparent){
 };
 
 // private
-Ext.Resizable.Handle.prototype = {
+Ext2.Resizable.Handle.prototype = {
     // private
     afterResize : function(rz){
         // do nothing    
@@ -686,7 +686,7 @@ Ext.Resizable.Handle.prototype = {
     },
     // private
     destroy : function(){
-        Ext.destroy(this.el);
+        Ext2.destroy(this.el);
         this.el = null;
     }
 };

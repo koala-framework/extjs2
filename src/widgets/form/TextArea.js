@@ -7,15 +7,15 @@
  */
 
 /**
- * @class Ext.form.TextArea
- * @extends Ext.form.TextField
+ * @class Ext2.form.TextArea
+ * @extends Ext2.form.TextField
  * Multiline text field.  Can be used as a direct replacement for traditional textarea fields, plus adds
  * support for auto-sizing.
  * @constructor
  * Creates a new TextArea
  * @param {Object} config Configuration options
  */
-Ext.form.TextArea = Ext.extend(Ext.form.TextField,  {
+Ext2.form.TextArea = Ext2.extend(Ext2.form.TextField,  {
     /**
      * @cfg {Number} growMin The minimum height to allow when grow = true (defaults to 60)
      */
@@ -25,7 +25,7 @@ Ext.form.TextArea = Ext.extend(Ext.form.TextField,  {
      */
     growMax: 1000,
     growAppend : '&#160;\n&#160;',
-    growPad : Ext.isWebKit ? -6 : 0,
+    growPad : Ext2.isWebKit ? -6 : 0,
 
     enterIsSpecial : false,
 
@@ -48,10 +48,10 @@ Ext.form.TextArea = Ext.extend(Ext.form.TextField,  {
                 autocomplete: "off"
             };
         }
-        Ext.form.TextArea.superclass.onRender.call(this, ct, position);
+        Ext2.form.TextArea.superclass.onRender.call(this, ct, position);
         if(this.grow){
-            this.textSizeEl = Ext.DomHelper.append(document.body, {
-                tag: "pre", cls: "x-form-grow-sizer"
+            this.textSizeEl = Ext2.DomHelper.append(document.body, {
+                tag: "pre", cls: "x2-form-grow-sizer"
             });
             if(this.preventScrollbars){
                 this.el.setStyle("overflow", "hidden");
@@ -62,9 +62,9 @@ Ext.form.TextArea = Ext.extend(Ext.form.TextField,  {
 
     onDestroy : function(){
         if(this.textSizeEl){
-            Ext.removeNode(this.textSizeEl);
+            Ext2.removeNode(this.textSizeEl);
         }
-        Ext.form.TextArea.superclass.onDestroy.call(this);
+        Ext2.form.TextArea.superclass.onDestroy.call(this);
     },
 
     fireKey : function(e){
@@ -78,7 +78,7 @@ Ext.form.TextArea = Ext.extend(Ext.form.TextField,  {
         if(!e.isNavKeyPress() || e.getKey() == e.ENTER){
             this.autoSize();
         }
-        Ext.form.TextArea.superclass.onKeyUp.call(this, e);
+        Ext2.form.TextArea.superclass.onKeyUp.call(this, e);
     },
 
     /**
@@ -95,12 +95,12 @@ Ext.form.TextArea = Ext.extend(Ext.form.TextField,  {
         ts.innerHTML = '';
         ts.appendChild(document.createTextNode(v));
         v = ts.innerHTML;
-        Ext.fly(ts).setWidth(this.el.getWidth());
+        Ext2.fly(ts).setWidth(this.el.getWidth());
         if(v.length < 1){
             v = "&#160;&#160;";
         }else{
             v += this.growAppend;
-            if(Ext.isIE){
+            if(Ext2.isIE){
                 v = v.replace(/\n/g, '<br />');
             }
         }
@@ -113,4 +113,4 @@ Ext.form.TextArea = Ext.extend(Ext.form.TextField,  {
         }
     }
 });
-Ext.reg('textarea', Ext.form.TextArea);
+Ext2.reg('textarea', Ext2.form.TextArea);

@@ -7,21 +7,21 @@
  */
 
 /**
- * @class Ext.grid.GridPanel
- * @extends Ext.Panel
+ * @class Ext2.grid.GridPanel
+ * @extends Ext2.Panel
  * This class represents the primary interface of a component based grid control.
  * <br><br>Usage:
- * <pre><code>var grid = new Ext.grid.GridPanel({
-    store: new Ext.data.Store({
+ * <pre><code>var grid = new Ext2.grid.GridPanel({
+    store: new Ext2.data.Store({
         reader: reader,
         data: xg.dummyData
     }),
     columns: [
         {id:'company', header: "Company", width: 200, sortable: true, dataIndex: 'company'},
-        {header: "Price", width: 120, sortable: true, renderer: Ext.util.Format.usMoney, dataIndex: 'price'},
+        {header: "Price", width: 120, sortable: true, renderer: Ext2.util.Format.usMoney, dataIndex: 'price'},
         {header: "Change", width: 120, sortable: true, dataIndex: 'change'},
         {header: "% Change", width: 120, sortable: true, dataIndex: 'pctChange'},
-        {header: "Last Updated", width: 135, sortable: true, renderer: Ext.util.Format.dateRenderer('m/d/Y'), dataIndex: 'lastChange'}
+        {header: "Last Updated", width: 135, sortable: true, renderer: Ext2.util.Format.dateRenderer('m/d/Y'), dataIndex: 'lastChange'}
     ],
     viewConfig: {
         forceFit: true,
@@ -36,7 +36,7 @@
             }
         }
     },
-    sm: new Ext.grid.RowSelectionModel({singleSelect:true}),
+    sm: new Ext2.grid.RowSelectionModel({singleSelect:true}),
     width:600,
     height:300,
     frame:true,
@@ -47,30 +47,30 @@
  * <li>Although this class inherits many configuration options from base classes, some of them
  * (such as autoScroll, layout, items, etc) are not used by this class, and will have no effect.</li>
  * <li>A grid <b>requires</b> a width in which to scroll its columns, and a height in which to scroll its rows. The dimensions can either
- * be set through the {@link #height} and {@link #width} configuration options or automatically set by using the grid in a {@link Ext.Container Container}
- * who's {@link Ext.Container#layout layout} provides sizing of its child items.</li>
+ * be set through the {@link #height} and {@link #width} configuration options or automatically set by using the grid in a {@link Ext2.Container Container}
+ * who's {@link Ext2.Container#layout layout} provides sizing of its child items.</li>
  * <li>To access the data in a Grid, it is necessary to use the data model encapsulated
  * by the {@link #store Store}. See the {@link #cellclick} event.</li>
  * </ul>
  * @constructor
  * @param {Object} config The config object
  */
-Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
+Ext2.grid.GridPanel = Ext2.extend(Ext2.Panel, {
     /**
-     * @cfg {Ext.data.Store} store The {@link Ext.data.Store} the grid should use as its data source (required).
+     * @cfg {Ext2.data.Store} store The {@link Ext2.data.Store} the grid should use as its data source (required).
      */
     /**
      * @cfg {Object} cm Shorthand for {@link #colModel}.
      */
     /**
-     * @cfg {Object} colModel The {@link Ext.grid.ColumnModel} to use when rendering the grid (required).
+     * @cfg {Object} colModel The {@link Ext2.grid.ColumnModel} to use when rendering the grid (required).
      */
     /**
      * @cfg {Object} sm Shorthand for {@link #selModel}.
      */
     /**
-     * @cfg {Object} selModel Any subclass of {@link Ext.grid.AbstractSelectionModel} that will provide
-     * the selection model for the grid (defaults to {@link Ext.grid.RowSelectionModel} if not specified).
+     * @cfg {Object} selModel Any subclass of {@link Ext2.grid.AbstractSelectionModel} that will provide
+     * the selection model for the grid (defaults to {@link Ext2.grid.RowSelectionModel} if not specified).
      */
     /**
      * @cfg {Array} columns An array of columns to auto create a ColumnModel
@@ -89,7 +89,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
      */
     /**
      * @cfg {Object} viewConfig A config object that will be used to create the grid's UI view.  Any of
-     * the config options available for {@link Ext.grid.GridView} can be specified here. This option
+     * the config options available for {@link Ext2.grid.GridView} can be specified here. This option
      * is ignored if {@link #view} is specified.
      */
     /**
@@ -113,12 +113,12 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
     /**
      * @cfg {Boolean} enableDragDrop <p>True to enable dragging of the selected rows of the GridPanel.</p>
      * <p>Setting this to <b><tt>true</tt></b> causes this GridPanel's {@link #getView GridView} to create an instance of 
-     * {@link Ext.grid.GridDragZone}. This is available <b>(only after the Grid has been rendered)</b> as the
-     * GridView's {@link Ext.grid.GridView#dragZone dragZone} property.</p>
-     * <p>A cooperating {@link Ext.dd.DropZone DropZone} must be created who's implementations of
-     * {@link Ext.dd.DropZone#onNodeEnter onNodeEnter}, {@link Ext.dd.DropZone#onNodeOver onNodeOver},
-     * {@link Ext.dd.DropZone#onNodeOut onNodeOut} and {@link Ext.dd.DropZone#onNodeDrop onNodeDrop} are able
-     * to process the {@link Ext.grid.GridDragZone#getDragData data} which is provided.</p>
+     * {@link Ext2.grid.GridDragZone}. This is available <b>(only after the Grid has been rendered)</b> as the
+     * GridView's {@link Ext2.grid.GridView#dragZone dragZone} property.</p>
+     * <p>A cooperating {@link Ext2.dd.DropZone DropZone} must be created who's implementations of
+     * {@link Ext2.dd.DropZone#onNodeEnter onNodeEnter}, {@link Ext2.dd.DropZone#onNodeOver onNodeOver},
+     * {@link Ext2.dd.DropZone#onNodeOut onNodeOut} and {@link Ext2.dd.DropZone#onNodeDrop onNodeDrop} are able
+     * to process the {@link Ext2.grid.GridDragZone#getDragData data} which is provided.</p>
      */
     enableDragDrop : false,
     /**
@@ -135,7 +135,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
     enableHdMenu : true,
     /**
      * @cfg {Boolean} stripeRows True to stripe the rows. Default is false.
-     * <p>This causes the CSS class <tt><b>x-grid3-row-alt</b></tt> to be added to alternate rows of
+     * <p>This causes the CSS class <tt><b>x2-grid3-row-alt</b></tt> to be added to alternate rows of
      * the grid. A default CSS rule is provided which sets a background colour, but you can override this
      * with a rule which either overrides the <b>background-color</b> style using the "!important"
      * modifier, or which uses a CSS selector of higher specificity.</p>
@@ -155,11 +155,11 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
     */
     autoExpandMax : 1000,
     /**
-     * @cfg {Object} view The {@link Ext.grid.GridView} used by the grid. This can be set before a call to render().
+     * @cfg {Object} view The {@link Ext2.grid.GridView} used by the grid. This can be set before a call to render().
      */
     view : null,
     /**
-     * @cfg {Object} loadMask An {@link Ext.LoadMask} config or true to mask the grid while loading (defaults to false).
+     * @cfg {Object} loadMask An {@link Ext2.LoadMask} config or true to mask the grid while loading (defaults to false).
      */
     loadMask : false,
 
@@ -183,14 +183,14 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
 
     // private
     initComponent : function(){
-        Ext.grid.GridPanel.superclass.initComponent.call(this);
+        Ext2.grid.GridPanel.superclass.initComponent.call(this);
 
         // override any provided value since it isn't valid
         this.autoScroll = false;
         this.autoWidth = false;
 
-        if(Ext.isArray(this.columns)){
-            this.colModel = new Ext.grid.ColumnModel(this.columns);
+        if(Ext2.isArray(this.columns)){
+            this.colModel = new Ext2.grid.ColumnModel(this.columns);
             delete this.columns;
         }
 
@@ -207,62 +207,62 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
             this.selModel = this.sm;
             delete this.sm;
         }
-        this.store = Ext.StoreMgr.lookup(this.store);
+        this.store = Ext2.StoreMgr.lookup(this.store);
 
         this.addEvents(
             // raw events
             /**
              * @event click
              * The raw click event for the entire grid.
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "click",
             /**
              * @event dblclick
              * The raw dblclick event for the entire grid.
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "dblclick",
             /**
              * @event contextmenu
              * The raw contextmenu event for the entire grid.
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "contextmenu",
             /**
              * @event mousedown
              * The raw mousedown event for the entire grid.
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "mousedown",
             /**
              * @event mouseup
              * The raw mouseup event for the entire grid.
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "mouseup",
             /**
              * @event mouseover
              * The raw mouseover event for the entire grid.
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "mouseover",
             /**
              * @event mouseout
              * The raw mouseout event for the entire grid.
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "mouseout",
             /**
              * @event keypress
              * The raw keypress event for the entire grid.
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "keypress",
             /**
              * @event keydown
              * The raw keydown event for the entire grid.
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "keydown",
 
@@ -273,7 +273,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
              * @param {Grid} this
              * @param {Number} rowIndex
              * @param {Number} columnIndex
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "cellmousedown",
             /**
@@ -281,7 +281,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
              * Fires before a row is clicked
              * @param {Grid} this
              * @param {Number} rowIndex
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "rowmousedown",
             /**
@@ -289,14 +289,14 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
              * Fires before a header is clicked
              * @param {Grid} this
              * @param {Number} columnIndex
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "headermousedown",
 
             /**
              * @event cellclick
              * Fires when a cell is clicked.
-             * The data for the cell is drawn from the {@link Ext.data.Record Record}
+             * The data for the cell is drawn from the {@link Ext2.data.Record Record}
              * for this row. To access the data in the listener function use the
              * following technique:
              * <pre><code>
@@ -309,7 +309,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
              * @param {Grid} this
              * @param {Number} rowIndex
              * @param {Number} columnIndex
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "cellclick",
             /**
@@ -318,7 +318,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
              * @param {Grid} this
              * @param {Number} rowIndex
              * @param {Number} columnIndex
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "celldblclick",
             /**
@@ -326,7 +326,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
              * Fires when a row is clicked
              * @param {Grid} this
              * @param {Number} rowIndex
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "rowclick",
             /**
@@ -334,7 +334,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
              * Fires when a row is double clicked
              * @param {Grid} this
              * @param {Number} rowIndex
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "rowdblclick",
             /**
@@ -342,7 +342,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
              * Fires when a header is clicked
              * @param {Grid} this
              * @param {Number} columnIndex
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "headerclick",
             /**
@@ -350,7 +350,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
              * Fires when a header cell is double clicked
              * @param {Grid} this
              * @param {Number} columnIndex
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "headerdblclick",
             /**
@@ -358,7 +358,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
              * Fires when a row is right clicked
              * @param {Grid} this
              * @param {Number} rowIndex
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "rowcontextmenu",
             /**
@@ -367,7 +367,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
              * @param {Grid} this
              * @param {Number} rowIndex
              * @param {Number} cellIndex
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "cellcontextmenu",
             /**
@@ -375,7 +375,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
              * Fires when a header is right clicked
              * @param {Grid} this
              * @param {Number} columnIndex
-             * @param {Ext.EventObject} e
+             * @param {Ext2.EventObject} e
              */
             "headercontextmenu",
             /**
@@ -411,11 +411,11 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
 
     // private
     onRender : function(ct, position){
-        Ext.grid.GridPanel.superclass.onRender.apply(this, arguments);
+        Ext2.grid.GridPanel.superclass.onRender.apply(this, arguments);
 
         var c = this.body;
 
-        this.el.addClass('x-grid-panel');
+        this.el.addClass('x2-grid-panel');
 
         var view = this.getView();
         view.init(this);
@@ -434,16 +434,16 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
 
     // private
     initEvents : function(){
-        Ext.grid.GridPanel.superclass.initEvents.call(this);
+        Ext2.grid.GridPanel.superclass.initEvents.call(this);
 
         if(this.loadMask){
-            this.loadMask = new Ext.LoadMask(this.bwrap,
-                    Ext.apply({store:this.store}, this.loadMask));
+            this.loadMask = new Ext2.LoadMask(this.bwrap,
+                    Ext2.apply({store:this.store}, this.loadMask));
         }
     },
 
     initStateEvents : function(){
-        Ext.grid.GridPanel.superclass.initStateEvents.call(this);
+        Ext2.grid.GridPanel.superclass.initStateEvents.call(this);
         this.colModel.on('hiddenchange', this.saveState, this, {delay: 100});
     },
 
@@ -469,7 +469,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
         }
         delete state.columns;
         delete state.sort;
-        Ext.grid.GridPanel.superclass.applyState.call(this, state);
+        Ext2.grid.GridPanel.superclass.applyState.call(this, state);
     },
 
     getState : function(){
@@ -492,7 +492,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
 
     // private
     afterRender : function(){
-        Ext.grid.GridPanel.superclass.afterRender.call(this);
+        Ext2.grid.GridPanel.superclass.afterRender.call(this);
         this.view.layout();
         if(this.deferRowRender){
             this.view.afterRender.defer(10, this.view);
@@ -507,17 +507,17 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
      * The View will be bound to the new objects and refreshed.</p>
      * <p>Be aware that upon reconfiguring a GridPanel, certain existing settings <i>may</i> become
      * invalidated. For example the configured {@link #autoExpandColumn} may no longer exist in the
-     * new ColumnModel. Also, an existing {@link Ext.PagingToolbar PagingToolbar} will still be bound
+     * new ColumnModel. Also, an existing {@link Ext2.PagingToolbar PagingToolbar} will still be bound
      * to the old Store, and will need rebinding. Any {@link #plugins} might also need reconfiguring
      * with the new data.</p>
-     * @param {Ext.data.Store} store The new {@link Ext.data.Store} object
-     * @param {Ext.grid.ColumnModel} colModel The new {@link Ext.grid.ColumnModel} object
+     * @param {Ext2.data.Store} store The new {@link Ext2.data.Store} object
+     * @param {Ext2.grid.ColumnModel} colModel The new {@link Ext2.grid.ColumnModel} object
      */
     reconfigure : function(store, colModel){
         if(this.loadMask){
             this.loadMask.destroy();
-            this.loadMask = new Ext.LoadMask(this.bwrap,
-                    Ext.apply({}, {store:store}, this.initialConfig.loadMask));
+            this.loadMask = new Ext2.LoadMask(this.bwrap,
+                    Ext2.apply({}, {store:store}, this.initialConfig.loadMask));
         }
         this.view.bind(store, colModel);
         this.store = store;
@@ -538,10 +538,10 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
             var c = this.body;
             c.removeAllListeners();
             c.update("");
-            Ext.destroy(this.view, this.loadMask);
+            Ext2.destroy(this.view, this.loadMask);
         }
-        Ext.destroy(this.colModel, this.selModel);
-        Ext.grid.GridPanel.superclass.onDestroy.call(this);
+        Ext2.destroy(this.colModel, this.selModel);
+        Ext2.grid.GridPanel.superclass.onDestroy.call(this);
     },
 
     // private
@@ -630,7 +630,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
 
     // private
     onResize : function(){
-        Ext.grid.GridPanel.superclass.onResize.apply(this, arguments);
+        Ext2.grid.GridPanel.superclass.onResize.apply(this, arguments);
         if(this.viewReady){
             this.view.layout();
         }
@@ -645,25 +645,25 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
     },
 
     // private for compatibility, overridden by editor grid
-    stopEditing : Ext.emptyFn,
+    stopEditing : Ext2.emptyFn,
 
     /**
      * Returns the grid's SelectionModel.
      * @return {SelectionModel} The selection model configured by the @link (#selModel} configuration option.
-     * This will be a subclass of {@link Ext.grid.AbstractSelectionModel} which provides either cell or row
-     * selectability. If no selection model was configured, this will return a {@link Ext.grid.RowSelectionModel RowSelectionModel}.
+     * This will be a subclass of {@link Ext2.grid.AbstractSelectionModel} which provides either cell or row
+     * selectability. If no selection model was configured, this will return a {@link Ext2.grid.RowSelectionModel RowSelectionModel}.
      */
     getSelectionModel : function(){
         if(!this.selModel){
-            this.selModel = new Ext.grid.RowSelectionModel(
-                    this.disableSelection ? {selectRow: Ext.emptyFn} : null);
+            this.selModel = new Ext2.grid.RowSelectionModel(
+                    this.disableSelection ? {selectRow: Ext2.emptyFn} : null);
         }
         return this.selModel;
     },
 
     /**
      * Returns the grid's data store.
-     * @return {Ext.data.Store} The store
+     * @return {Ext2.data.Store} The store
      */
     getStore : function(){
         return this.store;
@@ -671,7 +671,7 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
 
     /**
      * Returns the grid's ColumnModel.
-     * @return {Ext.grid.ColumnModel} The column model
+     * @return {Ext2.grid.ColumnModel} The column model
      */
     getColumnModel : function(){
         return this.colModel;
@@ -679,11 +679,11 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
 
     /**
      * Returns the grid's GridView object.
-     * @return {Ext.grid.GridView} The grid view
+     * @return {Ext2.grid.GridView} The grid view
      */
     getView : function(){
         if(!this.view){
-            this.view = new Ext.grid.GridView(this.viewConfig);
+            this.view = new Ext2.grid.GridView(this.viewConfig);
         }
         return this.view;
     },
@@ -874,4 +874,4 @@ Ext.grid.GridPanel = Ext.extend(Ext.Panel, {
      * @hide
      */
 });
-Ext.reg('grid', Ext.grid.GridPanel);
+Ext2.reg('grid', Ext2.grid.GridPanel);

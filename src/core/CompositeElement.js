@@ -7,17 +7,17 @@
  */
 
 /**
- * @class Ext.CompositeElement
- * Standard composite class. Creates a Ext.Element for every element in the collection.
+ * @class Ext2.CompositeElement
+ * Standard composite class. Creates a Ext2.Element for every element in the collection.
  * <br><br>
- * <b>NOTE: Although they are not listed, this class supports all of the set/update methods of Ext.Element. All Ext.Element
+ * <b>NOTE: Although they are not listed, this class supports all of the set/update methods of Ext2.Element. All Ext2.Element
  * actions will be performed on all the elements in this collection.</b>
  * <br><br>
  * All methods return <i>this</i> and can be chained.
  <pre><code>
- var els = Ext.select("#some-el div.some-class", true);
+ var els = Ext2.select("#some-el div.some-class", true);
  // or select directly from an existing element
- var el = Ext.get('some-el');
+ var el = Ext2.get('some-el');
  el.select('div.some-class', true);
 
  els.setWidth(100); // all elements become 100 width
@@ -26,21 +26,21 @@
  els.setWidth(100).hide(true);
  </code></pre>
  */
-Ext.CompositeElement = function(els){
+Ext2.CompositeElement = function(els){
     this.elements = [];
     this.addElements(els);
 };
-Ext.CompositeElement.prototype = {
+Ext2.CompositeElement.prototype = {
     isComposite: true,
     addElements : function(els){
         if(!els) return this;
         if(typeof els == "string"){
-            els = Ext.Element.selectorFunction(els);
+            els = Ext2.Element.selectorFunction(els);
         }
         var yels = this.elements;
         var index = yels.length-1;
         for(var i = 0, len = els.length; i < len; i++) {
-        	yels[++index] = Ext.get(els[i]);
+        	yels[++index] = Ext2.get(els[i]);
         }
         return this;
     },
@@ -75,7 +75,7 @@ Ext.CompositeElement.prototype = {
     invoke : function(fn, args){
         var els = this.elements;
         for(var i = 0, len = els.length; i < len; i++) {
-        	Ext.Element.prototype[fn].apply(els[i], args);
+        	Ext2.Element.prototype[fn].apply(els[i], args);
         }
         return this;
     },
@@ -86,7 +86,7 @@ Ext.CompositeElement.prototype = {
     */
     add : function(els){
         if(typeof els == "string"){
-            this.addElements(Ext.Element.selectorFunction(els));
+            this.addElements(Ext2.Element.selectorFunction(els));
         }else if(els.length !== undefined){
             this.addElements(els);
         }else{
@@ -113,7 +113,7 @@ Ext.CompositeElement.prototype = {
     /**
      * Returns the Element object at the specified index
      * @param {Number} index
-     * @return {Ext.Element}
+     * @return {Ext2.Element}
      */
     item : function(index){
         return this.elements[index] || null;
@@ -121,7 +121,7 @@ Ext.CompositeElement.prototype = {
 
     /**
      * Returns the first Element
-     * @return {Ext.Element}
+     * @return {Ext2.Element}
      */
     first : function(){
         return this.item(0);
@@ -129,7 +129,7 @@ Ext.CompositeElement.prototype = {
 
     /**
      * Returns the last Element
-     * @return {Ext.Element}
+     * @return {Ext2.Element}
      */
     last : function(){
         return this.item(this.elements.length-1);
@@ -145,7 +145,7 @@ Ext.CompositeElement.prototype = {
 
     /**
      * Returns true if this composite contains the passed element
-     * @param el {Mixed} The id of an element, or an Ext.Element, or an HtmlElement to find within the composite collection.
+     * @param el {Mixed} The id of an element, or an Ext2.Element, or an HtmlElement to find within the composite collection.
      * @return Boolean
      */
     contains : function(el){
@@ -154,11 +154,11 @@ Ext.CompositeElement.prototype = {
 
     /**
      * Find the index of the passed element within the composite collection.
-     * @param el {Mixed} The id of an element, or an Ext.Element, or an HtmlElement to find within the composite collection.
-     * @return Number The index of the passed Ext.Element in the composite collection, or -1 if not found.
+     * @param el {Mixed} The id of an element, or an Ext2.Element, or an HtmlElement to find within the composite collection.
+     * @return Number The index of the passed Ext2.Element in the composite collection, or -1 if not found.
      */
     indexOf : function(el){
-        return this.elements.indexOf(Ext.get(el));
+        return this.elements.indexOf(Ext2.get(el));
     },
 
 
@@ -170,7 +170,7 @@ Ext.CompositeElement.prototype = {
     * @return {CompositeElement} this
     */
     removeElement : function(el, removeDom){
-        if(Ext.isArray(el)){
+        if(Ext2.isArray(el)){
             for(var i = 0, len = el.length; i < len; i++){
                 this.removeElement(el[i]);
             }
@@ -183,7 +183,7 @@ Ext.CompositeElement.prototype = {
                 if(d.dom){
                     d.remove();
                 }else{
-                    Ext.removeNode(d);
+                    Ext2.removeNode(d);
                 }
             }
             this.elements.splice(index, 1);
@@ -205,7 +205,7 @@ Ext.CompositeElement.prototype = {
             if(domReplace){
                 this.elements[index].replaceWith(replacement);
             }else{
-                this.elements.splice(index, 1, Ext.get(replacement))
+                this.elements.splice(index, 1, Ext2.get(replacement))
             }
         }
         return this;
@@ -219,28 +219,28 @@ Ext.CompositeElement.prototype = {
     }
 };
 (function(){
-Ext.CompositeElement.createCall = function(proto, fnName){
+Ext2.CompositeElement.createCall = function(proto, fnName){
     if(!proto[fnName]){
         proto[fnName] = function(){
             return this.invoke(fnName, arguments);
         };
     }
 };
-for(var fnName in Ext.Element.prototype){
-    if(typeof Ext.Element.prototype[fnName] == "function"){
-        Ext.CompositeElement.createCall(Ext.CompositeElement.prototype, fnName);
+for(var fnName in Ext2.Element.prototype){
+    if(typeof Ext2.Element.prototype[fnName] == "function"){
+        Ext2.CompositeElement.createCall(Ext2.CompositeElement.prototype, fnName);
     }
 };
 })();
 
 /**
- * @class Ext.CompositeElementLite
- * @extends Ext.CompositeElement
- * Flyweight composite class. Reuses the same Ext.Element for element operations.
+ * @class Ext2.CompositeElementLite
+ * @extends Ext2.CompositeElement
+ * Flyweight composite class. Reuses the same Ext2.Element for element operations.
  <pre><code>
- var els = Ext.select("#some-el div.some-class");
+ var els = Ext2.select("#some-el div.some-class");
  // or select directly from an existing element
- var el = Ext.get('some-el');
+ var el = Ext2.get('some-el');
  el.select('div.some-class');
 
  els.setWidth(100); // all elements become 100 width
@@ -248,17 +248,17 @@ for(var fnName in Ext.Element.prototype){
  // or
  els.setWidth(100).hide(true);
  </code></pre><br><br>
- * <b>NOTE: Although they are not listed, this class supports all of the set/update methods of Ext.Element. All Ext.Element
+ * <b>NOTE: Although they are not listed, this class supports all of the set/update methods of Ext2.Element. All Ext2.Element
  * actions will be performed on all the elements in this collection.</b>
  */
-Ext.CompositeElementLite = function(els){
-    Ext.CompositeElementLite.superclass.constructor.call(this, els);
-    this.el = new Ext.Element.Flyweight();
+Ext2.CompositeElementLite = function(els){
+    Ext2.CompositeElementLite.superclass.constructor.call(this, els);
+    this.el = new Ext2.Element.Flyweight();
 };
-Ext.extend(Ext.CompositeElementLite, Ext.CompositeElement, {
+Ext2.extend(Ext2.CompositeElementLite, Ext2.CompositeElement, {
     addElements : function(els){
         if(els){
-            if(Ext.isArray(els)){
+            if(Ext2.isArray(els)){
                 this.elements = this.elements.concat(els);
             }else{
                 var yels = this.elements;
@@ -275,14 +275,14 @@ Ext.extend(Ext.CompositeElementLite, Ext.CompositeElement, {
         var el = this.el;
         for(var i = 0, len = els.length; i < len; i++) {
             el.dom = els[i];
-        	Ext.Element.prototype[fn].apply(el, args);
+        	Ext2.Element.prototype[fn].apply(el, args);
         }
         return this;
     },
     /**
      * Returns a flyweight Element of the dom element object at the specified index
      * @param {Number} index
-     * @return {Ext.Element}
+     * @return {Ext2.Element}
      */
     item : function(index){
         if(!this.elements[index]){
@@ -296,14 +296,14 @@ Ext.extend(Ext.CompositeElementLite, Ext.CompositeElement, {
     addListener : function(eventName, handler, scope, opt){
         var els = this.elements;
         for(var i = 0, len = els.length; i < len; i++) {
-            Ext.EventManager.on(els[i], eventName, handler, scope || els[i], opt);
+            Ext2.EventManager.on(els[i], eventName, handler, scope || els[i], opt);
         }
         return this;
     },
 
     /**
     * Calls the passed function passing (el, this, index) for each element in this composite. <b>The element
-    * passed is the flyweight (shared) Ext.Element instance, so if you require a
+    * passed is the flyweight (shared) Ext2.Element instance, so if you require a
     * a reference to the dom node, use el.dom.</b>
     * @param {Function} fn The function to call
     * @param {Object} scope (optional) The <i>this</i> object (defaults to the element)
@@ -322,50 +322,50 @@ Ext.extend(Ext.CompositeElementLite, Ext.CompositeElement, {
     },
 
     indexOf : function(el){
-        return this.elements.indexOf(Ext.getDom(el));
+        return this.elements.indexOf(Ext2.getDom(el));
     },
 
     replaceElement : function(el, replacement, domReplace){
         var index = typeof el == 'number' ? el : this.indexOf(el);
         if(index !== -1){
-            replacement = Ext.getDom(replacement);
+            replacement = Ext2.getDom(replacement);
             if(domReplace){
                 var d = this.elements[index];
                 d.parentNode.insertBefore(replacement, d);
-                Ext.removeNode(d);
+                Ext2.removeNode(d);
             }
             this.elements.splice(index, 1, replacement);
         }
         return this;
     }
 });
-Ext.CompositeElementLite.prototype.on = Ext.CompositeElementLite.prototype.addListener;
-if(Ext.DomQuery){
-    Ext.Element.selectorFunction = Ext.DomQuery.select;
+Ext2.CompositeElementLite.prototype.on = Ext2.CompositeElementLite.prototype.addListener;
+if(Ext2.DomQuery){
+    Ext2.Element.selectorFunction = Ext2.DomQuery.select;
 }
 
-Ext.Element.select = function(selector, unique, root){
+Ext2.Element.select = function(selector, unique, root){
     var els;
     if(typeof selector == "string"){
-        els = Ext.Element.selectorFunction(selector, root);
+        els = Ext2.Element.selectorFunction(selector, root);
     }else if(selector.length !== undefined){
         els = selector;
     }else{
         throw "Invalid selector";
     }
     if(unique === true){
-        return new Ext.CompositeElement(els);
+        return new Ext2.CompositeElement(els);
     }else{
-        return new Ext.CompositeElementLite(els);
+        return new Ext2.CompositeElementLite(els);
     }
 };
 /**
  * Selects elements based on the passed CSS selector to enable working on them as 1.
  * @param {String/Array} selector The CSS selector or an array of elements
- * @param {Boolean} unique (optional) true to create a unique Ext.Element for each element (defaults to a shared flyweight object)
+ * @param {Boolean} unique (optional) true to create a unique Ext2.Element for each element (defaults to a shared flyweight object)
  * @param {HTMLElement/String} root (optional) The root element of the query or id of the root
  * @return {CompositeElementLite/CompositeElement}
  * @member Ext
  * @method select
  */
-Ext.select = Ext.Element.select;
+Ext2.select = Ext2.Element.select;

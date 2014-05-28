@@ -6,12 +6,12 @@
  * http://extjs.com/license
  */
 
-.x-btn{
+.x2-btn{
 	font:normal 11px tahoma, verdana, helvetica;
 	cursor:pointer;
 	white-space: nowrap;
 }
-.x-btn button{
+.x2-btn button{
     border:0 none;
     background:transparent;
     font:normal 11px tahoma,verdana,helvetica;
@@ -24,24 +24,24 @@
     -moz-outline:0 none;
     outline:0 none;
 }
-* html .ext-ie .x-btn button {
+* html .ext2-ie .x2-btn button {
     width:1px;
 }
-.ext-gecko .x-btn button {
+.ext2-gecko .x2-btn button {
     padding-left:0;
     padding-right:0;
 }
-.ext-ie .x-btn button {
+.ext2-ie .x2-btn button {
     padding-top:2px;
 }
 /*
  Predefined css class for buttons with only icon. Add this class (x-btn-icon) and a class with a background-image
  to your button for a button with just an icon.
  e.g.
- .my-class .x-btn-text { background-image: url(foo.gif); }
+ .my-class .x2-btn-text { background-image: url(foo.gif); }
  */
  
-.x-btn-icon .x-btn-center .x-btn-text{
+.x2-btn-icon .x2-btn-center .x2-btn-text{
 	background-position: center;
 	background-repeat: no-repeat;
 	height: 16px;
@@ -50,10 +50,10 @@
 	white-space: nowrap;
     padding:0;
 }
-.x-btn-icon .x-btn-center{
+.x2-btn-icon .x2-btn-center{
 	padding:1px;
 }
-.x-btn em {
+.x2-btn em {
     font-style:normal;
     font-weight:normal;
 }
@@ -62,7 +62,7 @@
  to your button for both text and icon. 
 */
 
-.x-btn-text-icon .x-btn-center .x-btn-text{
+.x2-btn-text-icon .x2-btn-center .x2-btn-text{
 	background-position: 0 2px;
 	background-repeat: no-repeat;
 	padding-left:18px;
@@ -70,31 +70,31 @@
 	padding-bottom:2px;
     padding-right:0;
 }
-.ext-gecko3 .x-btn-text-icon .x-btn-center .x-btn-text {
+.ext2-gecko3 .x2-btn-text-icon .x2-btn-center .x2-btn-text {
     padding-top:2px;
 }
-.x-btn-left, .x-btn-right{
+.x2-btn-left, .x2-btn-right{
 	font-size:1px;
     line-height:1px;
 }
-.x-btn-left{
+.x2-btn-left{
 	width:3px;
 	height:21px;
 	background:url(../images/default/button/btn-sprite.gif) no-repeat 0 0;
 }
-.x-btn-right{
+.x2-btn-right{
 	width:3px;
 	height:21px;
 	background:url(../images/default/button/btn-sprite.gif) no-repeat 0 -21px;
 }
-.x-btn-left i, .x-btn-right i{
+.x2-btn-left i, .x2-btn-right i{
 	display:block;
     width:3px;
     overflow:hidden;
     font-size:1px;
     line-height:1px;
 }
-.x-btn-center{
+.x2-btn-center{
 	background:url(../images/default/button/btn-sprite.gif) repeat-x 0 -42px;
 	vertical-align: middle;
 	text-align:center;
@@ -102,64 +102,64 @@
 	cursor:pointer;
 	white-space:nowrap;
 }
-.x-btn-over .x-btn-left{
+.x2-btn-over .x2-btn-left{
 	background-position:0 -63px;
 }
-.x-btn-over .x-btn-right{
+.x2-btn-over .x2-btn-right{
 	background-position:0 -84px;
 }
-.x-btn-over .x-btn-center{
+.x2-btn-over .x2-btn-center{
 	background-position:0 -105px;
 }
-.x-btn-click .x-btn-center, .x-btn-menu-active .x-btn-center{
+.x2-btn-click .x2-btn-center, .x2-btn-menu-active .x2-btn-center{
 	background-position:0 -126px;
 }
-.x-btn-disabled *{
+.x2-btn-disabled *{
 	color:gray !important;
 	cursor:default !important;
 }
-.x-btn-menu-text-wrap .x-btn-center {
+.x2-btn-menu-text-wrap .x2-btn-center {
 	padding:0 3px;
 }
-.ext-gecko .x-btn-menu-text-wrap .x-btn-center {
+.ext2-gecko .x2-btn-menu-text-wrap .x2-btn-center {
 	padding:0 1px;
 }
-.x-btn-menu-arrow-wrap .x-btn-center {
+.x2-btn-menu-arrow-wrap .x2-btn-center {
     padding:0;
 }
-.x-btn-menu-arrow-wrap .x-btn-center button {
+.x2-btn-menu-arrow-wrap .x2-btn-center button {
 	width:12px !important;
     height:21px;
     padding:0 !important;
     display:block;
     background:transparent url(../images/default/button/btn-arrow.gif) no-repeat left 3px;
 }
-.x-btn-with-menu  .x-btn-center {
+.x2-btn-with-menu  .x2-btn-center {
     padding-right:2px !important;
 }
-.x-btn-with-menu  .x-btn-center em {
+.x2-btn-with-menu  .x2-btn-center em {
     display:block;
     background:transparent url(../images/default/toolbar/btn-arrow.gif) no-repeat right 0;
 	padding-right:10px;
 }
 
-.x-btn-text-icon .x-btn-with-menu .x-btn-center em {
+.x2-btn-text-icon .x2-btn-with-menu .x2-btn-center em {
     display:block;
     background:transparent url(../images/default/toolbar/btn-arrow.gif) no-repeat right 3px;
 	padding-right:10px;
 }
 
 /* Toggle button styles */
-.x-btn-pressed .x-btn-left{
+.x2-btn-pressed .x2-btn-left{
 	background: url(../images/default/button/btn-sprite.gif) no-repeat 0 -63px;
 }
-.x-btn-pressed .x-btn-right{
+.x2-btn-pressed .x2-btn-right{
 	background: url(../images/default/button/btn-sprite.gif) no-repeat 0 -84px;
 }
-.x-btn-pressed .x-btn-center{
+.x2-btn-pressed .x2-btn-center{
 	background: url(../images/default/button/btn-sprite.gif) repeat-x 0 -126px;
 }
 
-.ext-safari .x-btn-text-icon .x-btn-center .x-btn-text,.ext-chrome .x-btn-text-icon .x-btn-center .x-btn-text{
+.ext2-safari .x2-btn-text-icon .x2-btn-center .x2-btn-text,.ext2-chrome .x2-btn-text-icon .x2-btn-center .x2-btn-text{
     padding-right:4px;
 }

@@ -7,7 +7,7 @@
  */
 
 /**
- * @class Ext.LoadMask
+ * @class Ext2.LoadMask
  * A simple utility class for generically masking elements while loading data.  If the {@link #store}
  * config option is specified, the masking will be automatically synchronized with the store's loading
  * process and the mask element will be cached for reuse.  For all other elements, this mask will replace the
@@ -15,7 +15,7 @@
  * <p>Example usage:</p>
  *<pre><code>
 // Basic mask:
-var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"Please wait..."});
+var myMask = new Ext2.LoadMask(Ext2.getBody(), {msg:"Please wait..."});
 myMask.show();
 </code></pre>
  * @constructor
@@ -23,27 +23,27 @@ myMask.show();
  * @param {Mixed} el The element or DOM node, or its id
  * @param {Object} config The config object
  */
-Ext.LoadMask = function(el, config){
-    this.el = Ext.get(el);
-    Ext.apply(this, config);
+Ext2.LoadMask = function(el, config){
+    this.el = Ext2.get(el);
+    Ext2.apply(this, config);
     if(this.store){
         this.store.on('beforeload', this.onBeforeLoad, this);
         this.store.on('load', this.onLoad, this);
         this.store.on('loadexception', this.onLoad, this);
-        this.removeMask = Ext.value(this.removeMask, false);
+        this.removeMask = Ext2.value(this.removeMask, false);
     }else{
         var um = this.el.getUpdater();
         um.showLoadIndicator = false; // disable the default indicator
         um.on('beforeupdate', this.onBeforeLoad, this);
         um.on('update', this.onLoad, this);
         um.on('failure', this.onLoad, this);
-        this.removeMask = Ext.value(this.removeMask, true);
+        this.removeMask = Ext2.value(this.removeMask, true);
     }
 };
 
-Ext.LoadMask.prototype = {
+Ext2.LoadMask.prototype = {
     /**
-     * @cfg {Ext.data.Store} store
+     * @cfg {Ext2.data.Store} store
      * Optional Store to which the mask is bound. The mask is displayed when a load request is issued, and
      * hidden on either load sucess, or load fail.
      */
@@ -59,9 +59,9 @@ Ext.LoadMask.prototype = {
     msg : 'Loading...',
     /**
      * @cfg {String} msgCls
-     * The CSS class to apply to the loading message element (defaults to "x-mask-loading")
+     * The CSS class to apply to the loading message element (defaults to "x2-mask-loading")
      */
-    msgCls : 'x-mask-loading',
+    msgCls : 'x2-mask-loading',
 
     /**
      * Read-only. True if the mask is currently disabled so that it will not be displayed (defaults to false)

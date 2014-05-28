@@ -7,15 +7,15 @@
  */
 
 /**
- * @class Ext.tree.TreeDropZone
- * @extends Ext.dd.DropZone
+ * @class Ext2.tree.TreeDropZone
+ * @extends Ext2.dd.DropZone
  * @constructor
- * @param {String/HTMLElement/Element} tree The {@link Ext.tree.TreePanel} for which to enable dropping
+ * @param {String/HTMLElement/Element} tree The {@link Ext2.tree.TreePanel} for which to enable dropping
  * @param {Object} config
  */
-if(Ext.dd.DropZone){
+if(Ext2.dd.DropZone){
     
-Ext.tree.TreeDropZone = function(tree, config){
+Ext2.tree.TreeDropZone = function(tree, config){
     /**
      * @cfg {Boolean} allowParentInsert
      * Allow inserting a dragged node between an expanded parent node and its first child that will become a
@@ -33,25 +33,25 @@ Ext.tree.TreeDropZone = function(tree, config){
      */
     this.appendOnly = config.appendOnly || false;
 
-    Ext.tree.TreeDropZone.superclass.constructor.call(this, tree.getTreeEl(), config);
+    Ext2.tree.TreeDropZone.superclass.constructor.call(this, tree.getTreeEl(), config);
     /**
     * The TreePanel for this drop zone
-    * @type Ext.tree.TreePanel
+    * @type Ext2.tree.TreePanel
     * @property
     */
     this.tree = tree;
     /**
     * Arbitrary data that can be associated with this tree and will be included in the event object that gets
     * passed to any nodedragover event handler (defaults to {})
-    * @type Ext.tree.TreePanel
+    * @type Ext2.tree.TreePanel
     * @property
     */
     this.dragOverData = {};
     // private
-    this.lastInsertClass = "x-tree-no-status";
+    this.lastInsertClass = "x2-tree-no-status";
 };
 
-Ext.extend(Ext.tree.TreeDropZone, Ext.dd.DropZone, {
+Ext2.extend(Ext2.tree.TreeDropZone, Ext2.dd.DropZone, {
     /**
      * @cfg {String} ddGroup
      * A named drag drop group to which this object belongs.  If a group is specified, then this object will only
@@ -125,8 +125,8 @@ Ext.extend(Ext.tree.TreeDropZone, Ext.dd.DropZone, {
             return tn.allowChildren !== false ? "append" : false; // always append for root
         }
         var dragEl = n.ddel;
-        var t = Ext.lib.Dom.getY(dragEl), b = t + dragEl.offsetHeight;
-        var y = Ext.lib.Event.getPageY(e);
+        var t = Ext2.lib.Dom.getY(dragEl), b = t + dragEl.offsetHeight;
+        var y = Ext2.lib.Event.getPageY(e);
         var noAppend = tn.allowChildren === false || tn.isLeaf();
         if(this.appendOnly || tn.parentNode.allowChildren === false){
             return noAppend ? false : "append";
@@ -176,17 +176,17 @@ Ext.extend(Ext.tree.TreeDropZone, Ext.dd.DropZone, {
                var el = n.ddel;
                var cls;
                if(pt == "above"){
-                   returnCls = n.node.isFirst() ? "x-tree-drop-ok-above" : "x-tree-drop-ok-between";
-                   cls = "x-tree-drag-insert-above";
+                   returnCls = n.node.isFirst() ? "x2-tree-drop-ok-above" : "x2-tree-drop-ok-between";
+                   cls = "x2-tree-drag-insert-above";
                }else if(pt == "below"){
-                   returnCls = n.node.isLast() ? "x-tree-drop-ok-below" : "x-tree-drop-ok-between";
-                   cls = "x-tree-drag-insert-below";
+                   returnCls = n.node.isLast() ? "x2-tree-drop-ok-below" : "x2-tree-drop-ok-between";
+                   cls = "x2-tree-drag-insert-below";
                }else{
-                   returnCls = "x-tree-drop-ok-append";
-                   cls = "x-tree-drag-append";
+                   returnCls = "x2-tree-drop-ok-append";
+                   cls = "x2-tree-drag-append";
                }
                if(this.lastInsertClass != cls){
-                   Ext.fly(el).replaceClass(this.lastInsertClass, cls);
+                   Ext2.fly(el).replaceClass(this.lastInsertClass, cls);
                    this.lastInsertClass = cls;
                }
            }
@@ -257,7 +257,7 @@ Ext.extend(Ext.tree.TreeDropZone, Ext.dd.DropZone, {
     // private
     completeDrop : function(de){
         var ns = de.dropNode, p = de.point, t = de.target;
-        if(!Ext.isArray(ns)){
+        if(!Ext2.isArray(ns)){
             ns = [ns];
         }
         var n;
@@ -272,7 +272,7 @@ Ext.extend(Ext.tree.TreeDropZone, Ext.dd.DropZone, {
             }
         }
         n.ui.focus();
-        if(Ext.enableFx && this.tree.hlDrop){
+        if(Ext2.enableFx && this.tree.hlDrop){
             n.ui.highlight();
         }
         t.ui.endDrop();
@@ -281,7 +281,7 @@ Ext.extend(Ext.tree.TreeDropZone, Ext.dd.DropZone, {
 
     // private
     afterNodeMoved : function(dd, data, e, targetNode, dropNode){
-        if(Ext.enableFx && this.tree.hlDrop){
+        if(Ext2.enableFx && this.tree.hlDrop){
             dropNode.ui.focus();
             dropNode.ui.highlight();
         }
@@ -297,10 +297,10 @@ Ext.extend(Ext.tree.TreeDropZone, Ext.dd.DropZone, {
     removeDropIndicators : function(n){
         if(n && n.ddel){
             var el = n.ddel;
-            Ext.fly(el).removeClass([
-                    "x-tree-drag-insert-above",
-                    "x-tree-drag-insert-below",
-                    "x-tree-drag-append"]);
+            Ext2.fly(el).removeClass([
+                    "x2-tree-drag-insert-above",
+                    "x2-tree-drag-insert-below",
+                    "x2-tree-drag-append"]);
             this.lastInsertClass = "_noclass";
         }
     },
@@ -313,7 +313,7 @@ Ext.extend(Ext.tree.TreeDropZone, Ext.dd.DropZone, {
 
     // private
     afterRepair : function(data){
-        if(data && Ext.enableFx){
+        if(data && Ext2.enableFx){
             data.node.ui.highlight();
         }
         this.hideProxy();

@@ -16,11 +16,11 @@
 
 (function() {
 
-var Event=Ext.EventManager;
-var Dom=Ext.lib.Dom;
+var Event=Ext2.EventManager;
+var Dom=Ext2.lib.Dom;
 
 /**
- * @class Ext.dd.DragDrop
+ * @class Ext2.dd.DragDrop
  * Defines the interface and base operation of items that that can be
  * dragged or can be drop targets.  It was designed to be extended, overriding
  * the event handlers for startDrag, onDrag, onDragOver and onDragOut.
@@ -36,8 +36,8 @@ var Dom=Ext.lib.Dom;
  * method provides a way to define this.</li>
  * <li>drag element: this represents the element that would be moved along
  * with the cursor during a drag operation.  By default, this is the linked
- * element itself as in {@link Ext.dd.DD}.  setDragElId() lets you define
- * a separate element that would be moved, as in {@link Ext.dd.DDProxy}.
+ * element itself as in {@link Ext2.dd.DD}.  setDragElId() lets you define
+ * a separate element that would be moved, as in {@link Ext2.dd.DDProxy}.
  * </li>
  * </ul>
  * This class should not be instantiated until the onload event to ensure that
@@ -45,7 +45,7 @@ var Dom=Ext.lib.Dom;
  * The following would define a DragDrop obj that would interact with any
  * other DragDrop obj in the "group1" group:
  * <pre>
- *  dd = new Ext.dd.DragDrop("div1", "group1");
+ *  dd = new Ext2.dd.DragDrop("div1", "group1");
  * </pre>
  * Since none of the event handlers have been implemented, nothing would
  * actually happen if you were to run the code above.  Normally you would
@@ -63,13 +63,13 @@ var Dom=Ext.lib.Dom;
  *                Valid properties for DragDrop:
  *                    padding, isTarget, maintainOffset, primaryButtonOnly
  */
-Ext.dd.DragDrop = function(id, sGroup, config) {
+Ext2.dd.DragDrop = function(id, sGroup, config) {
     if(id) {
         this.init(id, sGroup, config);
     }
 };
 
-Ext.dd.DragDrop.prototype = {
+Ext2.dd.DragDrop.prototype = {
 
     /**
      * The id of the element associated with this object.  This is what we
@@ -91,7 +91,7 @@ Ext.dd.DragDrop.prototype = {
     /**
      * The id of the element that will be dragged.  By default this is same
      * as the linked element , but could be changed to another element. Ex:
-     * Ext.dd.DDProxy
+     * Ext2.dd.DDProxy
      * @property dragElId
      * @type String
      * @private
@@ -492,15 +492,15 @@ Ext.dd.DragDrop.prototype = {
  *
  * Usage:
  <pre><code>
- var dd = new Ext.dd.DDProxy("dragDiv1", "proxytest",
+ var dd = new Ext2.dd.DDProxy("dragDiv1", "proxytest",
                 { dragElId: "existingProxyDiv" });
  dd.startDrag = function(){
      this.constrainTo("parent-id");
  };
  </code></pre>
- * Or you can initalize it using the {@link Ext.Element} object:
+ * Or you can initalize it using the {@link Ext2.Element} object:
  <pre><code>
- Ext.get("dragDiv1").initDDProxy("proxytest", {dragElId: "existingProxyDiv"}, {
+ Ext2.get("dragDiv1").initDDProxy("proxytest", {dragElId: "existingProxyDiv"}, {
      startDrag : function(){
          this.constrainTo("parent-id");
      }
@@ -517,12 +517,12 @@ Ext.dd.DragDrop.prototype = {
             pad = {left: pad, right:pad, top:pad, bottom:pad};
         }
         pad = pad || this.defaultPadding;
-        var b = Ext.get(this.getEl()).getBox();
-        var ce = Ext.get(constrainTo);
+        var b = Ext2.get(this.getEl()).getBox();
+        var ce = Ext2.get(constrainTo);
         var s = ce.getScroll();
         var c, cd = ce.dom;
         if(cd == document.body){
-            c = { x: s.left, y: s.top, width: Ext.lib.Dom.getViewWidth(), height: Ext.lib.Dom.getViewHeight()};
+            c = { x: s.left, y: s.top, width: Ext2.lib.Dom.getViewWidth(), height: Ext2.lib.Dom.getViewHeight()};
         }else{
             var xy = ce.getXY();
             c = {x : xy[0]+s.left, y: xy[1]+s.top, width: cd.clientWidth, height: cd.clientHeight};
@@ -550,7 +550,7 @@ Ext.dd.DragDrop.prototype = {
      */
     getEl: function() {
         if (!this._domRef) {
-            this._domRef = Ext.getDom(this.id);
+            this._domRef = Ext2.getDom(this.id);
         }
 
         return this._domRef;
@@ -559,17 +559,17 @@ Ext.dd.DragDrop.prototype = {
     /**
      * Returns a reference to the actual element to drag.  By default this is
      * the same as the html element, but it can be assigned to another
-     * element. An example of this can be found in Ext.dd.DDProxy
+     * element. An example of this can be found in Ext2.dd.DDProxy
      * @method getDragEl
      * @return {HTMLElement} the html element
      */
     getDragEl: function() {
-        return Ext.getDom(this.dragElId);
+        return Ext2.getDom(this.dragElId);
     },
 
     /**
      * Sets up the DragDrop object.  Must be called in the constructor of any
-     * Ext.dd.DragDrop subclass
+     * Ext2.dd.DragDrop subclass
      * @method init
      * @param id the id of the linked element
      * @param {String} sGroup the group of related items
@@ -595,14 +595,14 @@ Ext.dd.DragDrop.prototype = {
         this.config = config || {};
 
         // create a local reference to the drag and drop manager
-        this.DDM = Ext.dd.DDM;
+        this.DDM = Ext2.dd.DDM;
         // initialize the groups array
         this.groups = {};
 
         // assume that we have an element reference instead of an id if the
         // parameter is not a string
         if (typeof id !== "string") {
-            id = Ext.id(id);
+            id = Ext2.id(id);
         }
 
         // set the id
@@ -772,7 +772,7 @@ Ext.dd.DragDrop.prototype = {
      */
     setHandleElId: function(id) {
         if (typeof id !== "string") {
-            id = Ext.id(id);
+            id = Ext2.id(id);
         }
         this.handleElId = id;
         this.DDM.regHandle(this.id, id);
@@ -786,7 +786,7 @@ Ext.dd.DragDrop.prototype = {
      */
     setOuterHandleElId: function(id) {
         if (typeof id !== "string") {
-            id = Ext.id(id);
+            id = Ext2.id(id);
         }
         Event.on(id, "mousedown",
                 this.handleMouseDown, this);
@@ -825,7 +825,7 @@ Ext.dd.DragDrop.prototype = {
      * Fired when this object is clicked
      * @method handleMouseDown
      * @param {Event} e
-     * @param {Ext.dd.DragDrop} oDD the clicked dd object (this dd obj)
+     * @param {Ext2.dd.DragDrop} oDD the clicked dd object (this dd obj)
      * @private
      */
     handleMouseDown: function(e, oDD){
@@ -839,7 +839,7 @@ Ext.dd.DragDrop.prototype = {
 
         this.DDM.refreshCache(this.groups);
 
-        var pt = new Ext.lib.Point(Ext.lib.Event.getPageX(e), Ext.lib.Event.getPageY(e));
+        var pt = new Ext2.lib.Point(Ext2.lib.Event.getPageX(e), Ext2.lib.Event.getPageY(e));
         if (!this.hasOuterHandles && !this.DDM.isOverTarget(pt, this) )  {
         } else {
             if (this.clickValidator(e)) {
@@ -888,7 +888,7 @@ Ext.dd.DragDrop.prototype = {
      */
     addInvalidHandleId: function(id) {
         if (typeof id !== "string") {
-            id = Ext.id(id);
+            id = Ext2.id(id);
         }
         this.invalidHandleIds[id] = id;
     },
@@ -920,7 +920,7 @@ Ext.dd.DragDrop.prototype = {
      */
     removeInvalidHandleId: function(id) {
         if (typeof id !== "string") {
-            id = Ext.id(id);
+            id = Ext2.id(id);
         }
         delete this.invalidHandleIds[id];
     },
@@ -959,7 +959,7 @@ Ext.dd.DragDrop.prototype = {
         valid = valid && !this.invalidHandleIds[node.id];
 
         for (var i=0, len=this.invalidHandleClasses.length; valid && i<len; ++i) {
-            valid = !Ext.fly(node).hasClass(this.invalidHandleClasses[i]);
+            valid = !Ext2.fly(node).hasClass(this.invalidHandleClasses[i]);
         }
 
 
@@ -1184,19 +1184,19 @@ Ext.dd.DragDrop.prototype = {
 
 // Only load the library once.  Rewriting the manager class would orphan
 // existing drag and drop instances.
-if (!Ext.dd.DragDropMgr) {
+if (!Ext2.dd.DragDropMgr) {
 
 /**
- * @class Ext.dd.DragDropMgr
+ * @class Ext2.dd.DragDropMgr
  * DragDropMgr is a singleton that tracks the element interaction for
  * all DragDrop items in the window.  Generally, you will not call
  * this class directly, but it does have helper methods that could
  * be useful in your DragDrop implementations.
  * @singleton
  */
-Ext.dd.DragDropMgr = function() {
+Ext2.dd.DragDropMgr = function() {
 
-    var Event = Ext.EventManager;
+    var Event = Ext2.EventManager;
 
     return {
 
@@ -1658,8 +1658,8 @@ Ext.dd.DragDropMgr = function() {
          * @static
          */
         handleMouseDown: function(e, oDD) {
-            if(Ext.QuickTips){
-                Ext.QuickTips.disable();
+            if(Ext2.QuickTips){
+                Ext2.QuickTips.disable();
             }
             if(this.dragCurrent){
                 // the original browser mouseup wasn't handled (e.g. outside FF browser window)
@@ -1683,7 +1683,7 @@ Ext.dd.DragDropMgr = function() {
 
             this.clickTimeout = setTimeout(
                     function() {
-                        var DDM = Ext.dd.DDM;
+                        var DDM = Ext2.dd.DDM;
                         DDM.startDrag(DDM.startX, DDM.startY);
                     },
                     this.clickTimeThresh );
@@ -1716,8 +1716,8 @@ Ext.dd.DragDropMgr = function() {
          */
         handleMouseUp: function(e) {
 
-            if(Ext.QuickTips){
-                Ext.QuickTips.enable();
+            if(Ext2.QuickTips){
+                Ext2.QuickTips.enable();
             }
             if (! this.dragCurrent) {
                 return;
@@ -1797,7 +1797,7 @@ Ext.dd.DragDropMgr = function() {
             // var button = e.which || e.button;
 
             // check for IE mouseup outside of page boundary
-            if (Ext.isIE && (e.button !== 0 && e.button !== 1 && e.button !== 2)) {
+            if (Ext2.isIE && (e.button !== 0 && e.button !== 1 && e.button !== 2)) {
                 this.stopEvent(e);
                 return this.handleMouseUp(e);
             }
@@ -2013,11 +2013,11 @@ Ext.dd.DragDropMgr = function() {
          * format that is stored in the drag and drop instance, so typical
          * usage is:
          * <code>
-         * Ext.dd.DragDropMgr.refreshCache(ddinstance.groups);
+         * Ext2.dd.DragDropMgr.refreshCache(ddinstance.groups);
          * </code>
          * Alternatively:
          * <code>
-         * Ext.dd.DragDropMgr.refreshCache({group1:true, group2:true});
+         * Ext2.dd.DragDropMgr.refreshCache({group1:true, group2:true});
          * </code>
          * @TODO this really should be an indexed array.  Alternatively this
          * method could accept both.
@@ -2062,7 +2062,7 @@ Ext.dd.DragDropMgr = function() {
         verifyEl: function(el) {
             if (el) {
                 var parent;
-                if(Ext.isIE){
+                if(Ext2.isIE){
                     try{
                         parent = el.offsetParent;
                     }catch(e){}
@@ -2083,7 +2083,7 @@ Ext.dd.DragDropMgr = function() {
          * @method getLocation
          * @param {DragDrop} oDD the drag and drop object to get the
          *                       location for
-         * @return {Ext.lib.Region} a Region object representing the total area
+         * @return {Ext2.lib.Region} a Region object representing the total area
          *                             the element occupies, including any padding
          *                             the instance is configured for.
          * @static
@@ -2096,7 +2096,7 @@ Ext.dd.DragDropMgr = function() {
             var el = oDD.getEl(), pos, x1, x2, y1, y2, t, r, b, l;
 
             try {
-                pos= Ext.lib.Dom.getXY(el);
+                pos= Ext2.lib.Dom.getXY(el);
             } catch (e) { }
 
             if (!pos) {
@@ -2113,13 +2113,13 @@ Ext.dd.DragDropMgr = function() {
             b = y2 + oDD.padding[2];
             l = x1 - oDD.padding[3];
 
-            return new Ext.lib.Region( t, r, b, l );
+            return new Ext2.lib.Region( t, r, b, l );
         },
 
         /**
          * Checks the cursor location to see if it over the target
          * @method isOverTarget
-         * @param {Ext.lib.Point} pt The point to evaluate
+         * @param {Ext2.lib.Point} pt The point to evaluate
          * @param {DragDrop} oTarget the DragDrop object we are inspecting
          * @return {boolean} true if the mouse is over the target
          * @private
@@ -2160,7 +2160,7 @@ Ext.dd.DragDropMgr = function() {
             var pos = dc.getTargetCoord(pt.x, pt.y);
 
             var el = dc.getDragEl();
-            var curRegion = new Ext.lib.Region( pos.y,
+            var curRegion = new Ext2.lib.Region( pos.y,
                                                    pos.x + el.offsetWidth,
                                                    pos.y + el.offsetHeight,
                                                    pos.x );
@@ -2182,7 +2182,7 @@ Ext.dd.DragDropMgr = function() {
          * @static
          */
         _onUnload: function(e, me) {
-            Ext.dd.DragDropMgr.unregAll();
+            Ext2.dd.DragDropMgr.unregAll();
         },
 
         /**
@@ -2220,7 +2220,7 @@ Ext.dd.DragDropMgr = function() {
          * Get the wrapper for the DOM element specified
          * @method getElWrapper
          * @param {String} id the id of the element to get
-         * @return {Ext.dd.DDM.ElementWrapper} the wrapped element
+         * @return {Ext2.dd.DDM.ElementWrapper} the wrapped element
          * @private
          * @deprecated This wrapper isn't that useful
          * @static
@@ -2229,7 +2229,7 @@ Ext.dd.DragDropMgr = function() {
             var oWrapper = this.elementCache[id];
             if (!oWrapper || !oWrapper.el) {
                 oWrapper = this.elementCache[id] =
-                    new this.ElementWrapper(Ext.getDom(id));
+                    new this.ElementWrapper(Ext2.getDom(id));
             }
             return oWrapper;
         },
@@ -2239,11 +2239,11 @@ Ext.dd.DragDropMgr = function() {
          * @method getElement
          * @param {String} id the id of the elment to get
          * @return {Object} The element
-         * @deprecated use Ext.lib.Ext.getDom instead
+         * @deprecated use Ext2.lib.Ext2.getDom instead
          * @static
          */
         getElement: function(id) {
-            return Ext.getDom(id);
+            return Ext2.getDom(id);
         },
 
         /**
@@ -2252,11 +2252,11 @@ Ext.dd.DragDropMgr = function() {
          * @method getCss
          * @param {String} id the id of the elment to get
          * @return {Object} The style property of the element
-         * @deprecated use Ext.lib.Dom instead
+         * @deprecated use Ext2.lib.Dom instead
          * @static
          */
         getCss: function(id) {
-            var el = Ext.getDom(id);
+            var el = Ext2.getDom(id);
             return (el) ? el.style : null;
         },
 
@@ -2291,11 +2291,11 @@ Ext.dd.DragDropMgr = function() {
          * @param el the element for which to get the position
          * @return {int} the X coordinate
          * @for DragDropMgr
-         * @deprecated use Ext.lib.Dom.getX instead
+         * @deprecated use Ext2.lib.Dom.getX instead
          * @static
          */
         getPosX: function(el) {
-            return Ext.lib.Dom.getX(el);
+            return Ext2.lib.Dom.getX(el);
         },
 
         /**
@@ -2303,11 +2303,11 @@ Ext.dd.DragDropMgr = function() {
          * @method getPosY
          * @param el the element for which to get the position
          * @return {int} the Y coordinate
-         * @deprecated use Ext.lib.Dom.getY instead
+         * @deprecated use Ext2.lib.Dom.getY instead
          * @static
          */
         getPosY: function(el) {
-            return Ext.lib.Dom.getY(el);
+            return Ext2.lib.Dom.getY(el);
         },
 
         /**
@@ -2362,11 +2362,11 @@ Ext.dd.DragDropMgr = function() {
          * @param {HTMLElement} el          the element
          * @param {string}      styleProp   the style property
          * @return {string} The value of the style property
-         * @deprecated use Ext.lib.Dom.getStyle
+         * @deprecated use Ext2.lib.Dom.getStyle
          * @static
          */
         getStyle: function(el, styleProp) {
-            return Ext.fly(el).getStyle(styleProp);
+            return Ext2.fly(el).getStyle(styleProp);
         },
 
         /**
@@ -2394,8 +2394,8 @@ Ext.dd.DragDropMgr = function() {
          * @static
          */
         moveToEl: function (moveEl, targetEl) {
-            var aCoord = Ext.lib.Dom.getXY(targetEl);
-            Ext.lib.Dom.setXY(moveEl, aCoord);
+            var aCoord = Ext2.lib.Dom.getXY(targetEl);
+            Ext2.lib.Dom.setXY(moveEl, aCoord);
         },
 
         /**
@@ -2421,8 +2421,8 @@ Ext.dd.DragDropMgr = function() {
          * @static
          */
         _addListeners: function() {
-            var DDM = Ext.dd.DDM;
-            if ( Ext.lib.Event && document ) {
+            var DDM = Ext2.dd.DDM;
+            if ( Ext2.lib.Event && document ) {
                 DDM._onLoad();
             } else {
                 if (DDM._timeoutCount > 2000) {
@@ -2467,16 +2467,16 @@ Ext.dd.DragDropMgr = function() {
 }();
 
 // shorter alias, save a few bytes
-Ext.dd.DDM = Ext.dd.DragDropMgr;
-Ext.dd.DDM._addListeners();
+Ext2.dd.DDM = Ext2.dd.DragDropMgr;
+Ext2.dd.DDM._addListeners();
 
 }
 
 /**
- * @class Ext.dd.DD
+ * @class Ext2.dd.DD
  * A DragDrop implementation where the linked element follows the
  * mouse cursor during a drag.
- * @extends Ext.dd.DragDrop
+ * @extends Ext2.dd.DragDrop
  * @constructor
  * @param {String} id the id of the linked element
  * @param {String} sGroup the group of related DragDrop items
@@ -2484,13 +2484,13 @@ Ext.dd.DDM._addListeners();
  *                Valid properties for DD:
  *                    scroll
  */
-Ext.dd.DD = function(id, sGroup, config) {
+Ext2.dd.DD = function(id, sGroup, config) {
     if (id) {
         this.init(id, sGroup, config);
     }
 };
 
-Ext.extend(Ext.dd.DD, Ext.dd.DragDrop, {
+Ext2.extend(Ext2.dd.DD, Ext2.dd.DragDrop, {
 
     /**
      * When set to true, the utility automatically tries to scroll the browser
@@ -2556,7 +2556,7 @@ Ext.extend(Ext.dd.DD, Ext.dd.DragDrop, {
      */
     alignElWithMouse: function(el, iPageX, iPageY) {
         var oCoord = this.getTargetCoord(iPageX, iPageY);
-        var fly = el.dom ? el : Ext.fly(el, '_dd');
+        var fly = el.dom ? el : Ext2.fly(el, '_dd');
         if (!this.deltaSetXY) {
             var aCoord = [oCoord.x, oCoord.y];
             fly.setXY(aCoord);
@@ -2587,7 +2587,7 @@ Ext.extend(Ext.dd.DD, Ext.dd.DragDrop, {
             this.lastPageX = iPageX;
             this.lastPageY = iPageY;
         } else {
-            var aCoord = Ext.lib.Dom.getXY(this.getEl());
+            var aCoord = Ext2.lib.Dom.getXY(this.getEl());
             this.lastPageX = aCoord[0];
             this.lastPageY = aCoord[1];
         }
@@ -2607,10 +2607,10 @@ Ext.extend(Ext.dd.DD, Ext.dd.DragDrop, {
 
         if (this.scroll) {
             // The client height
-            var clientH = Ext.lib.Dom.getViewHeight();
+            var clientH = Ext2.lib.Dom.getViewHeight();
 
             // The client width
-            var clientW = Ext.lib.Dom.getViewWidth();
+            var clientW = Ext2.lib.Dom.getViewWidth();
 
             // The amt scrolled down
             var st = this.DDM.getScrollTop();
@@ -2702,17 +2702,17 @@ Ext.extend(Ext.dd.DD, Ext.dd.DragDrop, {
 
     /**
      * Sets up config options specific to this class. Overrides
-     * Ext.dd.DragDrop, but all versions of this method through the
+     * Ext2.dd.DragDrop, but all versions of this method through the
      * inheritance chain are called
      */
     applyConfig: function() {
-        Ext.dd.DD.superclass.applyConfig.call(this);
+        Ext2.dd.DD.superclass.applyConfig.call(this);
         this.scroll = (this.config.scroll !== false);
     },
 
     /**
      * Event that fires prior to the onMouseDown event.  Overrides
-     * Ext.dd.DragDrop.
+     * Ext2.dd.DragDrop.
      */
     b4MouseDown: function(e) {
         // this.resetConstraints();
@@ -2722,7 +2722,7 @@ Ext.extend(Ext.dd.DD, Ext.dd.DragDrop, {
 
     /**
      * Event that fires prior to the onDrag event.  Overrides
-     * Ext.dd.DragDrop.
+     * Ext2.dd.DragDrop.
      */
     b4Drag: function(e) {
         this.setDragElPos(e.getPageX(),
@@ -2762,7 +2762,7 @@ Ext.extend(Ext.dd.DD, Ext.dd.DragDrop, {
 
 });
 /**
- * @class Ext.dd.DDProxy
+ * @class Ext2.dd.DDProxy
  * A DragDrop implementation that inserts an empty, bordered div into
  * the document that follows the cursor during drag operations.  At the time of
  * the click, the frame div is resized to the dimensions of the linked html
@@ -2772,7 +2772,7 @@ Ext.extend(Ext.dd.DD, Ext.dd.DragDrop, {
  * was created to be dragged in place of all DDProxy elements on the
  * page.
  *
- * @extends Ext.dd.DD
+ * @extends Ext2.dd.DD
  * @constructor
  * @param {String} id the id of the linked html element
  * @param {String} sGroup the group of related DragDrop objects
@@ -2780,7 +2780,7 @@ Ext.extend(Ext.dd.DD, Ext.dd.DragDrop, {
  *                Valid properties for DDProxy in addition to those in DragDrop:
  *                   resizeFrame, centerFrame, dragElId
  */
-Ext.dd.DDProxy = function(id, sGroup, config) {
+Ext2.dd.DDProxy = function(id, sGroup, config) {
     if (id) {
         this.init(id, sGroup, config);
         this.initFrame();
@@ -2789,13 +2789,13 @@ Ext.dd.DDProxy = function(id, sGroup, config) {
 
 /**
  * The default drag frame div id
- * @property Ext.dd.DDProxy.dragElId
+ * @property Ext2.dd.DDProxy.dragElId
  * @type String
  * @static
  */
-Ext.dd.DDProxy.dragElId = "ygddfdiv";
+Ext2.dd.DDProxy.dragElId = "ygddfdiv";
 
-Ext.extend(Ext.dd.DDProxy, Ext.dd.DD, {
+Ext2.extend(Ext2.dd.DDProxy, Ext2.dd.DD, {
 
     /**
      * By default we resize the drag frame to be the same size as the element
@@ -2808,7 +2808,7 @@ Ext.extend(Ext.dd.DDProxy, Ext.dd.DD, {
 
     /**
      * By default the frame is positioned exactly where the drag element is, so
-     * we use the cursor offset provided by Ext.dd.DD.  Another option that works only if
+     * we use the cursor offset provided by Ext2.dd.DD.  Another option that works only if
      * you do not have constraints on the obj is to have the drag frame centered
      * around the cursor.  Set centerFrame to true for this effect.
      * @property centerFrame
@@ -2859,11 +2859,11 @@ Ext.extend(Ext.dd.DDProxy, Ext.dd.DD, {
     },
 
     applyConfig: function() {
-        Ext.dd.DDProxy.superclass.applyConfig.call(this);
+        Ext2.dd.DDProxy.superclass.applyConfig.call(this);
 
         this.resizeFrame = (this.config.resizeFrame !== false);
         this.centerFrame = (this.config.centerFrame);
-        this.setDragElId(this.config.dragElId || Ext.dd.DDProxy.dragElId);
+        this.setDragElId(this.config.dragElId || Ext2.dd.DDProxy.dragElId);
     },
 
     /**
@@ -2888,7 +2888,7 @@ Ext.extend(Ext.dd.DDProxy, Ext.dd.DD, {
 
         this.setDragElPos(iPageX, iPageY);
 
-        Ext.fly(dragEl).show();
+        Ext2.fly(dragEl).show();
     },
 
     /**
@@ -2900,11 +2900,11 @@ Ext.extend(Ext.dd.DDProxy, Ext.dd.DD, {
     _resizeProxy: function() {
         if (this.resizeFrame) {
             var el = this.getEl();
-            Ext.fly(this.getDragEl()).setSize(el.offsetWidth, el.offsetHeight);
+            Ext2.fly(this.getDragEl()).setSize(el.offsetWidth, el.offsetHeight);
         }
     },
 
-    // overrides Ext.dd.DragDrop
+    // overrides Ext2.dd.DragDrop
     b4MouseDown: function(e) {
         var x = e.getPageX();
         var y = e.getPageY();
@@ -2912,20 +2912,20 @@ Ext.extend(Ext.dd.DDProxy, Ext.dd.DD, {
         this.setDragElPos(x, y);
     },
 
-    // overrides Ext.dd.DragDrop
+    // overrides Ext2.dd.DragDrop
     b4StartDrag: function(x, y) {
         // show the drag frame
         this.showFrame(x, y);
     },
 
-    // overrides Ext.dd.DragDrop
+    // overrides Ext2.dd.DragDrop
     b4EndDrag: function(e) {
-        Ext.fly(this.getDragEl()).hide();
+        Ext2.fly(this.getDragEl()).hide();
     },
 
-    // overrides Ext.dd.DragDrop
+    // overrides Ext2.dd.DragDrop
     // By default we try to move the element to the last location of the frame.
-    // This is so that the default behavior mirrors that of Ext.dd.DD.
+    // This is so that the default behavior mirrors that of Ext2.dd.DD.
     endDrag: function(e) {
 
         var lel = this.getEl();
@@ -2938,7 +2938,7 @@ Ext.extend(Ext.dd.DDProxy, Ext.dd.DD, {
         // Hide the linked element before the move to get around a Safari
         // rendering bug.
         lel.style.visibility = "hidden";
-        Ext.dd.DDM.moveToEl(lel, del);
+        Ext2.dd.DDM.moveToEl(lel, del);
         del.style.visibility = "hidden";
         lel.style.visibility = "";
 
@@ -2959,12 +2959,12 @@ Ext.extend(Ext.dd.DDProxy, Ext.dd.DD, {
 
 });
 /**
- * @class Ext.dd.DDTarget
+ * @class Ext2.dd.DDTarget
  * A DragDrop implementation that does not move, but can be a drop
  * target.  You would get the same result by simply omitting implementation
  * for the event callbacks, but this way we reduce the processing cost of the
  * event listener and the callbacks.
- * @extends Ext.dd.DragDrop
+ * @extends Ext2.dd.DragDrop
  * @constructor
  * @param {String} id the id of the element that is a drop target
  * @param {String} sGroup the group of related DragDrop objects
@@ -2973,14 +2973,14 @@ Ext.extend(Ext.dd.DDProxy, Ext.dd.DD, {
  *                 DragDrop:
  *                    none
  */
-Ext.dd.DDTarget = function(id, sGroup, config) {
+Ext2.dd.DDTarget = function(id, sGroup, config) {
     if (id) {
         this.initTarget(id, sGroup, config);
     }
 };
 
-// Ext.dd.DDTarget.prototype = new Ext.dd.DragDrop();
-Ext.extend(Ext.dd.DDTarget, Ext.dd.DragDrop, {
+// Ext2.dd.DDTarget.prototype = new Ext2.dd.DragDrop();
+Ext2.extend(Ext2.dd.DDTarget, Ext2.dd.DragDrop, {
     toString: function() {
         return ("DDTarget " + this.id);
     }

@@ -12,26 +12,26 @@
  * 6 November 2007
  */
 
-Ext.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Идет загрузка...</div>';
+Ext2.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Идет загрузка...</div>';
 
-if(Ext.View){
-  Ext.View.prototype.emptyText = "";
+if(Ext2.View){
+  Ext2.View.prototype.emptyText = "";
 }
 
-if(Ext.grid.GridPanel){
-  Ext.grid.GridPanel.prototype.ddText = "{0} выбранных строк";
+if(Ext2.grid.GridPanel){
+  Ext2.grid.GridPanel.prototype.ddText = "{0} выбранных строк";
 }
 
-if(Ext.TabPanelItem){
-  Ext.TabPanelItem.prototype.closeText = "Закрыть эту вкладку";
+if(Ext2.TabPanelItem){
+  Ext2.TabPanelItem.prototype.closeText = "Закрыть эту вкладку";
 }
 
-if(Ext.form.Field){
-  Ext.form.Field.prototype.invalidText = "Значение в этом поле неверное";
+if(Ext2.form.Field){
+  Ext2.form.Field.prototype.invalidText = "Значение в этом поле неверное";
 }
 
-if(Ext.LoadMask){
-  Ext.LoadMask.prototype.msg = "Загрузка...";
+if(Ext2.LoadMask){
+  Ext2.LoadMask.prototype.msg = "Загрузка...";
 }
 
 Date.monthNames = [
@@ -101,8 +101,8 @@ Date.getShortDayName = function(day) {
   return Date.dayNames[day].substring(0, 3);
 };
 
-if(Ext.MessageBox){
-  Ext.MessageBox.buttonText = {
+if(Ext2.MessageBox){
+  Ext2.MessageBox.buttonText = {
     ok     : "OK",
     cancel : "Отмена",
     yes    : "Да",
@@ -110,16 +110,16 @@ if(Ext.MessageBox){
   };
 }
 
-if(Ext.util.Format){
-  Ext.util.Format.date = function(v, format){
+if(Ext2.util.Format){
+  Ext2.util.Format.date = function(v, format){
     if(!v) return "";
     if(!(v instanceof Date)) v = new Date(Date.parse(v));
     return v.dateFormat(format || "d.m.Y");
   };
 }
 
-if(Ext.DatePicker){
-  Ext.apply(Ext.DatePicker.prototype, {
+if(Ext2.DatePicker){
+  Ext2.apply(Ext2.DatePicker.prototype, {
     todayText          : "Сегодня",
     minText            : "Эта дата раньше минимальной даты",
     maxText            : "Эта дата позже максимальной даты",
@@ -138,8 +138,8 @@ if(Ext.DatePicker){
   });
 }
 
-if(Ext.PagingToolbar){
-  Ext.apply(Ext.PagingToolbar.prototype, {
+if(Ext2.PagingToolbar){
+  Ext2.apply(Ext2.PagingToolbar.prototype, {
     beforePageText : "Страница",
     afterPageText  : "из {0}",
     firstText      : "Первая страница",
@@ -152,8 +152,8 @@ if(Ext.PagingToolbar){
   });
 }
 
-if(Ext.form.TextField){
-  Ext.apply(Ext.form.TextField.prototype, {
+if(Ext2.form.TextField){
+  Ext2.apply(Ext2.form.TextField.prototype, {
     minLengthText : "Минимальная длина этого поля {0}",
     maxLengthText : "Максимальная длина этого поля {0}",
     blankText     : "Это поле обязательно для заполнения",
@@ -162,16 +162,16 @@ if(Ext.form.TextField){
   });
 }
 
-if(Ext.form.NumberField){
-  Ext.apply(Ext.form.NumberField.prototype, {
+if(Ext2.form.NumberField){
+  Ext2.apply(Ext2.form.NumberField.prototype, {
     minText : "Значение этого поля не может быть меньше {0}",
     maxText : "Значение этого поля не может быть больше {0}",
     nanText : "{0} не является числом"
   });
 }
 
-if(Ext.form.DateField){
-  Ext.apply(Ext.form.DateField.prototype, {
+if(Ext2.form.DateField){
+  Ext2.apply(Ext2.form.DateField.prototype, {
     disabledDaysText  : "Не доступно",
     disabledDatesText : "Не доступно",
     minText           : "Дата в этом поле должна быть позде {0}",
@@ -182,15 +182,15 @@ if(Ext.form.DateField){
   });
 }
 
-if(Ext.form.ComboBox){
-  Ext.apply(Ext.form.ComboBox.prototype, {
+if(Ext2.form.ComboBox){
+  Ext2.apply(Ext2.form.ComboBox.prototype, {
     loadingText       : "Загрузка...",
     valueNotFoundText : undefined
   });
 }
 
-if(Ext.form.VTypes){
-  Ext.apply(Ext.form.VTypes, {
+if(Ext2.form.VTypes){
+  Ext2.apply(Ext2.form.VTypes, {
     emailText     : 'Это поле должно содержать адрес электронной почты в формате "user@domain.com"',
     urlText       : 'Это поле должно содержать URL в формате "http:/'+'/www.domain.com"',
     alphaText     : 'Это поле должно содержать только латинские буквы и символ подчеркивания "_"',
@@ -198,90 +198,90 @@ if(Ext.form.VTypes){
   });
 }
 
-if(Ext.form.HtmlEditor){
-  Ext.apply(Ext.form.HtmlEditor.prototype, {
+if(Ext2.form.HtmlEditor){
+  Ext2.apply(Ext2.form.HtmlEditor.prototype, {
     createLinkText : 'Пожалуйста введите адрес:',
     buttonTips : {
       bold : {
         title: 'Полужирный (Ctrl+B)',
         text: 'Применение полужирного начертания к выделенному тексту.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       italic : {
         title: 'Курсив (Ctrl+I)',
         text: 'Применение курсивного начертания к выделенному тексту.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       underline : {
         title: 'Подчёркнутый (Ctrl+U)',
         text: 'Подчёркивание выделенного текста.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       increasefontsize : {
         title: 'Увеличить размер',
         text: 'Увеличение размера шрифта.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       decreasefontsize : {
         title: 'Уменьшить размер',
         text: 'Уменьшение размера шрифта.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       backcolor : {
         title: 'Заливка',
         text: 'Изменение цвета фона для выделенного текста или абзаца.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       forecolor : {
         title: 'Цвет текста',
         text: 'Измение цвета текста.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifyleft : {
         title: 'Выровнять текст по левому краю',
         text: 'Выровнивание текста по левому краю.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifycenter : {
         title: 'По центру',
         text: 'Выровнивание текста по центру.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifyright : {
         title: 'Выровнять текст по правому краю',
         text: 'Выровнивание текста по правому краю.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       insertunorderedlist : {
         title: 'Маркеры',
         text: 'Начать маркированный список.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       insertorderedlist : {
         title: 'Нумерация',
         text: 'Начать нумернованный список.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       createlink : {
         title: 'Вставить гиперссылку',
         text: 'Создание ссылки из выделенного текста.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       sourceedit : {
         title: 'Исходный код',
         text: 'Переключиться на исходный код.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       }
     }
   });
 }
 
-if(Ext.form.BasicForm){
-  Ext.form.BasicForm.prototype.waitTitle = "Пожалуйста подождите...";
+if(Ext2.form.BasicForm){
+  Ext2.form.BasicForm.prototype.waitTitle = "Пожалуйста подождите...";
 }
 
-if(Ext.grid.GridView){
-  Ext.apply(Ext.grid.GridView.prototype, {
+if(Ext2.grid.GridView){
+  Ext2.apply(Ext2.grid.GridView.prototype, {
     sortAscText  : "Сортировать по возрастанию",
     sortDescText : "Сортировать по убыванию",
     lockText     : "Закрепить столбец",
@@ -290,31 +290,31 @@ if(Ext.grid.GridView){
   });
 }
 
-if(Ext.grid.GroupingView){
-  Ext.apply(Ext.grid.GroupingView.prototype, {
+if(Ext2.grid.GroupingView){
+  Ext2.apply(Ext2.grid.GroupingView.prototype, {
     emptyGroupText : '(Пусто)',
     groupByText    : 'Группировать по этому полю',
     showGroupsText : 'Отображать по группам'
   });
 }
 
-if(Ext.grid.PropertyColumnModel){
-  Ext.apply(Ext.grid.PropertyColumnModel.prototype, {
+if(Ext2.grid.PropertyColumnModel){
+  Ext2.apply(Ext2.grid.PropertyColumnModel.prototype, {
     nameText   : "Название",
     valueText  : "Значение",
     dateFormat : "d.m.Y"
   });
 }
 
-if(Ext.SplitLayoutRegion){
-  Ext.apply(Ext.SplitLayoutRegion.prototype, {
+if(Ext2.SplitLayoutRegion){
+  Ext2.apply(Ext2.SplitLayoutRegion.prototype, {
     splitTip            : "Тяните для изменения размера.",
     collapsibleSplitTip : "Тяните для изменения размера. Двойной щелчок спрячет панель."
   });
 }
 
-if(Ext.layout.BorderLayout && Ext.layout.BorderLayout.SplitRegion){
-  Ext.apply(Ext.layout.BorderLayout.SplitRegion.prototype, {
+if(Ext2.layout.BorderLayout && Ext2.layout.BorderLayout.SplitRegion){
+  Ext2.apply(Ext2.layout.BorderLayout.SplitRegion.prototype, {
     splitTip            : "Тяните для изменения размера.",
     collapsibleSplitTip : "Тяните для изменения размера. Двойной щелчок спрячет панель."
   });

@@ -7,11 +7,11 @@
  */
 
 /**
- * @class Ext.form.VTypes
+ * @class Ext2.form.VTypes
  * This is a singleton object which contains a set of commonly used field validation functions.
  * The validations provided are basic and intended to be easily customizable and extended. To add
  * your own custom VType:<pre><code>
-Ext.apply(Ext.form.VTypes, {
+Ext2.apply(Ext2.form.VTypes, {
     IPAddress:  function(v) {
         return /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(v);
     },
@@ -20,7 +20,7 @@ Ext.apply(Ext.form.VTypes, {
 </code></pre>
  * @singleton
  */
-Ext.form.VTypes = function(){
+Ext2.form.VTypes = function(){
     // closure these in so they are only created once.
     var alpha = /^[a-zA-Z_]+$/;
     var alphanum = /^[a-zA-Z0-9_]+$/;

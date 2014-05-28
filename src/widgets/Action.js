@@ -7,11 +7,11 @@
  */
 
 /**
- * @class Ext.Action
+ * @class Ext2.Action
  * <p>An Action is a piece of reusable functionality that can be abstracted out of any particular component so that it
  * can be usefully shared among multiple components.  Actions let you share handlers, configuration options and UI
- * updates across any components that support the Action interface (primarily {@link Ext.Toolbar}, {@link Ext.Button}
- * and {@link Ext.menu.Menu} components).</p>
+ * updates across any components that support the Action interface (primarily {@link Ext2.Toolbar}, {@link Ext2.Button}
+ * and {@link Ext2.menu.Menu} components).</p>
  * <p>Aside from supporting the config object interface, any component that needs to use Actions must also support
  * the following method list, as these will be called as needed by the Action class: setText(string), setIconCls(string),
  * setDisabled(boolean), setVisible(boolean) and setHandler(function).</p>
@@ -19,15 +19,15 @@
  * <pre><code>
 // Define the shared action.  Each component below will have the same
 // display text and icon, and will display the same message on click.
-var action = new Ext.Action({
+var action = new Ext2.Action({
     text: 'Do something',
     handler: function(){
-        Ext.Msg.alert('Click', 'You did something.');
+        Ext2.Msg.alert('Click', 'You did something.');
     },
     iconCls: 'do-something'
 });
 
-var panel = new Ext.Panel({
+var panel = new Ext2.Panel({
     title: 'Actions',
     width:500,
     height:300,
@@ -41,9 +41,9 @@ var panel = new Ext.Panel({
     ],
     items: [
         // Add the action to the panel body as a standard button
-        new Ext.Button(action)
+        new Ext2.Button(action)
     ],
-    renderTo: Ext.getBody()
+    renderTo: Ext2.getBody()
 });
 
 // Change the text for all components using the action
@@ -52,12 +52,12 @@ action.setText('Something else');
  * @constructor
  * @param {Object} config The configuration options
  */
-Ext.Action = function(config){
+Ext2.Action = function(config){
     this.initialConfig = config;
     this.items = [];
 }
 
-Ext.Action.prototype = {
+Ext2.Action.prototype = {
     /**
      * @cfg {String} text The text to set for all components using this action (defaults to '').
      */
@@ -196,7 +196,7 @@ Ext.Action.prototype = {
      * @param {Object} scope The scope in which the function will execute
      */
     each : function(fn, scope){
-        Ext.each(this.items, fn, scope);
+        Ext2.each(this.items, fn, scope);
     },
 
     // private

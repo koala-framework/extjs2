@@ -7,20 +7,20 @@
  */
 
 /**
- * @class Ext.form.Hidden
- * @extends Ext.form.Field
+ * @class Ext2.form.Hidden
+ * @extends Ext2.form.Field
  * A basic hidden field for storing hidden values in forms that need to be passed in the form submit.
  * @constructor
  * Create a new Hidden field.
  * @param {Object} config Configuration options
  */
-Ext.form.Hidden = Ext.extend(Ext.form.Field, {
+Ext2.form.Hidden = Ext2.extend(Ext2.form.Field, {
     // private
     inputType : 'hidden',
 
     // private
     onRender : function(){
-        Ext.form.Hidden.superclass.onRender.apply(this, arguments);
+        Ext2.form.Hidden.superclass.onRender.apply(this, arguments);
     },
 
     // private
@@ -29,12 +29,12 @@ Ext.form.Hidden = Ext.extend(Ext.form.Field, {
     },
 
     // These are all private overrides
-    setSize : Ext.emptyFn,
-    setWidth : Ext.emptyFn,
-    setHeight : Ext.emptyFn,
-    setPosition : Ext.emptyFn,
-    setPagePosition : Ext.emptyFn,
-    markInvalid : Ext.emptyFn,
-    clearInvalid : Ext.emptyFn
+    setSize : Ext2.emptyFn,
+    setWidth : Ext2.emptyFn,
+    setHeight : Ext2.emptyFn,
+    setPosition : Ext2.emptyFn,
+    setPagePosition : Ext2.emptyFn,
+    markInvalid : Ext2.emptyFn,
+    clearInvalid : Ext2.emptyFn
 });
-Ext.reg('hidden', Ext.form.Hidden);
+Ext2.reg('hidden', Ext2.form.Hidden);

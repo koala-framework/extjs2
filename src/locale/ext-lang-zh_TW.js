@@ -12,26 +12,26 @@
  * 09 April 2007
  */
 
-Ext.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">讀取中...</div>';
+Ext2.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">讀取中...</div>';
 
-if(Ext.View){
-    Ext.View.prototype.emptyText = "";
+if(Ext2.View){
+    Ext2.View.prototype.emptyText = "";
 }
 
-if(Ext.grid.GridPanel){
-    Ext.grid.GridPanel.prototype.ddText = "選擇了 {0} 行";
+if(Ext2.grid.GridPanel){
+    Ext2.grid.GridPanel.prototype.ddText = "選擇了 {0} 行";
 }
 
-if(Ext.TabPanelItem){
-    Ext.TabPanelItem.prototype.closeText = "關閉此標籤";
+if(Ext2.TabPanelItem){
+    Ext2.TabPanelItem.prototype.closeText = "關閉此標籤";
 }
 
-if(Ext.form.Field){
-    Ext.form.Field.prototype.invalidText = "數值不符合欄位規定";
+if(Ext2.form.Field){
+    Ext2.form.Field.prototype.invalidText = "數值不符合欄位規定";
 }
 
-if(Ext.LoadMask){
-    Ext.LoadMask.prototype.msg = "讀取中...";
+if(Ext2.LoadMask){
+    Ext2.LoadMask.prototype.msg = "讀取中...";
 }
 
 Date.monthNames = [
@@ -59,8 +59,8 @@ Date.dayNames = [
     "六"
 ];
 
-if(Ext.MessageBox){
-    Ext.MessageBox.buttonText = {
+if(Ext2.MessageBox){
+    Ext2.MessageBox.buttonText = {
         ok : "確定",
         cancel : "取消",
         yes : "是",
@@ -68,16 +68,16 @@ if(Ext.MessageBox){
     };
 }
 
-if(Ext.util.Format){
-    Ext.util.Format.date = function(v, format){
+if(Ext2.util.Format){
+    Ext2.util.Format.date = function(v, format){
        if(!v) return "";
        if(!(v instanceof Date)) v = new Date(Date.parse(v));
        return v.dateFormat(format || "Y/m/d");
     };
 }
 
-if(Ext.DatePicker){
-    Ext.apply(Ext.DatePicker.prototype, {
+if(Ext2.DatePicker){
+    Ext2.apply(Ext2.DatePicker.prototype, {
        todayText         : "今天",
        minText           : "日期必須大於最小容許日期",
        maxText           : "日期必須小於最大容許日期",
@@ -95,8 +95,8 @@ if(Ext.DatePicker){
     });
 }
 
-if(Ext.PagingToolbar){
-    Ext.apply(Ext.PagingToolbar.prototype, {
+if(Ext2.PagingToolbar){
+    Ext2.apply(Ext2.PagingToolbar.prototype, {
        beforePageText : "第",
        afterPageText  : "頁，共{0}頁",
        firstText      : "第一頁",
@@ -109,8 +109,8 @@ if(Ext.PagingToolbar){
     });
 }
 
-if(Ext.form.TextField){
-    Ext.apply(Ext.form.TextField.prototype, {
+if(Ext2.form.TextField){
+    Ext2.apply(Ext2.form.TextField.prototype, {
        minLengthText : "此欄位最少要輸入 {0} 個字",
        maxLengthText : "此欄位最多輸入 {0} 個字",
        blankText     : "此欄位為必填",
@@ -119,16 +119,16 @@ if(Ext.form.TextField){
     });
 }
 
-if(Ext.form.NumberField){
-    Ext.apply(Ext.form.NumberField.prototype, {
+if(Ext2.form.NumberField){
+    Ext2.apply(Ext2.form.NumberField.prototype, {
        minText : "此欄位之數值必須大於 {0}",
        maxText : "此欄位之數值必須小於 {0}",
        nanText : "{0} 不是合法的數字"
     });
 }
 
-if(Ext.form.DateField){
-    Ext.apply(Ext.form.DateField.prototype, {
+if(Ext2.form.DateField){
+    Ext2.apply(Ext2.form.DateField.prototype, {
        disabledDaysText  : "無法使用",
        disabledDatesText : "無法使用",
        minText           : "此欄位之日期必須在 {0} 之後",
@@ -138,15 +138,15 @@ if(Ext.form.DateField){
     });
 }
 
-if(Ext.form.ComboBox){
-    Ext.apply(Ext.form.ComboBox.prototype, {
+if(Ext2.form.ComboBox){
+    Ext2.apply(Ext2.form.ComboBox.prototype, {
        loadingText       : "讀取中 ...",
        valueNotFoundText : undefined
     });
 }
 
-if(Ext.form.VTypes){
-    Ext.apply(Ext.form.VTypes, {
+if(Ext2.form.VTypes){
+    Ext2.apply(Ext2.form.VTypes, {
        emailText    : '此欄位必須輸入像 "user@domain.com" 之E-Mail格式',
        urlText      : '此欄位必須輸入像 "http:/'+'/www.domain.com" 之網址格式',
        alphaText    : '此欄位僅能輸入半形英文字母及底線( _ )符號',
@@ -154,8 +154,8 @@ if(Ext.form.VTypes){
     });
 }
 
-if(Ext.grid.GridView){
-    Ext.apply(Ext.grid.GridView.prototype, {
+if(Ext2.grid.GridView){
+    Ext2.apply(Ext2.grid.GridView.prototype, {
        sortAscText  : "正向排序",
        sortDescText : "反向排序",
        lockText     : "鎖定欄位",
@@ -164,16 +164,16 @@ if(Ext.grid.GridView){
     });
 }
 
-if(Ext.grid.PropertyColumnModel){
-    Ext.apply(Ext.grid.PropertyColumnModel.prototype, {
+if(Ext2.grid.PropertyColumnModel){
+    Ext2.apply(Ext2.grid.PropertyColumnModel.prototype, {
        nameText   : "名稱",
        valueText  : "數值",
        dateFormat : "Y/m/d"
     });
 }
 
-if(Ext.layout.BorderLayout && Ext.layout.BorderLayout.SplitRegion){
-    Ext.apply(Ext.layout.BorderLayout.SplitRegion.prototype, {
+if(Ext2.layout.BorderLayout && Ext2.layout.BorderLayout.SplitRegion){
+    Ext2.apply(Ext2.layout.BorderLayout.SplitRegion.prototype, {
        splitTip            : "拖曳縮放大小.",
        collapsibleSplitTip : "拖曳縮放大小. 滑鼠雙擊隱藏."
     });

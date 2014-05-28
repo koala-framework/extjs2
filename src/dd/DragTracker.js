@@ -6,8 +6,8 @@
  * http://extjs.com/license
  */
 
-Ext.dd.DragTracker = function(config){
-    Ext.apply(this, config);
+Ext2.dd.DragTracker = function(config){
+    Ext2.apply(this, config);
     this.addEvents(
         'mousedown',
         'mouseup',
@@ -17,20 +17,20 @@ Ext.dd.DragTracker = function(config){
         'drag'
     );
 
-    this.dragRegion = new Ext.lib.Region(0,0,0,0);
+    this.dragRegion = new Ext2.lib.Region(0,0,0,0);
 
     if(this.el){
         this.initEl(this.el);
     }
 }
 
-Ext.extend(Ext.dd.DragTracker, Ext.util.Observable,  {
+Ext2.extend(Ext2.dd.DragTracker, Ext2.util.Observable,  {
     active: false,
     tolerance: 5,
     autoStart: false,
 
     initEl: function(el){
-        this.el = Ext.get(el);
+        this.el = Ext2.get(el);
         el.on('mousedown', this.onMouseDown, this,
                 this.delegate ? {delegate: this.delegate} : undefined);
     },
@@ -44,7 +44,7 @@ Ext.extend(Ext.dd.DragTracker, Ext.util.Observable,  {
             this.startXY = this.lastXY = e.getXY();
             this.dragTarget = this.delegate ? target : this.el.dom;
             e.preventDefault();
-            var doc = Ext.getDoc();
+            var doc = Ext2.getDoc();
             doc.on('mouseup', this.onMouseUp, this);
             doc.on('mousemove', this.onMouseMove, this);
             doc.on('selectstart', this.stopSelect, this);
@@ -55,7 +55,7 @@ Ext.extend(Ext.dd.DragTracker, Ext.util.Observable,  {
     },
 
     onMouseMove: function(e, target){
-        if(this.active && Ext.isIE && !e.browserEvent.button){
+        if(this.active && Ext2.isIE && !e.browserEvent.button){
             e.preventDefault();
             this.onMouseUp(e);
             return;
@@ -76,7 +76,7 @@ Ext.extend(Ext.dd.DragTracker, Ext.util.Observable,  {
     },
 
     onMouseUp: function(e){
-        var doc = Ext.getDoc();
+        var doc = Ext2.getDoc();
         doc.un('mousemove', this.onMouseMove, this);
         doc.un('mouseup', this.onMouseUp, this);
         doc.un('selectstart', this.stopSelect, this);

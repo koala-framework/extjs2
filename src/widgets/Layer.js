@@ -7,14 +7,14 @@
  */
 
 /**
- * @class Ext.Layer
- * @extends Ext.Element
- * An extended {@link Ext.Element} object that supports a shadow and shim, constrain to viewport and
+ * @class Ext2.Layer
+ * @extends Ext2.Element
+ * An extended {@link Ext2.Element} object that supports a shadow and shim, constrain to viewport and
  * automatic maintaining of shadow/shim positions.
  * @cfg {Boolean} shim False to disable the iframe shim in browsers which need one (defaults to true)
- * @cfg {String/Boolean} shadow True to automatically create an {@link Ext.Shadow}, or a string indicating the 
- * shadow's display {@link Ext.Shadow#mode}. False to disable the shadow. (defaults to false)
- * @cfg {Object} dh DomHelper object config to create element with (defaults to {tag: "div", cls: "x-layer"}).
+ * @cfg {String/Boolean} shadow True to automatically create an {@link Ext2.Shadow}, or a string indicating the 
+ * shadow's display {@link Ext2.Shadow#mode}. False to disable the shadow. (defaults to false)
+ * @cfg {Object} dh DomHelper object config to create element with (defaults to {tag: "div", cls: "x2-layer"}).
  * @cfg {Boolean} constrain False to disable constrain to viewport (defaults to true)
  * @cfg {String} cls CSS class to add to the element
  * @cfg {Number} zindex Starting z-index (defaults to 11000)
@@ -24,49 +24,49 @@
  * @param {String/HTMLElement} existingEl (optional) Uses an existing DOM element. If the element is not found it creates it.
  */
 (function(){
-Ext.Layer = function(config, existingEl){
+Ext2.Layer = function(config, existingEl){
     config = config || {};
-    var dh = Ext.DomHelper;
-    var cp = config.parentEl, pel = cp ? Ext.getDom(cp) : document.body;
+    var dh = Ext2.DomHelper;
+    var cp = config.parentEl, pel = cp ? Ext2.getDom(cp) : document.body;
     if(existingEl){
-        this.dom = Ext.getDom(existingEl);
+        this.dom = Ext2.getDom(existingEl);
     }
     if(!this.dom){
-        var o = config.dh || {tag: "div", cls: "x-layer"};
+        var o = config.dh || {tag: "div", cls: "x2-layer"};
         this.dom = dh.append(pel, o);
     }
     if(config.cls){
         this.addClass(config.cls);
     }
     this.constrain = config.constrain !== false;
-    this.visibilityMode = Ext.Element.VISIBILITY;
+    this.visibilityMode = Ext2.Element.VISIBILITY;
     if(config.id){
         this.id = this.dom.id = config.id;
     }else{
-        this.id = Ext.id(this.dom);
+        this.id = Ext2.id(this.dom);
     }
     this.zindex = config.zindex || this.getZIndex();
     this.position("absolute", this.zindex);
     if(config.shadow){
         this.shadowOffset = config.shadowOffset || 4;
-        this.shadow = new Ext.Shadow({
+        this.shadow = new Ext2.Shadow({
             offset : this.shadowOffset,
             mode : config.shadow
         });
     }else{
         this.shadowOffset = 0;
     }
-    this.useShim = config.shim !== false && Ext.useShims;
+    this.useShim = config.shim !== false && Ext2.useShims;
     this.useDisplay = config.useDisplay;
     this.hide();
 };
 
-var supr = Ext.Element.prototype;
+var supr = Ext2.Element.prototype;
 
 // shims are shared among layer to keep from having 100 iframes
 var shims = [];
 
-Ext.extend(Ext.Layer, Ext.Element, {
+Ext2.extend(Ext2.Layer, Ext2.Element, {
 
     getZIndex : function(){
         return this.zindex || parseInt((this.getShim() || this).getStyle("z-index"), 10) || 11000;
@@ -172,8 +172,8 @@ Ext.extend(Ext.Layer, Ext.Element, {
             this.shadow.hide();
         }
         this.removeAllListeners();
-        Ext.removeNode(this.dom);
-        Ext.Element.uncache(this.id);
+        Ext2.removeNode(this.dom);
+        Ext2.Element.uncache(this.id);
     },
 
     remove : function(){
@@ -202,9 +202,9 @@ Ext.extend(Ext.Layer, Ext.Element, {
     // private
     constrainXY : function(){
         if(this.constrain){
-            var vw = Ext.lib.Dom.getViewWidth(),
-                vh = Ext.lib.Dom.getViewHeight();
-            var s = Ext.getDoc().getScroll();
+            var vw = Ext2.lib.Dom.getViewWidth(),
+                vh = Ext2.lib.Dom.getViewHeight();
+            var s = Ext2.getDoc().getScroll();
 
             var xy = this.getXY();
             var x = xy[0], y = xy[1];
@@ -318,12 +318,12 @@ Ext.extend(Ext.Layer, Ext.Element, {
     // private
     beforeFx : function(){
         this.beforeAction();
-        return Ext.Layer.superclass.beforeFx.apply(this, arguments);
+        return Ext2.Layer.superclass.beforeFx.apply(this, arguments);
     },
 
     // private
     afterFx : function(){
-        Ext.Layer.superclass.afterFx.apply(this, arguments);
+        Ext2.Layer.superclass.afterFx.apply(this, arguments);
         this.sync(this.isVisible());
     },
 

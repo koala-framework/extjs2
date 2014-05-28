@@ -7,22 +7,22 @@
  */
 
 /**
- * @class Ext.menu.Separator
- * @extends Ext.menu.BaseItem
+ * @class Ext2.menu.Separator
+ * @extends Ext2.menu.BaseItem
  * Adds a separator bar to a menu, used to divide logical groups of menu items. Generally you will
  * add one of these by using "-" in you call to add() or in your items config rather than creating one directly.
  * @constructor
  * @param {Object} config Configuration options
  */
-Ext.menu.Separator = function(config){
-    Ext.menu.Separator.superclass.constructor.call(this, config);
+Ext2.menu.Separator = function(config){
+    Ext2.menu.Separator.superclass.constructor.call(this, config);
 };
 
-Ext.extend(Ext.menu.Separator, Ext.menu.BaseItem, {
+Ext2.extend(Ext2.menu.Separator, Ext2.menu.BaseItem, {
     /**
-     * @cfg {String} itemCls The default CSS class to use for separators (defaults to "x-menu-sep")
+     * @cfg {String} itemCls The default CSS class to use for separators (defaults to "x2-menu-sep")
      */
-    itemCls : "x-menu-sep",
+    itemCls : "x2-menu-sep",
     /**
      * @cfg {Boolean} hideOnClick True to hide the containing menu after this item is clicked (defaults to false)
      */
@@ -34,7 +34,7 @@ Ext.extend(Ext.menu.Separator, Ext.menu.BaseItem, {
         s.className = this.itemCls;
         s.innerHTML = "&#160;";
         this.el = s;
-        li.addClass("x-menu-sep-li");
-        Ext.menu.Separator.superclass.onRender.apply(this, arguments);
+        li.addClass("x2-menu-sep-li");
+        Ext2.menu.Separator.superclass.onRender.apply(this, arguments);
     }
 });

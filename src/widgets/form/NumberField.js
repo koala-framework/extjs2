@@ -7,14 +7,14 @@
  */
 
 /**
- * @class Ext.form.NumberField
- * @extends Ext.form.TextField
+ * @class Ext2.form.NumberField
+ * @extends Ext2.form.TextField
  * Numeric text field that provides automatic keystroke filtering and numeric validation.
  * @constructor
  * Creates a new NumberField
  * @param {Object} config Configuration options
  */
-Ext.form.NumberField = Ext.extend(Ext.form.TextField,  {
+Ext2.form.NumberField = Ext2.extend(Ext2.form.TextField,  {
     /**
      * @cfg {RegExp} stripCharsRe @hide
      */
@@ -22,9 +22,9 @@ Ext.form.NumberField = Ext.extend(Ext.form.TextField,  {
      * @cfg {RegExp} maskRe @hide
      */
     /**
-     * @cfg {String} fieldClass The default CSS class for the field (defaults to "x-form-field x-form-num-field")
+     * @cfg {String} fieldClass The default CSS class for the field (defaults to "x2-form-field x2-form-num-field")
      */
-    fieldClass: "x-form-field x-form-num-field",
+    fieldClass: "x2-form-field x2-form-num-field",
     /**
      * @cfg {Boolean} allowDecimals False to disallow decimal values (defaults to true)
      */
@@ -76,13 +76,13 @@ Ext.form.NumberField = Ext.extend(Ext.form.TextField,  {
         if (this.allowNegative) {
             allowed += '-';
         }
-        this.maskRe = new RegExp('[' + Ext.escapeRe(allowed) + ']');
-        Ext.form.NumberField.superclass.initEvents.call(this);
+        this.maskRe = new RegExp('[' + Ext2.escapeRe(allowed) + ']');
+        Ext2.form.NumberField.superclass.initEvents.call(this);
     },
 
     // private
     validateValue : function(value){
-        if(!Ext.form.NumberField.superclass.validateValue.call(this, value)){
+        if(!Ext2.form.NumberField.superclass.validateValue.call(this, value)){
             return false;
         }
         if(value.length < 1){ // if it's blank and textfield didn't flag it then it's valid
@@ -106,13 +106,13 @@ Ext.form.NumberField = Ext.extend(Ext.form.TextField,  {
     },
 
     getValue : function(){
-        return this.fixPrecision(this.parseValue(Ext.form.NumberField.superclass.getValue.call(this)));
+        return this.fixPrecision(this.parseValue(Ext2.form.NumberField.superclass.getValue.call(this)));
     },
 
     setValue : function(v){
     	v = typeof v == 'number' ? v : parseFloat(String(v).replace(this.decimalSeparator, "."));
         v = isNaN(v) ? '' : String(v).replace(".", this.decimalSeparator);
-        Ext.form.NumberField.superclass.setValue.call(this, v);
+        Ext2.form.NumberField.superclass.setValue.call(this, v);
     },
 
     // private
@@ -132,9 +132,9 @@ Ext.form.NumberField = Ext.extend(Ext.form.TextField,  {
 
     beforeBlur : function(){
         var v = this.parseValue(this.getRawValue());
-        if(!Ext.isEmpty(v)){
+        if(!Ext2.isEmpty(v)){
             this.setValue(this.fixPrecision(v));
         }
     }
 });
-Ext.reg('numberfield', Ext.form.NumberField);
+Ext2.reg('numberfield', Ext2.form.NumberField);

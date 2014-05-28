@@ -7,21 +7,21 @@
  */
 
 /**
- * @class Ext.grid.CheckboxSelectionModel
- * @extends Ext.grid.RowSelectionModel
+ * @class Ext2.grid.CheckboxSelectionModel
+ * @extends Ext2.grid.RowSelectionModel
  * A custom selection model that renders a column of checkboxes that can be toggled to select or deselect rows.
  * @constructor
  * @param {Object} config The configuration options
  */
-Ext.grid.CheckboxSelectionModel = Ext.extend(Ext.grid.RowSelectionModel, {
+Ext2.grid.CheckboxSelectionModel = Ext2.extend(Ext2.grid.RowSelectionModel, {
     /**
      * @cfg {String} header Any valid text or HTML fragment to display in the header cell for the checkbox column
-     * (defaults to '&lt;div class="x-grid3-hd-checker">&#160;&lt;/div>').  The default CSS class of 'x-grid3-hd-checker'
+     * (defaults to '&lt;div class="x2-grid3-hd-checker">&#160;&lt;/div>').  The default CSS class of 'x2-grid3-hd-checker'
      * displays a checkbox in the header and provides support for automatic check all/none behavior on header click.
      * This string can be replaced by any valid HTML fragment, including a simple text string (e.g., 'Select Rows'), but
-     * the automatic check all/none behavior will only work if the 'x-grid3-hd-checker' class is supplied.
+     * the automatic check all/none behavior will only work if the 'x2-grid3-hd-checker' class is supplied.
      */
-    header: '<div class="x-grid3-hd-checker">&#160;</div>',
+    header: '<div class="x2-grid3-hd-checker">&#160;</div>',
     /**
      * @cfg {Number} width The default width in pixels of the checkbox column (defaults to 20).
      */
@@ -39,20 +39,20 @@ Ext.grid.CheckboxSelectionModel = Ext.extend(Ext.grid.RowSelectionModel, {
 
     // private
     initEvents : function(){
-        Ext.grid.CheckboxSelectionModel.superclass.initEvents.call(this);
+        Ext2.grid.CheckboxSelectionModel.superclass.initEvents.call(this);
         this.grid.on('render', function(){
             var view = this.grid.getView();
             view.mainBody.on('mousedown', this.onMouseDown, this);
-            Ext.fly(view.innerHd).on('mousedown', this.onHdMouseDown, this);
+            Ext2.fly(view.innerHd).on('mousedown', this.onHdMouseDown, this);
 
         }, this);
     },
 
     // private
     onMouseDown : function(e, t){
-        if(e.button === 0 && t.className == 'x-grid3-row-checker'){ // Only fire if left-click
+        if(e.button === 0 && t.className == 'x2-grid3-row-checker'){ // Only fire if left-click
             e.stopEvent();
-            var row = e.getTarget('.x-grid3-row');
+            var row = e.getTarget('.x2-grid3-row');
             if(row){
                 var index = row.rowIndex;
                 if(this.isSelected(index)){
@@ -66,15 +66,15 @@ Ext.grid.CheckboxSelectionModel = Ext.extend(Ext.grid.RowSelectionModel, {
 
     // private
     onHdMouseDown : function(e, t){
-        if(t.className == 'x-grid3-hd-checker'){
+        if(t.className == 'x2-grid3-hd-checker'){
             e.stopEvent();
-            var hd = Ext.fly(t.parentNode);
-            var isChecked = hd.hasClass('x-grid3-hd-checker-on');
+            var hd = Ext2.fly(t.parentNode);
+            var isChecked = hd.hasClass('x2-grid3-hd-checker-on');
             if(isChecked){
-                hd.removeClass('x-grid3-hd-checker-on');
+                hd.removeClass('x2-grid3-hd-checker-on');
                 this.clearSelections();
             }else{
-                hd.addClass('x-grid3-hd-checker-on');
+                hd.addClass('x2-grid3-hd-checker-on');
                 this.selectAll();
             }
         }
@@ -82,6 +82,6 @@ Ext.grid.CheckboxSelectionModel = Ext.extend(Ext.grid.RowSelectionModel, {
 
     // private
     renderer : function(v, p, record){
-        return '<div class="x-grid3-row-checker">&#160;</div>';
+        return '<div class="x2-grid3-row-checker">&#160;</div>';
     }
 });

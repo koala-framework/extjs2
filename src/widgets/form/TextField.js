@@ -7,15 +7,15 @@
  */
 
 /**
- * @class Ext.form.TextField
- * @extends Ext.form.Field
+ * @class Ext2.form.TextField
+ * @extends Ext2.form.Field
  * Basic text field.  Can be used as a direct replacement for traditional text inputs, or as the base
- * class for more sophisticated input controls (like {@link Ext.form.TextArea} and {@link Ext.form.ComboBox}).
+ * class for more sophisticated input controls (like {@link Ext2.form.TextArea} and {@link Ext2.form.ComboBox}).
  * @constructor
  * Creates a new TextField
  * @param {Object} config Configuration options
  */
-Ext.form.TextField = Ext.extend(Ext.form.Field,  {
+Ext2.form.TextField = Ext2.extend(Ext2.form.Field,  {
     /**
      * @cfg {String} vtypeText A custom error message to display in place of the default message provided
      * for the {@link #vtype} currently set for this field (defaults to '').  Only applies if vtype is set, else ignored.
@@ -36,7 +36,7 @@ Ext.form.TextField = Ext.extend(Ext.form.Field,  {
      */
     growMax : 800,
     /**
-     * @cfg {String} vtype A validation type name as defined in {@link Ext.form.VTypes} (defaults to null)
+     * @cfg {String} vtype A validation type name as defined in {@link Ext2.form.VTypes} (defaults to null)
      */
     vtype : null,
     /**
@@ -104,23 +104,23 @@ Ext.form.TextField = Ext.extend(Ext.form.Field,  {
     emptyText : null,
     /**
      * @cfg {String} emptyClass The CSS class to apply to an empty field to style the {@link #emptyText} (defaults to
-     * 'x-form-empty-field').  This class is automatically added and removed as needed depending on the current field value.
+     * 'x2-form-empty-field').  This class is automatically added and removed as needed depending on the current field value.
      */
-    emptyClass : 'x-form-empty-field',
+    emptyClass : 'x2-form-empty-field',
 
     /**
      * @cfg {Boolean} enableKeyEvents True to enable the proxying of key events for the HTML input field (defaults to false)
      */
 
     initComponent : function(){
-        Ext.form.TextField.superclass.initComponent.call(this);
+        Ext2.form.TextField.superclass.initComponent.call(this);
         this.addEvents(
             /**
              * @event autosize
              * Fires when the autosize function is triggered.  The field may or may not have actually changed size
              * according to the default logic, but this event provides a hook for the developer to apply additional
              * logic at runtime to resize the field if needed.
-             * @param {Ext.form.Field} this This text field
+             * @param {Ext2.form.Field} this This text field
              * @param {Number} width The new field width
              */
             'autosize',
@@ -128,22 +128,22 @@ Ext.form.TextField = Ext.extend(Ext.form.Field,  {
             /**
              * @event keydown
              * Keydown input field event. This event only fires if enableKeyEvents is set to true.
-             * @param {Ext.form.TextField} this This text field
-             * @param {Ext.EventObject} e
+             * @param {Ext2.form.TextField} this This text field
+             * @param {Ext2.EventObject} e
              */
             'keydown',
             /**
              * @event keyup
              * Keyup input field event. This event only fires if enableKeyEvents is set to true.
-             * @param {Ext.form.TextField} this This text field
-             * @param {Ext.EventObject} e
+             * @param {Ext2.form.TextField} this This text field
+             * @param {Ext2.EventObject} e
              */
             'keyup',
             /**
              * @event keypress
              * Keypress input field event. This event only fires if enableKeyEvents is set to true.
-             * @param {Ext.form.TextField} this This text field
-             * @param {Ext.EventObject} e
+             * @param {Ext2.form.TextField} this This text field
+             * @param {Ext2.EventObject} e
              */
             'keypress'
         );
@@ -151,9 +151,9 @@ Ext.form.TextField = Ext.extend(Ext.form.Field,  {
 
     // private
     initEvents : function(){
-        Ext.form.TextField.superclass.initEvents.call(this);
+        Ext2.form.TextField.superclass.initEvents.call(this);
         if(this.validationEvent == 'keyup'){
-            this.validationTask = new Ext.util.DelayedTask(this.validate, this);
+            this.validationTask = new Ext2.util.DelayedTask(this.validate, this);
             this.el.on('keyup', this.filterValidation, this);
         }
         else if(this.validationEvent !== false){
@@ -173,7 +173,7 @@ Ext.form.TextField = Ext.extend(Ext.form.Field,  {
                 this.applyEmptyText();
             }
         }
-        if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Ext.form.VTypes[this.vtype+'Mask']))){
+        if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Ext2.form.VTypes[this.vtype+'Mask']))){
             this.el.on("keypress", this.filterKeys, this);
         }
         if(this.grow){
@@ -207,16 +207,16 @@ Ext.form.TextField = Ext.extend(Ext.form.Field,  {
     
     //private
     onDisable: function(){
-        Ext.form.TextField.superclass.onDisable.call(this);
-        if(Ext.isIE){
+        Ext2.form.TextField.superclass.onDisable.call(this);
+        if(Ext2.isIE){
             this.el.dom.unselectable = 'on';
         }
     },
     
     //private
     onEnable: function(){
-        Ext.form.TextField.superclass.onEnable.call(this);
-        if(Ext.isIE){
+        Ext2.form.TextField.superclass.onEnable.call(this);
+        if(Ext2.isIE){
             this.el.dom.unselectable = '';
         }
     },
@@ -248,7 +248,7 @@ Ext.form.TextField = Ext.extend(Ext.form.Field,  {
      * Also adds emptyText and emptyClass if the original value was blank.
      */
     reset : function(){
-        Ext.form.TextField.superclass.reset.call(this);
+        Ext2.form.TextField.superclass.reset.call(this);
         this.applyEmptyText();
     },
 
@@ -271,7 +271,7 @@ Ext.form.TextField = Ext.extend(Ext.form.Field,  {
         if(this.selectOnFocus){
             (function(){
                 el.dom.select();
-            }).defer(this.inEditor && Ext.isIE ? 50 : 0);   
+            }).defer(this.inEditor && Ext2.isIE ? 50 : 0);   
         }
     },
 
@@ -293,10 +293,10 @@ Ext.form.TextField = Ext.extend(Ext.form.Field,  {
     },
 
     setValue : function(v){
-        if(this.emptyText && this.el && !Ext.isEmpty(v)){
+        if(this.emptyText && this.el && !Ext2.isEmpty(v)){
             this.el.removeClass(this.emptyClass);
         }
-        Ext.form.TextField.superclass.setValue.apply(this, arguments);
+        Ext2.form.TextField.superclass.setValue.apply(this, arguments);
         this.applyEmptyText();
         this.autoSize();
     },
@@ -326,7 +326,7 @@ Ext.form.TextField = Ext.extend(Ext.form.Field,  {
             return false;
         }
         if(this.vtype){
-            var vt = Ext.form.VTypes;
+            var vt = Ext2.form.VTypes;
             if(!vt[this.vtype](value, this)){
                 this.markInvalid(this.vtypeText || vt[this.vtype +'Text']);
                 return false;
@@ -366,7 +366,7 @@ Ext.form.TextField = Ext.extend(Ext.form.Field,  {
                 range.moveEnd("character", end-v.length);
                 range.select();
             }
-            doFocus = Ext.isGecko || Ext.isOpera;
+            doFocus = Ext2.isGecko || Ext2.isOpera;
         }else{
             doFocus = true;
         }
@@ -384,14 +384,14 @@ Ext.form.TextField = Ext.extend(Ext.form.Field,  {
             return;
         }
         if(!this.metrics){
-            this.metrics = Ext.util.TextMetrics.createInstance(this.el);
+            this.metrics = Ext2.util.TextMetrics.createInstance(this.el);
         }
         var el = this.el;
         var v = el.dom.value;
         var d = document.createElement('div');
         d.appendChild(document.createTextNode(v));
         v = d.innerHTML;
-        Ext.removeNode(d);
+        Ext2.removeNode(d);
         d = null;
         v += "&#160;";
         var w = Math.min(this.growMax, Math.max(this.metrics.getWidth(v) + /* add extra padding */ 10, this.growMin));
@@ -399,4 +399,4 @@ Ext.form.TextField = Ext.extend(Ext.form.Field,  {
         this.fireEvent("autosize", this, w);
     }
 });
-Ext.reg('textfield', Ext.form.TextField);
+Ext2.reg('textfield', Ext2.form.TextField);

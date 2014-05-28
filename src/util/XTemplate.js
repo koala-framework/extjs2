@@ -7,11 +7,11 @@
  */
 
 /**
- * @class Ext.XTemplate
- * @extends Ext.Template
+ * @class Ext2.XTemplate
+ * @extends Ext2.Template
  * <p>A template class that supports advanced functionality like autofilling arrays, conditional processing with
  * basic comparison operators, sub-templates, basic math function support, special built-in template variables,
- * inline code execution and more.  XTemplate also provides the templating mechanism built into {@link Ext.DataView}.</p>
+ * inline code execution and more.  XTemplate also provides the templating mechanism built into {@link Ext2.DataView}.</p>
  * <p>XTemplate supports many special tags and built-in operators that aren't defined as part of the API, but are
  * supported in the templates that can be created.  The following examples demonstrate all of the supported features.
  * This is the data object used for reference in each code example:</p>
@@ -19,7 +19,7 @@
 var data = {
     name: 'Jack Slocum',
     title: 'Lead Developer',
-    company: 'Ext JS, LLC',
+    company: 'Ext2 JS, LLC',
     email: 'jack@extjs.com',
     address: '4 Red Bulls Drive',
     city: 'Cleveland',
@@ -43,7 +43,7 @@ var data = {
  * If the variable in <tt>for</tt> is an array, it will auto-fill, repeating the template block inside the <tt>tpl</tt>
  * tag for each item in the array:</p>
  * <pre><code>
-var tpl = new Ext.XTemplate(
+var tpl = new Ext2.XTemplate(
     '&lt;p>Name: {name}&lt;/p>',
     '&lt;p>Title: {title}&lt;/p>',
     '&lt;p>Company: {company}&lt;/p>',
@@ -57,7 +57,7 @@ tpl.overwrite(panel.body, data);
  * <p><b>Access to parent object from within sub-template scope</b><br/>When processing a sub-template, for example while
  * looping through a child array, you can access the parent object's members via the <tt>parent</tt> object:</p>
  * <pre><code>
-var tpl = new Ext.XTemplate(
+var tpl = new Ext2.XTemplate(
     '&lt;p>Name: {name}&lt;/p>',
     '&lt;p>Kids: ',
     '&lt;tpl for="kids">',
@@ -73,7 +73,7 @@ tpl.overwrite(panel.body, data);
  * will provide the current array index + 1 (starts at 1, not 0). Templates also support the basic math operators
  * + - * and / that can be applied directly on numeric data values:</p>
  * <pre><code>
-var tpl = new Ext.XTemplate(
+var tpl = new Ext2.XTemplate(
     '&lt;p>Name: {name}&lt;/p>',
     '&lt;p>Kids: ',
     '&lt;tpl for="kids">',
@@ -90,7 +90,7 @@ tpl.overwrite(panel.body, data);
  * using the special <tt>{.}</tt> variable inside a loop.  This variable will represent the value of
  * the array at the current index:</p>
  * <pre><code>
-var tpl = new Ext.XTemplate(
+var tpl = new Ext2.XTemplate(
     '&lt;p>{name}\'s favorite beverages:&lt;/p>',
     '&lt;tpl for="drinks">',
        '&lt;div> - {.}&lt;/div>',
@@ -103,7 +103,7 @@ tpl.overwrite(panel.body, data);
  * Note that there is no <tt>else</tt> operator &mdash; if needed, you should use two opposite <tt>if</tt> statements.
  * Properly-encoded attributes are required as seen in the following example:</p>
  * <pre><code>
-var tpl = new Ext.XTemplate(
+var tpl = new Ext2.XTemplate(
     '&lt;p>Name: {name}&lt;/p>',
     '&lt;p>Kids: ',
     '&lt;tpl for="kids">',
@@ -122,11 +122,11 @@ tpl.overwrite(panel.body, data);
  * <li><b><tt>parent</tt></b>: The scope (values) of the ancestor template.</li>
  * <li><b><tt>xindex</tt></b>: If you are in a looping template, the index of the loop you are in (1-based).</li>
  * <li><b><tt>xcount</tt></b>: If you are in a looping template, the total length of the array you are looping.</li>
- * <li><b><tt>fm</tt></b>: An alias for <tt>Ext.util.Format</tt>.</li>
+ * <li><b><tt>fm</tt></b>: An alias for <tt>Ext2.util.Format</tt>.</li>
  * </ul>
  * This example demonstrates basic row striping using an inline code block and the <tt>xindex</tt> variable:</p>
  * <pre><code>
-var tpl = new Ext.XTemplate(
+var tpl = new Ext2.XTemplate(
     '&lt;p>Name: {name}&lt;/p>',
     '&lt;p>Company: {[values.company.toUpperCase() + ", " + values.title]}&lt;/p>',
     '&lt;p>Kids: ',
@@ -141,7 +141,7 @@ tpl.overwrite(panel.body, data);
  * <p><b>Template member functions</b> <br/>One or more member functions can be defined directly on the config
  * object passed into the XTemplate constructor for more complex processing:</p>
  * <pre><code>
-var tpl = new Ext.XTemplate(
+var tpl = new Ext2.XTemplate(
     '&lt;p>Name: {name}&lt;/p>',
     '&lt;p>Kids: ',
     '&lt;tpl for="kids">',
@@ -168,8 +168,8 @@ tpl.overwrite(panel.body, data);
  * @param {String/Array/Object} parts The HTML fragment or an array of fragments to join(""), or multiple arguments
  * to join("") that can also include a config object
  */
-Ext.XTemplate = function(){
-    Ext.XTemplate.superclass.constructor.apply(this, arguments);
+Ext2.XTemplate = function(){
+    Ext2.XTemplate.superclass.constructor.apply(this, arguments);
     var s = this.html;
 
     s = ['<tpl>', s, '</tpl>'].join('');
@@ -191,13 +191,13 @@ Ext.XTemplate = function(){
        if(m3){
            exp = m3 && m3[1] ? m3[1] : null;
            if(exp){
-               fn = new Function('values', 'parent', 'xindex', 'xcount', 'with(values){ return '+(Ext.util.Format.htmlDecode(exp))+'; }');
+               fn = new Function('values', 'parent', 'xindex', 'xcount', 'with(values){ return '+(Ext2.util.Format.htmlDecode(exp))+'; }');
            }
        }
        if(m4){
            exp = m4 && m4[1] ? m4[1] : null;
            if(exp){
-               exec = new Function('values', 'parent', 'xindex', 'xcount', 'with(values){ '+(Ext.util.Format.htmlDecode(exp))+'; }');
+               exec = new Function('values', 'parent', 'xindex', 'xcount', 'with(values){ '+(Ext2.util.Format.htmlDecode(exp))+'; }');
            }
        }
        if(name){
@@ -223,7 +223,7 @@ Ext.XTemplate = function(){
     this.master = tpls[tpls.length-1];
     this.tpls = tpls;
 };
-Ext.extend(Ext.XTemplate, Ext.Template, {
+Ext2.extend(Ext2.XTemplate, Ext2.Template, {
     // private
     re : /\{([\w-\.\#]+)(?:\:([\w\.]*)(?:\((.*?)?\))?)?(\s?[\+\-\*\\]\s?[\d\.\+\-\*\\\(\)]+)?\}/g,
     // private
@@ -240,7 +240,7 @@ Ext.extend(Ext.XTemplate, Ext.Template, {
         }
         var vs = t.target ? t.target.call(this, values, parent) : values;
         parent = t.target ? values : parent;
-        if(t.target && Ext.isArray(vs)){
+        if(t.target && Ext2.isArray(vs)){
             var buf = [];
             for(var i = 0, len = vs.length; i < len; i++){
                 buf[buf.length] = t.compiled.call(this, vs[i], parent, i+1, len);
@@ -252,9 +252,9 @@ Ext.extend(Ext.XTemplate, Ext.Template, {
 
     // private
     compileTpl : function(tpl){
-        var fm = Ext.util.Format;
+        var fm = Ext2.util.Format;
         var useF = this.disableFormats !== true;
-        var sep = Ext.isGecko ? "+" : ",";
+        var sep = Ext2.isGecko ? "+" : ",";
         var fn = function(m, name, format, args, math){
             if(name.substr(0, 4) == 'xtpl'){
                 return "'"+ sep +'this.applySubTemplate('+name.substr(4)+', values, parent, xindex, xcount)'+sep+"'";
@@ -291,7 +291,7 @@ Ext.extend(Ext.XTemplate, Ext.Template, {
 
         var body;
         // branched to use + in gecko and [].join() in others
-        if(Ext.isGecko){
+        if(Ext2.isGecko){
             body = "tpl.compiled = function(values, parent, xindex, xcount){ return '" +
                    tpl.body.replace(/(\r\n|\n)/g, '\\n').replace(/'/g, "\\'").replace(this.re, fn).replace(this.codeRe, codeFn) +
                     "';};";
@@ -339,18 +339,18 @@ Ext.extend(Ext.XTemplate, Ext.Template, {
  * Returns an HTML fragment of this template with the specified values applied.
  * @param {Object/Array} values The template values. Can be an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'})
  * @return {String} The HTML fragment
- * @member Ext.XTemplate
+ * @member Ext2.XTemplate
  * @method apply
  */
-Ext.XTemplate.prototype.apply = Ext.XTemplate.prototype.applyTemplate;
+Ext2.XTemplate.prototype.apply = Ext2.XTemplate.prototype.applyTemplate;
 
 /**
  * Creates a template from the passed element's value (<i>display:none</i> textarea, preferred) or innerHTML.
  * @param {String/HTMLElement} el A DOM element or its id
- * @return {Ext.Template} The created template
+ * @return {Ext2.Template} The created template
  * @static
  */
-Ext.XTemplate.from = function(el){
-    el = Ext.getDom(el);
-    return new Ext.XTemplate(el.value || el.innerHTML);
+Ext2.XTemplate.from = function(el){
+    el = Ext2.getDom(el);
+    return new Ext2.XTemplate(el.value || el.innerHTML);
 };

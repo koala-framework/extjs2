@@ -7,21 +7,21 @@
  */
 
 /**
- * @class Ext.data.GroupingStore
- * @extends Ext.data.Store
+ * @class Ext2.data.GroupingStore
+ * @extends Ext2.data.Store
  * A specialized store implementation that provides for grouping records by one of the available fields. This
- * is usually used in conjunction with an {@link Ext.grid.GroupingView} to proved the data model for
+ * is usually used in conjunction with an {@link Ext2.grid.GroupingView} to proved the data model for
  * a grouped GridPanel.
  * @constructor
  * Creates a new GroupingStore.
  * @param {Object} config A config object containing the objects needed for the Store to access data,
  * and read the data into Records.
  */
-Ext.data.GroupingStore = Ext.extend(Ext.data.Store, {
+Ext2.data.GroupingStore = Ext2.extend(Ext2.data.Store, {
     
     //inherit docs
     constructor: function(config){
-        Ext.data.GroupingStore.superclass.constructor.call(this, config);
+        Ext2.data.GroupingStore.superclass.constructor.call(this, config);
         this.applyGroupField();
     },
     
@@ -104,7 +104,7 @@ Ext.data.GroupingStore = Ext.extend(Ext.data.Store, {
 
     // private
     applySort : function(){
-        Ext.data.GroupingStore.superclass.applySort.call(this);
+        Ext2.data.GroupingStore.superclass.applySort.call(this);
         if(!this.groupOnSort && !this.remoteGroup){
             var gs = this.getGroupState();
             if(gs && gs != this.sortInfo.field){

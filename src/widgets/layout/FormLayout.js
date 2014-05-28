@@ -7,17 +7,17 @@
  */
 
 /**
- * @class Ext.layout.FormLayout
- * @extends Ext.layout.AnchorLayout
+ * @class Ext2.layout.FormLayout
+ * @extends Ext2.layout.AnchorLayout
  * <p>This layout manager is specifically designed for rendering and managing child Components of forms.
- * It is responsible for rendering the labels of {@link Ext.form.Field Field}s.</p>
- * <p>This layout manager is used when a Container is configured with the layout:'form' {@link Ext.Container#layout layout} config,
+ * It is responsible for rendering the labels of {@link Ext2.form.Field Field}s.</p>
+ * <p>This layout manager is used when a Container is configured with the layout:'form' {@link Ext2.Container#layout layout} config,
  * and should generally not need to be created directly via the new keyword. In an application,
- * it will usually be preferrable to use a {@link Ext.form.FormPanel FormPanel} (which automatically uses FormLayout as its layout
+ * it will usually be preferrable to use a {@link Ext2.form.FormPanel FormPanel} (which automatically uses FormLayout as its layout
  * class) since it also provides built-in functionality for loading, validating and submitting the form.</p>
  * <p>Note that when creating a layout via config, the layout-specific config properties must be passed in via
- * the {@link Ext.Container#layoutConfig layoutConfig} object which will then be applied internally to the layout.</p>
- * <p>The {@link Ext.Container Container} <i>using</i> the FormLayout can also accept the following layout-specific config
+ * the {@link Ext2.Container#layoutConfig layoutConfig} object which will then be applied internally to the layout.</p>
+ * <p>The {@link Ext2.Container Container} <i>using</i> the FormLayout can also accept the following layout-specific config
  * properties:
  * <div class="mdetail-params"><ul>
  * <li><b>hideLabels</b>: (Boolean)<div class="sub-desc">True to hide field labels by default (defaults to false)</div></li>
@@ -27,15 +27,15 @@
  * applies if labelWidth is also specified, otherwise it will be ignored.</div></li>
  * <li><b>labelWidth</b>: (Number)<div class="sub-desc">The default width in pixels of field labels (defaults to 100)</div></li>
  * </ul></div></p>
- * <p>Any type of components can be added to a FormLayout, but items that inherit from {@link Ext.form.Field}
+ * <p>Any type of components can be added to a FormLayout, but items that inherit from {@link Ext2.form.Field}
  * can also supply the following field-specific config properties:
  * <div class="mdetail-params"><ul>
  * <li><b>clearCls</b>: (String)<div class="sub-desc">The CSS class to apply to the special clearing div rendered directly after each
- * form field wrapper (defaults to 'x-form-clear-left')</div></li>
+ * form field wrapper (defaults to 'x2-form-clear-left')</div></li>
  * <li><b>fieldLabel</b>: (String)<div class="sub-desc">The text to display as the label for this field (defaults to '')</div></li>
  * <li><b>hideLabel</b>: (Boolean)<div class="sub-desc">True to hide the label and separator for this field (defaults to false).</div></li>
  * <li><b>itemCls</b>: (String)<div class="sub-desc">A CSS class to add to the div wrapper that contains this field label
- * and field element (the default class is 'x-form-item' and itemCls will be added to that).  If supplied,
+ * and field element (the default class is 'x2-form-item' and itemCls will be added to that).  If supplied,
  * itemCls at the field level will override the default itemCls supplied at the container level.</div></li>
  * <li><b>labelSeparator</b>: (String)<div class="sub-desc">The separator to display after the text of the label for this field
  * (defaults to a colon ':' or the layout's value for {@link #labelSeparator}).  To hide the separator use empty string ''.</div></li>
@@ -45,12 +45,12 @@
  * Example usage:</p>
  * <pre><code>
 // Required if showing validation messages
-Ext.QuickTips.init();
+Ext2.QuickTips.init();
 
 // While you can create a basic Panel with layout:'form', practically
 // you should usually use a FormPanel to also get its form functionality
 // since it already creates a FormLayout internally.
-var form = new Ext.form.FormPanel({
+var form = new Ext2.form.FormPanel({
     labelWidth: 75,
     title: 'Form Layout',
     bodyStyle:'padding:15px',
@@ -90,7 +90,7 @@ var form = new Ext.form.FormPanel({
 });
 </code></pre>
  */
-Ext.layout.FormLayout = Ext.extend(Ext.layout.AnchorLayout, {
+Ext2.layout.FormLayout = Ext2.extend(Ext2.layout.AnchorLayout, {
     /**
      * @cfg {String} labelSeparator
      * The standard separator to display after the text of each form label (defaults to a colon ':').  To turn off
@@ -106,10 +106,10 @@ Ext.layout.FormLayout = Ext.extend(Ext.layout.AnchorLayout, {
 
     // private
     setContainer : function(ct){
-        Ext.layout.FormLayout.superclass.setContainer.call(this, ct);
+        Ext2.layout.FormLayout.superclass.setContainer.call(this, ct);
 
         if(ct.labelAlign){
-            ct.addClass('x-form-label-'+ct.labelAlign);
+            ct.addClass('x2-form-label-'+ct.labelAlign);
         }
 
         if(ct.hideLabels){
@@ -134,16 +134,16 @@ Ext.layout.FormLayout = Ext.extend(Ext.layout.AnchorLayout, {
 
         if(!this.fieldTpl){
             // the default field template used by all form layouts
-            var t = new Ext.Template(
-                '<div class="x-form-item {5}" tabIndex="-1">',
-                    '<label for="{0}" style="{2}" class="x-form-item-label">{1}{4}</label>',
-                    '<div class="x-form-element" id="x-form-el-{0}" style="{3}">',
+            var t = new Ext2.Template(
+                '<div class="x2-form-item {5}" tabIndex="-1">',
+                    '<label for="{0}" style="{2}" class="x2-form-item-label">{1}{4}</label>',
+                    '<div class="x2-form-element" id="x2-form-el-{0}" style="{3}">',
                     '</div><div class="{6}"></div>',
                 '</div>'
             );
             t.disableFormats = true;
             t.compile();
-            Ext.layout.FormLayout.prototype.fieldTpl = t;
+            Ext2.layout.FormLayout.prototype.fieldTpl = t;
         }
     },
     
@@ -169,8 +169,8 @@ Ext.layout.FormLayout = Ext.extend(Ext.layout.AnchorLayout, {
                    this.getLabelStyle(c.labelStyle),
                    this.elementStyle||'',
                    typeof c.labelSeparator == 'undefined' ? this.labelSeparator : c.labelSeparator,
-                   (c.itemCls||this.container.itemCls||'') + (c.hideLabel ? ' x-hide-label' : ''),
-                   c.clearCls || 'x-form-clear-left' 
+                   (c.itemCls||this.container.itemCls||'') + (c.hideLabel ? ' x2-hide-label' : ''),
+                   c.clearCls || 'x2-form-clear-left' 
             ];
             if(typeof position == 'number'){
                 position = target.dom.childNodes[position] || null;
@@ -180,9 +180,9 @@ Ext.layout.FormLayout = Ext.extend(Ext.layout.AnchorLayout, {
             }else{
                 this.fieldTpl.append(target, args);
             }
-            c.render('x-form-el-'+c.id);
+            c.render('x2-form-el-'+c.id);
         }else {
-            Ext.layout.FormLayout.superclass.renderItem.apply(this, arguments);
+            Ext2.layout.FormLayout.superclass.renderItem.apply(this, arguments);
         }
     },
 
@@ -202,4 +202,4 @@ Ext.layout.FormLayout = Ext.extend(Ext.layout.AnchorLayout, {
      */
 });
 
-Ext.Container.LAYOUTS['form'] = Ext.layout.FormLayout;
+Ext2.Container.LAYOUTS['form'] = Ext2.layout.FormLayout;

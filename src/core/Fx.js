@@ -8,13 +8,13 @@
 
 
 //Notifies Element that fx methods are available
-Ext.enableFx = true;
+Ext2.enableFx = true;
 
 /**
- * @class Ext.Fx
+ * @class Ext2.Fx
  * <p>A class to provide basic animation and visual effects support.  <b>Note:</b> This class is automatically applied
- * to the {@link Ext.Element} interface when included, so all effects calls should be performed via Element.
- * Conversely, since the effects are not actually defined in Element, Ext.Fx <b>must</b> be included in order for the 
+ * to the {@link Ext2.Element} interface when included, so all effects calls should be performed via Element.
+ * Conversely, since the effects are not actually defined in Element, Ext2.Fx <b>must</b> be included in order for the 
  * Element effects to work.</p><br/>
  *
  * <p>It is important to note that although the Fx methods and many non-Fx Element methods support "method chaining" in that
@@ -58,7 +58,7 @@ br     The bottom right corner
  * @cfg {Boolean} concurrent Whether to allow subsequently-queued effects to run at the same time as the current effect, or to ensure that they run in sequence
  * @cfg {Boolean} stopFx Whether subsequent effects should be stopped and removed after the current effect finishes
  */
-Ext.Fx = {
+Ext2.Fx = {
 	/**
 	 * Slides the element into view.  An anchor point can be optionally passed to set the point of
 	 * origin for the slide effect.  This function automatically handles wrapping the element with
@@ -79,7 +79,7 @@ el.slideIn('t', {
 </code></pre>
 	 * @param {String} anchor (optional) One of the valid Fx anchor positions (defaults to top: 't')
 	 * @param {Object} options (optional) Object literal with any of the Fx config options
-	 * @return {Ext.Element} The Element
+	 * @return {Ext2.Element} The Element
 	 */
     slideIn : function(anchor, o){
         var el = this.getFxEl();
@@ -198,7 +198,7 @@ el.slideOut('t', {
 </code></pre>
 	 * @param {String} anchor (optional) One of the valid Fx anchor positions (defaults to top: 't')
 	 * @param {Object} options (optional) Object literal with any of the Fx config options
-	 * @return {Ext.Element} The Element
+	 * @return {Ext2.Element} The Element
 	 */
     slideOut : function(anchor, o){
         var el = this.getFxEl();
@@ -302,7 +302,7 @@ el.puff({
 });
 </code></pre>
 	 * @param {Object} options (optional) Object literal with any of the Fx config options
-	 * @return {Ext.Element} The Element
+	 * @return {Ext2.Element} The Element
 	 */
     puff : function(o){
         var el = this.getFxEl();
@@ -368,7 +368,7 @@ el.switchOff({
 });
 </code></pre>
 	 * @param {Object} options (optional) Object literal with any of the Fx config options
-	 * @return {Ext.Element} The Element
+	 * @return {Ext2.Element} The Element
 	 */
     switchOff : function(o){
         var el = this.getFxEl();
@@ -432,7 +432,7 @@ el.highlight("ffff9c", {
 </code></pre>
      * @param {String} color (optional) The highlight color. Should be a 6 char hex color without the leading # (defaults to yellow: 'ffff9c')
      * @param {Object} options (optional) Object literal with any of the Fx config options
-     * @return {Ext.Element} The Element
+     * @return {Ext2.Element} The Element
      */	
     highlight : function(color, o){
         var el = this.getFxEl();
@@ -484,7 +484,7 @@ el.frame("C3DAF9", 1, {
     * @param {String} color (optional) The color of the border.  Should be a 6 char hex color without the leading # (defaults to light blue: 'C3DAF9').
     * @param {Number} count (optional) The number of ripples to display (defaults to 1)
     * @param {Object} options (optional) Object literal with any of the Fx config options
-    * @return {Ext.Element} The Element
+    * @return {Ext2.Element} The Element
     */
     frame : function(color, count, o){
         var el = this.getFxEl(),
@@ -506,7 +506,7 @@ el.frame("C3DAF9", 1, {
                 b = {x: xy[0], y: xy[1], 0: xy[0], 1: xy[1], width: dom.offsetWidth, height: dom.offsetHeight},
                 proxy,
                 queue = function(){
-                    proxy = Ext.get(document.body || document.documentElement).createChild({
+                    proxy = Ext2.get(document.body || document.documentElement).createChild({
                         style:{
                             visbility: 'hidden',
                             position : 'absolute',
@@ -529,7 +529,7 @@ el.frame("C3DAF9", 1, {
             };
             
             function animFn(){
-                var scale = Ext.isBorderBox ? 2 : 1;
+                var scale = Ext2.isBorderBox ? 2 : 1;
                 active = proxy.anim({
                     top : {from : b.y, to : b.y - 20},
                     left : {from : b.x, to : b.x - 20},
@@ -566,7 +566,7 @@ el.frame("C3DAF9", 1, {
 el.pause(1);
 </code></pre>
     * @param {Number} seconds The length of time to pause (in seconds)
-    * @return {Ext.Element} The Element
+    * @return {Ext2.Element} The Element
     */
     pause : function(seconds){
         var el = this.getFxEl(),
@@ -608,7 +608,7 @@ el.fadeIn({
 });
 </code></pre>
     * @param {Object} options (optional) Object literal with any of the Fx config options
-    * @return {Ext.Element} The Element
+    * @return {Ext2.Element} The Element
     */
     fadeIn : function(o){
         var el = this.getFxEl();
@@ -651,7 +651,7 @@ el.fadeOut({
 });
 </code></pre>
     * @param {Object} options (optional) Object literal with any of the Fx config options
-    * @return {Ext.Element} The Element
+    * @return {Ext2.Element} The Element
     */
     fadeOut : function(o){
         var el = this.getFxEl();
@@ -661,7 +661,7 @@ el.fadeOut({
             arguments.callee.anim = this.fxanim({opacity:{to:to}},
                 o, null, .5, "easeOut", function(){
                 if(to === 0){
-                    if(this.visibilityMode == Ext.Element.DISPLAY || o.useDisplay){
+                    if(this.visibilityMode == Ext2.Element.DISPLAY || o.useDisplay){
                          this.dom.style.display = "none";
                     }else{
                          this.dom.style.visibility = "hidden";
@@ -695,10 +695,10 @@ el.scale(
     * @param {Number} width  The new width (pass undefined to keep the original width)
     * @param {Number} height  The new height (pass undefined to keep the original height)
     * @param {Object} options (optional) Object literal with any of the Fx config options
-    * @return {Ext.Element} The Element
+    * @return {Ext2.Element} The Element
     */
     scale : function(w, h, o){
-        this.shift(Ext.apply({}, o, {
+        this.shift(Ext2.apply({}, o, {
             width: w,
             height: h
         }));
@@ -727,7 +727,7 @@ el.shift({
 });
 </code></pre>
     * @param {Object} options  Object literal with any of the Fx config options
-    * @return {Ext.Element} The Element
+    * @return {Ext2.Element} The Element
     */
     shift : function(o){
         var el = this.getFxEl();
@@ -793,7 +793,7 @@ el.ghost('b', {
 </code></pre>
 	 * @param {String} anchor (optional) One of the valid Fx anchor positions (defaults to bottom: 'b')
 	 * @param {Object} options (optional) Object literal with any of the Fx config options
-	 * @return {Ext.Element} The Element
+	 * @return {Ext2.Element} The Element
 	 */
     ghost : function(anchor, o){
         var el = this.getFxEl();
@@ -864,10 +864,10 @@ el.ghost('b', {
 	/**
 	 * Ensures that all effects queued after syncFx is called on the element are
 	 * run concurrently.  This is the opposite of {@link #sequenceFx}.
-	 * @return {Ext.Element} The Element
+	 * @return {Ext2.Element} The Element
 	 */
     syncFx : function(){
-        this.fxDefaults = Ext.apply(this.fxDefaults || {}, {
+        this.fxDefaults = Ext2.apply(this.fxDefaults || {}, {
             block : false,
             concurrent : true,
             stopFx : false
@@ -878,10 +878,10 @@ el.ghost('b', {
 	/**
 	 * Ensures that all effects queued after sequenceFx is called on the element are
 	 * run in sequence.  This is the opposite of {@link #syncFx}.
-	 * @return {Ext.Element} The Element
+	 * @return {Ext2.Element} The Element
 	 */
     sequenceFx : function(){
-        this.fxDefaults = Ext.apply(this.fxDefaults || {}, {
+        this.fxDefaults = Ext2.apply(this.fxDefaults || {}, {
             block : false,
             concurrent : false,
             stopFx : false
@@ -908,7 +908,7 @@ el.ghost('b', {
 	/**
 	 * Stops any running effects and clears the element's internal effects queue if it contains
 	 * any additional effects that haven't started yet.
-	 * @return {Ext.Element} The Element
+	 * @return {Ext2.Element} The Element
 	 */
     stopFx : function(){
         if(this.hasActiveFx()){
@@ -951,7 +951,7 @@ el.ghost('b', {
             this.fxQueue = [];
         }
         if(!this.hasFxBlock()){
-            Ext.applyIf(o, this.fxDefaults);
+            Ext2.applyIf(o, this.fxDefaults);
             if(!o.concurrent){
                 var run = this.beforeFx(o);
                 fn.block = o.block;
@@ -969,14 +969,14 @@ el.ghost('b', {
 	/* @private */
     fxWrap : function(pos, o, vis){
         var wrap;
-        if(!o.wrap || !(wrap = Ext.get(o.wrap))){
+        if(!o.wrap || !(wrap = Ext2.get(o.wrap))){
             var wrapXY;
             if(o.fixPosition){
                 wrapXY = this.getXY();
             }
             var div = document.createElement("div");
             div.style.visibility = vis;
-            wrap = Ext.get(this.dom.parentNode.insertBefore(div, this.dom));
+            wrap = Ext2.get(this.dom.parentNode.insertBefore(div, this.dom));
             wrap.setPositioning(pos);
             if(wrap.getStyle("position") == "static"){
                 wrap.position("relative");
@@ -1021,7 +1021,7 @@ el.ghost('b', {
         if(!o.concurrent){
             this.fxQueue.shift();
         }
-        Ext.callback(o.callback, o.scope, [this]);
+        Ext2.callback(o.callback, o.scope, [this]);
         if(!o.concurrent){
             this.nextFx();
         }
@@ -1029,19 +1029,19 @@ el.ghost('b', {
 
 	/* @private */
     getFxEl : function(){ // support for composite element fx
-        return Ext.get(this.dom);
+        return Ext2.get(this.dom);
     },
 
 	/* @private */
     fxanim : function(args, opt, animType, defaultDur, defaultEase, cb){
         animType = animType || 'run';
         opt = opt || {};
-        var anim = Ext.lib.Anim[animType](
+        var anim = Ext2.lib.Anim[animType](
             this.dom, args,
             (opt.duration || defaultDur) || .35,
             (opt.easing || defaultEase) || 'easeOut',
             function(){
-                Ext.callback(cb, this);
+                Ext2.callback(cb, this);
             },
             this
         );
@@ -1051,8 +1051,8 @@ el.ghost('b', {
 };
 
 // backwords compat
-Ext.Fx.resize = Ext.Fx.scale;
+Ext2.Fx.resize = Ext2.Fx.scale;
 
-//When included, Ext.Fx is automatically applied to Element so that all basic
+//When included, Ext2.Fx is automatically applied to Element so that all basic
 //effects are available directly via the Element API
-Ext.apply(Ext.Element.prototype, Ext.Fx);
+Ext2.apply(Ext2.Element.prototype, Ext2.Fx);

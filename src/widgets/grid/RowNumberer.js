@@ -7,14 +7,14 @@
  */
 
 /**
- * @class Ext.grid.RowNumberer
- * This is a utility class that can be passed into a {@link Ext.grid.ColumnModel} as a column config that provides
+ * @class Ext2.grid.RowNumberer
+ * This is a utility class that can be passed into a {@link Ext2.grid.ColumnModel} as a column config that provides
  * an automatic row numbering column.
  * <br>Usage:<br>
  <pre><code>
  // This is a typical column config with the first column providing row numbers
- var colModel = new Ext.grid.ColumnModel([
-    new Ext.grid.RowNumberer(),
+ var colModel = new Ext2.grid.ColumnModel([
+    new Ext2.grid.RowNumberer(),
     {header: "Name", width: 80, sortable: true},
     {header: "Code", width: 50, sortable: true},
     {header: "Description", width: 200, sortable: true}
@@ -23,14 +23,14 @@
  * @constructor
  * @param {Object} config The configuration options
  */
-Ext.grid.RowNumberer = function(config){
-    Ext.apply(this, config);
+Ext2.grid.RowNumberer = function(config){
+    Ext2.apply(this, config);
     if(this.rowspan){
         this.renderer = this.renderer.createDelegate(this);
     }
 };
 
-Ext.grid.RowNumberer.prototype = {
+Ext2.grid.RowNumberer.prototype = {
     /**
      * @cfg {String} header Any valid text or HTML fragment to display in the header cell for the row
      * number column (defaults to '').

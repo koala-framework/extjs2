@@ -7,11 +7,11 @@
  */
 
 /**
- * @class Ext.form.TimeField
- * @extends Ext.form.ComboBox
+ * @class Ext2.form.TimeField
+ * @extends Ext2.form.ComboBox
  * Provides a time input field with a time dropdown and automatic time validation.  Example usage:
  * <pre><code>
-new Ext.form.TimeField({
+new Ext2.form.TimeField({
     minValue: '9:00 AM',
     maxValue: '6:00 PM',
     increment: 30
@@ -21,7 +21,7 @@ new Ext.form.TimeField({
  * Create a new TimeField
  * @param {Object} config
  */
-Ext.form.TimeField = Ext.extend(Ext.form.ComboBox, {
+Ext2.form.TimeField = Ext2.extend(Ext2.form.ComboBox, {
     /**
      * @cfg {Date/String} minValue
      * The minimum allowed time. Can be either a Javascript date object with a valid time value or a string 
@@ -85,7 +85,7 @@ Ext.form.TimeField = Ext.extend(Ext.form.ComboBox, {
 
     // private
     initComponent : function(){
-        Ext.form.TimeField.superclass.initComponent.call(this);
+        Ext2.form.TimeField.superclass.initComponent.call(this);
 
         if(typeof this.minValue == "string"){
             this.minValue = this.parseDate(this.minValue);
@@ -108,7 +108,7 @@ Ext.form.TimeField = Ext.extend(Ext.form.ComboBox, {
                 times.push([min.dateFormat(this.format)]);
                 min = min.add('mi', this.increment);
             }
-            this.store = new Ext.data.SimpleStore({
+            this.store = new Ext2.data.SimpleStore({
                 fields: ['text'],
                 data : times
             });
@@ -118,19 +118,19 @@ Ext.form.TimeField = Ext.extend(Ext.form.ComboBox, {
 
     // inherited docs
     getValue : function(){
-        var v = Ext.form.TimeField.superclass.getValue.call(this);
+        var v = Ext2.form.TimeField.superclass.getValue.call(this);
         return this.formatDate(this.parseDate(v)) || '';
     },
 
     // inherited docs
     setValue : function(value){
-        Ext.form.TimeField.superclass.setValue.call(this, this.formatDate(this.parseDate(value)));
+        Ext2.form.TimeField.superclass.setValue.call(this, this.formatDate(this.parseDate(value)));
     },
 
     // private overrides
-    validateValue : Ext.form.DateField.prototype.validateValue,
-    parseDate : Ext.form.DateField.prototype.parseDate,
-    formatDate : Ext.form.DateField.prototype.formatDate,
+    validateValue : Ext2.form.DateField.prototype.validateValue,
+    parseDate : Ext2.form.DateField.prototype.parseDate,
+    formatDate : Ext2.form.DateField.prototype.formatDate,
 
     // private
     beforeBlur : function(){
@@ -138,7 +138,7 @@ Ext.form.TimeField = Ext.extend(Ext.form.ComboBox, {
         if(v){
             this.setValue(v.dateFormat(this.format));
         }
-        Ext.form.TimeField.superclass.beforeBlur.call(this);
+        Ext2.form.TimeField.superclass.beforeBlur.call(this);
     }
 
     /**
@@ -155,4 +155,4 @@ Ext.form.TimeField = Ext.extend(Ext.form.ComboBox, {
      * @method autoSize
      */
 });
-Ext.reg('timefield', Ext.form.TimeField);
+Ext2.reg('timefield', Ext2.form.TimeField);

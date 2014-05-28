@@ -7,16 +7,16 @@
  */
 
 /**
- * @class Ext.QuickTips
+ * @class Ext2.QuickTips
  * <p>Provides attractive and customizable tooltips for any element. The QuickTips
  * singleton is used to configure and manage tooltips globally for multiple elements
  * in a generic manner.  To create individual tooltips with maximum customizability,
- * you should consider either {@link Ext.Tip} or {@link Ext.ToolTip}.</p>
+ * you should consider either {@link Ext2.Tip} or {@link Ext2.ToolTip}.</p>
  * <p>Quicktips can be configured via tag attributes directly in markup, or by
  * registering quick tips programmatically via the {@link #register} method.</p>
- * <p>The singleton's instance of {@link Ext.QuickTip} is available via
+ * <p>The singleton's instance of {@link Ext2.QuickTip} is available via
  * {@link #getQuickTip}, and supports all the methods, and all the all the
- * configuration properties of Ext.QuickTip. These settings will apply to all
+ * configuration properties of Ext2.QuickTip. These settings will apply to all
  * tooltips shown by the singleton.</p>
  * <p>Below is the summary of the configuration properties which can be used.
  * For detailed descriptions see {@link #getQuickTip}</p>
@@ -38,10 +38,10 @@
  * <p>Here is an example showing how some of these config options could be used:</p>
  * <pre><code>
 // Init the singleton.  Any tag-based quick tips will start working.
-Ext.QuickTips.init();
+Ext2.QuickTips.init();
 
 // Apply a set of config properties to the singleton
-Ext.apply(Ext.QuickTips.getQuickTip(), {
+Ext2.apply(Ext2.QuickTips.getQuickTip(), {
     maxWidth: 200,
     minWidth: 100,
     showDelay: 50,
@@ -49,7 +49,7 @@ Ext.apply(Ext.QuickTips.getQuickTip(), {
 });
 
 // Manually register a quick tip for a specific element
-Ext.QuickTips.register({
+Ext2.QuickTips.register({
     target: 'my-div',
     title: 'My Tooltip',
     text: 'This tooltip was added in code',
@@ -74,7 +74,7 @@ Ext.QuickTips.register({
 </code></pre>
  * @singleton
  */
-Ext.QuickTips = function(){
+Ext2.QuickTips = function(){
     var tip, locks = [];
     return {
         /**
@@ -83,15 +83,15 @@ Ext.QuickTips = function(){
          */
         init : function(autoRender){
 		    if(!tip){
-		        if(!Ext.isReady){
-		            Ext.onReady(function(){
-		                Ext.QuickTips.init(autoRender);
+		        if(!Ext2.isReady){
+		            Ext2.onReady(function(){
+		                Ext2.QuickTips.init(autoRender);
 		            });
 		            return;
 		        }
-		        tip = new Ext.QuickTip({elements:'header,body'});
+		        tip = new Ext2.QuickTip({elements:'header,body'});
 		        if(autoRender !== false){
-		            tip.render(Ext.getBody());
+		            tip.render(Ext2.getBody());
 		        }
 		    }
         },
@@ -135,7 +135,7 @@ Ext.QuickTips = function(){
 
         /**
          * Configures a new quick tip instance and assigns it to a target element.  See
-         * {@link Ext.QuickTip#register} for details.
+         * {@link Ext2.QuickTip#register} for details.
          * @param {Object} config The config object
          */
         register : function(){

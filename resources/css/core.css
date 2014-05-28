@@ -6,7 +6,7 @@
  * http://extjs.com/license
  */
 
-.ext-el-mask {
+.ext2-el-mask {
     z-index: 100;
     position: absolute;
     top:0;
@@ -19,7 +19,7 @@
     height: 100%;
     zoom: 1;
 }
-.ext-el-mask-msg {
+.ext2-el-mask-msg {
     z-index: 20001;
     position: absolute;
     top: 0;
@@ -28,7 +28,7 @@
     background: #c3daf9 url(../images/default/box/tb-blue.gif) repeat-x 0 -16px;
     padding:2px;
 }
-.ext-el-mask-msg div {
+.ext2-el-mask-msg div {
     padding:5px 10px 5px 10px;
     background: #eee;
     border:1px solid #a3bad9;
@@ -37,69 +37,69 @@
     cursor:wait;
 }
 
-.ext-shim {
+.ext2-shim {
     position:absolute;
     visibility:hidden;
     left:0;
     top:0;
     overflow:hidden;
 }
-.ext-ie .ext-shim {
+.ext2-ie .ext2-shim {
     filter: alpha(opacity=0);
 }
-.ext-ie6 .ext-shim {
+.ext2-ie6 .ext2-shim {
     margin-left: 5px;
     margin-top: 3px;
 }
 
-.x-mask-loading div {
+.x2-mask-loading div {
     padding:5px 10px 5px 25px;
     background: #fbfbfb url( '../images/default/grid/loading.gif' ) no-repeat 5px 5px;
     line-height: 16px;
 }
 /* class for hiding elements without using display:none */
-.x-hidden, .x-hide-offsets {
+.x2-hidden, .x2-hide-offsets {
     position:absolute !important;
     left:-10000px;
     top:-10000px;
     visibility:hidden;
 }
-.x-hide-display {
+.x2-hide-display {
     display:none !important;
 }
 
-.x-hide-visibility {
+.x2-hide-visibility {
     visibility:hidden !important;
 }
 
-.x-masked {
+.x2-masked {
     overflow: hidden !important;
 }
-.x-masked-relative {
+.x2-masked-relative {
     position: relative !important;
 }
 
-.x-masked select, .x-masked object, .x-masked embed {
+.x2-masked select, .x2-masked object, .x2-masked embed {
     visibility: hidden;
 }
 
-.x-layer {
+.x2-layer {
     visibility: hidden;
 }
 
-.x-unselectable, .x-unselectable * {
+.x2-unselectable, .x2-unselectable * {
     -moz-user-select: none;
     -khtml-user-select:none;
     -webkit-user-select:ignore;
 }
 
-.x-repaint {
+.x2-repaint {
     zoom: 1;
     background-color: transparent;
     -moz-outline: none;
 }
 
-.x-item-disabled {
+.x2-item-disabled {
     color: gray;
     cursor: default;
     opacity: .6;
@@ -107,12 +107,12 @@
     filter: alpha(opacity=60);
 }
 
-.x-item-disabled * {
+.x2-item-disabled * {
     color: gray !important;
     cursor: default !important;
 }
 
-.x-splitbar-proxy {
+.x2-splitbar-proxy {
     position: absolute;
     visibility: hidden;
     z-index: 20001;
@@ -123,23 +123,23 @@
     overflow: hidden;
 }
 
-.x-splitbar-h, .x-splitbar-proxy-h {
+.x2-splitbar-h, .x2-splitbar-proxy-h {
     cursor: e-resize;
     cursor: col-resize;
 }
 
-.x-splitbar-v, .x-splitbar-proxy-v {
+.x2-splitbar-v, .x2-splitbar-proxy-v {
     cursor: s-resize;
     cursor: row-resize;
 }
 
-.x-color-palette {
+.x2-color-palette {
     width: 150px;
     height: 92px;
     cursor: pointer;
 }
 
-.x-color-palette a {
+.x2-color-palette a {
     border: 1px solid #fff;
     float: left;
     padding: 2px;
@@ -149,17 +149,17 @@
     cursor: pointer;
 }
 
-.x-color-palette a:hover, .x-color-palette a.x-color-palette-sel {
+.x2-color-palette a:hover, .x2-color-palette a.x2-color-palette-sel {
     border: 1px solid #8BB8F3;
     background: #deecfd;
 }
 
-.x-color-palette em {
+.x2-color-palette em {
     display: block;
     border: 1px solid #ACA899;
 }
 
-.x-color-palette em span {
+.x2-color-palette em span {
     cursor: pointer;
     display: block;
     height: 10px;
@@ -167,7 +167,7 @@
     width: 10px;
 }
 
-.x-ie-shadow {
+.x2-ie-shadow {
     display: none;
     position: absolute;
     overflow: hidden;
@@ -177,7 +177,7 @@
     zoom:1;
 }
 
-.x-shadow {
+.x2-shadow {
     display: none;
     position: absolute;
     overflow: hidden;
@@ -185,11 +185,11 @@
     top:0;
 }
 
-.x-shadow * {
+.x2-shadow * {
     overflow: hidden;
 }
 
-.x-shadow * {
+.x2-shadow * {
     padding: 0;
     border: 0;
     margin: 0;
@@ -198,70 +198,70 @@
 }
 
 /* top  bottom */
-.x-shadow .xstc, .x-shadow .xsbc {
+.x2-shadow .xstc, .x2-shadow .xsbc {
     height: 6px;
     float: left;
 }
 
 /* corners */
-.x-shadow .xstl, .x-shadow .xstr, .x-shadow .xsbl, .x-shadow .xsbr {
+.x2-shadow .xstl, .x2-shadow .xstr, .x2-shadow .xsbl, .x2-shadow .xsbr {
     width: 6px;
     height: 6px;
     float: left;
 }
 
 /* sides */
-.x-shadow .xsc {
+.x2-shadow .xsc {
     width: 100%;
 }
 
-.x-shadow .xsml, .x-shadow .xsmr {
+.x2-shadow .xsml, .x2-shadow .xsmr {
     width: 6px;
     float: left;
     height: 100%;
 }
 
-.x-shadow .xsmc {
+.x2-shadow .xsmc {
     float: left;
     height: 100%;
     background: transparent url( ../images/default/shadow-c.png );
 }
 
-.x-shadow .xst, .x-shadow .xsb {
+.x2-shadow .xst, .x2-shadow .xsb {
     height: 6px;
     overflow: hidden;
     width: 100%;
 }
 
-.x-shadow .xsml {
+.x2-shadow .xsml {
     background: transparent url( ../images/default/shadow-lr.png ) repeat-y 0 0;
 }
 
-.x-shadow .xsmr {
+.x2-shadow .xsmr {
     background: transparent url( ../images/default/shadow-lr.png ) repeat-y -6px 0;
 }
 
-.x-shadow .xstl {
+.x2-shadow .xstl {
     background: transparent url( ../images/default/shadow.png ) no-repeat 0 0;
 }
 
-.x-shadow .xstc {
+.x2-shadow .xstc {
     background: transparent url( ../images/default/shadow.png ) repeat-x 0 -30px;
 }
 
-.x-shadow .xstr {
+.x2-shadow .xstr {
     background: transparent url( ../images/default/shadow.png ) repeat-x 0 -18px;
 }
 
-.x-shadow .xsbl {
+.x2-shadow .xsbl {
     background: transparent url( ../images/default/shadow.png ) no-repeat 0 -12px;
 }
 
-.x-shadow .xsbc {
+.x2-shadow .xsbc {
     background: transparent url( ../images/default/shadow.png ) repeat-x 0 -36px;
 }
 
-.x-shadow .xsbr {
+.x2-shadow .xsbr {
     background: transparent url( ../images/default/shadow.png ) repeat-x 0 -6px;
 }
 
@@ -275,7 +275,7 @@
     margin: 3px;
 }
 
-.x-text-resize {
+.x2-text-resize {
     position: absolute;
     left: -1000px;
     top: -1000px;
@@ -283,7 +283,7 @@
     zoom: 1;
 }
 
-.x-drag-overlay {
+.x2-drag-overlay {
     width: 100%;
     height: 100%;
     display: none;
@@ -294,7 +294,7 @@
     z-index: 20000;
 }
 
-.x-clear {
+.x2-clear {
     clear:both;
     height:0;
     overflow:hidden;
@@ -303,7 +303,7 @@
 }
 
 
-.x-spotlight {
+.x2-spotlight {
     z-index: 8999;
     position: absolute;
     top:0;

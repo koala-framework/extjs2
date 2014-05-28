@@ -7,11 +7,11 @@
  */
 
 /**
- * @class Ext.tree.DefaultSelectionModel
- * @extends Ext.util.Observable
+ * @class Ext2.tree.DefaultSelectionModel
+ * @extends Ext2.util.Observable
  * The default single selection for a TreePanel.
  */
-Ext.tree.DefaultSelectionModel = function(config){
+Ext2.tree.DefaultSelectionModel = function(config){
    this.selNode = null;
    
    this.addEvents(
@@ -33,11 +33,11 @@ Ext.tree.DefaultSelectionModel = function(config){
        "beforeselect"
    );
 
-    Ext.apply(this, config);
-    Ext.tree.DefaultSelectionModel.superclass.constructor.call(this);
+    Ext2.apply(this, config);
+    Ext2.tree.DefaultSelectionModel.superclass.constructor.call(this);
 };
 
-Ext.extend(Ext.tree.DefaultSelectionModel, Ext.util.Observable, {
+Ext2.extend(Ext2.tree.DefaultSelectionModel, Ext2.util.Observable, {
     init : function(tree){
         this.tree = tree;
         tree.getTreeEl().on("keydown", this.onKeyDown, this);
@@ -200,11 +200,11 @@ Ext.extend(Ext.tree.DefaultSelectionModel, Ext.util.Observable, {
 });
 
 /**
- * @class Ext.tree.MultiSelectionModel
- * @extends Ext.util.Observable
+ * @class Ext2.tree.MultiSelectionModel
+ * @extends Ext2.util.Observable
  * Multi selection for a TreePanel.
  */
-Ext.tree.MultiSelectionModel = function(config){
+Ext2.tree.MultiSelectionModel = function(config){
    this.selNodes = [];
    this.selMap = {};
    this.addEvents(
@@ -216,11 +216,11 @@ Ext.tree.MultiSelectionModel = function(config){
         */
        "selectionchange"
    );
-    Ext.apply(this, config);
-    Ext.tree.MultiSelectionModel.superclass.constructor.call(this);
+    Ext2.apply(this, config);
+    Ext2.tree.MultiSelectionModel.superclass.constructor.call(this);
 };
 
-Ext.extend(Ext.tree.MultiSelectionModel, Ext.util.Observable, {
+Ext2.extend(Ext2.tree.MultiSelectionModel, Ext2.util.Observable, {
     init : function(tree){
         this.tree = tree;
         tree.getTreeEl().on("keydown", this.onKeyDown, this);
@@ -309,9 +309,9 @@ Ext.extend(Ext.tree.MultiSelectionModel, Ext.util.Observable, {
         return this.selNodes;    
     },
 
-    onKeyDown : Ext.tree.DefaultSelectionModel.prototype.onKeyDown,
+    onKeyDown : Ext2.tree.DefaultSelectionModel.prototype.onKeyDown,
 
-    selectNext : Ext.tree.DefaultSelectionModel.prototype.selectNext,
+    selectNext : Ext2.tree.DefaultSelectionModel.prototype.selectNext,
 
-    selectPrevious : Ext.tree.DefaultSelectionModel.prototype.selectPrevious
+    selectPrevious : Ext2.tree.DefaultSelectionModel.prototype.selectPrevious
 });

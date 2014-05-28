@@ -7,8 +7,8 @@
  */
 
 /**
- * @class Ext.tree.TreeNodeUI
- * This class provides the default UI implementation for Ext TreeNodes.
+ * @class Ext2.tree.TreeNodeUI
+ * This class provides the default UI implementation for Ext2 TreeNodes.
  * The TreeNode UI implementation is separate from the
  * tree implementation, and allows customizing of the appearance of
  * tree nodes.<br>
@@ -16,19 +16,19 @@
  * If you are customizing the Tree's user interface, you
  * may need to extend this class, but you should never need to instantiate this class.<br>
  * <p>
- * This class provides access to the user interface components of an Ext TreeNode, through
- * {@link Ext.tree.TreeNode#getUI}
+ * This class provides access to the user interface components of an Ext2 TreeNode, through
+ * {@link Ext2.tree.TreeNode#getUI}
  */
-Ext.tree.TreeNodeUI = function(node){
+Ext2.tree.TreeNodeUI = function(node){
     this.node = node;
     this.rendered = false;
     this.animating = false;
     this.wasLeaf = true;
-    this.ecc = 'x-tree-ec-icon x-tree-elbow';
-    this.emptyIcon = Ext.BLANK_IMAGE_URL;
+    this.ecc = 'x2-tree-ec-icon x2-tree-elbow';
+    this.emptyIcon = Ext2.BLANK_IMAGE_URL;
 };
 
-Ext.tree.TreeNodeUI.prototype = {
+Ext2.tree.TreeNodeUI.prototype = {
     // private
     removeChild : function(node){
         if(this.rendered){
@@ -38,12 +38,12 @@ Ext.tree.TreeNodeUI.prototype = {
 
     // private
     beforeLoad : function(){
-         this.addClass("x-tree-node-loading");
+         this.addClass("x2-tree-node-loading");
     },
 
     // private
     afterLoad : function(){
-         this.removeClass("x-tree-node-loading");
+         this.removeClass("x2-tree-node-loading");
     },
 
     // private
@@ -60,9 +60,9 @@ Ext.tree.TreeNodeUI.prototype = {
 			this.checkbox.disabled = state;
 		}        
         if(state){
-            this.addClass("x-tree-node-disabled");
+            this.addClass("x2-tree-node-disabled");
         }else{
-            this.removeClass("x-tree-node-disabled");
+            this.removeClass("x2-tree-node-disabled");
         } 
     },
 
@@ -70,10 +70,10 @@ Ext.tree.TreeNodeUI.prototype = {
     onSelectedChange : function(state){
         if(state){
             this.focus();
-            this.addClass("x-tree-selected");
+            this.addClass("x2-tree-selected");
         }else{
             //this.blur();
-            this.removeClass("x-tree-selected");
+            this.removeClass("x2-tree-selected");
         }
     },
 
@@ -104,7 +104,7 @@ Ext.tree.TreeNodeUI.prototype = {
  */
     addClass : function(cls){
         if(this.elNode){
-            Ext.fly(this.elNode).addClass(cls);
+            Ext2.fly(this.elNode).addClass(cls);
         }
     },
 
@@ -114,7 +114,7 @@ Ext.tree.TreeNodeUI.prototype = {
  */
     removeClass : function(cls){
         if(this.elNode){
-            Ext.fly(this.elNode).removeClass(cls);  
+            Ext2.fly(this.elNode).removeClass(cls);  
         }
     },
 
@@ -136,7 +136,7 @@ Ext.tree.TreeNodeUI.prototype = {
         this.node.on("move", this.onMove, this);
 
         if(this.node.disabled){
-            this.addClass("x-tree-node-disabled");
+            this.addClass("x2-tree-node-disabled");
 			if (this.checkbox) {
 				this.checkbox.disabled = true;
 			}            
@@ -147,7 +147,7 @@ Ext.tree.TreeNodeUI.prototype = {
         var ot = this.node.getOwnerTree();
         var dd = ot.enableDD || ot.enableDrag || ot.enableDrop;
         if(dd && (!this.node.isRoot || ot.rootVisible)){
-            Ext.dd.Registry.register(this.elNode, {
+            Ext2.dd.Registry.register(this.elNode, {
                 node: this.node,
                 handles: this.getDDHandles(),
                 isHandle: false
@@ -234,11 +234,11 @@ Ext.tree.TreeNodeUI.prototype = {
     },
 
     onOver : function(e){
-        this.addClass('x-tree-node-over');
+        this.addClass('x2-tree-node-over');
     },
 
     onOut : function(e){
-        this.removeClass('x-tree-node-over');
+        this.removeClass('x2-tree-node-over');
     },
 
     // private
@@ -312,12 +312,12 @@ Ext.tree.TreeNodeUI.prototype = {
 
     // private
     animExpand : function(callback){
-        var ct = Ext.get(this.ctNode);
+        var ct = Ext2.get(this.ctNode);
         ct.stopFx();
         if(!this.node.isExpandable()){
             this.updateExpandIcon();
             this.ctNode.style.display = "";
-            Ext.callback(callback);
+            Ext2.callback(callback);
             return;
         }
         this.animating = true;
@@ -326,7 +326,7 @@ Ext.tree.TreeNodeUI.prototype = {
         ct.slideIn('t', {
            callback : function(){
                this.animating = false;
-               Ext.callback(callback);
+               Ext2.callback(callback);
             },
             scope: this,
             duration: this.node.ownerTree.duration || .25
@@ -336,7 +336,7 @@ Ext.tree.TreeNodeUI.prototype = {
     // private
     highlight : function(){
         var tree = this.node.getOwnerTree();
-        Ext.fly(this.wrap).highlight(
+        Ext2.fly(this.wrap).highlight(
             tree.hlColor || "C3DAF9",
             {endColor: tree.hlBaseColor}
         );
@@ -350,7 +350,7 @@ Ext.tree.TreeNodeUI.prototype = {
 
     // private
     animCollapse : function(callback){
-        var ct = Ext.get(this.ctNode);
+        var ct = Ext2.get(this.ctNode);
         ct.enableDisplayMode('block');
         ct.stopFx();
 
@@ -360,7 +360,7 @@ Ext.tree.TreeNodeUI.prototype = {
         ct.slideOut('t', {
             callback : function(){
                this.animating = false;
-               Ext.callback(callback);
+               Ext2.callback(callback);
             },
             scope: this,
             duration: this.node.ownerTree.duration || .25
@@ -384,7 +384,7 @@ Ext.tree.TreeNodeUI.prototype = {
 
     // private
     getDDRepairXY : function(){
-        return Ext.lib.Dom.getXY(this.iconNode);
+        return Ext2.lib.Dom.getXY(this.iconNode);
     },
 
     // private
@@ -416,8 +416,8 @@ Ext.tree.TreeNodeUI.prototype = {
                    }
                } 
             }else if(a.qtipCfg){
-                a.qtipCfg.target = Ext.id(this.textNode);
-                Ext.QuickTips.register(a.qtipCfg);
+                a.qtipCfg.target = Ext2.id(this.textNode);
+                Ext2.QuickTips.register(a.qtipCfg);
             }
             this.initEvents();
             if(!this.node.expanded){
@@ -437,22 +437,22 @@ Ext.tree.TreeNodeUI.prototype = {
 
         var cb = typeof a.checked == 'boolean';
 
-        var href = a.href ? a.href : Ext.isGecko ? "" : "#";
-        var buf = ['<li class="x-tree-node"><div ext:tree-node-id="',n.id,'" class="x-tree-node-el x-tree-node-leaf x-unselectable ', a.cls,'" unselectable="on">',
-            '<span class="x-tree-node-indent">',this.indentMarkup,"</span>",
-            '<img src="', this.emptyIcon, '" class="x-tree-ec-icon x-tree-elbow" />',
-            '<img src="', a.icon || this.emptyIcon, '" class="x-tree-node-icon',(a.icon ? " x-tree-node-inline-icon" : ""),(a.iconCls ? " "+a.iconCls : ""),'" unselectable="on" />',
-            cb ? ('<input class="x-tree-node-cb" type="checkbox" ' + (a.checked ? 'checked="checked" />' : '/>')) : '',
-            '<a hidefocus="on" class="x-tree-node-anchor" href="',href,'" tabIndex="1" ',
+        var href = a.href ? a.href : Ext2.isGecko ? "" : "#";
+        var buf = ['<li class="x2-tree-node"><div ext:tree-node-id="',n.id,'" class="x2-tree-node-el x2-tree-node-leaf x2-unselectable ', a.cls,'" unselectable="on">',
+            '<span class="x2-tree-node-indent">',this.indentMarkup,"</span>",
+            '<img src="', this.emptyIcon, '" class="x2-tree-ec-icon x2-tree-elbow" />',
+            '<img src="', a.icon || this.emptyIcon, '" class="x2-tree-node-icon',(a.icon ? " x2-tree-node-inline-icon" : ""),(a.iconCls ? " "+a.iconCls : ""),'" unselectable="on" />',
+            cb ? ('<input class="x2-tree-node-cb" type="checkbox" ' + (a.checked ? 'checked="checked" />' : '/>')) : '',
+            '<a hidefocus="on" class="x2-tree-node-anchor" href="',href,'" tabIndex="1" ',
              a.hrefTarget ? ' target="'+a.hrefTarget+'"' : "", '><span unselectable="on">',n.text,"</span></a></div>",
-            '<ul class="x-tree-node-ct" style="display:none;"></ul>',
+            '<ul class="x2-tree-node-ct" style="display:none;"></ul>',
             "</li>"].join('');
 
         var nel;
         if(bulkRender !== true && n.nextSibling && (nel = n.nextSibling.ui.getEl())){
-            this.wrap = Ext.DomHelper.insertHtml("beforeBegin", nel, buf);
+            this.wrap = Ext2.DomHelper.insertHtml("beforeBegin", nel, buf);
         }else{
-            this.wrap = Ext.DomHelper.insertHtml("beforeEnd", targetNode, buf);
+            this.wrap = Ext2.DomHelper.insertHtml("beforeEnd", targetNode, buf);
         }
         
         this.elNode = this.wrap.childNodes[0];
@@ -509,34 +509,34 @@ Ext.tree.TreeNodeUI.prototype = {
     updateExpandIcon : function(){
         if(this.rendered){
             var n = this.node, c1, c2;
-            var cls = n.isLast() ? "x-tree-elbow-end" : "x-tree-elbow";
+            var cls = n.isLast() ? "x2-tree-elbow-end" : "x2-tree-elbow";
             if(n.isExpandable()){
                 if(n.expanded){
                     cls += "-minus";
-                    c1 = "x-tree-node-collapsed";
-                    c2 = "x-tree-node-expanded";
+                    c1 = "x2-tree-node-collapsed";
+                    c2 = "x2-tree-node-expanded";
                 }else{
                     cls += "-plus";
-                    c1 = "x-tree-node-expanded";
-                    c2 = "x-tree-node-collapsed";
+                    c1 = "x2-tree-node-expanded";
+                    c2 = "x2-tree-node-collapsed";
                 }
                 if(this.wasLeaf){
-                    this.removeClass("x-tree-node-leaf");
+                    this.removeClass("x2-tree-node-leaf");
                     this.wasLeaf = false;
                 }
                 if(this.c1 != c1 || this.c2 != c2){
-                    Ext.fly(this.elNode).replaceClass(c1, c2);
+                    Ext2.fly(this.elNode).replaceClass(c1, c2);
                     this.c1 = c1; this.c2 = c2;
                 }
             }else{
                 if(!this.wasLeaf){
-                    Ext.fly(this.elNode).replaceClass("x-tree-node-expanded", "x-tree-node-leaf");
+                    Ext2.fly(this.elNode).replaceClass("x2-tree-node-expanded", "x2-tree-node-leaf");
                     delete this.c1;
                     delete this.c2;
                     this.wasLeaf = true;
                 }
             }
-            var ecc = "x-tree-ec-icon "+cls;
+            var ecc = "x2-tree-ec-icon "+cls;
             if(this.ecc != ecc){
                 this.ecNode.className = ecc;
                 this.ecc = ecc;
@@ -552,9 +552,9 @@ Ext.tree.TreeNodeUI.prototype = {
             while(p){
                 if(!p.isRoot || (p.isRoot && p.ownerTree.rootVisible)){
                     if(!p.isLast()) {
-                        buf.unshift('<img src="'+this.emptyIcon+'" class="x-tree-elbow-line" />');
+                        buf.unshift('<img src="'+this.emptyIcon+'" class="x2-tree-elbow-line" />');
                     } else {
-                        buf.unshift('<img src="'+this.emptyIcon+'" class="x-tree-icon" />');
+                        buf.unshift('<img src="'+this.emptyIcon+'" class="x2-tree-icon" />');
                     }
                 }
                 p = p.parentNode;
@@ -582,7 +582,7 @@ Ext.tree.TreeNodeUI.prototype = {
 
     destroy : function(){
         if(this.elNode){
-            Ext.dd.Registry.unregister(this.elNode.id);
+            Ext2.dd.Registry.unregister(this.elNode.id);
         }
         delete this.elNode;
         delete this.ctNode;
@@ -595,33 +595,33 @@ Ext.tree.TreeNodeUI.prototype = {
         
         if (this.holder){
              delete this.wrap;
-             Ext.removeNode(this.holder);
+             Ext2.removeNode(this.holder);
              delete this.holder;
         }else{
-            Ext.removeNode(this.wrap);
+            Ext2.removeNode(this.wrap);
             delete this.wrap;
         }
     }
 };
 
 /**
- * @class Ext.tree.RootTreeNodeUI
- * This class provides the default UI implementation for <b>root</b> Ext TreeNodes.
+ * @class Ext2.tree.RootTreeNodeUI
+ * This class provides the default UI implementation for <b>root</b> Ext2 TreeNodes.
  * The RootTreeNode UI implementation allows customizing the appearance of the root tree node.<br>
  * <p>
  * If you are customizing the Tree's user interface, you
  * may need to extend this class, but you should never need to instantiate this class.<br>
  */
-Ext.tree.RootTreeNodeUI = Ext.extend(Ext.tree.TreeNodeUI, {
+Ext2.tree.RootTreeNodeUI = Ext2.extend(Ext2.tree.TreeNodeUI, {
     // private
     render : function(){
         if(!this.rendered){
             var targetNode = this.node.ownerTree.innerCt.dom;
             this.node.expanded = true;
-            targetNode.innerHTML = '<div class="x-tree-root-node"></div>';
+            targetNode.innerHTML = '<div class="x2-tree-root-node"></div>';
             this.wrap = this.ctNode = targetNode.firstChild;
         }
     },
-    collapse : Ext.emptyFn,
-    expand : Ext.emptyFn
+    collapse : Ext2.emptyFn,
+    expand : Ext2.emptyFn
 });

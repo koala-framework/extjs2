@@ -8,16 +8,16 @@
 
 // private
 // This is a support class used internally by the Grid components
-Ext.grid.GridEditor = function(field, config){
-    Ext.grid.GridEditor.superclass.constructor.call(this, field, config);
+Ext2.grid.GridEditor = function(field, config){
+    Ext2.grid.GridEditor.superclass.constructor.call(this, field, config);
     field.monitorTab = false;
 };
 
-Ext.extend(Ext.grid.GridEditor, Ext.Editor, {
+Ext2.extend(Ext2.grid.GridEditor, Ext2.Editor, {
     alignment: "tl-tl",
     autoSize: "width",
     hideEl : false,
-    cls: "x-small-editor x-grid-editor",
+    cls: "x2-small-editor x2-grid-editor",
     shim:false,
     shadow:false
 });

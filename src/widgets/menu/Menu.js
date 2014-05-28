@@ -7,93 +7,93 @@
  */
 
 /**
- * @class Ext.menu.Menu
- * @extends Ext.util.Observable
+ * @class Ext2.menu.Menu
+ * @extends Ext2.util.Observable
  * A menu object.  This is the container to which you add all other menu items.  Menu can also serve as a base class
- * when you want a specialized menu based off of another component (like {@link Ext.menu.DateMenu} for example).
+ * when you want a specialized menu based off of another component (like {@link Ext2.menu.DateMenu} for example).
  * @constructor
  * Creates a new Menu
  * @param {Object} config Configuration options
  */
-Ext.menu.Menu = function(config){
-    if(Ext.isArray(config)){
+Ext2.menu.Menu = function(config){
+    if(Ext2.isArray(config)){
         config = {items:config};
     }
-    Ext.apply(this, config);
-    this.id = this.id || Ext.id();
+    Ext2.apply(this, config);
+    this.id = this.id || Ext2.id();
     this.addEvents(
         /**
          * @event beforeshow
          * Fires before this menu is displayed
-         * @param {Ext.menu.Menu} this
+         * @param {Ext2.menu.Menu} this
          */
         'beforeshow',
         /**
          * @event beforehide
          * Fires before this menu is hidden
-         * @param {Ext.menu.Menu} this
+         * @param {Ext2.menu.Menu} this
          */
         'beforehide',
         /**
          * @event show
          * Fires after this menu is displayed
-         * @param {Ext.menu.Menu} this
+         * @param {Ext2.menu.Menu} this
          */
         'show',
         /**
          * @event hide
          * Fires after this menu is hidden
-         * @param {Ext.menu.Menu} this
+         * @param {Ext2.menu.Menu} this
          */
         'hide',
         /**
          * @event click
          * Fires when this menu is clicked (or when the enter key is pressed while it is active)
-         * @param {Ext.menu.Menu} this
-         * @param {Ext.menu.Item} menuItem The menu item that was clicked
-         * @param {Ext.EventObject} e
+         * @param {Ext2.menu.Menu} this
+         * @param {Ext2.menu.Item} menuItem The menu item that was clicked
+         * @param {Ext2.EventObject} e
          */
         'click',
         /**
          * @event mouseover
          * Fires when the mouse is hovering over this menu
-         * @param {Ext.menu.Menu} this
-         * @param {Ext.EventObject} e
-         * @param {Ext.menu.Item} menuItem The menu item that was clicked
+         * @param {Ext2.menu.Menu} this
+         * @param {Ext2.EventObject} e
+         * @param {Ext2.menu.Item} menuItem The menu item that was clicked
          */
         'mouseover',
         /**
          * @event mouseout
          * Fires when the mouse exits this menu
-         * @param {Ext.menu.Menu} this
-         * @param {Ext.EventObject} e
-         * @param {Ext.menu.Item} menuItem The menu item that was clicked
+         * @param {Ext2.menu.Menu} this
+         * @param {Ext2.EventObject} e
+         * @param {Ext2.menu.Item} menuItem The menu item that was clicked
          */
         'mouseout',
         /**
          * @event itemclick
          * Fires when a menu item contained in this menu is clicked
-         * @param {Ext.menu.BaseItem} baseItem The BaseItem that was clicked
-         * @param {Ext.EventObject} e
+         * @param {Ext2.menu.BaseItem} baseItem The BaseItem that was clicked
+         * @param {Ext2.EventObject} e
          */
         'itemclick'
     );
-    Ext.menu.MenuMgr.register(this);
-    Ext.menu.Menu.superclass.constructor.call(this);
+    Ext2.menu.MenuMgr.register(this);
+    Ext2.menu.Menu.superclass.constructor.call(this);
     var mis = this.items;
     /**
      * A MixedCollection of this Menu's items
      * @property items
-     * @type Ext.util.MixedCollection
+     * @type Ext2.util.MixedCollection
      */
 
-    this.items = new Ext.util.MixedCollection();
+    this.items = new Ext2.util.MixedCollection();
     if(mis){
         this.add.apply(this, mis);
     }
 };
 
-Ext.extend(Ext.menu.Menu, Ext.util.Observable, {
+Ext2.extend(Ext2.menu.Menu, Ext2.util.Observable, {
     /**
      * @cfg {Object} defaults
      * A config object that will be applied to all items added to this container either via the {@link #items}
@@ -115,12 +115,12 @@ Ext.extend(Ext.menu.Menu, Ext.util.Observable, {
      */
     shadow : "sides",
     /**
-     * @cfg {String} subMenuAlign The {@link Ext.Element#alignTo} anchor position value to use for submenus of
+     * @cfg {String} subMenuAlign The {@link Ext2.Element#alignTo} anchor position value to use for submenus of
      * this menu (defaults to "tl-tr?")
      */
     subMenuAlign : "tl-tr?",
     /**
-     * @cfg {String} defaultAlign The default {@link Ext.Element#alignTo} anchor position value for this menu
+     * @cfg {String} defaultAlign The default {@link Ext2.Element#alignTo} anchor position value for this menu
      * relative to its element of origin (defaults to "tl-bl?")
      */
     defaultAlign : "tl-bl?",
@@ -139,8 +139,8 @@ Ext.extend(Ext.menu.Menu, Ext.util.Observable, {
 
     // private
     createEl : function(){
-        return new Ext.Layer({
-            cls: "x-menu",
+        return new Ext2.Layer({
+            cls: "x2-menu",
             shadow:this.shadow,
             constrain: false,
             parentEl: this.parentEl || document.body,
@@ -156,25 +156,25 @@ Ext.extend(Ext.menu.Menu, Ext.util.Observable, {
         var el = this.el = this.createEl();
 
         if(!this.keyNav){
-            this.keyNav = new Ext.menu.MenuNav(this);
+            this.keyNav = new Ext2.menu.MenuNav(this);
         }
         if(this.plain){
-            el.addClass("x-menu-plain");
+            el.addClass("x2-menu-plain");
         }
         if(this.cls){
             el.addClass(this.cls);
         }
         // generic focus element
         this.focusEl = el.createChild({
-            tag: "a", cls: "x-menu-focus", href: "#", onclick: "return false;", tabIndex:"-1"
+            tag: "a", cls: "x2-menu-focus", href: "#", onclick: "return false;", tabIndex:"-1"
         });
-        var ul = el.createChild({tag: "ul", cls: "x-menu-list"});
+        var ul = el.createChild({tag: "ul", cls: "x2-menu-list"});
         ul.on("click", this.onClick, this);
         ul.on("mouseover", this.onMouseOver, this);
         ul.on("mouseout", this.onMouseOut, this);
         this.items.each(function(item){
             var li = document.createElement("li");
-            li.className = "x-menu-list-item";
+            li.className = "x2-menu-list-item";
             ul.dom.appendChild(li);
             item.render(li, this);
         }, this);
@@ -191,7 +191,7 @@ Ext.extend(Ext.menu.Menu, Ext.util.Observable, {
         var w = this.width;
         if(w){
             el.setWidth(w);
-        }else if(Ext.isIE && !Ext.isIE8){
+        }else if(Ext2.isIE && !Ext2.isIE8){
             el.setWidth(this.minWidth);
             var t = el.dom.offsetWidth; // force recalc
             el.setWidth(ul.getWidth()+el.getFrameWidth("lr"));
@@ -202,7 +202,7 @@ Ext.extend(Ext.menu.Menu, Ext.util.Observable, {
     delayAutoWidth : function(){
         if(this.el){
             if(!this.awTask){
-                this.awTask = new Ext.util.DelayedTask(this.autoWidth, this);
+                this.awTask = new Ext2.util.DelayedTask(this.autoWidth, this);
             }
             this.awTask.delay(20);
         }
@@ -210,7 +210,7 @@ Ext.extend(Ext.menu.Menu, Ext.util.Observable, {
 
     // private
     findTargetItem : function(e){
-        var t = e.getTarget(".x-menu-list-item", this.ul,  true);
+        var t = e.getTarget(".x2-menu-list-item", this.ul,  true);
         if(t && t.menuItemId){
             return this.items.get(t.menuItemId);
         }
@@ -291,9 +291,9 @@ Ext.extend(Ext.menu.Menu, Ext.util.Observable, {
     /**
      * Displays this menu relative to another element
      * @param {Mixed} element The element to align to
-     * @param {String} position (optional) The {@link Ext.Element#alignTo} anchor position to use in aligning to
+     * @param {String} position (optional) The {@link Ext2.Element#alignTo} anchor position to use in aligning to
      * the element (defaults to this.defaultAlign)
-     * @param {Ext.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
+     * @param {Ext2.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
      */
     show : function(el, pos, parentMenu){
         this.parentMenu = parentMenu;
@@ -307,7 +307,7 @@ Ext.extend(Ext.menu.Menu, Ext.util.Observable, {
     /**
      * Displays this menu at a specific xy position
      * @param {Array} xyPosition Contains X & Y [x, y] values for the position at which to show the menu (coordinates are page-based)
-     * @param {Ext.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
+     * @param {Ext2.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
      */
     showAt : function(xy, parentMenu, /* private: */_e){
         this.parentMenu = parentMenu;
@@ -363,19 +363,19 @@ Ext.extend(Ext.menu.Menu, Ext.util.Observable, {
      * Adds one or more items of any type supported by the Menu class, or that can be converted into menu items.
      * Any of the following are valid:
      * <ul>
-     * <li>Any menu item object based on {@link Ext.menu.BaseItem}</li>
+     * <li>Any menu item object based on {@link Ext2.menu.BaseItem}</li>
      * <li>An HTMLElement object which will be converted to a menu item</li>
      * <li>A menu item config object that will be created as a new menu item</li>
      * <li>A string, which can either be '-' or 'separator' to add a menu separator, otherwise
-     * it will be converted into a {@link Ext.menu.TextItem} and added</li>
+     * it will be converted into a {@link Ext2.menu.TextItem} and added</li>
      * </ul>
      * Usage:
      * <pre><code>
 // Create the menu
-var menu = new Ext.menu.Menu();
+var menu = new Ext2.menu.Menu();
 
 // Create a menu item to add by reference
-var menuItem = new Ext.menu.Item({ text: 'New Item!' });
+var menuItem = new Ext2.menu.Item({ text: 'New Item!' });
 
 // Add a bunch of items at once using different methods.
 // Only the last item added will be returned.
@@ -387,7 +387,7 @@ var item = menu.add(
 );
 </code></pre>
      * @param {Mixed} args One or more menu items, menu item configs or other objects that can be converted to menu items
-     * @return {Ext.menu.Item} The menu item that was added, or the last one if multiple items were added
+     * @return {Ext2.menu.Item} The menu item that was added, or the last one if multiple items were added
      */
     add : function(){
         var a = arguments, l = a.length, item;
@@ -404,7 +404,7 @@ var item = menu.add(
             }else if(el.tagName || el.el){ // element
                 item = this.addElement(el);
             }else if(typeof el == "object"){ // must be menu item config?
-                Ext.applyIf(el, this.defaults);
+                Ext2.applyIf(el, this.defaults);
                 item = this.addMenuItem(el);
             }
         }
@@ -412,8 +412,8 @@ var item = menu.add(
     },
 
     /**
-     * Returns this menu's underlying {@link Ext.Element} object
-     * @return {Ext.Element} The element
+     * Returns this menu's underlying {@link Ext2.Element} object
+     * @return {Ext2.Element} The element
      */
     getEl : function(){
         if(!this.el){
@@ -424,31 +424,31 @@ var item = menu.add(
 
     /**
      * Adds a separator bar to the menu
-     * @return {Ext.menu.Item} The menu item that was added
+     * @return {Ext2.menu.Item} The menu item that was added
      */
     addSeparator : function(){
-        return this.addItem(new Ext.menu.Separator());
+        return this.addItem(new Ext2.menu.Separator());
     },
 
     /**
-     * Adds an {@link Ext.Element} object to the menu
+     * Adds an {@link Ext2.Element} object to the menu
      * @param {Mixed} el The element or DOM node to add, or its id
-     * @return {Ext.menu.Item} The menu item that was added
+     * @return {Ext2.menu.Item} The menu item that was added
      */
     addElement : function(el){
-        return this.addItem(new Ext.menu.BaseItem(el));
+        return this.addItem(new Ext2.menu.BaseItem(el));
     },
 
     /**
-     * Adds an existing object based on {@link Ext.menu.BaseItem} to the menu
-     * @param {Ext.menu.Item} item The menu item to add
-     * @return {Ext.menu.Item} The menu item that was added
+     * Adds an existing object based on {@link Ext2.menu.BaseItem} to the menu
+     * @param {Ext2.menu.Item} item The menu item to add
+     * @return {Ext2.menu.Item} The menu item that was added
      */
     addItem : function(item){
         this.items.add(item);
         if(this.ul){
             var li = document.createElement("li");
-            li.className = "x-menu-list-item";
+            li.className = "x2-menu-list-item";
             this.ul.dom.appendChild(li);
             item.render(li, this);
             this.delayAutoWidth();
@@ -457,41 +457,41 @@ var item = menu.add(
     },
 
     /**
-     * Creates a new {@link Ext.menu.Item} based an the supplied config object and adds it to the menu
+     * Creates a new {@link Ext2.menu.Item} based an the supplied config object and adds it to the menu
      * @param {Object} config A MenuItem config object
-     * @return {Ext.menu.Item} The menu item that was added
+     * @return {Ext2.menu.Item} The menu item that was added
      */
     addMenuItem : function(config){
-        if(!(config instanceof Ext.menu.Item)){
+        if(!(config instanceof Ext2.menu.Item)){
             if(typeof config.checked == "boolean"){ // must be check menu item config?
-                config = new Ext.menu.CheckItem(config);
+                config = new Ext2.menu.CheckItem(config);
             }else{
-                config = new Ext.menu.Item(config);
+                config = new Ext2.menu.Item(config);
             }
         }
         return this.addItem(config);
     },
 
     /**
-     * Creates a new {@link Ext.menu.TextItem} with the supplied text and adds it to the menu
+     * Creates a new {@link Ext2.menu.TextItem} with the supplied text and adds it to the menu
      * @param {String} text The text to display in the menu item
-     * @return {Ext.menu.Item} The menu item that was added
+     * @return {Ext2.menu.Item} The menu item that was added
      */
     addText : function(text){
-        return this.addItem(new Ext.menu.TextItem(text));
+        return this.addItem(new Ext2.menu.TextItem(text));
     },
 
     /**
-     * Inserts an existing object based on {@link Ext.menu.BaseItem} to the menu at a specified index
+     * Inserts an existing object based on {@link Ext2.menu.BaseItem} to the menu at a specified index
      * @param {Number} index The index in the menu's list of current items where the new item should be inserted
-     * @param {Ext.menu.Item} item The menu item to add
-     * @return {Ext.menu.Item} The menu item that was added
+     * @param {Ext2.menu.Item} item The menu item to add
+     * @return {Ext2.menu.Item} The menu item that was added
      */
     insert : function(index, item){
         this.items.insert(index, item);
         if(this.ul){
             var li = document.createElement("li");
-            li.className = "x-menu-list-item";
+            li.className = "x2-menu-list-item";
             this.ul.dom.insertBefore(li, this.ul.dom.childNodes[index]);
             item.render(li, this);
             this.delayAutoWidth();
@@ -500,8 +500,8 @@ var item = menu.add(
     },
 
     /**
-     * Removes an {@link Ext.menu.Item} from the menu and destroys the object
-     * @param {Ext.menu.Item} item The menu item to remove
+     * Removes an {@link Ext2.menu.Item} from the menu and destroys the object
+     * @param {Ext2.menu.Item} item The menu item to remove
      */
     remove : function(item){
         this.items.removeKey(item.id);
@@ -521,12 +521,12 @@ var item = menu.add(
     },
 
     /**
-     * Destroys the menu by  unregistering it from {@link Ext.menu.MenuMgr}, purging event listeners,
-     * removing all of the menus items, then destroying the underlying {@link Ext.Element}
+     * Destroys the menu by  unregistering it from {@link Ext2.menu.MenuMgr}, purging event listeners,
+     * removing all of the menus items, then destroying the underlying {@link Ext2.Element}
      */
     destroy : function(){
         this.beforeDestroy();
-        Ext.menu.MenuMgr.unregister(this);
+        Ext2.menu.MenuMgr.unregister(this);
         if (this.keyNav) {
         	this.keyNav.disable();
         }
@@ -540,17 +540,17 @@ var item = menu.add(
     },
 
 	// private
-    beforeDestroy : Ext.emptyFn
+    beforeDestroy : Ext2.emptyFn
 
 });
 
 // MenuNav is a private utility class used internally by the Menu
-Ext.menu.MenuNav = function(menu){
-    Ext.menu.MenuNav.superclass.constructor.call(this, menu.el);
+Ext2.menu.MenuNav = function(menu){
+    Ext2.menu.MenuNav.superclass.constructor.call(this, menu.el);
     this.scope = this.menu = menu;
 };
 
-Ext.extend(Ext.menu.MenuNav, Ext.KeyNav, {
+Ext2.extend(Ext2.menu.MenuNav, Ext2.KeyNav, {
     doRelay : function(e, h){
         var k = e.getKey();
         if(!this.menu.activeItem && e.isNavKeyPress() && k != e.SPACE && k != e.RETURN){

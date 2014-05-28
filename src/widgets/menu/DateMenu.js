@@ -7,20 +7,20 @@
  */
 
 /**
- * @class Ext.menu.DateMenu
- * @extends Ext.menu.Menu
- * A menu containing a {@link Ext.menu.DateItem} component (which provides a date picker).
+ * @class Ext2.menu.DateMenu
+ * @extends Ext2.menu.Menu
+ * A menu containing a {@link Ext2.menu.DateItem} component (which provides a date picker).
  * @constructor
  * Creates a new DateMenu
  * @param {Object} config Configuration options
  */
-Ext.menu.DateMenu = function(config){
-    Ext.menu.DateMenu.superclass.constructor.call(this, config);
+Ext2.menu.DateMenu = function(config){
+    Ext2.menu.DateMenu.superclass.constructor.call(this, config);
     this.plain = true;
-    var di = new Ext.menu.DateItem(config);
+    var di = new Ext2.menu.DateItem(config);
     this.add(di);
     /**
-     * The {@link Ext.DatePicker} instance for this DateMenu
+     * The {@link Ext2.DatePicker} instance for this DateMenu
      * @type DatePicker
      */
     this.picker = di.picker;
@@ -37,8 +37,8 @@ Ext.menu.DateMenu = function(config){
         }
     }, this);
 };
-Ext.extend(Ext.menu.DateMenu, Ext.menu.Menu, {
-    cls:'x-date-menu',
+Ext2.extend(Ext2.menu.DateMenu, Ext2.menu.Menu, {
+    cls:'x2-date-menu',
 
     // private
     beforeDestroy : function() {

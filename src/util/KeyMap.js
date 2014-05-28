@@ -7,31 +7,31 @@
  */
 
 /**
- * @class Ext.KeyMap
+ * @class Ext2.KeyMap
  * Handles mapping keys to actions for an element. One key map can be used for multiple actions.
  * The constructor accepts the same config object as defined by {@link #addBinding}.
  * If you bind a callback function to a KeyMap, anytime the KeyMap handles an expected key
  * combination it will call the function with this signature (if the match is a multi-key
- * combination the callback will still be called only once): (String key, Ext.EventObject e)
+ * combination the callback will still be called only once): (String key, Ext2.EventObject e)
  * A KeyMap can also handle a string representation of keys.<br />
  * Usage:
  <pre><code>
 // map one key by key code
-var map = new Ext.KeyMap("my-element", {
-    key: 13, // or Ext.EventObject.ENTER
+var map = new Ext2.KeyMap("my-element", {
+    key: 13, // or Ext2.EventObject.ENTER
     fn: myHandler,
     scope: myObject
 });
 
 // map multiple keys to one action by string
-var map = new Ext.KeyMap("my-element", {
+var map = new Ext2.KeyMap("my-element", {
     key: "a\r\n\t",
     fn: myHandler,
     scope: myObject
 });
 
 // map multiple keys to multiple actions by strings and array of codes
-var map = new Ext.KeyMap("my-element", [
+var map = new Ext2.KeyMap("my-element", [
     {
         key: [10,13],
         fn: function(){ alert("Return was pressed"); }
@@ -52,8 +52,8 @@ var map = new Ext.KeyMap("my-element", [
  * @param {Object} config The config (see {@link #addBinding})
  * @param {String} eventName (optional) The event to bind to (defaults to "keydown")
  */
-Ext.KeyMap = function(el, config, eventName){
-    this.el  = Ext.get(el);
+Ext2.KeyMap = function(el, config, eventName){
+    this.el  = Ext2.get(el);
     this.eventName = eventName || "keydown";
     this.bindings = [];
     if(config){
@@ -62,7 +62,7 @@ Ext.KeyMap = function(el, config, eventName){
     this.enable();
 };
 
-Ext.KeyMap.prototype = {
+Ext2.KeyMap.prototype = {
     /**
      * True to stop the event from bubbling and prevent the default browser action if the
      * key was handled by the KeyMap (defaults to false)
@@ -88,8 +88,8 @@ stopEvent   Boolean          True to stop the event
      * Usage:
      * <pre><code>
 // Create a KeyMap
-var map = new Ext.KeyMap(document, {
-    key: Ext.EventObject.ENTER,
+var map = new Ext2.KeyMap(document, {
+    key: Ext2.EventObject.ENTER,
     fn: handleKey,
     scope: this
 });
@@ -105,7 +105,7 @@ map.addBinding({
      * @param {Object/Array} config A single KeyMap config or an array of configs
      */
 	addBinding : function(config){
-        if(Ext.isArray(config)){
+        if(Ext2.isArray(config)){
             for(var i = 0, len = config.length; i < len; i++){
                 this.addBinding(config[i]);
             }
@@ -130,7 +130,7 @@ map.addBinding({
             }
             keyCode = ks;
         }
-        var keyArray = Ext.isArray(keyCode);
+        var keyArray = Ext2.isArray(keyCode);
         
         var handler = function(e){
             if((!shift || e.shiftKey) && (!ctrl || e.ctrlKey) &&  (!alt || e.altKey)){
@@ -168,7 +168,7 @@ map.addBinding({
      */
     on : function(key, fn, scope){
         var keyCode, shift, ctrl, alt;
-        if(typeof key == "object" && !Ext.isArray(key)){
+        if(typeof key == "object" && !Ext2.isArray(key)){
             keyCode = key.key;
             shift = key.shift;
             ctrl = key.ctrl;

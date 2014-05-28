@@ -7,17 +7,17 @@
  */
 
 /**
- * @class Ext.layout.Accordion
- * @extends Ext.layout.FitLayout
+ * @class Ext2.layout.Accordion
+ * @extends Ext2.layout.FitLayout
  * <p>This is a layout that contains multiple panels in an expandable accordion style such that only one
  * panel can be open at any given time.  Each panel has built-in support for expanding and collapsing.
- * This class is intended to be extended or created via the layout:'accordion' {@link Ext.Container#layout}
+ * This class is intended to be extended or created via the layout:'accordion' {@link Ext2.Container#layout}
  * config, and should generally not need to be created directly via the new keyword.</p>
  * <p>Note that when creating a layout via config, the layout-specific config properties must be passed in via
- * the {@link Ext.Container#layoutConfig} object which will then be applied internally to the layout.
+ * the {@link Ext2.Container#layoutConfig} object which will then be applied internally to the layout.
  * Example usage:</p>
  * <pre><code>
-var accordion = new Ext.Panel({
+var accordion = new Ext2.Panel({
     title: 'Accordion Layout',
     layout:'accordion',
     defaults: {
@@ -43,7 +43,7 @@ var accordion = new Ext.Panel({
 });
 </code></pre>
  */
-Ext.layout.Accordion = Ext.extend(Ext.layout.FitLayout, {
+Ext2.layout.Accordion = Ext2.extend(Ext2.layout.FitLayout, {
     /**
      * @cfg {Boolean} fill
      * True to adjust the active item's height to fill the available space in the container, false to use the
@@ -53,7 +53,7 @@ Ext.layout.Accordion = Ext.extend(Ext.layout.FitLayout, {
     /**
      * @cfg {Boolean} autoWidth
      * True to set each contained item's width to 'auto', false to use the item's current width (defaults to true).
-     * Note that some components, in particular the {@link Ext.grid.GridPanel grid}, will not function properly within
+     * Note that some components, in particular the {@link Ext2.grid.GridPanel grid}, will not function properly within
      * layouts if they have auto width, so in such cases this config should be set to false.
      */
     autoWidth : true,
@@ -127,8 +127,8 @@ Ext.layout.Accordion = Ext.extend(Ext.layout.FitLayout, {
         }else if(this.activeItem && this.activeItem != c){
             c.collapsed = true;
         }
-        Ext.layout.Accordion.superclass.renderItem.apply(this, arguments);
-        c.header.addClass('x-accordion-hd');
+        Ext2.layout.Accordion.superclass.renderItem.apply(this, arguments);
+        c.header.addClass('x2-accordion-hd');
         c.on('beforeexpand', this.beforeExpand, this);
     },
 
@@ -171,4 +171,4 @@ Ext.layout.Accordion = Ext.extend(Ext.layout.FitLayout, {
         }
     }
 });
-Ext.Container.LAYOUTS['accordion'] = Ext.layout.Accordion;
+Ext2.Container.LAYOUTS['accordion'] = Ext2.layout.Accordion;

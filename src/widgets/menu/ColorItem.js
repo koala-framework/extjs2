@@ -7,16 +7,16 @@
  */
 
 /**
- * @class Ext.menu.ColorItem
- * @extends Ext.menu.Adapter
- * A menu item that wraps the {@link Ext.ColorPalette} component.
+ * @class Ext2.menu.ColorItem
+ * @extends Ext2.menu.Adapter
+ * A menu item that wraps the {@link Ext2.ColorPalette} component.
  * @constructor
  * Creates a new ColorItem
  * @param {Object} config Configuration options
  */
-Ext.menu.ColorItem = function(config){
-    Ext.menu.ColorItem.superclass.constructor.call(this, new Ext.ColorPalette(config), config);
-    /** The Ext.ColorPalette object @type Ext.ColorPalette */
+Ext2.menu.ColorItem = function(config){
+    Ext2.menu.ColorItem.superclass.constructor.call(this, new Ext2.ColorPalette(config), config);
+    /** The Ext2.ColorPalette object @type Ext2.ColorPalette */
     this.palette = this.component;
     this.palette.purgeListeners();
     this.relayEvents(this.palette, ["select"]);
@@ -24,4 +24,4 @@ Ext.menu.ColorItem = function(config){
         this.on('select', this.selectHandler, this.scope);
     }
 };
-Ext.extend(Ext.menu.ColorItem, Ext.menu.Adapter);
+Ext2.extend(Ext2.menu.ColorItem, Ext2.menu.Adapter);

@@ -7,14 +7,14 @@
  */
 
 /**
- * @class Ext.Updater
- * @extends Ext.util.Observable
+ * @class Ext2.Updater
+ * @extends Ext2.util.Observable
  * Provides AJAX-style update capabilities for Element objects.  Updater can be used to {@link #update} an Element once,
  * or you can use {@link #startAutoRefresh} to set up an auto-updating Element on a specific interval.<br><br>
  * Usage:<br>
  * <pre><code>
- * // Get it from a Ext.Element object
- * var el = Ext.get("foo");
+ * // Get it from a Ext2.Element object
+ * var el = Ext2.get("foo");
  * var mgr = el.getUpdater();
  * mgr.update({
         url: "http://myserver.com/index.php",
@@ -27,12 +27,12 @@
  * mgr.formUpdate("myFormId", "http://myserver.com/index.php");
  * <br>
  * // or directly (returns the same Updater instance)
- * var mgr = new Ext.Updater("myElementId");
+ * var mgr = new Ext2.Updater("myElementId");
  * mgr.startAutoRefresh(60, "http://myserver.com/index.php");
  * mgr.on("update", myFcnNeedsToKnow);
  * <br>
  * // short handed call directly from the element object
- * Ext.get("foo").load({
+ * Ext2.get("foo").load({
         url: "bar.php",
         scripts: true,
         params: "param1=foo&amp;param2=bar",
@@ -45,15 +45,15 @@
  * @param {Boolean} forceNew (optional) By default the constructor checks to see if the passed element already
  * has an Updater and if it does it returns the same instance. This will skip that check (useful for extending this class).
  */
-Ext.Updater = Ext.extend(Ext.util.Observable, {
+Ext2.Updater = Ext2.extend(Ext2.util.Observable, {
     constructor: function(el, forceNew){
-        el = Ext.get(el);
+        el = Ext2.get(el);
         if(!forceNew && el.updateManager){
             return el.updateManager;
         }
         /**
          * The Element object
-         * @type Ext.Element
+         * @type Ext2.Element
          */
         this.el = el;
         /**
@@ -66,7 +66,7 @@ Ext.Updater = Ext.extend(Ext.util.Observable, {
             /**
              * @event beforeupdate
              * Fired before an update is made, return false from your handler and the update is cancelled.
-             * @param {Ext.Element} el
+             * @param {Ext2.Element} el
              * @param {String/Object/Function} url
              * @param {String/Object} params
              */
@@ -74,46 +74,46 @@ Ext.Updater = Ext.extend(Ext.util.Observable, {
             /**
              * @event update
              * Fired after successful update is made.
-             * @param {Ext.Element} el
+             * @param {Ext2.Element} el
              * @param {Object} oResponseObject The response Object
              */
             "update",
             /**
              * @event failure
              * Fired on update failure.
-             * @param {Ext.Element} el
+             * @param {Ext2.Element} el
              * @param {Object} oResponseObject The response Object
              */
             "failure"
         );
-        var d = Ext.Updater.defaults;
+        var d = Ext2.Updater.defaults;
         /**
-         * Blank page URL to use with SSL file uploads (defaults to {@link Ext.Updater.defaults#sslBlankUrl}).
+         * Blank page URL to use with SSL file uploads (defaults to {@link Ext2.Updater.defaults#sslBlankUrl}).
          * @type String
          */
         this.sslBlankUrl = d.sslBlankUrl;
         /**
-         * Whether to append unique parameter on get request to disable caching (defaults to {@link Ext.Updater.defaults#disableCaching}).
+         * Whether to append unique parameter on get request to disable caching (defaults to {@link Ext2.Updater.defaults#disableCaching}).
          * @type Boolean
          */
         this.disableCaching = d.disableCaching;
         /**
-         * Text for loading indicator (defaults to {@link Ext.Updater.defaults#indicatorText}).
+         * Text for loading indicator (defaults to {@link Ext2.Updater.defaults#indicatorText}).
          * @type String
          */
         this.indicatorText = d.indicatorText;
         /**
-         * Whether to show indicatorText when loading (defaults to {@link Ext.Updater.defaults#showLoadIndicator}).
+         * Whether to show indicatorText when loading (defaults to {@link Ext2.Updater.defaults#showLoadIndicator}).
          * @type String
          */
         this.showLoadIndicator = d.showLoadIndicator;
         /**
-         * Timeout for requests or form posts in seconds (defaults to {@link Ext.Updater.defaults#timeout}).
+         * Timeout for requests or form posts in seconds (defaults to {@link Ext2.Updater.defaults#timeout}).
          * @type Number
          */
         this.timeout = d.timeout;
         /**
-         * True to process scripts in the output (defaults to {@link Ext.Updater.defaults#loadScripts}).
+         * True to process scripts in the output (defaults to {@link Ext2.Updater.defaults#loadScripts}).
          * @type Boolean
          */
         this.loadScripts = d.loadScripts;
@@ -139,23 +139,23 @@ Ext.Updater = Ext.extend(Ext.util.Observable, {
 
         if(!this.renderer){
          /**
-          * The renderer for this Updater (defaults to {@link Ext.Updater.BasicRenderer}).
+          * The renderer for this Updater (defaults to {@link Ext2.Updater.BasicRenderer}).
           */
         this.renderer = this.getDefaultRenderer();
         }
-        Ext.Updater.superclass.constructor.call(this);
+        Ext2.Updater.superclass.constructor.call(this);
     },
     /**
      * This is an overrideable method which returns a reference to a default
-     * renderer class if none is specified when creating the Ext.Updater.
-     * Defaults to {@link Ext.Updater.BasicRenderer}
+     * renderer class if none is specified when creating the Ext2.Updater.
+     * Defaults to {@link Ext2.Updater.BasicRenderer}
      */
     getDefaultRenderer: function() {
-        return new Ext.Updater.BasicRenderer();
+        return new Ext2.Updater.BasicRenderer();
     },
     /**
      * Get the Element this Updater is bound to
-     * @return {Ext.Element} The element
+     * @return {Ext2.Element} The element
      */
     getEl : function(){
         return this.el;
@@ -169,7 +169,7 @@ Ext.Updater = Ext.extend(Ext.util.Observable, {
      * data, use the callback option, or an <b><tt>update</tt></b> event handler.
      * @param {Object} options A config object containing any of the following options:<ul>
      * <li>url : <b>String/Function</b><p class="sub-desc">The URL to request or a function which
-     * <i>returns</i> the URL (defaults to the value of {@link Ext.Ajax#url} if not specified).</p></li>
+     * <i>returns</i> the URL (defaults to the value of {@link Ext2.Ajax#url} if not specified).</p></li>
      * <li>method : <b>String</b><p class="sub-desc">The HTTP method to
      * use. Defaults to POST if the <tt>params</tt> argument is present, otherwise GET.</p></li>
      * <li>params : <b>String/Object/Function</b><p class="sub-desc">The
@@ -178,12 +178,12 @@ Ext.Updater = Ext.extend(Ext.util.Observable, {
      * or as a function, which returns such an object.</p></li>
      * <li>scripts : <b>Boolean</b><p class="sub-desc">If <tt>true</tt>
      * any &lt;script&gt; tags embedded in the response text will be extracted
-     * and executed (defaults to {@link Ext.Updater.defaults#loadScripts}). If this option is specified,
+     * and executed (defaults to {@link Ext2.Updater.defaults#loadScripts}). If this option is specified,
      * the callback will be called <i>after</i> the execution of the scripts.</p></li>
      * <li>callback : <b>Function</b><p class="sub-desc">A function to
      * be called when the response from the server arrives. The following
      * parameters are passed:<ul>
-     * <li><b>el</b> : Ext.Element<p class="sub-desc">The Element being updated.</p></li>
+     * <li><b>el</b> : Ext2.Element<p class="sub-desc">The Element being updated.</p></li>
      * <li><b>success</b> : Boolean<p class="sub-desc">True for success, false for failure.</p></li>
      * <li><b>response</b> : XMLHttpRequest<p class="sub-desc">The XMLHttpRequest which processed the update.</p></li>
      * <li><b>options</b> : Object<p class="sub-desc">The config object passed to the update call.</p></li></ul>
@@ -195,13 +195,13 @@ Ext.Updater = Ext.extend(Ext.util.Observable, {
      * the default URL for this Updater object, and will be subsequently used in {@link #refresh}
      * calls.  To bypass this behavior, pass <tt>discardUrl:true</tt> (defaults to false).</p></li>
      * <li>timeout : <b>Number</b><p class="sub-desc">The number of seconds to wait for a response before
-     * timing out (defaults to {@link Ext.Updater.defaults#timeout}).</p></li>
+     * timing out (defaults to {@link Ext2.Updater.defaults#timeout}).</p></li>
      * <li>text : <b>String</b><p class="sub-desc">The text to use as the innerHTML of the
-     * {@link Ext.Updater.defaults#indicatorText} div (defaults to 'Loading...').  To replace the entire div, not
-     * just the text, override {@link Ext.Updater.defaults#indicatorText} directly.</p></li>
+     * {@link Ext2.Updater.defaults#indicatorText} div (defaults to 'Loading...').  To replace the entire div, not
+     * just the text, override {@link Ext2.Updater.defaults#indicatorText} directly.</p></li>
      * <li>nocache : <b>Boolean</b><p class="sub-desc">Only needed for GET
      * requests, this option causes an extra, auto-generated parameter to be appended to the request
-     * to defeat caching (defaults to {@link Ext.Updater.defaults#disableCaching}).</p></li></ul>
+     * to defeat caching (defaults to {@link Ext2.Updater.defaults#disableCaching}).</p></li></ul>
      * <p>
      * For example:
 <pre><code>
@@ -242,7 +242,7 @@ um.update({
                 url = url.call(this);
             }
 
-            var o = Ext.apply({}, {
+            var o = Ext2.apply({}, {
                 url : url,
                 params: (typeof params == "function" && callerScope) ? params.createDelegate(callerScope) : params,
                 success: this.processSuccess,
@@ -261,7 +261,7 @@ um.update({
                 }
             }, cfg);
 
-            this.transaction = Ext.Ajax.request(o);
+            this.transaction = Ext2.Ajax.request(o);
         }
     },
 
@@ -283,7 +283,7 @@ um.update({
      * @param {Boolean} reset (optional) Whether to try to reset the form after the update
      * @param {Function} callback (optional) Callback when transaction is complete. The following
      * parameters are passed:<ul>
-     * <li><b>el</b> : Ext.Element<p class="sub-desc">The Element being updated.</p></li>
+     * <li><b>el</b> : Ext2.Element<p class="sub-desc">The Element being updated.</p></li>
      * <li><b>success</b> : Boolean<p class="sub-desc">True for success, false for failure.</p></li>
      * <li><b>response</b> : XMLHttpRequest<p class="sub-desc">The XMLHttpRequest which processed the update.</p></li></ul>
      */
@@ -292,8 +292,8 @@ um.update({
             if(typeof url == "function"){
                 url = url.call(this);
             }
-            form = Ext.getDom(form)
-            this.transaction = Ext.Ajax.request({
+            form = Ext2.getDom(form)
+            this.transaction = Ext2.Ajax.request({
                 form: form,
                 url:url,
                 success: this.processSuccess,
@@ -406,7 +406,7 @@ um.update({
     },
 
     /**
-     * Sets the content renderer for this Updater. See {@link Ext.Updater.BasicRenderer#render} for more details.
+     * Sets the content renderer for this Updater. See {@link Ext2.Updater.BasicRenderer#render} for more details.
      * @param {Object} renderer The object implementing the render() method
      */
     setRenderer : function(renderer){
@@ -414,7 +414,7 @@ um.update({
     },
 
     /**
-     * Returns the content renderer for this Updater. See {@link Ext.Updater.BasicRenderer#render} for more details.
+     * Returns the content renderer for this Updater. See {@link Ext2.Updater.BasicRenderer#render} for more details.
      * @return {Object}
      */
     getRenderer : function(){
@@ -434,7 +434,7 @@ um.update({
      */
     abort : function(){
         if(this.transaction){
-            Ext.Ajax.abort(this.transaction);
+            Ext2.Ajax.abort(this.transaction);
         }
     },
 
@@ -444,17 +444,17 @@ um.update({
      */
     isUpdating : function(){
         if(this.transaction){
-            return Ext.Ajax.isLoading(this.transaction);
+            return Ext2.Ajax.isLoading(this.transaction);
         }
         return false;
     }
 });
 
 /**
- * @class Ext.Updater.defaults
+ * @class Ext2.Updater.defaults
  * The defaults collection enables customizing the default properties of Updater
  */
-   Ext.Updater.defaults = {
+   Ext2.Updater.defaults = {
        /**
          * Timeout for requests or form posts in seconds (defaults to 30 seconds).
          * @type Number
@@ -469,7 +469,7 @@ um.update({
         * Blank page URL to use with SSL file uploads (defaults to {@link Ext#SSL_SECURE_URL} if set, or "javascript:false").
         * @type String
         */
-        sslBlankUrl : (Ext.SSL_SECURE_URL || "javascript:false"),
+        sslBlankUrl : (Ext2.SSL_SECURE_URL || "javascript:false"),
         /**
          * True to append a unique parameter to GET requests to disable caching (defaults to false).
          * @type Boolean
@@ -490,7 +490,7 @@ um.update({
 /**
  * Static convenience method. <b>This method is deprecated in favor of el.load({url:'foo.php', ...})</b>.
  * Usage:
- * <pre><code>Ext.Updater.updateElement("my-div", "stuff.php");</code></pre>
+ * <pre><code>Ext2.Updater.updateElement("my-div", "stuff.php");</code></pre>
  * @param {Mixed} el The element to update
  * @param {String} url The url
  * @param {String/Object} params (optional) Url encoded param string or an object of name/value pairs
@@ -498,25 +498,25 @@ um.update({
  * example: {disableCaching:true, indicatorText: "Loading data..."}
  * @static
  * @deprecated
- * @member Ext.Updater
+ * @member Ext2.Updater
  */
-Ext.Updater.updateElement = function(el, url, params, options){
-    var um = Ext.get(el).getUpdater();
-    Ext.apply(um, options);
+Ext2.Updater.updateElement = function(el, url, params, options){
+    var um = Ext2.get(el).getUpdater();
+    Ext2.apply(um, options);
     um.update(url, params, options ? options.callback : null);
 };
 /**
- * @class Ext.Updater.BasicRenderer
+ * @class Ext2.Updater.BasicRenderer
  * Default Content renderer. Updates the elements innerHTML with the responseText.
  */
-Ext.Updater.BasicRenderer = function(){};
+Ext2.Updater.BasicRenderer = function(){};
 
-Ext.Updater.BasicRenderer.prototype = {
+Ext2.Updater.BasicRenderer.prototype = {
     /**
      * This is called when the transaction is completed and it's time to update the element - The BasicRenderer
      * updates the elements innerHTML with the responseText - To perform a custom render (i.e. XML or JSON processing),
      * create an object with a "render(el, response)" method and pass it to setRenderer on the Updater.
-     * @param {Ext.Element} el The element being rendered
+     * @param {Ext2.Element} el The element being rendered
      * @param {Object} response The XMLHttpRequest object
      * @param {Updater} updateManager The calling update manager
      * @param {Function} callback A callback that will need to be called if loadScripts is true on the Updater
@@ -526,4 +526,4 @@ Ext.Updater.BasicRenderer.prototype = {
     }
 };
 
-Ext.UpdateManager = Ext.Updater;
+Ext2.UpdateManager = Ext2.Updater;

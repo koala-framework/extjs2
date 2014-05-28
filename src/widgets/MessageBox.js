@@ -7,8 +7,8 @@
  */
 
 /**
- * @class Ext.MessageBox
- * <p>Utility class for generating different styles of message boxes.  The alias Ext.Msg can also be used.<p/>
+ * @class Ext2.MessageBox
+ * <p>Utility class for generating different styles of message boxes.  The alias Ext2.Msg can also be used.<p/>
  * <p>Note that the MessageBox is asynchronous.  Unlike a regular JavaScript <code>alert</code> (which will halt
  * browser execution), showing a MessageBox will not cause the code to stop.  For this reason, if you have code
  * that should only run <em>after</em> some user feedback from the MessageBox, you must use a callback function
@@ -16,28 +16,28 @@
  * <p>Example usage:</p>
  *<pre><code>
 // Basic alert:
-Ext.Msg.alert('Status', 'Changes saved successfully.');
+Ext2.Msg.alert('Status', 'Changes saved successfully.');
 
 // Prompt for user data and process the result using a callback:
-Ext.Msg.prompt('Name', 'Please enter your name:', function(btn, text){
+Ext2.Msg.prompt('Name', 'Please enter your name:', function(btn, text){
     if (btn == 'ok'){
         // process text value and close...
     }
 });
 
 // Show a dialog using config options:
-Ext.Msg.show({
+Ext2.Msg.show({
    title:'Save Changes?',
    msg: 'You are closing a tab that has unsaved changes. Would you like to save your changes?',
-   buttons: Ext.Msg.YESNOCANCEL,
+   buttons: Ext2.Msg.YESNOCANCEL,
    fn: processResult,
    animEl: 'elId',
-   icon: Ext.MessageBox.QUESTION
+   icon: Ext2.MessageBox.QUESTION
 });
 </code></pre>
  * @singleton
  */
-Ext.MessageBox = function(){
+Ext2.MessageBox = function(){
     var dlg, opt, mask, waitTimer;
     var bodyEl, msgEl, textboxEl, textareaEl, progressBar, pp, iconEl, spacerEl;
     var buttons, activeTextEl, bwidth, iconCls = '';
@@ -47,7 +47,7 @@ Ext.MessageBox = function(){
         if(dlg.isVisible()){
             dlg.hide();
             handleHide();
-            Ext.callback(opt.fn, opt.scope||window, [button, activeTextEl.dom.value, opt], 1);
+            Ext2.callback(opt.fn, opt.scope||window, [button, activeTextEl.dom.value, opt], 1);
         }
     };
 
@@ -85,7 +85,7 @@ Ext.MessageBox = function(){
             if(typeof buttons[k] != "function"){
                 if(b[k]){
                     buttons[k].show();
-                    buttons[k].setText(typeof b[k] == "string" ? b[k] : Ext.MessageBox.buttonText[k]);
+                    buttons[k].setText(typeof b[k] == "string" ? b[k] : Ext2.MessageBox.buttonText[k]);
                     width += buttons[k].el.getWidth()+15;
                 }else{
                     buttons[k].hide();
@@ -97,12 +97,12 @@ Ext.MessageBox = function(){
 
     return {
         /**
-         * Returns a reference to the underlying {@link Ext.Window} element
-         * @return {Ext.Window} The window
+         * Returns a reference to the underlying {@link Ext2.Window} element
+         * @return {Ext2.Window} The window
          */
         getDialog : function(titleText){
            if(!dlg){
-                dlg = new Ext.Window({
+                dlg = new Ext2.Window({
                     autoCreate : true,
                     title:titleText,
                     resizable:false,
@@ -112,7 +112,6 @@ Ext.MessageBox = function(){
                     maximizable : false,
                     stateful: false,
                     modal: true,
-                    shim:true,
                     buttonAlign:"center",
                     width:400,
                     height:100,
@@ -137,15 +136,15 @@ Ext.MessageBox = function(){
                 buttons["cancel"] = dlg.addButton(bt["cancel"], handleButton.createCallback("cancel"));
                 buttons["ok"].hideMode = buttons["yes"].hideMode = buttons["no"].hideMode = buttons["cancel"].hideMode = 'offsets';
                 dlg.render(document.body);
-                dlg.getEl().addClass('x-window-dlg');
+                dlg.getEl().addClass('x2-window-dlg');
                 mask = dlg.mask;
                 bodyEl = dlg.body.createChild({
                     html:'<div class="ext-mb-icon"></div><div class="ext-mb-content"><span class="ext-mb-text"></span><br /><div class="ext-mb-fix-cursor"><input type="text" class="ext-mb-input" /><textarea class="ext-mb-textarea"></textarea></div></div>'
                 });
-                iconEl = Ext.get(bodyEl.dom.firstChild);
+                iconEl = Ext2.get(bodyEl.dom.firstChild);
                 var contentEl = bodyEl.dom.childNodes[1];
-                msgEl = Ext.get(contentEl.firstChild);
-                textboxEl = Ext.get(contentEl.childNodes[2].firstChild);
+                msgEl = Ext2.get(contentEl.firstChild);
+                textboxEl = Ext2.get(contentEl.childNodes[2].firstChild);
                 textboxEl.enableDisplayMode();
                 textboxEl.addKeyListener([10,13], function(){
                     if(dlg.isVisible() && opt && opt.buttons){
@@ -156,12 +155,12 @@ Ext.MessageBox = function(){
                         }
                     }
                 });
-                textareaEl = Ext.get(contentEl.childNodes[2].childNodes[1]);
+                textareaEl = Ext2.get(contentEl.childNodes[2].childNodes[1]);
                 textareaEl.enableDisplayMode();
-                progressBar = new Ext.ProgressBar({
+                progressBar = new Ext2.ProgressBar({
                     renderTo:bodyEl
                 });
-               bodyEl.createChild({cls:'x-clear'});
+               bodyEl.createChild({cls:'x2-clear'});
             }
             return dlg;
         },
@@ -170,7 +169,7 @@ Ext.MessageBox = function(){
          * Updates the message box body text
          * @param {String} text (optional) Replaces the message box element's innerHTML with the specified string (defaults to
          * the XHTML-compliant non-breaking space character '&amp;#160;')
-         * @return {Ext.MessageBox} this
+         * @return {Ext2.MessageBox} this
          */
         updateText : function(text){
             if(!dlg.isVisible() && !opt.width){
@@ -182,7 +181,7 @@ Ext.MessageBox = function(){
             var mw = msgEl.getWidth() + msgEl.getMargins('lr');
             var fw = dlg.getFrameWidth('lr');
             var bw = dlg.body.getFrameWidth('lr');
-            if (Ext.isIE && iw > 0){
+            if (Ext2.isIE && iw > 0){
                 //3 pixels get subtracted in the icon CSS for an IE margin issue,
                 //so we have to add it back here for the overall width to be consistent
                 iw += 3;
@@ -196,7 +195,7 @@ Ext.MessageBox = function(){
             if(opt.progress === true || opt.wait === true){
                 progressBar.setSize(w-iw-fw-bw);
             }
-            if(Ext.isIE && w == bwidth){
+            if(Ext2.isIE && w == bwidth){
                 w += 4; //Add offset when the content width is smaller than the buttons.    
             }
             dlg.setSize(w, 'auto').center();
@@ -205,13 +204,13 @@ Ext.MessageBox = function(){
 
         /**
          * Updates a progress-style message box's text and progress bar. Only relevant on message boxes
-         * initiated via {@link Ext.MessageBox#progress} or {@link Ext.MessageBox#wait},
-         * or by calling {@link Ext.MessageBox#show} with progress: true.
+         * initiated via {@link Ext2.MessageBox#progress} or {@link Ext2.MessageBox#wait},
+         * or by calling {@link Ext2.MessageBox#show} with progress: true.
          * @param {Number} value Any number between 0 and 1 (e.g., .5, defaults to 0)
          * @param {String} progressText The progress text to display inside the progress bar (defaults to '')
          * @param {String} msg The message box's body text is replaced with the specified string (defaults to undefined
          * so that any existing body text will not get overwritten by default unless a new value is passed in)
-         * @return {Ext.MessageBox} this
+         * @return {Ext2.MessageBox} this
          */
         updateProgress : function(value, progressText, msg){
             progressBar.updateProgress(value, progressText);
@@ -231,7 +230,7 @@ Ext.MessageBox = function(){
 
         /**
          * Hides the message box if it is displayed
-         * @return {Ext.MessageBox} this
+         * @return {Ext2.MessageBox} this
          */
         hide : function(){
             var proxy = dlg ? dlg.activeGhost : null;
@@ -252,7 +251,7 @@ Ext.MessageBox = function(){
          * @param {Object} config The following config options are supported: <ul>
          * <li><b>animEl</b> : String/Element<div class="sub-desc">An id or Element from which the message box should animate as it
          * opens and closes (defaults to undefined)</div></li>
-         * <li><b>buttons</b> : Object/Boolean<div class="sub-desc">A button config object (e.g., Ext.MessageBox.OKCANCEL or {ok:'Foo',
+         * <li><b>buttons</b> : Object/Boolean<div class="sub-desc">A button config object (e.g., Ext2.MessageBox.OKCANCEL or {ok:'Foo',
          * cancel:'Bar'}), or false to not show any buttons (defaults to false)</div></li>
          * <li><b>closable</b> : Boolean<div class="sub-desc">False to hide the top-right close button (defaults to true). Note that
          * progress and wait dialogs will ignore this property and always hide the close button as they can only
@@ -272,14 +271,14 @@ Ext.MessageBox = function(){
          * <li><tt>no</tt></li>
          * <li><tt>cancel</tt></li>
          * </ul></div></div></li>
-         * <li><b>text</b> : String<div class="sub-desc">Value of the input field if either <tt><a href="#show-option-prompt" ext:member="show-option-prompt" ext:cls="Ext.MessageBox">prompt</a></tt>
-         * or <tt><a href="#show-option-multiline" ext:member="show-option-multiline" ext:cls="Ext.MessageBox">multiline</a></tt> is true</div></li>
+         * <li><b>text</b> : String<div class="sub-desc">Value of the input field if either <tt><a href="#show-option-prompt" ext:member="show-option-prompt" ext:cls="Ext2.MessageBox">prompt</a></tt>
+         * or <tt><a href="#show-option-multiline" ext:member="show-option-multiline" ext:cls="Ext2.MessageBox">multiline</a></tt> is true</div></li>
          * <li><b>opt</b> : Object<div class="sub-desc">The config object passed to show.</div></li>
          * </ul></p></div></li>
          * <li><b>scope</b> : Object<div class="sub-desc">The scope of the callback function</div></li>
          * <li><b>icon</b> : String<div class="sub-desc">A CSS class that provides a background image to be used as the body icon for the
-         * dialog (e.g. Ext.MessageBox.WARNING or 'custom-class') (defaults to '')</div></li>
-         * <li><b>iconCls</b> : String<div class="sub-desc">The standard {@link Ext.Window#iconCls} to
+         * dialog (e.g. Ext2.MessageBox.WARNING or 'custom-class') (defaults to '')</div></li>
+         * <li><b>iconCls</b> : String<div class="sub-desc">The standard {@link Ext2.Window#iconCls} to
          * add an optional header icon (defaults to '')</div></li>
          * <li><b>maxWidth</b> : Number<div class="sub-desc">The maximum width in pixels of the message box (defaults to 600)</div></li>
          * <li><b>minWidth</b> : Number<div class="sub-desc">The minimum width in pixels of the message box (defaults to 100)</div></li>
@@ -296,23 +295,23 @@ Ext.MessageBox = function(){
          * <li><b>title</b> : String<div class="sub-desc">The title text</div></li>
          * <li><b>value</b> : String<div class="sub-desc">The string value to set into the active textbox element if displayed</div></li>
          * <li><b>wait</b> : Boolean<div class="sub-desc">True to display a progress bar (defaults to false)</div></li>
-         * <li><b>waitConfig</b> : Object<div class="sub-desc">A {@link Ext.ProgressBar#waitConfig} object (applies only if wait = true)</div></li>
+         * <li><b>waitConfig</b> : Object<div class="sub-desc">A {@link Ext2.ProgressBar#waitConfig} object (applies only if wait = true)</div></li>
          * <li><b>width</b> : Number<div class="sub-desc">The width of the dialog in pixels</div></li>
          * </ul>
          * Example usage:
          * <pre><code>
-Ext.Msg.show({
+Ext2.Msg.show({
    title: 'Address',
    msg: 'Please enter your address:',
    width: 300,
-   buttons: Ext.MessageBox.OKCANCEL,
+   buttons: Ext2.MessageBox.OKCANCEL,
    multiline: true,
    fn: saveAddress,
    animEl: 'addAddressBtn',
-   icon: Ext.MessageBox.INFO
+   icon: Ext2.MessageBox.INFO
 });
 </code></pre>
-         * @return {Ext.MessageBox} this
+         * @return {Ext2.MessageBox} this
          */
         show : function(options){
             if(this.isVisible()){
@@ -398,23 +397,23 @@ Ext.Msg.show({
          * to clear any existing icon.  The following built-in icon classes are supported, but you can also pass
          * in a custom class name:
          * <pre>
-Ext.MessageBox.INFO
-Ext.MessageBox.WARNING
-Ext.MessageBox.QUESTION
-Ext.MessageBox.ERROR
+Ext2.MessageBox.INFO
+Ext2.MessageBox.WARNING
+Ext2.MessageBox.QUESTION
+Ext2.MessageBox.ERROR
          *</pre>
          * @param {String} icon A CSS classname specifying the icon's background image url, or empty string to clear the icon
-         * @return {Ext.MessageBox} this
+         * @return {Ext2.MessageBox} this
          */
         setIcon : function(icon){
             if(icon && icon != ''){
-                iconEl.removeClass('x-hidden');
+                iconEl.removeClass('x2-hidden');
                 iconEl.replaceClass(iconCls, icon);
-                bodyEl.addClass('x-dlg-icon');
+                bodyEl.addClass('x2-dlg-icon');
                 iconCls = icon;
             }else{
-                iconEl.replaceClass(iconCls, 'x-hidden');
-                bodyEl.removeClass('x-dlg-icon')
+                iconEl.replaceClass(iconCls, 'x2-hidden');
+                bodyEl.removeClass('x2-dlg-icon')
                 iconCls = '';
             }
             return this;
@@ -422,12 +421,12 @@ Ext.MessageBox.ERROR
 
         /**
          * Displays a message box with a progress bar.  This message box has no buttons and is not closeable by
-         * the user.  You are responsible for updating the progress bar as needed via {@link Ext.MessageBox#updateProgress}
+         * the user.  You are responsible for updating the progress bar as needed via {@link Ext2.MessageBox#updateProgress}
          * and closing the message box when the process is complete.
          * @param {String} title The title bar text
          * @param {String} msg The message box body text
          * @param {String} progressText (optional) The text to display inside the progress bar (defaults to '')
-         * @return {Ext.MessageBox} this
+         * @return {Ext2.MessageBox} this
          */
         progress : function(title, msg, progressText){
             this.show({
@@ -448,8 +447,8 @@ Ext.MessageBox.ERROR
          * You are responsible for closing the message box when the process is complete.
          * @param {String} msg The message box body text
          * @param {String} title (optional) The title bar text
-         * @param {Object} config (optional) A {@link Ext.ProgressBar#waitConfig} object
-         * @return {Ext.MessageBox} this
+         * @param {Object} config (optional) A {@link Ext2.ProgressBar#waitConfig} object
+         * @return {Ext2.MessageBox} this
          */
         wait : function(msg, title, config){
             this.show({
@@ -474,7 +473,7 @@ Ext.MessageBox.ERROR
          * @param {String} msg The message box body text
          * @param {Function} fn (optional) The callback function invoked after the message box is closed
          * @param {Object} scope (optional) The scope of the callback function
-         * @return {Ext.MessageBox} this
+         * @return {Ext2.MessageBox} this
          */
         alert : function(title, msg, fn, scope){
             this.show({
@@ -496,7 +495,7 @@ Ext.MessageBox.ERROR
          * @param {String} msg The message box body text
          * @param {Function} fn (optional) The callback function invoked after the message box is closed
          * @param {Object} scope (optional) The scope of the callback function
-         * @return {Ext.MessageBox} this
+         * @return {Ext2.MessageBox} this
          */
         confirm : function(title, msg, fn, scope){
             this.show({
@@ -522,7 +521,7 @@ Ext.MessageBox.ERROR
          * @param {Boolean/Number} multiline (optional) True to create a multiline textbox using the defaultTextHeight
          * property, or the height in pixels to create the textbox (defaults to false / single-line)
          * @param {String} value (optional) Default value of the text input element (defaults to '')
-         * @return {Ext.MessageBox} this
+         * @return {Ext2.MessageBox} this
          */
         prompt : function(title, msg, fn, scope, multiline, value){
             this.show({
@@ -610,7 +609,7 @@ Ext.MessageBox.ERROR
          * An object containing the default button text strings that can be overriden for localized language support.
          * Supported properties are: ok, cancel, yes and no.  Generally you should include a locale-specific
          * resource file for handling language support across the framework.
-         * Customize the default text like so: Ext.MessageBox.buttonText.yes = "oui"; //french
+         * Customize the default text like so: Ext2.MessageBox.buttonText.yes = "oui"; //french
          * @type Object
          */
         buttonText : {
@@ -623,6 +622,6 @@ Ext.MessageBox.ERROR
 }();
 
 /**
- * Shorthand for {@link Ext.MessageBox}
+ * Shorthand for {@link Ext2.MessageBox}
  */
-Ext.Msg = Ext.MessageBox;
+Ext2.Msg = Ext2.MessageBox;

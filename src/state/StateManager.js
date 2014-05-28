@@ -7,22 +7,22 @@
  */
 
 /**
- * @class Ext.state.Manager
+ * @class Ext2.state.Manager
  * This is the global state manager. By default all components that are "state aware" check this class
  * for state information if you don't pass them a custom state provider. In order for this class
  * to be useful, it must be initialized with a provider when your application initializes. Example usage:
  <pre><code>
 // in your initialization function
 init : function(){
-   Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
+   Ext2.state.Manager.setProvider(new Ext2.state.CookieProvider());
    var win = new Window(...);
    win.restoreState();
 }
  </code></pre>
  * @singleton
  */
-Ext.state.Manager = function(){
-    var provider = new Ext.state.Provider();
+Ext2.state.Manager = function(){
+    var provider = new Ext2.state.Provider();
 
     return {
         /**

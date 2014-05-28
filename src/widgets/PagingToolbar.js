@@ -7,18 +7,18 @@
  */
 
 /**
- * @class Ext.PagingToolbar
- * @extends Ext.Toolbar
- * <p>A specialized toolbar that is bound to a {@link Ext.data.Store} and provides automatic paging control. This
- * Component {@link Ext.data.Store#load load}s blocks of data into the Store passing parameters who's names are
- * specified by the store's {@link Ext.data.Store#paramNames paramNames} property.</p>
+ * @class Ext2.PagingToolbar
+ * @extends Ext2.Toolbar
+ * <p>A specialized toolbar that is bound to a {@link Ext2.data.Store} and provides automatic paging control. This
+ * Component {@link Ext2.data.Store#load load}s blocks of data into the Store passing parameters who's names are
+ * specified by the store's {@link Ext2.data.Store#paramNames paramNames} property.</p>
  * @constructor
  * Create a new PagingToolbar
  * @param {Object} config The config object
  */
-Ext.PagingToolbar = Ext.extend(Ext.Toolbar, {
+Ext2.PagingToolbar = Ext2.extend(Ext2.Toolbar, {
     /**
-     * @cfg {Ext.data.Store} store The {@link Ext.data.Store} the paging toolbar should use as its data source (required).
+     * @cfg {Ext2.data.Store} store The {@link Ext2.data.Store} the paging toolbar should use as its data source (required).
      */
     /**
      * @cfg {Boolean} displayInfo
@@ -90,7 +90,7 @@ Ext.PagingToolbar = Ext.extend(Ext.Toolbar, {
             /**
              * @event change
              * Fires after the active page has been changed.
-             * @param {Ext.PagingToolbar} this
+             * @param {Ext2.PagingToolbar} this
              * @param {Object} changeEvent An object that has these properties:<ul>
              * <li><code>total</code> : Number <div class="sub-desc">The total number of records in the dataset as
              * returned by the server</div></li>
@@ -104,45 +104,45 @@ Ext.PagingToolbar = Ext.extend(Ext.Toolbar, {
              * @event beforechange
              * Fires just before the active page is changed.
              * Return false to prevent the active page from being changed.
-             * @param {Ext.PagingToolbar} this
+             * @param {Ext2.PagingToolbar} this
              * @param {Object} beforeChangeEvent An object that has these properties:<ul>
              * <li><code>start</code> : Number <div class="sub-desc">The starting row number for the next page of records to
              * be retrieved from the server</div></li>
              * <li><code>limit</code> : Number <div class="sub-desc">The number of records to be retrieved from the server</div></li>
              * </ul>
              * (note: the names of the <b>start</b> and <b>limit</b> properties are determined
-             * by the store's {@link Ext.data.Store#paramNames paramNames} property.)
+             * by the store's {@link Ext2.data.Store#paramNames paramNames} property.)
              */
             'beforechange'
         );
-        Ext.PagingToolbar.superclass.initComponent.call(this);
+        Ext2.PagingToolbar.superclass.initComponent.call(this);
         this.cursor = 0;
         this.bind(this.store);
     },
 
     // private
     onRender : function(ct, position){
-        Ext.PagingToolbar.superclass.onRender.call(this, ct, position);
+        Ext2.PagingToolbar.superclass.onRender.call(this, ct, position);
         this.first = this.addButton({
             tooltip: this.firstText,
-            iconCls: "x-tbar-page-first",
+            iconCls: "x2-tbar-page-first",
             disabled: true,
             handler: this.onClick.createDelegate(this, ["first"])
         });
         this.prev = this.addButton({
             tooltip: this.prevText,
-            iconCls: "x-tbar-page-prev",
+            iconCls: "x2-tbar-page-prev",
             disabled: true,
             handler: this.onClick.createDelegate(this, ["prev"])
         });
         this.addSeparator();
         this.add(this.beforePageText);
-        this.field = Ext.get(this.addDom({
+        this.field = Ext2.get(this.addDom({
            tag: "input",
            type: "text",
            size: "3",
            value: "1",
-           cls: "x-tbar-page-number"
+           cls: "x2-tbar-page-number"
         }).el);
         this.field.on("keydown", this.onPagingKeydown, this);
         this.field.on("focus", function(){this.dom.select();});
@@ -152,25 +152,25 @@ Ext.PagingToolbar = Ext.extend(Ext.Toolbar, {
         this.addSeparator();
         this.next = this.addButton({
             tooltip: this.nextText,
-            iconCls: "x-tbar-page-next",
+            iconCls: "x2-tbar-page-next",
             disabled: true,
             handler: this.onClick.createDelegate(this, ["next"])
         });
         this.last = this.addButton({
             tooltip: this.lastText,
-            iconCls: "x-tbar-page-last",
+            iconCls: "x2-tbar-page-last",
             disabled: true,
             handler: this.onClick.createDelegate(this, ["last"])
         });
         this.addSeparator();
         this.loading = this.addButton({
             tooltip: this.refreshText,
-            iconCls: "x-tbar-loading",
+            iconCls: "x2-tbar-loading",
             handler: this.onClick.createDelegate(this, ["refresh"])
         });
 
         if(this.displayInfo){
-            this.displayEl = Ext.fly(this.el.dom).createChild({cls:'x-paging-info'});
+            this.displayEl = Ext2.fly(this.el.dom).createChild({cls:'x2-paging-info'});
         }
         if(this.dsLoaded){
             this.onLoad.apply(this, this.dsLoaded);
@@ -324,11 +324,11 @@ Ext.PagingToolbar = Ext.extend(Ext.Toolbar, {
     },
 
     /**
-     * Unbinds the paging toolbar from the specified {@link Ext.data.Store}
-     * @param {Ext.data.Store} store The data store to unbind
+     * Unbinds the paging toolbar from the specified {@link Ext2.data.Store}
+     * @param {Ext2.data.Store} store The data store to unbind
      */
     unbind : function(store){
-        store = Ext.StoreMgr.lookup(store);
+        store = Ext2.StoreMgr.lookup(store);
         store.un("beforeload", this.beforeLoad, this);
         store.un("load", this.onLoad, this);
         store.un("loadexception", this.onLoadError, this);
@@ -336,11 +336,11 @@ Ext.PagingToolbar = Ext.extend(Ext.Toolbar, {
     },
 
     /**
-     * Binds the paging toolbar to the specified {@link Ext.data.Store}
-     * @param {Ext.data.Store} store The data store to bind
+     * Binds the paging toolbar to the specified {@link Ext2.data.Store}
+     * @param {Ext2.data.Store} store The data store to bind
      */
     bind : function(store){
-        store = Ext.StoreMgr.lookup(store);
+        store = Ext2.StoreMgr.lookup(store);
         store.on("beforeload", this.beforeLoad, this);
         store.on("load", this.onLoad, this);
         store.on("loadexception", this.onLoadError, this);
@@ -355,7 +355,7 @@ Ext.PagingToolbar = Ext.extend(Ext.Toolbar, {
         if(this.store){
             this.unbind(this.store);
         }
-        Ext.PagingToolbar.superclass.onDestroy.call(this);
+        Ext2.PagingToolbar.superclass.onDestroy.call(this);
     }
 });
-Ext.reg('paging', Ext.PagingToolbar);
+Ext2.reg('paging', Ext2.PagingToolbar);

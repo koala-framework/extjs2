@@ -7,8 +7,8 @@
  */
 
 /**
- @class Ext.util.ClickRepeater
- @extends Ext.util.Observable
+ @class Ext2.util.ClickRepeater
+ @extends Ext2.util.Observable
 
  A wrapper class which can be applied to any element. Fires a "click" event while the
  mouse is pressed. The interval between firings may be specified in the config but
@@ -35,30 +35,30 @@
  @param {Mixed} el The element to listen on
  @param {Object} config
  */
-Ext.util.ClickRepeater = function(el, config)
+Ext2.util.ClickRepeater = function(el, config)
 {
-    this.el = Ext.get(el);
+    this.el = Ext2.get(el);
     this.el.unselectable();
 
-    Ext.apply(this, config);
+    Ext2.apply(this, config);
 
     this.addEvents(
     /**
      * @event mousedown
      * Fires when the mouse button is depressed.
-     * @param {Ext.util.ClickRepeater} this
+     * @param {Ext2.util.ClickRepeater} this
      */
         "mousedown",
     /**
      * @event click
      * Fires on a specified interval during the time the element is pressed.
-     * @param {Ext.util.ClickRepeater} this
+     * @param {Ext2.util.ClickRepeater} this
      */
         "click",
     /**
      * @event mouseup
      * Fires when the mouse key is released.
-     * @param {Ext.util.ClickRepeater} this
+     * @param {Ext2.util.ClickRepeater} this
      */
         "mouseup"
     );
@@ -73,10 +73,10 @@ Ext.util.ClickRepeater = function(el, config)
         this.on("click", this.handler,  this.scope || this);
     }
 
-    Ext.util.ClickRepeater.superclass.constructor.call(this);
+    Ext2.util.ClickRepeater.superclass.constructor.call(this);
 };
 
-Ext.extend(Ext.util.ClickRepeater, Ext.util.Observable, {
+Ext2.extend(Ext2.util.ClickRepeater, Ext2.util.Observable, {
     interval : 20,
     delay: 250,
     preventDefault : true,
@@ -105,7 +105,7 @@ Ext.extend(Ext.util.ClickRepeater, Ext.util.Observable, {
             if(this.pressClass){
                 this.el.removeClass(this.pressClass);
             }
-            Ext.getDoc().un('mouseup', this.handleMouseUp, this);
+            Ext2.getDoc().un('mouseup', this.handleMouseUp, this);
             this.el.removeAllListeners();
         }
         this.disabled = true;
@@ -131,7 +131,7 @@ Ext.extend(Ext.util.ClickRepeater, Ext.util.Observable, {
     // private
     destroy : function() {
         this.disable(true);
-        Ext.destroy(this.el);
+        Ext2.destroy(this.el);
         this.purgeListeners();
     },
     
@@ -144,7 +144,7 @@ Ext.extend(Ext.util.ClickRepeater, Ext.util.Observable, {
         }
         this.mousedownTime = new Date();
 
-        Ext.getDoc().on("mouseup", this.handleMouseUp, this);
+        Ext2.getDoc().on("mouseup", this.handleMouseUp, this);
         this.el.on("mouseout", this.handleMouseOut, this);
 
         this.fireEvent("mousedown", this);
@@ -195,7 +195,7 @@ Ext.extend(Ext.util.ClickRepeater, Ext.util.Observable, {
         clearTimeout(this.timer);
         this.el.un("mouseover", this.handleMouseReturn, this);
         this.el.un("mouseout", this.handleMouseOut, this);
-        Ext.getDoc().un("mouseup", this.handleMouseUp, this);
+        Ext2.getDoc().un("mouseup", this.handleMouseUp, this);
         this.el.removeClass(this.pressClass);
         this.fireEvent("mouseup", this);
     }

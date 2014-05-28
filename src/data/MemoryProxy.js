@@ -7,23 +7,23 @@
  */
 
 /**
- * @class Ext.data.MemoryProxy
- * @extends Ext.data.DataProxy
- * An implementation of Ext.data.DataProxy that simply passes the data specified in its constructor
+ * @class Ext2.data.MemoryProxy
+ * @extends Ext2.data.DataProxy
+ * An implementation of Ext2.data.DataProxy that simply passes the data specified in its constructor
  * to the Reader when its load method is called.
  * @constructor
- * @param {Object} data The data object which the Reader uses to construct a block of Ext.data.Records.
+ * @param {Object} data The data object which the Reader uses to construct a block of Ext2.data.Records.
  */
-Ext.data.MemoryProxy = function(data){
-    Ext.data.MemoryProxy.superclass.constructor.call(this);
+Ext2.data.MemoryProxy = function(data){
+    Ext2.data.MemoryProxy.superclass.constructor.call(this);
     this.data = data;
 };
 
-Ext.extend(Ext.data.MemoryProxy, Ext.data.DataProxy, {
+Ext2.extend(Ext2.data.MemoryProxy, Ext2.data.DataProxy, {
     /**
      * @event loadexception
      * Fires if an exception occurs in the Proxy during data loading. Note that this event is also relayed 
-     * through {@link Ext.data.Store}, so you can listen for it directly on any Store instance.
+     * through {@link Ext2.data.Store}, so you can listen for it directly on any Store instance.
      * @param {Object} this
      * @param {Object} arg The callback's arg object passed to the {@link #load} function
      * @param {Object} null This parameter does not apply and will always be null for MemoryProxy
@@ -33,12 +33,12 @@ Ext.extend(Ext.data.MemoryProxy, Ext.data.DataProxy, {
     /**
      * Load data from the requested source (in this case an in-memory
      * data object passed to the constructor), read the data object into
-     * a block of Ext.data.Records using the passed Ext.data.DataReader implementation, and
+     * a block of Ext2.data.Records using the passed Ext2.data.DataReader implementation, and
      * process that block using the passed callback.
      * @param {Object} params This parameter is not used by the MemoryProxy class.
-     * @param {Ext.data.DataReader} reader The Reader object which converts the data
-     * object into a block of Ext.data.Records.
-     * @param {Function} callback The function into which to pass the block of Ext.data.records.
+     * @param {Ext2.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Ext2.data.Records.
+     * @param {Function} callback The function into which to pass the block of Ext2.data.records.
      * The function must be passed <ul>
      * <li>The Record block object</li>
      * <li>The "arg" argument from the load function</li>

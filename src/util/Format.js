@@ -7,11 +7,11 @@
  */
 
 /**
- * @class Ext.util.Format
+ * @class Ext2.util.Format
  * Reusable data formatting functions
  * @singleton
  */
-Ext.util.Format = function(){
+Ext2.util.Format = function(){
     var trimRe = /^\s+|\s+$/g;
     return {
         /**
@@ -155,7 +155,7 @@ Ext.util.Format = function(){
             if(!v){
                 return "";
             }
-            if(!Ext.isDate(v)){
+            if(!Ext2.isDate(v)){
                 v = new Date(Date.parse(v));
             }
             return v.dateFormat(format || "m/d/Y");
@@ -168,7 +168,7 @@ Ext.util.Format = function(){
          */
         dateRenderer : function(format){
             return function(v){
-                return Ext.util.Format.date(v, format);
+                return Ext2.util.Format.date(v, format);
             };
         },
 

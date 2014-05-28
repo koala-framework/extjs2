@@ -7,20 +7,20 @@
  */
 
 /**
- * @class Ext.layout.ContainerLayout
- * <p>Every {@link Ext.Container Container} delegates the rendering of its child {@link Ext.Component Component}s
- * to a layout manager class which must be {@link Ext.Container#layout configured} into the Container.</p>
+ * @class Ext2.layout.ContainerLayout
+ * <p>Every {@link Ext2.Container Container} delegates the rendering of its child {@link Ext2.Component Component}s
+ * to a layout manager class which must be {@link Ext2.Container#layout configured} into the Container.</p>
  * <p>Some layouts also provide sizing and positioning of child Components.</p>
  * <p>The ContainerLayout class is the default layout manager used when no layout is configured into a Container.
- * It provides the basic foundation for all other layout classes in Ext. It simply renders all child Components
+ * It provides the basic foundation for all other layout classes in Ext2. It simply renders all child Components
  * into the Container, performing no sizing or positioning services.</p>
  * <p>This class is intended to be extended and should generally not need to be created directly via the new keyword.</p>
  */
-Ext.layout.ContainerLayout = function(config){
-    Ext.apply(this, config);
+Ext2.layout.ContainerLayout = function(config){
+    Ext2.apply(this, config);
 };
 
-Ext.layout.ContainerLayout.prototype = {
+Ext2.layout.ContainerLayout.prototype = {
     /**
      * @cfg {String} extraCls
      * An optional extra CSS class that will be added to the container (defaults to '').  This can be useful for
@@ -32,11 +32,11 @@ Ext.layout.ContainerLayout.prototype = {
      */
 
     /**
-     * A reference to the {@link Ext.Component} that is active.  For example,
+     * A reference to the {@link Ext2.Component} that is active.  For example,
      * if(myPanel.layout.activeItem.id == 'item-1') { ... }.  activeItem only applies to layout styles that can
-     * display items one at a time (like {@link Ext.layout.Accordion}, {@link Ext.layout.CardLayout}
-     * and {@link Ext.layout.FitLayout}).  Read-only.  Related to {@link Ext.Container#activeItem}.
-     * @type {Ext.Component}
+     * display items one at a time (like {@link Ext2.layout.Accordion}, {@link Ext2.layout.CardLayout}
+     * and {@link Ext2.layout.FitLayout}).  Read-only.  Related to {@link Ext2.Container#activeItem}.
+     * @type {Ext2.Component}
      * @property activeItem
      */
 
@@ -108,7 +108,7 @@ Ext.layout.ContainerLayout.prototype = {
         var b = this.container.bufferResize;
         if(b){
             if(!this.resizeTask){
-                this.resizeTask = new Ext.util.DelayedTask(this.layout, this);
+                this.resizeTask = new Ext2.util.DelayedTask(this.layout, this);
                 this.resizeBuffer = typeof b == 'number' ? b : 100;
             }
             this.resizeTask.delay(this.resizeBuffer);
@@ -156,6 +156,6 @@ Ext.layout.ContainerLayout.prototype = {
      * by subclasses that require explicit destruction to purge event handlers or remove DOM nodes.
      * @protected
      */
-    destroy : Ext.emptyFn
+    destroy : Ext2.emptyFn
 };
-Ext.Container.LAYOUTS['auto'] = Ext.layout.ContainerLayout;
+Ext2.Container.LAYOUTS['auto'] = Ext2.layout.ContainerLayout;

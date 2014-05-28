@@ -7,24 +7,24 @@
  */
 
 /**
- * @class Ext.Element
+ * @class Ext2.Element
  * <p>Encapsulates a DOM element, adding simple DOM manipulation facilities, normalizing for browser differences.</p>
- * <p>All instances of this class inherit the methods of {@link Ext.Fx} making visual effects easily available to all DOM elements.</p>
- * <p>Note that the events documented in this class are not Ext events, they encapsulate browser events. To
- * access the underlying browser event, see {@link Ext.EventObject#browserEvent}. Some older
+ * <p>All instances of this class inherit the methods of {@link Ext2.Fx} making visual effects easily available to all DOM elements.</p>
+ * <p>Note that the events documented in this class are not Ext2 events, they encapsulate browser events. To
+ * access the underlying browser event, see {@link Ext2.EventObject#browserEvent}. Some older
  * browsers may not support the full range of events. Which events are supported is beyond the control of ExtJs.</p>
  * <p>Usage:</p>
 <pre><code>
 // by id
-var el = Ext.get("my-div");
+var el = Ext2.get("my-div");
 
 // by DOM element reference
-var el = Ext.get(myDivElement);
+var el = Ext2.get(myDivElement);
 </code></pre>
  * <b>Animations</b><br />
  * Many of the functions for manipulating an element have an optional "animate" parameter. The animate parameter
  * should either be a boolean (true) or an object literal with animation options. Note that the supported Element animation
- * options are a subset of the {@link Ext.Fx} animation options specific to Fx effects.  The Element animation options are:
+ * options are a subset of the {@link Ext2.Fx} animation options specific to Fx effects.  The Element animation options are:
 <pre>
 Option    Default   Description
 --------- --------  ---------------------------------------------
@@ -36,7 +36,7 @@ scope     this      The scope (this) of the callback function
  * Also, the Anim object being used for the animation will be set on your options object as "anim", which allows you to stop or
  * manipulate the animation. Here's an example:
 <pre><code>
-var el = Ext.get("my-div");
+var el = Ext2.get("my-div");
 
 // no animation
 el.setWidth(100);
@@ -64,15 +64,15 @@ if(opt.anim.isAnimated()){
 }
 </code></pre>
  * <b> Composite (Collections of) Elements</b><br />
- * For working with collections of Elements, see {@link Ext.CompositeElement}
+ * For working with collections of Elements, see {@link Ext2.CompositeElement}
  * @constructor Create a new Element directly.
  * @param {String/HTMLElement} element
  * @param {Boolean} forceNew (optional) By default the constructor checks to see if there is already an instance of this element in the cache and if there is it returns the same instance. This will skip that check (useful for extending this class).
  */
 (function(){
-var D = Ext.lib.Dom;
-var E = Ext.lib.Event;
-var A = Ext.lib.Anim;
+var D = Ext2.lib.Dom;
+var E = Ext2.lib.Event;
+var A = Ext2.lib.Anim;
 
 // local style camelizing for speed
 var propCache = {};
@@ -80,15 +80,15 @@ var camelRe = /(-[a-z])/gi;
 var camelFn = function(m, a){ return a.charAt(1).toUpperCase(); };
 var view = document.defaultView;
 
-Ext.Element = function(element, forceNew){
+Ext2.Element = function(element, forceNew){
     var dom = typeof element == "string" ?
             document.getElementById(element) : element;
     if(!dom){ // invalid id/element
         return null;
     }
     var id = dom.id;
-    if(forceNew !== true && id && Ext.Element.cache[id]){ // element object already exists
-        return Ext.Element.cache[id];
+    if(forceNew !== true && id && Ext2.Element.cache[id]){ // element object already exists
+        return Ext2.Element.cache[id];
     }
 
     /**
@@ -101,64 +101,64 @@ Ext.Element = function(element, forceNew){
      * The DOM element ID
      * @type String
      */
-    this.id = id || Ext.id(dom);
+    this.id = id || Ext2.id(dom);
 };
 
-var El = Ext.Element;
+var El = Ext2.Element;
 
 El.prototype = {
 //  Mouse events
     /**
      * @event click
      * Fires when a mouse click is detected with the element.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event dblclick
      * Fires when a mouse double click is detected with the element.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event mousedown
      * Fires when a mousedown is detected with the element.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event mouseup
      * Fires when a mouseup is detected with the element.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event mouseover
      * Fires when a mouseover is detected with the element.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event mousemove
      * Fires when a mousemove is detected with the element.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event mouseout
      * Fires when a mouseout is detected with the element.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
 
 //  Keyboard events
     /**
      * @event keypress
      * Fires when a keypress is detected with the element.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event keydown
      * Fires when a keydown is detected with the element.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event keyup
      * Fires when a keyup is detected with the element.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
 
 
@@ -166,118 +166,118 @@ El.prototype = {
     /**
      * @event load
      * Fires when the user agent finishes loading all content within the element. Only supported by window, frames, objects and images.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event unload
      * Fires when the user agent removes all content from a window or frame. For elements, it fires when the target element or any of its content has been removed.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event abort
      * Fires when an object/image is stopped from loading before completely loaded.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event error
      * Fires when an object/image/frame cannot be loaded properly.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event resize
      * Fires when a document view is resized.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event scroll
      * Fires when a document view is scrolled.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
 
 //  Form events
     /**
      * @event select
      * Fires when a user selects some text in a text field, including input and textarea.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event change
      * Fires when a control loses the input focus and its value has been modified since gaining focus.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event submit
      * Fires when a form is submitted.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event reset
      * Fires when a form is reset.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event focus
      * Fires when an element receives focus either via the pointing device or by tab navigation.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event blur
      * Fires when an element loses focus either via the pointing device or by tabbing navigation.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
 
 //  User Interface events
     /**
      * @event DOMFocusIn
      * Where supported. Similar to HTML focus event, but can be applied to any focusable element.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event.
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event.
      */
     /**
      * @event DOMFocusOut
      * Where supported. Similar to HTML blur event, but can be applied to any focusable element.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event DOMActivate
      * Where supported. Fires when an element is activated, for instance, through a mouse click or a keypress.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
 
 //  DOM Mutation events
     /**
      * @event DOMSubtreeModified
      * Where supported. Fires when the subtree is modified.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event DOMNodeInserted
      * Where supported. Fires when a node has been added as a child of another node.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event DOMNodeRemoved
      * Where supported. Fires when a descendant node of the element is removed.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event DOMNodeRemovedFromDocument
      * Where supported. Fires when a node is being removed from a document.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event DOMNodeInsertedIntoDocument
      * Where supported. Fires when a node is being inserted into a document.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event DOMAttrModified
      * Where supported. Fires when an attribute has been modified.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
     /**
      * @event DOMCharacterDataModified
      * Where supported. Fires when the character data has been modified.
-     * @param {Ext.EventObject} e The {@link Ext.EventObject} encapsulating the DOM event
+     * @param {Ext2.EventObject} e The {@link Ext2.EventObject} encapsulating the DOM event
      */
 
     /**
@@ -295,8 +295,8 @@ El.prototype = {
     /**
      * Sets the element's visibility mode. When setVisible() is called it
      * will use this to determine whether to set the visibility or the display property.
-     * @param visMode Ext.Element.VISIBILITY or Ext.Element.DISPLAY
-     * @return {Ext.Element} this
+     * @param visMode Ext2.Element.VISIBILITY or Ext2.Element.DISPLAY
+     * @return {Ext2.Element} this
      */
     setVisibilityMode : function(visMode){
         this.visibilityMode = visMode;
@@ -305,7 +305,7 @@ El.prototype = {
     /**
      * Convenience method for setVisibilityMode(Element.DISPLAY)
      * @param {String} display (optional) What to set display to when visible
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     enableDisplayMode : function(display){
         this.setVisibilityMode(El.DISPLAY);
@@ -317,19 +317,19 @@ El.prototype = {
      * Looks at this node and then at parent nodes for a match of the passed simple selector (e.g. div.some-class or span:first-child)
      * @param {String} selector The simple selector to test
      * @param {Number/Mixed} maxDepth (optional) The max depth to search as a number or element (defaults to 50 || document.body)
-     * @param {Boolean} returnEl (optional) True to return a Ext.Element object instead of DOM node
+     * @param {Boolean} returnEl (optional) True to return a Ext2.Element object instead of DOM node
      * @return {HTMLElement} The matching DOM node (or null if no match was found)
      */
     findParent : function(simpleSelector, maxDepth, returnEl){
-        var p = this.dom, b = document.body, depth = 0, dq = Ext.DomQuery, stopEl;
+        var p = this.dom, b = document.body, depth = 0, dq = Ext2.DomQuery, stopEl;
         maxDepth = maxDepth || 50;
         if(typeof maxDepth != "number"){
-            stopEl = Ext.getDom(maxDepth);
+            stopEl = Ext2.getDom(maxDepth);
             maxDepth = Number.MAX_VALUE;
         }
         while(p && p.nodeType == 1 && depth < maxDepth && p != b && p != stopEl){
             if(dq.is(p, simpleSelector)){
-                return returnEl ? Ext.get(p) : p;
+                return returnEl ? Ext2.get(p) : p;
             }
             depth++;
             p = p.parentNode;
@@ -343,21 +343,21 @@ El.prototype = {
      * @param {String} selector The simple selector to test
      * @param {Number/Mixed} maxDepth (optional) The max depth to
             search as a number or element (defaults to 10 || document.body)
-     * @param {Boolean} returnEl (optional) True to return a Ext.Element object instead of DOM node
+     * @param {Boolean} returnEl (optional) True to return a Ext2.Element object instead of DOM node
      * @return {HTMLElement} The matching DOM node (or null if no match was found)
      */
     findParentNode : function(simpleSelector, maxDepth, returnEl){
-        var p = Ext.fly(this.dom.parentNode, '_internal');
+        var p = Ext2.fly(this.dom.parentNode, '_internal');
         return p ? p.findParent(simpleSelector, maxDepth, returnEl) : null;
     },
 
     /**
      * Walks up the dom looking for a parent node that matches the passed simple selector (e.g. div.some-class or span:first-child).
-     * This is a shortcut for findParentNode() that always returns an Ext.Element.
+     * This is a shortcut for findParentNode() that always returns an Ext2.Element.
      * @param {String} selector The simple selector to test
      * @param {Number/Mixed} maxDepth (optional) The max depth to
             search as a number or element (defaults to 10 || document.body)
-     * @return {Ext.Element} The matching DOM node (or null if no match was found)
+     * @return {Ext2.Element} The matching DOM node (or null if no match was found)
      */
     up : function(simpleSelector, maxDepth){
         return this.findParentNode(simpleSelector, maxDepth, true);
@@ -371,7 +371,7 @@ El.prototype = {
      * @return {Boolean} True if this element matches the selector, else false
      */
     is : function(simpleSelector){
-        return Ext.DomQuery.is(this.dom, simpleSelector);
+        return Ext2.DomQuery.is(this.dom, simpleSelector);
     },
 
     /**
@@ -381,7 +381,7 @@ El.prototype = {
      * @param {Function} onComplete (optional) Function to call when animation completes
      * @param {String} easing (optional) Easing method to use (defaults to 'easeOut')
      * @param {String} animType (optional) 'run' is the default. Can also be 'color', 'motion', or 'scroll'
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     animate : function(args, duration, onComplete, easing, animType){
         this.anim(args, {duration: duration, callback: onComplete, easing: easing}, animType);
@@ -394,13 +394,13 @@ El.prototype = {
     anim : function(args, opt, animType, defaultDur, defaultEase, cb){
         animType = animType || 'run';
         opt = opt || {};
-        var anim = Ext.lib.Anim[animType](
+        var anim = Ext2.lib.Anim[animType](
             this.dom, args,
             (opt.duration || defaultDur) || .35,
             (opt.easing || defaultEase) || 'easeOut',
             function(){
-                Ext.callback(cb, this);
-                Ext.callback(opt.callback, opt.scope || this, [this, opt]);
+                Ext2.callback(cb, this);
+                Ext2.callback(opt.callback, opt.scope || this, [this, opt]);
             },
             this
         );
@@ -442,12 +442,12 @@ El.prototype = {
     /**
      * Scrolls this element into view within the passed container.
      * @param {Mixed} container (optional) The container element to scroll (defaults to document.body).  Should be a
-     * string (id), dom node, or Ext.Element.
+     * string (id), dom node, or Ext2.Element.
      * @param {Boolean} hscroll (optional) False to disable horizontal scroll (defaults to true)
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     scrollIntoView : function(container, hscroll){
-        var c = Ext.getDom(container) || Ext.getBody().dom;
+        var c = Ext2.getDom(container) || Ext2.getBody().dom;
         var el = this.dom;
 
         var o = this.getOffsetsTo(c),
@@ -482,7 +482,7 @@ El.prototype = {
 
     // private
     scrollChildIntoView : function(child, hscroll){
-        Ext.fly(child, '_scrollChildIntoView').scrollIntoView(this, hscroll);
+        Ext2.fly(child, '_scrollChildIntoView').scrollIntoView(this, hscroll);
     },
 
     /**
@@ -492,7 +492,7 @@ El.prototype = {
      * @param {Float} duration (optional) Length of the animation in seconds (defaults to .35)
      * @param {Function} onComplete (optional) Function to call when animation completes
      * @param {String} easing (optional) Easing method to use (defaults to easeOut)
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     autoHeight : function(animate, duration, onComplete, easing){
         var oldHeight = this.getHeight();
@@ -539,7 +539,7 @@ El.prototype = {
         }
         var p = this.dom.parentNode;
         while(p && p.tagName.toLowerCase() != "body"){
-            if(!Ext.fly(p, '_isVisible').isVisible()){
+            if(!Ext2.fly(p, '_isVisible').isVisible()){
                 return false;
             }
             p = p.parentNode;
@@ -548,9 +548,9 @@ El.prototype = {
     },
 
     /**
-     * Creates a {@link Ext.CompositeElement} for child nodes based on the passed CSS selector (the selector should not contain an id).
+     * Creates a {@link Ext2.CompositeElement} for child nodes based on the passed CSS selector (the selector should not contain an id).
      * @param {String} selector The CSS selector
-     * @param {Boolean} unique (optional) True to create a unique Ext.Element for each child (defaults to false, which creates a single shared flyweight object)
+     * @param {Boolean} unique (optional) True to create a unique Ext2.Element for each child (defaults to false, which creates a single shared flyweight object)
      * @return {CompositeElement/CompositeElementLite} The composite element
      */
     select : function(selector, unique){
@@ -563,65 +563,65 @@ El.prototype = {
      * @return {Array} An array of the matched nodes
      */
     query : function(selector){
-        return Ext.DomQuery.select(selector, this.dom);
+        return Ext2.DomQuery.select(selector, this.dom);
     },
 
     /**
      * Selects a single child at any depth below this element based on the passed CSS selector (the selector should not contain an id).
      * @param {String} selector The CSS selector
-     * @param {Boolean} returnDom (optional) True to return the DOM node instead of Ext.Element (defaults to false)
-     * @return {HTMLElement/Ext.Element} The child Ext.Element (or DOM node if returnDom = true)
+     * @param {Boolean} returnDom (optional) True to return the DOM node instead of Ext2.Element (defaults to false)
+     * @return {HTMLElement/Ext2.Element} The child Ext2.Element (or DOM node if returnDom = true)
      */
     child : function(selector, returnDom){
-        var n = Ext.DomQuery.selectNode(selector, this.dom);
-        return returnDom ? n : Ext.get(n);
+        var n = Ext2.DomQuery.selectNode(selector, this.dom);
+        return returnDom ? n : Ext2.get(n);
     },
 
     /**
      * Selects a single *direct* child based on the passed CSS selector (the selector should not contain an id).
      * @param {String} selector The CSS selector
-     * @param {Boolean} returnDom (optional) True to return the DOM node instead of Ext.Element (defaults to false)
-     * @return {HTMLElement/Ext.Element} The child Ext.Element (or DOM node if returnDom = true)
+     * @param {Boolean} returnDom (optional) True to return the DOM node instead of Ext2.Element (defaults to false)
+     * @return {HTMLElement/Ext2.Element} The child Ext2.Element (or DOM node if returnDom = true)
      */
     down : function(selector, returnDom){
-        var n = Ext.DomQuery.selectNode(" > " + selector, this.dom);
-        return returnDom ? n : Ext.get(n);
+        var n = Ext2.DomQuery.selectNode(" > " + selector, this.dom);
+        return returnDom ? n : Ext2.get(n);
     },
 
     /**
-     * Initializes a {@link Ext.dd.DD} drag drop object for this element.
+     * Initializes a {@link Ext2.dd.DD} drag drop object for this element.
      * @param {String} group The group the DD object is member of
      * @param {Object} config The DD config object
      * @param {Object} overrides An object containing methods to override/implement on the DD object
-     * @return {Ext.dd.DD} The DD object
+     * @return {Ext2.dd.DD} The DD object
      */
     initDD : function(group, config, overrides){
-        var dd = new Ext.dd.DD(Ext.id(this.dom), group, config);
-        return Ext.apply(dd, overrides);
+        var dd = new Ext2.dd.DD(Ext2.id(this.dom), group, config);
+        return Ext2.apply(dd, overrides);
     },
 
     /**
-     * Initializes a {@link Ext.dd.DDProxy} object for this element.
+     * Initializes a {@link Ext2.dd.DDProxy} object for this element.
      * @param {String} group The group the DDProxy object is member of
      * @param {Object} config The DDProxy config object
      * @param {Object} overrides An object containing methods to override/implement on the DDProxy object
-     * @return {Ext.dd.DDProxy} The DDProxy object
+     * @return {Ext2.dd.DDProxy} The DDProxy object
      */
     initDDProxy : function(group, config, overrides){
-        var dd = new Ext.dd.DDProxy(Ext.id(this.dom), group, config);
-        return Ext.apply(dd, overrides);
+        var dd = new Ext2.dd.DDProxy(Ext2.id(this.dom), group, config);
+        return Ext2.apply(dd, overrides);
     },
 
     /**
-     * Initializes a {@link Ext.dd.DDTarget} object for this element.
+     * Initializes a {@link Ext2.dd.DDTarget} object for this element.
      * @param {String} group The group the DDTarget object is member of
      * @param {Object} config The DDTarget config object
      * @param {Object} overrides An object containing methods to override/implement on the DDTarget object
-     * @return {Ext.dd.DDTarget} The DDTarget object
+     * @return {Ext2.dd.DDTarget} The DDTarget object
      */
     initDDTarget : function(group, config, overrides){
-        var dd = new Ext.dd.DDTarget(Ext.id(this.dom), group, config);
-        return Ext.apply(dd, overrides);
+        var dd = new Ext2.dd.DDTarget(Ext2.id(this.dom), group, config);
+        return Ext2.apply(dd, overrides);
     },
 
     /**
@@ -629,7 +629,7 @@ El.prototype = {
      * the display property to hide the element, otherwise it uses visibility. The default is to hide and show using the visibility property.
      * @param {Boolean} visible Whether the element is visible
      * @param {Boolean/Object} animate (optional) True for the default animation, or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
      setVisible : function(visible, animate){
         if(!animate || !A){
@@ -656,7 +656,7 @@ El.prototype = {
                          }else{
                              dom.style.visibility = "hidden";
                          }
-                         Ext.get(dom).setOpacity(1);
+                         Ext2.get(dom).setOpacity(1);
                      }
                  });
         }
@@ -674,7 +674,7 @@ El.prototype = {
     /**
      * Toggles the element's visibility or display, depending on visibility mode.
      * @param {Boolean/Object} animate (optional) True for the default animation, or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     toggle : function(animate){
         this.setVisible(!this.isVisible(), this.preanim(arguments, 0));
@@ -684,7 +684,7 @@ El.prototype = {
     /**
      * Sets the CSS display property. Uses originalDisplay if the specified value is a boolean true.
      * @param {Mixed} value Boolean value to display the element using its default display, or a string to set the display directly.
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     setDisplayed : function(value) {
         if(typeof value == "boolean"){
@@ -696,7 +696,7 @@ El.prototype = {
 
     /**
      * Tries to focus the element. Any exceptions are caught and ignored.
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     focus : function() {
         try{
@@ -707,7 +707,7 @@ El.prototype = {
 
     /**
      * Tries to blur the element. Any exceptions are caught and ignored.
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     blur : function() {
         try{
@@ -719,10 +719,10 @@ El.prototype = {
     /**
      * Adds one or more CSS classes to the element. Duplicate classes are automatically filtered out.
      * @param {String/Array} className The CSS class to add, or an array of classes
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     addClass : function(className){
-        if(Ext.isArray(className)){
+        if(Ext2.isArray(className)){
             for(var i = 0, len = className.length; i < len; i++) {
             	this.addClass(className[i]);
             }
@@ -737,14 +737,14 @@ El.prototype = {
     /**
      * Adds one or more CSS classes to this element and removes the same class(es) from all siblings.
      * @param {String/Array} className The CSS class to add, or an array of classes
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     radioClass : function(className){
         var siblings = this.dom.parentNode.childNodes;
         for(var i = 0; i < siblings.length; i++) {
         	var s = siblings[i];
         	if(s.nodeType == 1){
-        	    Ext.get(s).removeClass(className);
+        	    Ext2.get(s).removeClass(className);
         	}
         }
         this.addClass(className);
@@ -754,13 +754,13 @@ El.prototype = {
     /**
      * Removes one or more CSS classes from the element.
      * @param {String/Array} className The CSS class to remove, or an array of classes
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     removeClass : function(className){
         if(!className || !this.dom.className){
             return this;
         }
-        if(Ext.isArray(className)){
+        if(Ext2.isArray(className)){
             for(var i = 0, len = className.length; i < len; i++) {
             	this.removeClass(className[i]);
             }
@@ -784,7 +784,7 @@ El.prototype = {
     /**
      * Toggles the specified CSS class on this element (removes it if it already exists, otherwise adds it).
      * @param {String} className The CSS class to toggle
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     toggleClass : function(className){
         if(this.hasClass(className)){
@@ -808,7 +808,7 @@ El.prototype = {
      * Replaces a CSS class on the element with another.  If the old name does not exist, the new name will simply be added.
      * @param {String} oldClassName The CSS class to replace
      * @param {String} newClassName The replacement CSS class
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     replaceClass : function(oldClassName, newClassName){
         this.removeClass(oldClassName);
@@ -889,7 +889,7 @@ El.prototype = {
      * Wrapper for setting style properties, also takes single object parameter of multiple styles.
      * @param {String/Object} property The style property to be set, or an object of multiple styles.
      * @param {String} value (optional) The value to apply to the given property, or null if an object was passed.
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     setStyle : function(prop, value){
         if(typeof prop == "string"){
@@ -916,10 +916,10 @@ El.prototype = {
      * More flexible version of {@link #setStyle} for setting style properties.
      * @param {String/Object/Function} styles A style specification string, e.g. "width:100px", or object in the form {width:"100px"}, or
      * a function which returns such a specification.
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     applyStyles : function(style){
-        Ext.DomHelper.applyStyles(this.dom, style);
+        Ext2.DomHelper.applyStyles(this.dom, style);
         return this;
     },
 
@@ -954,7 +954,7 @@ El.prototype = {
       */
     getOffsetsTo : function(el){
         var o = this.getXY();
-        var e = Ext.fly(el, '_internal').getXY();
+        var e = Ext2.fly(el, '_internal').getXY();
         return [o[0]-e[0],o[1]-e[1]];
     },
 
@@ -962,7 +962,7 @@ El.prototype = {
      * Sets the X position of the element based on page coordinates.  Element must be part of the DOM tree to have page coordinates (display:none or elements not appended return false).
      * @param {Number} The X position of the element
      * @param {Boolean/Object} animate (optional) True for the default animation, or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     setX : function(x, animate){
         if(!animate || !A){
@@ -977,7 +977,7 @@ El.prototype = {
      * Sets the Y position of the element based on page coordinates.  Element must be part of the DOM tree to have page coordinates (display:none or elements not appended return false).
      * @param {Number} The Y position of the element
      * @param {Boolean/Object} animate (optional) True for the default animation, or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     setY : function(y, animate){
         if(!animate || !A){
@@ -991,7 +991,7 @@ El.prototype = {
     /**
      * Sets the element's left position directly using CSS style (instead of {@link #setX}).
      * @param {String} left The left CSS property value
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     setLeft : function(left){
         this.setStyle("left", this.addUnits(left));
@@ -1001,7 +1001,7 @@ El.prototype = {
     /**
      * Sets the element's top position directly using CSS style (instead of {@link #setY}).
      * @param {String} top The top CSS property value
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     setTop : function(top){
         this.setStyle("top", this.addUnits(top));
@@ -1011,7 +1011,7 @@ El.prototype = {
     /**
      * Sets the element's CSS right style.
      * @param {String} right The right CSS property value
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     setRight : function(right){
         this.setStyle("right", this.addUnits(right));
@@ -1021,7 +1021,7 @@ El.prototype = {
     /**
      * Sets the element's CSS bottom style.
      * @param {String} bottom The bottom CSS property value
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     setBottom : function(bottom){
         this.setStyle("bottom", this.addUnits(bottom));
@@ -1033,7 +1033,7 @@ El.prototype = {
      * The element must be part of the DOM tree to have page coordinates (display:none or elements not appended return false).
      * @param {Array} pos Contains X & Y [x, y] values for new position (coordinates are page-based)
      * @param {Boolean/Object} animate (optional) True for the default animation, or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     setXY : function(pos, animate){
         if(!animate || !A){
@@ -1050,7 +1050,7 @@ El.prototype = {
      * @param {Number} x X value for new position (coordinates are page-based)
      * @param {Number} y Y value for new position (coordinates are page-based)
      * @param {Boolean/Object} animate (optional) True for the default animation, or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     setLocation : function(x, y, animate){
         this.setXY([x, y], this.preanim(arguments, 2));
@@ -1063,7 +1063,7 @@ El.prototype = {
      * @param {Number} x X value for new position (coordinates are page-based)
      * @param {Number} y Y value for new position (coordinates are page-based)
      * @param {Boolean/Object} animate (optional) True for the default animation, or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     moveTo : function(x, y, animate){
         this.setXY([x, y], this.preanim(arguments, 2));
@@ -1073,7 +1073,7 @@ El.prototype = {
     /**
      * Returns the region of the given element.
      * The element must be part of the DOM tree to have a region (display:none or elements not appended return false).
-     * @return {Region} A Ext.lib.Region containing "top, left, bottom, right" member data.
+     * @return {Region} A Ext2.lib.Region containing "top, left, bottom, right" member data.
      */
     getRegion : function(){
         return D.getRegion(this.dom);
@@ -1148,13 +1148,13 @@ El.prototype = {
         var w, h, d = this.dom, s = d.style;
         if(s.width && s.width != 'auto'){
             w = parseInt(s.width, 10);
-            if(Ext.isBorderBox){
+            if(Ext2.isBorderBox){
                w -= this.getFrameWidth('lr');
             }
         }
         if(s.height && s.height != 'auto'){
             h = parseInt(s.height, 10);
-            if(Ext.isBorderBox){
+            if(Ext2.isBorderBox){
                h -= this.getFrameWidth('tb');
             }
         }
@@ -1220,7 +1220,7 @@ El.prototype = {
      * <li>A String used to set the CSS width style. Animation may <b>not</b> be used.
      * </ul></div>
      * @param {Boolean/Object} animate (optional) true for the default animation or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     setWidth : function(width, animate){
         width = this.adjustWidth(width);
@@ -1239,7 +1239,7 @@ El.prototype = {
      * <li>A String used to set the CSS height style. Animation may <b>not</b> be used.</li>
      * </ul></div>
      * @param {Boolean/Object} animate (optional) true for the default animation or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
      setHeight : function(height, animate){
         height = this.adjustHeight(height);
@@ -1263,7 +1263,7 @@ El.prototype = {
      * <li>A String used to set the CSS height style. Animation may <b>not</b> be used.</li>
      * </ul></div>
      * @param {Boolean/Object} animate (optional) true for the default animation or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
      setSize : function(width, height, animate){
         if(typeof width == "object"){ // in case of object from getSize()
@@ -1292,7 +1292,7 @@ El.prototype = {
      * <li>A String used to set the CSS height style. Animation may <b>not</b> be used.</li>
      * </ul></div>
      * @param {Boolean/Object} animate (optional) true for the default animation or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     setBounds : function(x, y, width, height, animate){
         if(!animate || !A){
@@ -1308,9 +1308,9 @@ El.prototype = {
 
     /**
      * Sets the element's position and size the specified region. If animation is true then width, height, x and y will be animated concurrently.
-     * @param {Ext.lib.Region} region The region to fill
+     * @param {Ext2.lib.Region} region The region to fill
      * @param {Boolean/Object} animate (optional) true for the default animation or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     setRegion : function(region, animate){
         this.setBounds(region.left, region.top, region.right-region.left, region.bottom-region.top, this.preanim(arguments, 1));
@@ -1322,8 +1322,8 @@ El.prototype = {
      * @param {String} eventName The type of event to handle
      * @param {Function} fn The handler function the event invokes. This function is passed
      * the following parameters:<ul>
-     * <li><b>evt</b> : EventObject<div class="sub-desc">The {@link Ext.EventObject EventObject} describing the event.</div></li>
-     * <li><b>el</b> : Element<div class="sub-desc">The {@link Ext.Element Element} which was the target of the event.
+     * <li><b>evt</b> : EventObject<div class="sub-desc">The {@link Ext2.EventObject EventObject} describing the event.</div></li>
+     * <li><b>el</b> : Element<div class="sub-desc">The {@link Ext2.Element Element} which was the target of the event.
      * Note that this may be filtered by using the <tt>delegate</tt> option.</div></li>
      * <li><b>o</b> : Object<div class="sub-desc">The options object from the addListener call.</div></li>
      * </ul>
@@ -1337,10 +1337,10 @@ El.prototype = {
      * <li><b>stopEvent</b> Boolean: <div class="sub-desc">True to stop the event. That is stop propagation, and prevent the default action.</div></li>
      * <li><b>preventDefault</b> Boolean: <div class="sub-desc">True to prevent the default action</div></li>
      * <li><b>stopPropagation</b> Boolean: <div class="sub-desc">True to prevent event propagation</div></li>
-     * <li><b>normalized</b> Boolean: <div class="sub-desc">False to pass a browser event to the handler function instead of an Ext.EventObject</div></li>
+     * <li><b>normalized</b> Boolean: <div class="sub-desc">False to pass a browser event to the handler function instead of an Ext2.EventObject</div></li>
      * <li><b>delay</b> Number: <div class="sub-desc">The number of milliseconds to delay the invocation of the handler after te event fires.</div></li>
      * <li><b>single</b> Boolean: <div class="sub-desc">True to add a handler to handle just the next firing of the event, and then remove itself.</div></li>
-     * <li><b>buffer</b> Number: <div class="sub-desc">Causes the handler to be scheduled to run in an {@link Ext.util.DelayedTask} delayed
+     * <li><b>buffer</b> Number: <div class="sub-desc">Causes the handler to be scheduled to run in an {@link Ext2.util.DelayedTask} delayed
      * by the specified number of milliseconds. If the event fires again within that time, the original
      * handler is <em>not</em> invoked, but the new handler is scheduled in its place.</div></li>
      * </ul><br>
@@ -1391,7 +1391,7 @@ el.on({
 });</code></pre>
      */
     addListener : function(eventName, fn, scope, options){
-        Ext.EventManager.on(this.dom,  eventName, fn, scope || this, options);
+        Ext2.EventManager.on(this.dom,  eventName, fn, scope || this, options);
     },
 
     /**
@@ -1405,19 +1405,19 @@ el.un('click', this.handlerFn);
      * @param {Function} fn the method the event invokes
      * @param {Object} scope (optional) The scope (The <tt>this</tt> reference) of the handler function. Defaults
      * to this Element.
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     removeListener : function(eventName, fn, scope){
-        Ext.EventManager.removeListener(this.dom,  eventName, fn, scope || this);
+        Ext2.EventManager.removeListener(this.dom,  eventName, fn, scope || this);
         return this;
     },
 
     /**
      * Removes all previous added listeners from this element
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     removeAllListeners : function(){
-        Ext.EventManager.removeAll(this.dom);
+        Ext2.EventManager.removeAll(this.dom);
         return this;
     },
 
@@ -1425,7 +1425,7 @@ el.un('click', this.handlerFn);
      * Create an event handler on this element such that when the event fires and is handled by this element,
      * it will be relayed to another object (i.e., fired again as if it originated from that object instead).
      * @param {String} eventName The type of event to relay
-     * @param {Object} object Any object that extends {@link Ext.util.Observable} that will provide the context
+     * @param {Object} object Any object that extends {@link Ext2.util.Observable} that will provide the context
      * for firing the relayed event
      */
     relayEvent : function(eventName, observable){
@@ -1438,12 +1438,12 @@ el.un('click', this.handlerFn);
      * Set the opacity of the element
      * @param {Float} opacity The new opacity. 0 = transparent, .5 = 50% visibile, 1 = fully visible, etc
      * @param {Boolean/Object} animate (optional) true for the default animation or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
      setOpacity : function(opacity, animate){
         if(!animate || !A){
             var s = this.dom.style;
-            if(Ext.isIE){
+            if(Ext2.isIE){
                 s.zoom = 1;
                 s.filter = (s.filter || '').replace(/alpha\([^\)]*\)/gi,"") +
                            (opacity == 1 ? "" : " alpha(opacity=" + opacity * 100 + ")");
@@ -1539,7 +1539,7 @@ el.un('click', this.handlerFn);
     /**
     * Clear positioning back to the default when the document was loaded
     * @param {String} value (optional) The value to use for the left,right,top,bottom, defaults to '' (empty string). You could use 'auto'.
-    * @return {Ext.Element} this
+    * @return {Ext2.Element} this
      */
     clearPositioning : function(value){
         value = value ||'';
@@ -1595,7 +1595,7 @@ el.un('click', this.handlerFn);
     /**
     * Set positioning with an object returned by getPositioning().
     * @param {Object} posCfg
-    * @return {Ext.Element} this
+    * @return {Ext2.Element} this
      */
     setPositioning : function(pc){
         this.applyStyles(pc);
@@ -1621,7 +1621,7 @@ el.un('click', this.handlerFn);
 
     // private
 	setOverflow : function(v){
-    	if(v=='auto' && Ext.isMac && Ext.isGecko2){ // work around stupid FF 2.0/Mac scroll bar bug
+    	if(v=='auto' && Ext2.isMac && Ext2.isGecko2){ // work around stupid FF 2.0/Mac scroll bar bug
     		this.dom.style.overflow = 'hidden';
         	(function(){this.dom.style.overflow = 'auto';}).defer(1, this);
     	}else{
@@ -1633,7 +1633,7 @@ el.un('click', this.handlerFn);
      * Quick set left and top adding default units
      * @param {String} left The left CSS property value
      * @param {String} top The top CSS property value
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
      setLeftTop : function(left, top){
         this.dom.style.left = this.addUnits(left);
@@ -1646,7 +1646,7 @@ el.un('click', this.handlerFn);
      * @param {String} direction Possible values are: "l" (or "left"), "r" (or "right"), "t" (or "top", or "up"), "b" (or "bottom", or "down").
      * @param {Number} distance How far to move the element in pixels
      * @param {Boolean/Object} animate (optional) true for the default animation or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
      move : function(direction, distance, animate){
         var xy = this.getXY();
@@ -1676,7 +1676,7 @@ el.un('click', this.handlerFn);
 
     /**
      *  Store the current overflow setting and clip overflow on the element - use {@link #unclip} to remove
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     clip : function(){
         if(!this.isClipped){
@@ -1695,7 +1695,7 @@ el.un('click', this.handlerFn);
 
     /**
      *  Return clipping (overflow) to original clipping before clip() was called
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     unclip : function(){
         if(this.isClipped){
@@ -1795,7 +1795,7 @@ el.un('click', this.handlerFn);
      * @return {Array} [x, y]
      */
     getAlignToXY : function(el, p, o){
-        el = Ext.get(el);
+        el = Ext2.get(el);
         if(!el || !el.dom){
             throw "Element.alignToXY with an element that doesn't exist";
         }
@@ -1865,13 +1865,13 @@ el.un('click', this.handlerFn);
         var os = {top:0, left:0, bottom:0, right: 0};
 
         return function(el, local, offsets, proposedXY){
-            el = Ext.get(el);
-            offsets = offsets ? Ext.applyIf(offsets, os) : os;
+            el = Ext2.get(el);
+            offsets = offsets ? Ext2.applyIf(offsets, os) : os;
 
             var vw, vh, vx = 0, vy = 0;
             if(el.dom == document.body || el.dom == document){
-                vw = Ext.lib.Dom.getViewWidth();
-                vh = Ext.lib.Dom.getViewHeight();
+                vw = Ext2.lib.Dom.getViewWidth();
+                vh = Ext2.lib.Dom.getViewHeight();
             }else{
                 vw = el.dom.clientWidth;
                 vh = el.dom.clientHeight;
@@ -1976,7 +1976,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      * @param {String} position The position to align to.
      * @param {Array} offsets (optional) Offset the positioning by [x, y]
      * @param {Boolean/Object} animate (optional) true for the default animation or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     alignTo : function(element, position, offsets, animate){
         var xy = this.getAlignToXY(element, position, offsets);
@@ -1993,17 +1993,17 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      * @param {Boolean/Number} monitorScroll (optional) True to monitor body scroll and reposition. If this parameter
      * is a number, it is used as the buffer delay (defaults to 50ms).
      * @param {Function} callback The function to call after the animation finishes
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     anchorTo : function(el, alignment, offsets, animate, monitorScroll, callback){
         var action = function(){
             this.alignTo(el, alignment, offsets, animate);
-            Ext.callback(callback, this);
+            Ext2.callback(callback, this);
         };
-        Ext.EventManager.onWindowResize(action, this);
+        Ext2.EventManager.onWindowResize(action, this);
         var tm = typeof monitorScroll;
         if(tm != 'undefined'){
-            Ext.EventManager.on(window, 'scroll', action, this,
+            Ext2.EventManager.on(window, 'scroll', action, this,
                 {buffer: tm == 'number' ? monitorScroll : 50});
         }
         action.call(this); // align immediately
@@ -2011,7 +2011,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     },
     /**
      * Clears any opacity settings from this element. Required in some cases for IE.
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     clearOpacity : function(){
         if (window.ActiveXObject) {
@@ -2029,7 +2029,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Hide this element - Uses display mode to determine whether to use "display" or "visibility". See {@link #setVisible}.
      * @param {Boolean/Object} animate (optional) true for the default animation or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     hide : function(animate){
         this.setVisible(false, this.preanim(arguments, 0));
@@ -2039,7 +2039,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
     * Show this element - Uses display mode to determine whether to use "display" or "visibility". See {@link #setVisible}.
     * @param {Boolean/Object} animate (optional) true for the default animation or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     show : function(animate){
         this.setVisible(true, this.preanim(arguments, 0));
@@ -2050,7 +2050,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      * @private Test if size has a unit, otherwise appends the default
      */
     addUnits : function(size){
-        return Ext.Element.addUnits(size, this.defaultUnit);
+        return Ext2.Element.addUnits(size, this.defaultUnit);
     },
 
     /**
@@ -2058,7 +2058,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     * @param {String} html The new HTML
     * @param {Boolean} loadScripts (optional) True to look for and process scripts (defaults to false)
     * @param {Function} callback (optional) For async script loading you can be notified when the update completes
-    * @return {Ext.Element} this
+    * @return {Ext2.Element} this
      */
     update : function(html, loadScripts, callback){
         if(typeof html == "undefined"){
@@ -2071,7 +2071,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
             }
             return this;
         }
-        var id = Ext.id();
+        var id = Ext2.id();
         var dom = this.dom;
 
         html += '<span id="' + id + '"></span>';
@@ -2103,7 +2103,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
                 }
             }
             var el = document.getElementById(id);
-            if(el){Ext.removeNode(el);}
+            if(el){Ext2.removeNode(el);}
             if(typeof callback == "function"){
                 callback();
             }
@@ -2113,9 +2113,9 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     },
 
     /**
-     * Direct access to the Updater {@link Ext.Updater#update} method. The method takes the same object
-     * parameter as {@link Ext.Updater#update}
-     * @return {Ext.Element} this
+     * Direct access to the Updater {@link Ext2.Updater#update} method. The method takes the same object
+     * parameter as {@link Ext2.Updater#update}
+     * @return {Ext2.Element} this
      */
     load : function(){
         var um = this.getUpdater();
@@ -2125,24 +2125,24 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
 
     /**
     * Gets this element's Updater
-    * @return {Ext.Updater} The Updater
+    * @return {Ext2.Updater} The Updater
     */
     getUpdater : function(){
         if(!this.updateManager){
-            this.updateManager = new Ext.Updater(this);
+            this.updateManager = new Ext2.Updater(this);
         }
         return this.updateManager;
     },
 
     /**
      * Disables text selection for this element (normalized across browsers)
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     unselectable : function(){
         this.dom.unselectable = "on";
         this.swallowEvent("selectstart", true);
         this.applyStyles("-moz-user-select:none;-khtml-user-select:none;");
-        this.addClass("x-unselectable");
+        this.addClass("x2-unselectable");
         return this;
     },
 
@@ -2168,7 +2168,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      * @return {Boolean}
      */
     isBorderBox : function(){
-        return noBoxAdjust[this.dom.tagName.toLowerCase()] || Ext.isBorderBox;
+        return noBoxAdjust[this.dom.tagName.toLowerCase()] || Ext2.isBorderBox;
     },
 
     /**
@@ -2209,7 +2209,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      * @return {Number}
      */
     getFrameWidth : function(sides, onlyContentBox){
-        return onlyContentBox && Ext.isBorderBox ? 0 : (this.getPadding(sides) + this.getBorderWidth(sides));
+        return onlyContentBox && Ext2.isBorderBox ? 0 : (this.getPadding(sides) + this.getBorderWidth(sides));
     },
 
     /**
@@ -2217,7 +2217,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      * @param {Object} box The box to fill {x, y, width, height}
      * @param {Boolean} adjust (optional) Whether to adjust for box-model issues automatically
      * @param {Boolean/Object} animate (optional) true for the default animation or a standard Element animation config object
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     setBox : function(box, adjust, animate){
         var w = box.width, h = box.height;
@@ -2231,13 +2231,13 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
 
     /**
      * Forces the browser to repaint this element
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
      repaint : function(){
         var dom = this.dom;
-        this.addClass("x-repaint");
+        this.addClass("x2-repaint");
         setTimeout(function(){
-            Ext.get(dom).removeClass("x-repaint");
+            Ext2.get(dom).removeClass("x2-repaint");
         }, 1);
         return this;
     },
@@ -2279,7 +2279,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      * @param {String/Object} config The class name of the proxy element or a DomHelper config object
      * @param {String/HTMLElement} renderTo (optional) The element or element id to render the proxy to (defaults to document.body)
      * @param {Boolean} matchBox (optional) True to align and size the proxy to this element now (defaults to false)
-     * @return {Ext.Element} The new proxy element
+     * @return {Ext2.Element} The new proxy element
      */
     createProxy : function(config, renderTo, matchBox){
         config = typeof config == "object" ?
@@ -2287,9 +2287,9 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
 
         var proxy;
         if(renderTo){
-            proxy = Ext.DomHelper.append(renderTo, config, true);
+            proxy = Ext2.DomHelper.append(renderTo, config, true);
         }else {
-            proxy = Ext.DomHelper.insertBefore(this.dom, config, true);
+            proxy = Ext2.DomHelper.insertBefore(this.dom, config, true);
         }
         if(matchBox){
            proxy.setBox(this.getBox());
@@ -2306,7 +2306,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      */
     mask : function(msg, msgCls){
         if(this.getStyle("position") == "static"){
-            this.addClass("x-masked-relative");
+            this.addClass("x2-masked-relative");
         }
         if(this._maskMsg){
             this._maskMsg.remove();
@@ -2315,19 +2315,19 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
             this._mask.remove();
         }
 
-        this._mask = Ext.DomHelper.append(this.dom, {cls:"ext-el-mask"}, true);
+        this._mask = Ext2.DomHelper.append(this.dom, {cls:"ext-el-mask"}, true);
 
-        this.addClass("x-masked");
+        this.addClass("x2-masked");
         this._mask.setDisplayed(true);
         if(typeof msg == 'string'){
-            this._maskMsg = Ext.DomHelper.append(this.dom, {cls:"ext-el-mask-msg", cn:{tag:'div'}}, true);
+            this._maskMsg = Ext2.DomHelper.append(this.dom, {cls:"ext-el-mask-msg", cn:{tag:'div'}}, true);
             var mm = this._maskMsg;
             mm.dom.className = msgCls ? "ext-el-mask-msg " + msgCls : "ext-el-mask-msg";
             mm.dom.firstChild.innerHTML = msg;
             mm.setDisplayed(true);
             mm.center(this);
         }
-        if(Ext.isIE && !(Ext.isIE7 && Ext.isStrict) && this.getStyle('height') == 'auto'){ // ie will not expand full height automatically
+        if(Ext2.isIE && !(Ext2.isIE7 && Ext2.isStrict) && this.getStyle('height') == 'auto'){ // ie will not expand full height automatically
             this._mask.setSize(this.getWidth(), this.getHeight());
         }
         return this._mask;
@@ -2345,7 +2345,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
             this._mask.remove();
             delete this._mask;
         }
-        this.removeClass(["x-masked", "x-masked-relative"]);
+        this.removeClass(["x2-masked", "x2-masked-relative"]);
     },
 
     /**
@@ -2359,16 +2359,16 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Creates an iframe shim for this element to keep selects and other windowed objects from
      * showing through.
-     * @return {Ext.Element} The new shim element
+     * @return {Ext2.Element} The new shim element
      */
     createShim : function(){
         var el = document.createElement('iframe');
         el.frameBorder = '0';
         el.className = 'ext-shim';
-        if(Ext.isIE && Ext.isSecure){
-            el.src = Ext.SSL_SECURE_URL;
+        if(Ext2.isIE && Ext2.isSecure){
+            el.src = Ext2.SSL_SECURE_URL;
         }
-        var shim = Ext.get(this.dom.parentNode.insertBefore(el, this.dom));
+        var shim = Ext2.get(this.dom.parentNode.insertBefore(el, this.dom));
         shim.autoBoxAdjust = false;
         return shim;
     },
@@ -2377,7 +2377,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      * Removes this element from the DOM and deletes it from the cache
      */
     remove : function(){
-        Ext.removeNode(this.dom);
+        Ext2.removeNode(this.dom);
         delete El.cache[this.dom.id];
     },
 
@@ -2406,15 +2406,15 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Sets up event handlers to add and remove a css class when the mouse is over this element
      * @param {String} className
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     addClassOnOver : function(className){
         this.hover(
             function(){
-                Ext.fly(this, '_internal').addClass(className);
+                Ext2.fly(this, '_internal').addClass(className);
             },
             function(){
-                Ext.fly(this, '_internal').removeClass(className);
+                Ext2.fly(this, '_internal').removeClass(className);
             }
         );
         return this;
@@ -2423,29 +2423,29 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Sets up event handlers to add and remove a css class when this element has the focus
      * @param {String} className
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     addClassOnFocus : function(className){
         this.on("focus", function(){
-            Ext.fly(this, '_internal').addClass(className);
+            Ext2.fly(this, '_internal').addClass(className);
         }, this.dom);
         this.on("blur", function(){
-            Ext.fly(this, '_internal').removeClass(className);
+            Ext2.fly(this, '_internal').removeClass(className);
         }, this.dom);
         return this;
     },
     /**
      * Sets up event handlers to add and remove a css class when the mouse is down and then up on this element (a click effect)
      * @param {String} className
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     addClassOnClick : function(className){
         var dom = this.dom;
         this.on("mousedown", function(){
-            Ext.fly(dom, '_internal').addClass(className);
-            var d = Ext.getDoc();
+            Ext2.fly(dom, '_internal').addClass(className);
+            var d = Ext2.getDoc();
             var fn = function(){
-                Ext.fly(dom, '_internal').removeClass(className);
+                Ext2.fly(dom, '_internal').removeClass(className);
                 d.removeListener("mouseup", fn);
             };
             d.on("mouseup", fn);
@@ -2457,7 +2457,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      * Stops the specified event(s) from bubbling and optionally prevents the default action
      * @param {String/Array} eventName an event / array of events to stop from bubbling
      * @param {Boolean} preventDefault (optional) true to prevent the default action too
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     swallowEvent : function(eventName, preventDefault){
         var fn = function(e){
@@ -2466,7 +2466,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
                 e.preventDefault();
             }
         };
-        if(Ext.isArray(eventName)){
+        if(Ext2.isArray(eventName)){
             for(var i = 0, len = eventName.length; i < len; i++){
                  this.on(eventName[i], fn);
             }
@@ -2479,8 +2479,8 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Gets the parent node for this element, optionally chaining up trying to match a selector
      * @param {String} selector (optional) Find a parent node that matches the passed simple selector
-     * @param {Boolean} returnDom (optional) True to return a raw dom node instead of an Ext.Element
-     * @return {Ext.Element/HTMLElement} The parent node or null
+     * @param {Boolean} returnDom (optional) True to return a raw dom node instead of an Ext2.Element
+     * @return {Ext2.Element/HTMLElement} The parent node or null
 	 */
     parent : function(selector, returnDom){
         return this.matchNode('parentNode', 'parentNode', selector, returnDom);
@@ -2489,8 +2489,8 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      /**
      * Gets the next sibling, skipping text nodes
      * @param {String} selector (optional) Find the next sibling that matches the passed simple selector
-     * @param {Boolean} returnDom (optional) True to return a raw dom node instead of an Ext.Element
-     * @return {Ext.Element/HTMLElement} The next sibling or null
+     * @param {Boolean} returnDom (optional) True to return a raw dom node instead of an Ext2.Element
+     * @return {Ext2.Element/HTMLElement} The next sibling or null
 	 */
     next : function(selector, returnDom){
         return this.matchNode('nextSibling', 'nextSibling', selector, returnDom);
@@ -2499,8 +2499,8 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Gets the previous sibling, skipping text nodes
      * @param {String} selector (optional) Find the previous sibling that matches the passed simple selector
-     * @param {Boolean} returnDom (optional) True to return a raw dom node instead of an Ext.Element
-     * @return {Ext.Element/HTMLElement} The previous sibling or null
+     * @param {Boolean} returnDom (optional) True to return a raw dom node instead of an Ext2.Element
+     * @return {Ext2.Element/HTMLElement} The previous sibling or null
 	 */
     prev : function(selector, returnDom){
         return this.matchNode('previousSibling', 'previousSibling', selector, returnDom);
@@ -2510,8 +2510,8 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Gets the first child, skipping text nodes
      * @param {String} selector (optional) Find the next sibling that matches the passed simple selector
-     * @param {Boolean} returnDom (optional) True to return a raw dom node instead of an Ext.Element
-     * @return {Ext.Element/HTMLElement} The first child or null
+     * @param {Boolean} returnDom (optional) True to return a raw dom node instead of an Ext2.Element
+     * @return {Ext2.Element/HTMLElement} The first child or null
 	 */
     first : function(selector, returnDom){
         return this.matchNode('nextSibling', 'firstChild', selector, returnDom);
@@ -2520,8 +2520,8 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Gets the last child, skipping text nodes
      * @param {String} selector (optional) Find the previous sibling that matches the passed simple selector
-     * @param {Boolean} returnDom (optional) True to return a raw dom node instead of an Ext.Element
-     * @return {Ext.Element/HTMLElement} The last child or null
+     * @param {Boolean} returnDom (optional) True to return a raw dom node instead of an Ext2.Element
+     * @return {Ext2.Element/HTMLElement} The last child or null
 	 */
     last : function(selector, returnDom){
         return this.matchNode('previousSibling', 'lastChild', selector, returnDom);
@@ -2530,8 +2530,8 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     matchNode : function(dir, start, selector, returnDom){
         var n = this.dom[start];
         while(n){
-            if(n.nodeType == 1 && (!selector || Ext.DomQuery.is(n, selector))){
-                return !returnDom ? Ext.get(n) : n;
+            if(n.nodeType == 1 && (!selector || Ext2.DomQuery.is(n, selector))){
+                return !returnDom ? Ext2.get(n) : n;
             }
             n = n[dir];
         }
@@ -2541,10 +2541,10 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Appends the passed element(s) to this element
      * @param {String/HTMLElement/Array/Element/CompositeElement} el
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     appendChild: function(el){
-        el = Ext.get(el);
+        el = Ext2.get(el);
         el.appendTo(this);
         return this;
     },
@@ -2555,23 +2555,23 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      * automatically generated with the specified attributes.
      * @param {HTMLElement} insertBefore (optional) a child element of this element
      * @param {Boolean} returnDom (optional) true to return the dom node instead of creating an Element
-     * @return {Ext.Element} The new child element
+     * @return {Ext2.Element} The new child element
      */
     createChild: function(config, insertBefore, returnDom){
         config = config || {tag:'div'};
         if(insertBefore){
-            return Ext.DomHelper.insertBefore(insertBefore, config, returnDom !== true);
+            return Ext2.DomHelper.insertBefore(insertBefore, config, returnDom !== true);
         }
-        return Ext.DomHelper[!this.dom.firstChild ? 'overwrite' : 'append'](this.dom, config,  returnDom !== true);
+        return Ext2.DomHelper[!this.dom.firstChild ? 'overwrite' : 'append'](this.dom, config,  returnDom !== true);
     },
 
     /**
      * Appends this element to the passed element
      * @param {Mixed} el The new parent element
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     appendTo: function(el){
-        el = Ext.getDom(el);
+        el = Ext2.getDom(el);
         el.appendChild(this.dom);
         return this;
     },
@@ -2579,10 +2579,10 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Inserts this element before the passed element in the DOM
      * @param {Mixed} el The element before which this element will be inserted
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     insertBefore: function(el){
-        el = Ext.getDom(el);
+        el = Ext2.getDom(el);
         el.parentNode.insertBefore(this.dom, el);
         return this;
     },
@@ -2590,10 +2590,10 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Inserts this element after the passed element in the DOM
      * @param {Mixed} el The element to insert after
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     insertAfter: function(el){
-        el = Ext.getDom(el);
+        el = Ext2.getDom(el);
         el.parentNode.insertBefore(this.dom, el.nextSibling);
         return this;
     },
@@ -2601,14 +2601,14 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Inserts (or creates) an element (or DomHelper config) as the first child of this element
      * @param {Mixed/Object} el The id or element to insert or a DomHelper config to create and insert
-     * @return {Ext.Element} The new child
+     * @return {Ext2.Element} The new child
      */
     insertFirst: function(el, returnDom){
         el = el || {};
         if(el.nodeType || el.dom){ // dh config
-            el = Ext.getDom(el);
+            el = Ext2.getDom(el);
             this.dom.insertBefore(el, this.dom.firstChild);
-            return !returnDom ? Ext.get(el) : el;
+            return !returnDom ? Ext2.get(el) : el;
         }else{
             return this.createChild(el, this.dom.firstChild, returnDom);
         }
@@ -2618,12 +2618,12 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      * Inserts (or creates) the passed element (or DomHelper config) as a sibling of this element
      * @param {Mixed/Object/Array} el The id, element to insert or a DomHelper config to create and insert *or* an array of any of those.
      * @param {String} where (optional) 'before' or 'after' defaults to before
-     * @param {Boolean} returnDom (optional) True to return the raw DOM element instead of Ext.Element
-     * @return {Ext.Element} the inserted Element
+     * @param {Boolean} returnDom (optional) True to return the raw DOM element instead of Ext2.Element
+     * @return {Ext2.Element} the inserted Element
      */
     insertSibling: function(el, where, returnDom){
         var rt;
-        if(Ext.isArray(el)){
+        if(Ext2.isArray(el)){
             for(var i = 0, len = el.length; i < len; i++){
                 rt = this.insertSibling(el[i], where, returnDom);
             }
@@ -2634,15 +2634,15 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
         var refNode = where == 'before' ? this.dom : this.dom.nextSibling;
 
         if(el.nodeType || el.dom){ // dh config
-            rt = this.dom.parentNode.insertBefore(Ext.getDom(el), refNode);
+            rt = this.dom.parentNode.insertBefore(Ext2.getDom(el), refNode);
             if(!returnDom){
-                rt = Ext.get(rt);
+                rt = Ext2.get(rt);
             }
         }else{
             if(where == 'after' && !this.dom.nextSibling){
-                rt = Ext.DomHelper.append(this.dom.parentNode, el, !returnDom);
+                rt = Ext2.DomHelper.append(this.dom.parentNode, el, !returnDom);
             }else{
-                rt = Ext.DomHelper[where == 'after' ? 'insertAfter' : 'insertBefore'](this.dom, el, !returnDom);
+                rt = Ext2.DomHelper[where == 'after' ? 'insertAfter' : 'insertBefore'](this.dom, el, !returnDom);
             }
         }
         return rt;
@@ -2651,14 +2651,14 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Creates and wraps this element with another element
      * @param {Object} config (optional) DomHelper element config object for the wrapper element or null for an empty div
-     * @param {Boolean} returnDom (optional) True to return the raw DOM element instead of Ext.Element
+     * @param {Boolean} returnDom (optional) True to return the raw DOM element instead of Ext2.Element
      * @return {HTMLElement/Element} The newly created wrapper element
      */
     wrap: function(config, returnDom){
         if(!config){
             config = {tag: "div"};
         }
-        var newEl = Ext.DomHelper.insertBefore(this.dom, config, !returnDom);
+        var newEl = Ext2.DomHelper.insertBefore(this.dom, config, !returnDom);
         newEl.dom ? newEl.dom.appendChild(this.dom) : newEl.appendChild(this.dom);
         return newEl;
     },
@@ -2666,10 +2666,10 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Replaces the passed element with this element
      * @param {Mixed} el The element to replace
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     replace: function(el){
-        el = Ext.get(el);
+        el = Ext2.get(el);
         this.insertBefore(el);
         el.remove();
         return this;
@@ -2678,19 +2678,19 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     /**
      * Replaces this element with the passed element
      * @param {Mixed/Object} el The new element or a DomHelper config of an element to create
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     replaceWith: function(el){
         if(el.nodeType || el.dom){ // dh config
-            el = Ext.getDom(el);
+            el = Ext2.getDom(el);
             this.dom.parentNode.insertBefore(el, this.dom);
         }else{
             el = this.insertSibling(el, 'before');
         }
         El.uncache(this.id);
-        Ext.removeNode(this.dom);
+        Ext2.removeNode(this.dom);
         this.dom = el;
-        this.id = Ext.id(el);
+        this.id = Ext2.id(el);
         El.cache[this.id] = this;
         return this;
     },
@@ -2699,19 +2699,19 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      * Inserts an html fragment into this element
      * @param {String} where Where to insert the html in relation to this element - beforeBegin, afterBegin, beforeEnd, afterEnd.
      * @param {String} html The HTML fragment
-     * @param {Boolean} returnEl (optional) True to return an Ext.Element (defaults to false)
-     * @return {HTMLElement/Ext.Element} The inserted node (or nearest related if more than 1 inserted)
+     * @param {Boolean} returnEl (optional) True to return an Ext2.Element (defaults to false)
+     * @return {HTMLElement/Ext2.Element} The inserted node (or nearest related if more than 1 inserted)
      */
     insertHtml : function(where, html, returnEl){
-        var el = Ext.DomHelper.insertHtml(where, this.dom, html);
-        return returnEl ? Ext.get(el) : el;
+        var el = Ext2.DomHelper.insertHtml(where, this.dom, html);
+        return returnEl ? Ext2.get(el) : el;
     },
 
     /**
      * Sets the passed attributes as attributes of this element (a style attribute can be a string, object or function)
      * @param {Object} o The object with the attributes
      * @param {Boolean} useSet (optional) false to override the default setAttribute to use expandos.
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     set : function(o, useSet){
         var el = this.dom;
@@ -2726,7 +2726,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
             }
         }
         if(o.style){
-            Ext.DomHelper.applyStyles(el, o.style);
+            Ext2.DomHelper.applyStyles(el, o.style);
         }
         return this;
     },
@@ -2737,11 +2737,11 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      *                                  {key: (number or array), shift: (true/false), ctrl: (true/false), alt: (true/false)}
      * @param {Function} fn The function to call
      * @param {Object} scope (optional) The scope of the function
-     * @return {Ext.KeyMap} The KeyMap created
+     * @return {Ext2.KeyMap} The KeyMap created
      */
     addKeyListener : function(key, fn, scope){
         var config;
-        if(typeof key != "object" || Ext.isArray(key)){
+        if(typeof key != "object" || Ext2.isArray(key)){
             config = {
                 key: key,
                 fn: fn,
@@ -2757,16 +2757,16 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
                 scope: scope
             };
         }
-        return new Ext.KeyMap(this, config);
+        return new Ext2.KeyMap(this, config);
     },
 
     /**
      * Creates a KeyMap for this element
-     * @param {Object} config The KeyMap config. See {@link Ext.KeyMap} for more details
-     * @return {Ext.KeyMap} The KeyMap created
+     * @param {Object} config The KeyMap config. See {@link Ext2.KeyMap} for more details
+     * @return {Ext2.KeyMap} The KeyMap created
      */
     addKeyMap : function(config){
-        return new Ext.KeyMap(this, config);
+        return new Ext2.KeyMap(this, config);
     },
 
     /**
@@ -2862,7 +2862,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      * @return {Object} An object with left and top properties. e.g. {left: (value), top: (value)}
      */
     translatePoints : function(x, y){
-        if(typeof x == 'object' || Ext.isArray(x)){
+        if(typeof x == 'object' || Ext2.isArray(x)){
             y = x[1]; x = x[0];
         }
         var p = this.getStyle('position');
@@ -2889,7 +2889,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
         var d = this.dom, doc = document;
         if(d == doc || d == doc.body){
             var l, t;
-            if(Ext.isIE && Ext.isStrict){
+            if(Ext2.isIE && Ext2.isStrict){
                 l = doc.documentElement.scrollLeft || (doc.body.scrollLeft || 0);
                 t = doc.documentElement.scrollTop || (doc.body.scrollTop || 0);
             }else{
@@ -2946,21 +2946,21 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
      * gradient background, rounded corners and a 4-way shadow.  Example usage:
      * <pre><code>
 // Basic box wrap
-Ext.get("foo").boxWrap();
+Ext2.get("foo").boxWrap();
 
 // You can also add a custom class and use CSS inheritance rules to customize the box look.
-// 'x-box-blue' is a built-in alternative -- look at the related CSS definitions as an example
+// 'x2-box-blue' is a built-in alternative -- look at the related CSS definitions as an example
 // for how to create a custom box wrap style.
-Ext.get("foo").boxWrap().addClass("x-box-blue");
+Ext2.get("foo").boxWrap().addClass("x2-box-blue");
 </pre></code>
-     * @param {String} class (optional) A base CSS class to apply to the containing wrapper element (defaults to 'x-box').
+     * @param {String} class (optional) A base CSS class to apply to the containing wrapper element (defaults to 'x2-box').
      * Note that there are a number of CSS rules that are dependent on this name to make the overall effect work,
      * so if you supply an alternate base class, make sure you also supply all of the necessary rules.
-     * @return {Ext.Element} this
+     * @return {Ext2.Element} this
      */
     boxWrap : function(cls){
-        cls = cls || 'x-box';
-        var el = Ext.get(this.insertHtml('beforeBegin', String.format('<div class="{0}">'+El.boxMarkup+'</div>', cls)));
+        cls = cls || 'x2-box';
+        var el = Ext2.get(this.insertHtml('beforeBegin', String.format('<div class="{0}">'+El.boxMarkup+'</div>', cls)));
         el.child('.'+cls+'-mc').dom.appendChild(this.dom);
         return el;
     },
@@ -2971,7 +2971,7 @@ Ext.get("foo").boxWrap().addClass("x-box-blue");
      * @param {String} name The attribute name
      * @return {String} The attribute value
      */
-    getAttributeNS : Ext.isIE ? function(ns, name){
+    getAttributeNS : Ext2.isIE ? function(ns, name){
         var d = this.dom;
         var type = 'undefined';
         try {
@@ -2994,7 +2994,7 @@ Ext.get("foo").boxWrap().addClass("x-box-blue");
      * @return {Number} The text width in pixels.
      */
     getTextWidth : function(text, min, max){
-        return (Ext.util.TextMetrics.measure(this.dom, Ext.value(text, this.dom.innerHTML, true)).width).constrain(min || 0, max || 1000000);
+        return (Ext2.util.TextMetrics.measure(this.dom, Ext2.value(text, this.dom.innerHTML, true)).width).constrain(min || 0, max || 1000000);
     }
 };
 
@@ -3006,7 +3006,7 @@ var ep = El.prototype;
  * @param {Function} fn The handler function the event invokes
  * @param {Object} scope (optional) The scope (this element) of the handler function
  * @param {Object} options (optional) An object containing standard {@link #addListener} options
- * @member Ext.Element
+ * @member Ext2.Element
  * @method on
  */
 ep.on = ep.addListener;
@@ -3021,8 +3021,8 @@ ep.getUpdateManager = ep.getUpdater;
  * @param {Function} fn the method the event invokes
  * @param {Object} scope (optional) The scope (The <tt>this</tt> reference) of the handler function. Defaults
  * to this Element.
- * @return {Ext.Element} this
- * @member Ext.Element
+ * @return {Ext2.Element} this
+ * @member Ext2.Element
  * @method un
  */
 ep.un = ep.removeListener;
@@ -3049,12 +3049,12 @@ El.addUnits = function(v, defaultUnit){
     return v;
 };
 
-// special markup used throughout Ext when box wrapping elements
+// special markup used throughout Ext2 when box wrapping elements
 El.boxMarkup = '<div class="{0}-tl"><div class="{0}-tr"><div class="{0}-tc"></div></div></div><div class="{0}-ml"><div class="{0}-mr"><div class="{0}-mc"></div></div></div><div class="{0}-bl"><div class="{0}-br"><div class="{0}-bc"></div></div></div>';
 /**
  * Visibility mode constant for use with {@link #setVisibilityMode}. Use visibility to hide element
  * @property VISIBILITY
- * @member Ext.Element
+ * @member Ext2.Element
  * @static
  * @type Number
  */
@@ -3062,7 +3062,7 @@ El.VISIBILITY = 1;
 /**
  * Visibility mode constant for use with {@link #setVisibilityMode}. Use display to hide element
  * @property DISPLAY
- * @member Ext.Element
+ * @member Ext2.Element
  * @static
  * @type Number
  */
@@ -3082,16 +3082,16 @@ El.cache = {};
 var docEl;
 
 /**
- * Retrieves Ext.Element objects.
- * <p><b>This method does not retrieve {@link Ext.Component Component}s.</b> This method
- * retrieves Ext.Element objects which encapsulate DOM elements. To retrieve a Component by
- * its ID, use {@link Ext.ComponentMgr#get}.</p>
+ * Retrieves Ext2.Element objects.
+ * <p><b>This method does not retrieve {@link Ext2.Component Component}s.</b> This method
+ * retrieves Ext2.Element objects which encapsulate DOM elements. To retrieve a Component by
+ * its ID, use {@link Ext2.ComponentMgr#get}.</p>
  * <p>Uses simple caching to consistently return the same object. Automatically fixes if an
  * object was recreated with the same id via AJAX or DOM.</p>
  * @param {Mixed} el The id of the node, a DOM Node or an existing Element.
  * @return {Element} The Element object (or null if no matching element was found)
  * @static
- * @member Ext.Element
+ * @member Ext2.Element
  * @method get
  */
 El.get = function(el){
@@ -3109,7 +3109,7 @@ El.get = function(el){
         return ex;
     }else if(el.tagName){ // dom element
         if(!(id = el.id)){
-            id = Ext.id(el);
+            id = Ext2.id(el);
         }
         if(ex = El.cache[id]){
             ex.dom = el;
@@ -3126,7 +3126,7 @@ El.get = function(el){
         return el;
     }else if(el.isComposite){
         return el;
-    }else if(Ext.isArray(el)){
+    }else if(Ext2.isArray(el)){
         return El.select(el);
     }else if(el == document){
         // create a bogus element object representing the document object
@@ -3154,7 +3154,7 @@ El.uncache = function(el){
 // Garbage collection - uncache elements/purge listeners on orphaned elements
 // so we don't hold a reference and cause the browser to retain them
 El.garbageCollect = function(){
-    if(!Ext.enableGarbageCollector){
+    if(!Ext2.enableGarbageCollector){
         clearInterval(El.collectorThread);
         return;
     }
@@ -3179,8 +3179,8 @@ El.garbageCollect = function(){
         // -------------------------------------------------------
         if(!d || !d.parentNode || (!d.offsetParent && !document.getElementById(eid))){
             delete El.cache[eid];
-            if(d && Ext.enableListenerCollection){
-                Ext.EventManager.removeAll(d);
+            if(d && Ext2.enableListenerCollection){
+                Ext2.EventManager.removeAll(d);
             }
         }
     }
@@ -3202,20 +3202,20 @@ El.Flyweight.prototype.isFlyweight = true;
 El._flyweights = {};
 /**
  * <p>Gets the globally shared flyweight Element, with the passed node as the active element. Do not store a reference to this element -
- * the dom node can be overwritten by other code. Shorthand of {@link Ext.Element#fly}</p>
+ * the dom node can be overwritten by other code. Shorthand of {@link Ext2.Element#fly}</p>
  * <p>Use this to make one-time references to DOM elements which are not going to be accessed again either by
  * application code, or by Ext's classes. If accessing an element which will be processed regularly, then {@link Ext#get}
- * will be more appropriate to take advantage of the caching provided by the Ext.Element class.</p>
+ * will be more appropriate to take advantage of the caching provided by the Ext2.Element class.</p>
  * @param {String/HTMLElement} el The dom node or id
  * @param {String} named (optional) Allows for creation of named reusable flyweights to prevent conflicts
- * (e.g. internally Ext uses "_global")
+ * (e.g. internally Ext2 uses "_global")
  * @return {Element} The shared Element object (or null if no matching element was found)
- * @member Ext.Element
+ * @member Ext2.Element
  * @method fly
  */
 El.fly = function(el, named){
     named = named || '_global';
-    el = Ext.getDom(el);
+    el = Ext2.getDom(el);
     if(!el){
         return null;
     }
@@ -3227,46 +3227,46 @@ El.fly = function(el, named){
 };
 
 /**
- * Retrieves Ext.Element objects.
- * <p><b>This method does not retrieve {@link Ext.Component Component}s.</b> This method
- * retrieves Ext.Element objects which encapsulate DOM elements. To retrieve a Component by
- * its ID, use {@link Ext.ComponentMgr#get}.</p>
+ * Retrieves Ext2.Element objects.
+ * <p><b>This method does not retrieve {@link Ext2.Component Component}s.</b> This method
+ * retrieves Ext2.Element objects which encapsulate DOM elements. To retrieve a Component by
+ * its ID, use {@link Ext2.ComponentMgr#get}.</p>
  * <p>Uses simple caching to consistently return the same object. Automatically fixes if an
  * object was recreated with the same id via AJAX or DOM.</p>
- * Shorthand of {@link Ext.Element#get}
+ * Shorthand of {@link Ext2.Element#get}
  * @param {Mixed} el The id of the node, a DOM Node or an existing Element.
  * @return {Element} The Element object (or null if no matching element was found)
  * @member Ext
  * @method get
  */
-Ext.get = El.get;
+Ext2.get = El.get;
 /**
  * <p>Gets the globally shared flyweight Element, with the passed node as the active element. Do not store a reference to this element -
- * the dom node can be overwritten by other code. Shorthand of {@link Ext.Element#fly}</p>
+ * the dom node can be overwritten by other code. Shorthand of {@link Ext2.Element#fly}</p>
  * <p>Use this to make one-time references to DOM elements which are not going to be accessed again either by
  * application code, or by Ext's classes. If accessing an element which will be processed regularly, then {@link Ext#get}
- * will be more appropriate to take advantage of the caching provided by the Ext.Element class.</p>
+ * will be more appropriate to take advantage of the caching provided by the Ext2.Element class.</p>
  * @param {String/HTMLElement} el The dom node or id
  * @param {String} named (optional) Allows for creation of named reusable flyweights to prevent conflicts
- * (e.g. internally Ext uses "_global")
+ * (e.g. internally Ext2 uses "_global")
  * @return {Element} The shared Element object (or null if no matching element was found)
  * @member Ext
  * @method fly
  */
-Ext.fly = El.fly;
+Ext2.fly = El.fly;
 
 // speedy lookup for elements never to box adjust
-var noBoxAdjust = Ext.isStrict ? {
+var noBoxAdjust = Ext2.isStrict ? {
     select:1
 } : {
     input:1, select:1, textarea:1
 };
-if(Ext.isIE || Ext.isGecko){
+if(Ext2.isIE || Ext2.isGecko){
     noBoxAdjust['button'] = 1;
 }
 
 
-Ext.EventManager.on(window, 'unload', function(){
+Ext2.EventManager.on(window, 'unload', function(){
     delete El.cache;
     delete El._flyweights;
 });

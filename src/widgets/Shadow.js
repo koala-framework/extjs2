@@ -7,16 +7,16 @@
  */
 
 /**
- * @class Ext.Shadow
+ * @class Ext2.Shadow
  * Simple class that can provide a shadow effect for any element.  Note that the element MUST be absolutely positioned,
  * and the shadow does not provide any shimming.  This should be used only in simple cases -- for more advanced
- * functionality that can also provide the same shadow effect, see the {@link Ext.Layer} class.
+ * functionality that can also provide the same shadow effect, see the {@link Ext2.Layer} class.
  * @constructor
  * Create a new Shadow
  * @param {Object} config The config object
  */
-Ext.Shadow = function(config){
-    Ext.apply(this, config);
+Ext2.Shadow = function(config){
+    Ext2.apply(this, config);
     if(typeof this.mode != "string"){
         this.mode = this.defaultMode;
     }
@@ -27,7 +27,7 @@ Ext.Shadow = function(config){
             a.w = 0;
             a.l = a.t = o;
             a.t -= 1;
-            if(Ext.isIE){
+            if(Ext2.isIE){
                 a.l -= this.offset + rad;
                 a.t -= this.offset + rad;
                 a.w -= rad;
@@ -39,7 +39,7 @@ Ext.Shadow = function(config){
             a.w = (o*2);
             a.l = -o;
             a.t = o-1;
-            if(Ext.isIE){
+            if(Ext2.isIE){
                 a.l -= (this.offset - rad);
                 a.t -= this.offset + rad;
                 a.l += 1;
@@ -53,7 +53,7 @@ Ext.Shadow = function(config){
             a.l = a.t = -o;
             a.t += 1;
             a.h -= 2;
-            if(Ext.isIE){
+            if(Ext2.isIE){
                 a.l -= (this.offset - rad);
                 a.t -= (this.offset - rad);
                 a.l += 1;
@@ -67,7 +67,7 @@ Ext.Shadow = function(config){
     this.adjusts = a;
 };
 
-Ext.Shadow.prototype = {
+Ext2.Shadow.prototype = {
     /**
      * @cfg {String} mode
      * The shadow display mode.  Supports the following options:<br />
@@ -89,15 +89,15 @@ Ext.Shadow.prototype = {
      * @param {Mixed} targetEl The id or element under which the shadow should display
      */
     show : function(target){
-        target = Ext.get(target);
+        target = Ext2.get(target);
         if(!this.el){
-            this.el = Ext.Shadow.Pool.pull();
+            this.el = Ext2.Shadow.Pool.pull();
             if(this.el.dom.nextSibling != target.dom){
                 this.el.insertBefore(target);
             }
         }
         this.el.setStyle("z-index", this.zIndex || parseInt(target.getStyle("z-index"), 10)-1);
-        if(Ext.isIE){
+        if(Ext2.isIE){
             this.el.dom.style.filter="progid:DXImageTransform.Microsoft.alpha(opacity=50) progid:DXImageTransform.Microsoft.Blur(pixelradius="+(this.offset)+")";
         }
         this.realign(
@@ -136,7 +136,7 @@ Ext.Shadow.prototype = {
         if(s.width != sws || s.height != shs){
             s.width = sws;
             s.height = shs;
-            if(!Ext.isIE){
+            if(!Ext2.isIE){
                 var cn = d.childNodes;
                 var sww = Math.max(0, (sw-12))+"px";
                 cn[0].childNodes[1].style.width = sww;
@@ -153,7 +153,7 @@ Ext.Shadow.prototype = {
     hide : function(){
         if(this.el){
             this.el.dom.style.display = "none";
-            Ext.Shadow.Pool.push(this.el);
+            Ext2.Shadow.Pool.push(this.el);
             delete this.el;
         }
     },
@@ -171,16 +171,16 @@ Ext.Shadow.prototype = {
 };
 
 // Private utility class that manages the internal Shadow cache
-Ext.Shadow.Pool = function(){
+Ext2.Shadow.Pool = function(){
     var p = [];
-    var markup = Ext.isIE ?
-                 '<div class="x-ie-shadow"></div>' :
-                 '<div class="x-shadow"><div class="xst"><div class="xstl"></div><div class="xstc"></div><div class="xstr"></div></div><div class="xsc"><div class="xsml"></div><div class="xsmc"></div><div class="xsmr"></div></div><div class="xsb"><div class="xsbl"></div><div class="xsbc"></div><div class="xsbr"></div></div></div>';
+    var markup = Ext2.isIE ?
+                 '<div class="x2-ie-shadow"></div>' :
+                 '<div class="x2-shadow"><div class="xst"><div class="xstl"></div><div class="xstc"></div><div class="xstr"></div></div><div class="xsc"><div class="xsml"></div><div class="xsmc"></div><div class="xsmr"></div></div><div class="xsb"><div class="xsbl"></div><div class="xsbc"></div><div class="xsbr"></div></div></div>';
     return {
         pull : function(){
             var sh = p.shift();
             if(!sh){
-                sh = Ext.get(Ext.DomHelper.insertHtml("beforeBegin", document.body.firstChild, markup));
+                sh = Ext2.get(Ext2.DomHelper.insertHtml("beforeBegin", document.body.firstChild, markup));
                 sh.autoBoxAdjust = false;
             }
             return sh;

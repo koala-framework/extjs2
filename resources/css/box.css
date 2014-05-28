@@ -18,29 +18,29 @@
     </div>
  */
 
-.x-box-tl {
+.x2-box-tl {
 	background: transparent url(../images/default/box/corners.gif) no-repeat 0 0;
     zoom:1;
 }
 
-.x-box-tc {
+.x2-box-tc {
 	height: 8px;
 	background: transparent url(../images/default/box/tb.gif) repeat-x 0 0;
 	overflow: hidden;
 }
 
-.x-box-tr {
+.x2-box-tr {
 	background: transparent url(../images/default/box/corners.gif) no-repeat right -8px;
 }
 
-.x-box-ml {
+.x2-box-ml {
 	background: transparent url(../images/default/box/l.gif) repeat-y 0;
 	padding-left: 4px;
 	overflow: hidden;
     zoom:1;
 }
 
-.x-box-mc {
+.x2-box-mc {
 	background: #eee url(../images/default/box/tb.gif) repeat-x 0 -16px;
 	padding: 4px 10px;
 	font-family: "Myriad Pro","Myriad Web","Tahoma","Helvetica","Arial",sans-serif;
@@ -48,64 +48,64 @@
 	font-size: 12px;
 }
 
-.x-box-mc h3 {
+.x2-box-mc h3 {
 	font-size: 14px;
 	font-weight: bold;
 	margin: 0 0 4px 0;
     zoom:1;
 }
 
-.x-box-mr {
+.x2-box-mr {
 	background: transparent url(../images/default/box/r.gif) repeat-y right;
 	padding-right: 4px;
 	overflow: hidden;
 }
 
-.x-box-bl {
+.x2-box-bl {
 	background: transparent url(../images/default/box/corners.gif) no-repeat 0 -16px;
     zoom:1;
 }
 
-.x-box-bc {
+.x2-box-bc {
 	background: transparent url(../images/default/box/tb.gif) repeat-x 0 -8px;
 	height: 8px;
 	overflow: hidden;
 }
 
-.x-box-br {
+.x2-box-br {
 	background: transparent url(../images/default/box/corners.gif) no-repeat right -24px;
 }
 
-.x-box-tl, .x-box-bl {
+.x2-box-tl, .x2-box-bl {
 	padding-left: 8px;
 	overflow: hidden;
 }
 
-.x-box-tr, .x-box-br {
+.x2-box-tr, .x2-box-br {
 	padding-right: 8px;
 	overflow: hidden;
 }
 
-.x-box-blue .x-box-bl, .x-box-blue .x-box-br, .x-box-blue .x-box-tl, .x-box-blue .x-box-tr {
+.x2-box-blue .x2-box-bl, .x2-box-blue .x2-box-br, .x2-box-blue .x2-box-tl, .x2-box-blue .x2-box-tr {
 	background-image: url(../images/default/box/corners-blue.gif);
 }
 
-.x-box-blue .x-box-bc, .x-box-blue .x-box-mc, .x-box-blue .x-box-tc {
+.x2-box-blue .x2-box-bc, .x2-box-blue .x2-box-mc, .x2-box-blue .x2-box-tc {
 	background-image: url(../images/default/box/tb-blue.gif);
 }
 
-.x-box-blue .x-box-mc {
+.x2-box-blue .x2-box-mc {
 	background-color: #c3daf9;
 }
 
-.x-box-blue .x-box-mc h3 {
+.x2-box-blue .x2-box-mc h3 {
 	color: #17385b;
 }
 
-.x-box-blue .x-box-ml {
+.x2-box-blue .x2-box-ml {
 	background-image: url(../images/default/box/l-blue.gif);
 }
 
-.x-box-blue .x-box-mr {
+.x2-box-blue .x2-box-mr {
 	background-image: url(../images/default/box/r-blue.gif);
 }

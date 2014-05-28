@@ -7,17 +7,17 @@
  */
 
 /**
- * @class Ext.data.Connection
- * @extends Ext.util.Observable
+ * @class Ext2.data.Connection
+ * @extends Ext2.util.Observable
  * <p>The class encapsulates a connection to the page's originating domain, allowing requests to be made
  * either to a configured URL, or to a URL specified at request time.</p>
  * <p>Requests made by this class are asynchronous, and will return immediately. No data from
  * the server will be available to the statement immediately following the {@link #request} call.
  * To process returned data, use a
- * <a href="#request-option-success" ext:member="request-option-success" ext:cls="Ext.data.Connection">success callback</a>
+ * <a href="#request-option-success" ext:member="request-option-success" ext:cls="Ext2.data.Connection">success callback</a>
  * in the request options object,
  * or an {@link #requestcomplete event listener}.</p>
- * <p><h3>File Uploads</h3><a href="#request-option-isUpload" ext:member="request-option-isUpload" ext:cls="Ext.data.Connection">File uploads</a> are not performed using normal "Ajax" techniques, that
+ * <p><h3>File Uploads</h3><a href="#request-option-isUpload" ext:member="request-option-isUpload" ext:cls="Ext2.data.Connection">File uploads</a> are not performed using normal "Ajax" techniques, that
  * is they are <b>not</b> performed using XMLHttpRequests. Instead the form is submitted in the standard
  * manner with the DOM <tt>&lt;form></tt> element temporarily modified to have its
  * <a href="http://www.w3.org/TR/REC-html40/present/frames.html#adef-target">target</a> set to refer
@@ -38,8 +38,8 @@
  * @constructor
  * @param {Object} config a configuration object.
  */
-Ext.data.Connection = function(config){
-    Ext.apply(this, config);
+Ext2.data.Connection = function(config){
+    Ext2.apply(this, config);
     this.addEvents(
         /**
          * @event beforerequest
@@ -71,10 +71,10 @@ Ext.data.Connection = function(config){
          */
         "requestexception"
     );
-    Ext.data.Connection.superclass.constructor.call(this);
+    Ext2.data.Connection.superclass.constructor.call(this);
 };
 
-Ext.extend(Ext.data.Connection, Ext.util.Observable, {
+Ext2.extend(Ext2.data.Connection, Ext2.util.Observable, {
     /**
      * @cfg {String} url (Optional) <p>The default URL to be used for requests to the server. Defaults to undefined.</p>
      * <p>The <code>url</code> config may be a function which <i>returns</i> the URL to use for the Ajax request. The scope
@@ -211,10 +211,10 @@ Ext.extend(Ext.data.Connection, Ext.util.Observable, {
                 p = p.call(o.scope||window, o);
             }
             if(typeof p == "object"){
-                p = Ext.urlEncode(p);
+                p = Ext2.urlEncode(p);
             }
             if(this.extraParams){
-                var extras = Ext.urlEncode(this.extraParams);
+                var extras = Ext2.urlEncode(this.extraParams);
                 p = p ? (p + '&' + extras) : extras;
             }
 
@@ -224,20 +224,20 @@ Ext.extend(Ext.data.Connection, Ext.util.Observable, {
             }
 
             if(o.form){
-                var form = Ext.getDom(o.form);
+                var form = Ext2.getDom(o.form);
                 url = url || form.action;
 
                 var enctype = form.getAttribute("enctype");
                 if(o.isUpload || (enctype && enctype.toLowerCase() == 'multipart/form-data')){
                     return this.doFormUpload(o, p, url);
                 }
-                var f = Ext.lib.Ajax.serializeForm(form);
+                var f = Ext2.lib.Ajax.serializeForm(form);
                 p = p ? (p + '&' + f) : f;
             }
 
             var hs = o.headers;
             if(this.defaultHeaders){
-                hs = Ext.apply(hs || {}, this.defaultHeaders);
+                hs = Ext2.apply(hs || {}, this.defaultHeaders);
                 if(!o.headers){
                     o.headers = hs;
                 }
@@ -269,10 +269,10 @@ Ext.extend(Ext.data.Connection, Ext.util.Observable, {
                 url += (url.indexOf('?') != -1 ? '&' : '?') + p;
                 p = '';
             }
-            this.transId = Ext.lib.Ajax.request(method, url, cb, p, o);
+            this.transId = Ext2.lib.Ajax.request(method, url, cb, p, o);
             return this.transId;
         }else{
-            Ext.callback(o.callback, o.scope, [o, null, null]);
+            Ext2.callback(o.callback, o.scope, [o, null, null]);
             return null;
         }
     },
@@ -284,7 +284,7 @@ Ext.extend(Ext.data.Connection, Ext.util.Observable, {
      */
     isLoading : function(transId){
         if(transId){
-            return Ext.lib.Ajax.isCallInProgress(transId);
+            return Ext2.lib.Ajax.isCallInProgress(transId);
         }else{
             return this.transId ? true : false;
         }
@@ -296,7 +296,7 @@ Ext.extend(Ext.data.Connection, Ext.util.Observable, {
      */
     abort : function(transId){
         if(transId || this.isLoading()){
-            Ext.lib.Ajax.abort(transId || this.transId);
+            Ext2.lib.Ajax.abort(transId || this.transId);
         }
     },
 
@@ -306,8 +306,8 @@ Ext.extend(Ext.data.Connection, Ext.util.Observable, {
         var options = response.argument.options;
         response.argument = options ? options.argument : null;
         this.fireEvent("requestcomplete", this, response, options);
-        Ext.callback(options.success, options.scope, [response, options]);
-        Ext.callback(options.callback, options.scope, [options, true, response]);
+        Ext2.callback(options.success, options.scope, [response, options]);
+        Ext2.callback(options.callback, options.scope, [options, true, response]);
     },
 
     // private
@@ -316,27 +316,27 @@ Ext.extend(Ext.data.Connection, Ext.util.Observable, {
         var options = response.argument.options;
         response.argument = options ? options.argument : null;
         this.fireEvent("requestexception", this, response, options, e);
-        Ext.callback(options.failure, options.scope, [response, options]);
-        Ext.callback(options.callback, options.scope, [options, false, response]);
+        Ext2.callback(options.failure, options.scope, [response, options]);
+        Ext2.callback(options.callback, options.scope, [options, false, response]);
     },
 
     // private
     doFormUpload : function(o, ps, url){
-        var id = Ext.id();
+        var id = Ext2.id();
         var frame = document.createElement('iframe');
         frame.id = id;
         frame.name = id;
-        frame.className = 'x-hidden';
-        if(Ext.isIE){
-            frame.src = Ext.SSL_SECURE_URL;
+        frame.className = 'x2-hidden';
+        if(Ext2.isIE){
+            frame.src = Ext2.SSL_SECURE_URL;
         }
         document.body.appendChild(frame);
 
-        if(Ext.isIE){
+        if(Ext2.isIE){
            document.frames[id].name = id;
         }
 
-        var form = Ext.getDom(o.form),
+        var form = Ext2.getDom(o.form),
             buf = {
                 target: form.target,
                 method: form.method,
@@ -354,7 +354,7 @@ Ext.extend(Ext.data.Connection, Ext.util.Observable, {
         var hiddens, hd;
         if(ps){ // add dynamic params
             hiddens = [];
-            ps = Ext.urlDecode(ps, false);
+            ps = Ext2.urlDecode(ps, false);
             for(var k in ps){
                 if(ps.hasOwnProperty(k)){
                     hd = document.createElement('input');
@@ -377,7 +377,7 @@ Ext.extend(Ext.data.Connection, Ext.util.Observable, {
 
             try { //
                 var doc;
-                if(Ext.isIE){
+                if(Ext2.isIE){
                     doc = frame.contentWindow.document;
                 }else {
                     doc = (frame.contentDocument || window.frames[id].document);
@@ -395,17 +395,17 @@ Ext.extend(Ext.data.Connection, Ext.util.Observable, {
                 // ignore
             }
 
-            Ext.EventManager.removeListener(frame, 'load', cb, this);
+            Ext2.EventManager.removeListener(frame, 'load', cb, this);
 
             this.fireEvent("requestcomplete", this, r, o);
 
-            Ext.callback(o.success, o.scope, [r, o]);
-            Ext.callback(o.callback, o.scope, [o, true, r]);
+            Ext2.callback(o.success, o.scope, [r, o]);
+            Ext2.callback(o.callback, o.scope, [o, true, r]);
 
-            setTimeout(function(){Ext.removeNode(frame);}, 100);
+            setTimeout(function(){Ext2.removeNode(frame);}, 100);
         }
 
-        Ext.EventManager.on(frame, 'load', cb, this);
+        Ext2.EventManager.on(frame, 'load', cb, this);
         form.submit();
 
         form.target = buf.target;
@@ -416,19 +416,19 @@ Ext.extend(Ext.data.Connection, Ext.util.Observable, {
         
         if(hiddens){ // remove dynamic params
             for(var i = 0, len = hiddens.length; i < len; i++){
-                Ext.removeNode(hiddens[i]);
+                Ext2.removeNode(hiddens[i]);
             }
         }
     }
 });
 
 /**
- * @class Ext.Ajax
- * @extends Ext.data.Connection
+ * @class Ext2.Ajax
+ * @extends Ext2.data.Connection
  * Global Ajax request class.  Provides a simple way to make Ajax requests with maximum flexibility.  Example usage:
  * <pre><code>
 // Basic request
-Ext.Ajax.request({
+Ext2.Ajax.request({
    url: 'foo.php',
    success: someFn,
    failure: otherFn,
@@ -439,22 +439,22 @@ Ext.Ajax.request({
 });
 
 // Simple ajax form submission
-Ext.Ajax.request({
+Ext2.Ajax.request({
     form: 'some-form',
     params: 'foo=bar'
 });
 
 // Default headers to pass in every request
-Ext.Ajax.defaultHeaders = {
+Ext2.Ajax.defaultHeaders = {
     'Powered-By': 'Ext'
 };
 
 // Global Ajax events can be handled on every request!
-Ext.Ajax.on('beforerequest', this.showSpinner, this);
+Ext2.Ajax.on('beforerequest', this.showSpinner, this);
 </code></pre>
  * @singleton
  */
-Ext.Ajax = new Ext.data.Connection({
+Ext2.Ajax = new Ext2.data.Connection({
     /**
      * @cfg {String} url @hide
      */
@@ -524,6 +524,6 @@ Ext.Ajax = new Ext.data.Connection({
      * @return {String}
      */
     serializeForm : function(form){
-        return Ext.lib.Ajax.serializeForm(form);
+        return Ext2.lib.Ajax.serializeForm(form);
     }
 });

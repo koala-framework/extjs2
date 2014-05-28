@@ -11,26 +11,26 @@
  * 03-June-2007
  */
 
-Ext.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Öüñôùóç...</div>';
+Ext2.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Öüñôùóç...</div>';
 
-if(Ext.View){
-   Ext.View.prototype.emptyText = "";
+if(Ext2.View){
+   Ext2.View.prototype.emptyText = "";
 }
 
-if(Ext.grid.GridPanel){
-   Ext.grid.GridPanel.prototype.ddText = "{0} åðéëåãìÝíç(åò) ãñáììÞ(Ýò)";
+if(Ext2.grid.GridPanel){
+   Ext2.grid.GridPanel.prototype.ddText = "{0} åðéëåãìÝíç(åò) ãñáììÞ(Ýò)";
 }
 
-if(Ext.TabPanelItem){
-   Ext.TabPanelItem.prototype.closeText = "Êëåßóôå áõôÞ ôçí êáñôÝëá";
+if(Ext2.TabPanelItem){
+   Ext2.TabPanelItem.prototype.closeText = "Êëåßóôå áõôÞ ôçí êáñôÝëá";
 }
 
-if(Ext.form.Field){
-   Ext.form.Field.prototype.invalidText = "Ç ôéìÞ óôï ðåäßï äåí åßíáé Ýãêõñç";
+if(Ext2.form.Field){
+   Ext2.form.Field.prototype.invalidText = "Ç ôéìÞ óôï ðåäßï äåí åßíáé Ýãêõñç";
 }
 
-if(Ext.LoadMask){
-    Ext.LoadMask.prototype.msg = "Öüñôùóç...";
+if(Ext2.LoadMask){
+    Ext2.LoadMask.prototype.msg = "Öüñôùóç...";
 }
 
 Date.monthNames = [
@@ -58,8 +58,8 @@ Date.dayNames = [
    "ÓÜââáôï"
 ];
 
-if(Ext.MessageBox){
-   Ext.MessageBox.buttonText = {
+if(Ext2.MessageBox){
+   Ext2.MessageBox.buttonText = {
       ok     : "ÅíôÜîåé",
       cancel : "Áêýñùóç",
       yes    : "Íáé",
@@ -67,16 +67,16 @@ if(Ext.MessageBox){
    };
 }
 
-if(Ext.util.Format){
-   Ext.util.Format.date = function(v, format){
+if(Ext2.util.Format){
+   Ext2.util.Format.date = function(v, format){
       if(!v) return "";
       if(!(v instanceof Date)) v = new Date(Date.parse(v));
       return v.dateFormat(format || "ì/ç/Å");
    };
 }
 
-if(Ext.DatePicker){
-   Ext.apply(Ext.DatePicker.prototype, {
+if(Ext2.DatePicker){
+   Ext2.apply(Ext2.DatePicker.prototype, {
       todayText         : "ÓÞìåñá",
       minText           : "Ç çìåñïìçíßá áõôÞ åßíáé ðñéí ôçí ìéêñüôåñç çìåñïìçíßá",
       maxText           : "Ç çìåñïìçíßá áõôÞ åßíáé ìåôÜ ôçí ìåãáëýôåñç çìåñïìçíßá",
@@ -92,8 +92,8 @@ if(Ext.DatePicker){
    });
 }
 
-if(Ext.PagingToolbar){
-   Ext.apply(Ext.PagingToolbar.prototype, {
+if(Ext2.PagingToolbar){
+   Ext2.apply(Ext2.PagingToolbar.prototype, {
       beforePageText : "Óåëßäá",
       afterPageText  : "áðü {0}",
       firstText      : "Ðñþôç óåëßäá",
@@ -106,8 +106,8 @@ if(Ext.PagingToolbar){
    });
 }
 
-if(Ext.form.TextField){
-   Ext.apply(Ext.form.TextField.prototype, {
+if(Ext2.form.TextField){
+   Ext2.apply(Ext2.form.TextField.prototype, {
       minLengthText : "Ôï åëÜ÷éóôï ìÝãåèïò ãéá áõôü ôï ðåäßï åßíáé {0}",
       maxLengthText : "Ôï ìÝãéóôï ìÝãåèïò ãéá áõôü ôï ðåäßï åßíáé {0}",
       blankText     : "Ôï ðåäßï áõôü åßíáé õðï÷ñåùôïêü",
@@ -116,16 +116,16 @@ if(Ext.form.TextField){
    });
 }
 
-if(Ext.form.NumberField){
-   Ext.apply(Ext.form.NumberField.prototype, {
+if(Ext2.form.NumberField){
+   Ext2.apply(Ext2.form.NumberField.prototype, {
       minText : "Ç åëÜ÷éóôç ôéìÞ ãéá áõôü ôï ðåäßï åßíáé {0}",
       maxText : "Ç ìÝãéóôç ôéìÞ ãéá áõôü ôï ðåäßï åßíáé {0}",
       nanText : "{0} äåí åßíáé Ýãêõñïò áñéèìüò"
    });
 }
 
-if(Ext.form.DateField){
-   Ext.apply(Ext.form.DateField.prototype, {
+if(Ext2.form.DateField){
+   Ext2.apply(Ext2.form.DateField.prototype, {
       disabledDaysText  : "ÁðåíåñãïðïéçìÝíï",
       disabledDatesText : "ÁðåíåñãïðïéçìÝíï",
       minText           : "Ç çìåñïìçíßá ó' áõôü ôï ðåäßï ðñÝðåé íá åßíáé ìåôÜ áðü {0}",
@@ -135,15 +135,15 @@ if(Ext.form.DateField){
    });
 }
 
-if(Ext.form.ComboBox){
-   Ext.apply(Ext.form.ComboBox.prototype, {
+if(Ext2.form.ComboBox){
+   Ext2.apply(Ext2.form.ComboBox.prototype, {
       loadingText       : "Öüñôùóç...",
       valueNotFoundText : undefined
    });
 }
 
-if(Ext.form.VTypes){
-   Ext.apply(Ext.form.VTypes, {
+if(Ext2.form.VTypes){
+   Ext2.apply(Ext2.form.VTypes, {
       emailText    : 'Áõôü ôï ðåäßï ðñÝðåé íá åßíáé e-mail address ôçò ìïñöÞò "user@domain.com"',
       urlText      : 'Áõôü ôï ðåäßï ðñÝðåé íá åßíáé ìéá äéåýèõíóç URL ôçò ìïñöÞò "http:/'+'/www.domain.com"',
       alphaText    : 'Áõôü ôï ðåäßï ðñÝðåé íá ðåñéÝ÷åé ãñÜììáôá êáé _',
@@ -151,8 +151,8 @@ if(Ext.form.VTypes){
    });
 }
 
-if(Ext.grid.GridView){
-   Ext.apply(Ext.grid.GridView.prototype, {
+if(Ext2.grid.GridView){
+   Ext2.apply(Ext2.grid.GridView.prototype, {
       sortAscText  : "Áýîïõóá Ôáîéíüìçóç",
       sortDescText : "Öèßíïõóá Ôáîéíüìçóç",
       lockText     : "Êëåßäùìá óôÞëçò",
@@ -161,16 +161,16 @@ if(Ext.grid.GridView){
    });
 }
 
-if(Ext.grid.PropertyColumnModel){
-   Ext.apply(Ext.grid.PropertyColumnModel.prototype, {
+if(Ext2.grid.PropertyColumnModel){
+   Ext2.apply(Ext2.grid.PropertyColumnModel.prototype, {
       nameText   : "¼íïìá",
       valueText  : "ÔéìÞ",
       dateFormat : "ì/ç/Å"
    });
 }
 
-if(Ext.layout.BorderLayout && Ext.layout.BorderLayout.SplitRegion){
-   Ext.apply(Ext.layout.BorderLayout.SplitRegion.prototype, {
+if(Ext2.layout.BorderLayout && Ext2.layout.BorderLayout.SplitRegion){
+   Ext2.apply(Ext2.layout.BorderLayout.SplitRegion.prototype, {
       splitTip            : "Óýñåôå ãéá áëëáãÞ ìåãÝèïõò.",
       collapsibleSplitTip : "Óýñåôå ãéá áëëáãÞ ìåãÝèïõò. Double click ãéá áðüêñõøç."
    });

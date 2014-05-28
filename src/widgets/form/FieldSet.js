@@ -7,13 +7,13 @@
  */
 
 /**
- * @class Ext.form.FieldSet
- * @extends Ext.Panel
+ * @class Ext2.form.FieldSet
+ * @extends Ext2.Panel
  * Standard container used for grouping form fields.
  * @constructor
  * @param {Object} config Configuration options
  */
-Ext.form.FieldSet = Ext.extend(Ext.Panel, {
+Ext2.form.FieldSet = Ext2.extend(Ext2.Panel, {
     /**
      * @cfg {Mixed} checkboxToggle True to render a checkbox into the fieldset frame just in front of the legend,
      * or a DomHelper config object to create the checkbox.  (defaults to false).
@@ -27,14 +27,14 @@ Ext.form.FieldSet = Ext.extend(Ext.Panel, {
      * @cfg {Number} labelWidth The width of labels. This property cascades to child containers.
      */
     /**
-     * @cfg {String} itemCls A css class to apply to the x-form-item of fields. This property cascades to child containers.
+     * @cfg {String} itemCls A css class to apply to the x2-form-item of fields. This property cascades to child containers.
      */
     /**
-     * @cfg {String} baseCls The base CSS class applied to the fieldset (defaults to 'x-fieldset').
+     * @cfg {String} baseCls The base CSS class applied to the fieldset (defaults to 'x2-fieldset').
      */
-    baseCls:'x-fieldset',
+    baseCls:'x2-fieldset',
     /**
-     * @cfg {String} layout The {@link Ext.Container#layout} to use inside the fieldset (defaults to 'form').
+     * @cfg {String} layout The {@link Ext2.Container#layout} to use inside the fieldset (defaults to 'form').
      */
     layout: 'form',
     /**
@@ -49,11 +49,11 @@ Ext.form.FieldSet = Ext.extend(Ext.Panel, {
             this.el = document.createElement('fieldset');
             this.el.id = this.id;
             if (this.title || this.header || this.checkboxToggle) {
-                this.el.appendChild(document.createElement('legend')).className = 'x-fieldset-header';
+                this.el.appendChild(document.createElement('legend')).className = 'x2-fieldset-header';
             }
         }
 
-        Ext.form.FieldSet.superclass.onRender.call(this, ct, position);
+        Ext2.form.FieldSet.superclass.onRender.call(this, ct, position);
 
         if(this.checkboxToggle){
             var o = typeof this.checkboxToggle == 'object' ?
@@ -70,7 +70,7 @@ Ext.form.FieldSet = Ext.extend(Ext.Panel, {
         if(this.checkbox){
             this.checkbox.dom.checked = false;
         }
-        Ext.form.FieldSet.superclass.onCollapse.call(this, doAnim, animArg);
+        Ext2.form.FieldSet.superclass.onCollapse.call(this, doAnim, animArg);
 
     },
 
@@ -79,7 +79,7 @@ Ext.form.FieldSet = Ext.extend(Ext.Panel, {
         if(this.checkbox){
             this.checkbox.dom.checked = true;
         }
-        Ext.form.FieldSet.superclass.onExpand.call(this, doAnim, animArg);
+        Ext2.form.FieldSet.superclass.onExpand.call(this, doAnim, animArg);
     },
 
     /* //protected
@@ -96,7 +96,7 @@ Ext.form.FieldSet = Ext.extend(Ext.Panel, {
         if(this.checkbox){
             this.checkbox.un('click', this.onCheckClick, this);
         }
-        Ext.form.FieldSet.superclass.beforeDestroy.call(this);
+        Ext2.form.FieldSet.superclass.beforeDestroy.call(this);
     }
 
     /**
@@ -248,5 +248,5 @@ Ext.form.FieldSet = Ext.extend(Ext.Panel, {
      * @hide
      */
 });
-Ext.reg('fieldset', Ext.form.FieldSet);
+Ext2.reg('fieldset', Ext2.form.FieldSet);
 

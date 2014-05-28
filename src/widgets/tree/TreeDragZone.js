@@ -7,24 +7,24 @@
  */
 
 /**
- * @class Ext.tree.TreeDragZone
- * @extends Ext.dd.DragZone
+ * @class Ext2.tree.TreeDragZone
+ * @extends Ext2.dd.DragZone
  * @constructor
- * @param {String/HTMLElement/Element} tree The {@link Ext.tree.TreePanel} for which to enable dragging
+ * @param {String/HTMLElement/Element} tree The {@link Ext2.tree.TreePanel} for which to enable dragging
  * @param {Object} config
  */
-if(Ext.dd.DragZone){
-Ext.tree.TreeDragZone = function(tree, config){
-    Ext.tree.TreeDragZone.superclass.constructor.call(this, tree.innerCt, config);
+if(Ext2.dd.DragZone){
+Ext2.tree.TreeDragZone = function(tree, config){
+    Ext2.tree.TreeDragZone.superclass.constructor.call(this, tree.innerCt, config);
     /**
     * The TreePanel for this drag zone
-    * @type Ext.tree.TreePanel
+    * @type Ext2.tree.TreePanel
     * @property
     */
     this.tree = tree;
 };
 
-Ext.extend(Ext.tree.TreeDragZone, Ext.dd.DragZone, {
+Ext2.extend(Ext2.tree.TreeDragZone, Ext2.dd.DragZone, {
     /**
      * @cfg {String} ddGroup
      * A named drag drop group to which this object belongs.  If a group is specified, then this object will only
@@ -75,8 +75,8 @@ Ext.extend(Ext.tree.TreeDragZone, Ext.dd.DragZone, {
     
     // private
     afterRepair : function(){
-        if (Ext.enableFx && this.tree.hlDrop) {
-            Ext.Element.fly(this.dragData.ddel).highlight(this.hlColor || "c3daf9");
+        if (Ext2.enableFx && this.tree.hlDrop) {
+            Ext2.Element.fly(this.dragData.ddel).highlight(this.hlColor || "c3daf9");
         }
         this.dragging = false;
     }

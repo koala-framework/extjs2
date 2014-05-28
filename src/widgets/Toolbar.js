@@ -7,26 +7,26 @@
  */
 
 /**
- * @class Ext.Toolbar
- * @extends Ext.BoxComponent
+ * @class Ext2.Toolbar
+ * @extends Ext2.BoxComponent
  * Basic Toolbar class. Toolbar elements can be created explicitly via their constructors, or implicitly
  * via their xtypes.  Some items also have shortcut strings for creation (see <tt>{@link #add}</tt>).
  * @constructor
  * Creates a new Toolbar
  * @param {Object/Array} config A config object or an array of buttons to <tt>{@link #add}</tt>
  */ 
- Ext.Toolbar = function(config){
-    if(Ext.isArray(config)){
+ Ext2.Toolbar = function(config){
+    if(Ext2.isArray(config)){
         config = {buttons:config};
     }
-    Ext.Toolbar.superclass.constructor.call(this, config);
+    Ext2.Toolbar.superclass.constructor.call(this, config);
 };
 
 (function(){
 
-var T = Ext.Toolbar;
+var T = Ext2.Toolbar;
 
-Ext.extend(T, Ext.BoxComponent, {
+Ext2.extend(T, Ext2.BoxComponent, {
 
     trackMenus : true,
 
@@ -40,22 +40,22 @@ Ext.extend(T, Ext.BoxComponent, {
         /**
          * A MixedCollection of this Toolbar's items
          * @property items
-         * @type Ext.util.MixedCollection
+         * @type Ext2.util.MixedCollection
          */
-        this.items = new Ext.util.MixedCollection(false, function(o){
-            return o.itemId || o.id || Ext.id();
+        this.items = new Ext2.util.MixedCollection(false, function(o){
+            return o.itemId || o.id || Ext2.id();
         });
     },
 
     // private
     autoCreate: {
-        cls:'x-toolbar x-small-editor',
+        cls:'x2-toolbar x2-small-editor',
         html:'<table cellspacing="0"><tr></tr></table>'
     },
 
     // private
     onRender : function(ct, position){
-        this.el = ct.createChild(Ext.apply({ id: this.id },this.autoCreate), position);
+        this.el = ct.createChild(Ext2.apply({ id: this.id },this.autoCreate), position);
         this.tr = this.el.child("tr", true);
     },
 
@@ -73,11 +73,11 @@ Ext.extend(T, Ext.BoxComponent, {
      * arguments of mixed type and adds them to the toolbar.
      * @param {Mixed} arg1 The following types of arguments are all valid:<br />
      * <ul>
-     * <li>{@link Ext.Toolbar.Button} config: A valid button config object (equivalent to {@link #addButton})</li>
+     * <li>{@link Ext2.Toolbar.Button} config: A valid button config object (equivalent to {@link #addButton})</li>
      * <li>HtmlElement: Any standard HTML element (equivalent to {@link #addElement})</li>
      * <li>Field: Any form field (equivalent to {@link #addField})</li>
-     * <li>Item: Any subclass of {@link Ext.Toolbar.Item} (equivalent to {@link #addItem})</li>
-     * <li>String: Any generic string (gets wrapped in a {@link Ext.Toolbar.TextItem}, equivalent to {@link #addText}).
+     * <li>Item: Any subclass of {@link Ext2.Toolbar.Item} (equivalent to {@link #addItem})</li>
+     * <li>String: Any generic string (gets wrapped in a {@link Ext2.Toolbar.TextItem}, equivalent to {@link #addText}).
      * Note that there are a few special strings that are treated differently as explained next.</li>
      * <li>'separator' or '-': Creates a separator element (equivalent to {@link #addSeparator})</li>
      * <li>' ': Creates a spacer element (equivalent to {@link #addSpacer})</li>
@@ -108,7 +108,7 @@ Ext.extend(T, Ext.BoxComponent, {
                 this.addElement(el);
             }else if(typeof el == "object"){ // must be button config?
                 if(el.xtype){
-                    this.addField(Ext.ComponentMgr.create(el, 'button'));
+                    this.addField(Ext2.ComponentMgr.create(el, 'button'));
                 }else{
                     this.addButton(el);
                 }
@@ -118,7 +118,7 @@ Ext.extend(T, Ext.BoxComponent, {
     
     /**
      * Adds a separator
-     * @return {Ext.Toolbar.Item} The separator item
+     * @return {Ext2.Toolbar.Item} The separator item
      */
     addSeparator : function(){
         return this.addItem(new T.Separator());
@@ -126,7 +126,7 @@ Ext.extend(T, Ext.BoxComponent, {
 
     /**
      * Adds a spacer element
-     * @return {Ext.Toolbar.Spacer} The spacer item
+     * @return {Ext2.Toolbar.Spacer} The spacer item
      */
     addSpacer : function(){
         return this.addItem(new T.Spacer());
@@ -134,7 +134,7 @@ Ext.extend(T, Ext.BoxComponent, {
 
     /**
      * Adds a fill element that forces subsequent additions to the right side of the toolbar
-     * @return {Ext.Toolbar.Fill} The fill item
+     * @return {Ext2.Toolbar.Fill} The fill item
      */
     addFill : function(){
         return this.addItem(new T.Fill());
@@ -143,7 +143,7 @@ Ext.extend(T, Ext.BoxComponent, {
     /**
      * Adds any standard HTML element to the toolbar
      * @param {Mixed} el The element or id of the element to add
-     * @return {Ext.Toolbar.Item} The element's item
+     * @return {Ext2.Toolbar.Item} The element's item
      */
     addElement : function(el){
         return this.addItem(new T.Item(el));
@@ -151,8 +151,8 @@ Ext.extend(T, Ext.BoxComponent, {
     
     /**
      * Adds any Toolbar.Item or subclass
-     * @param {Ext.Toolbar.Item} item
-     * @return {Ext.Toolbar.Item} The item
+     * @param {Ext2.Toolbar.Item} item
+     * @return {Ext2.Toolbar.Item} The item
      */
     addItem : function(item){
         var td = this.nextBlock();
@@ -163,12 +163,12 @@ Ext.extend(T, Ext.BoxComponent, {
     },
     
     /**
-     * Adds a button (or buttons). See {@link Ext.Toolbar.Button} for more info on the config.
+     * Adds a button (or buttons). See {@link Ext2.Toolbar.Button} for more info on the config.
      * @param {Object/Array} config A button config or array of configs
-     * @return {Ext.Toolbar.Button/Array}
+     * @return {Ext2.Toolbar.Button/Array}
      */
     addButton : function(config){
-        if(Ext.isArray(config)){
+        if(Ext2.isArray(config)){
             var buttons = [];
             for(var i = 0, len = config.length; i < len; i++) {
                 buttons.push(this.addButton(config[i]));
@@ -203,21 +203,21 @@ Ext.extend(T, Ext.BoxComponent, {
     /**
      * Adds text to the toolbar
      * @param {String} text The text to add
-     * @return {Ext.Toolbar.Item} The element's item
+     * @return {Ext2.Toolbar.Item} The element's item
      */
     addText : function(text){
         return this.addItem(new T.TextItem(text));
     },
     
     /**
-     * Inserts any {@link Ext.Toolbar.Item}/{@link Ext.Toolbar.Button} at the specified index.
+     * Inserts any {@link Ext2.Toolbar.Item}/{@link Ext2.Toolbar.Button} at the specified index.
      * @param {Number} index The index where the item is to be inserted
-     * @param {Object/Ext.Toolbar.Item/Ext.Toolbar.Button/Array} item The button, or button config object to be
+     * @param {Object/Ext2.Toolbar.Item/Ext2.Toolbar.Button/Array} item The button, or button config object to be
      * inserted, or an array of buttons/configs.
-     * @return {Ext.Toolbar.Button/Item}
+     * @return {Ext2.Toolbar.Button/Item}
      */
     insertButton : function(index, item){
-        if(Ext.isArray(item)){
+        if(Ext2.isArray(item)){
             var buttons = [];
             for(var i = 0, len = item.length; i < len; i++) {
                buttons.push(this.insertButton(index + i, item[i]));
@@ -236,13 +236,13 @@ Ext.extend(T, Ext.BoxComponent, {
     },
     
     /**
-     * Adds a new element to the toolbar from the passed {@link Ext.DomHelper} config
+     * Adds a new element to the toolbar from the passed {@link Ext2.DomHelper} config
      * @param {Object} config
-     * @return {Ext.Toolbar.Item} The element's item
+     * @return {Ext2.Toolbar.Item} The element's item
      */
     addDom : function(config, returnEl){
         var td = this.nextBlock();
-        Ext.DomHelper.overwrite(td, config);
+        Ext2.DomHelper.overwrite(td, config);
         var ti = new T.Item(td.firstChild);
         ti.render(td);
         this.items.add(ti);
@@ -250,10 +250,10 @@ Ext.extend(T, Ext.BoxComponent, {
     },
 
     /**
-     * Adds a dynamically rendered Ext.form field (TextField, ComboBox, etc). Note: the field should not have
+     * Adds a dynamically rendered Ext2.form field (TextField, ComboBox, etc). Note: the field should not have
      * been rendered yet. For a field that has already been rendered, use {@link #addElement}.
-     * @param {Ext.form.Field} field
-     * @return {Ext.Toolbar.Item}
+     * @param {Ext2.form.Field} field
+     * @return {Ext2.Toolbar.Item}
      */
     addField : function(field){
         var td = this.nextBlock();
@@ -273,12 +273,12 @@ Ext.extend(T, Ext.BoxComponent, {
 
     // private
     onDestroy : function(){
-        Ext.Toolbar.superclass.onDestroy.call(this);
+        Ext2.Toolbar.superclass.onDestroy.call(this);
         if(this.rendered){
             if(this.items){ // rendered?
-                Ext.destroy.apply(Ext, this.items.items);
+                Ext2.destroy.apply(Ext, this.items.items);
             }
-            Ext.Element.uncache(this.tr);
+            Ext2.Element.uncache(this.tr);
         }
     },
 
@@ -323,18 +323,18 @@ Ext.extend(T, Ext.BoxComponent, {
      * @cfg {String} autoEl @hide
      */
 });
-Ext.reg('toolbar', Ext.Toolbar);
+Ext2.reg('toolbar', Ext2.Toolbar);
 
 /**
- * @class Ext.Toolbar.Item
+ * @class Ext2.Toolbar.Item
  * The base class that other classes should extend in order to get some basic common toolbar item functionality.
  * @constructor
  * Creates a new Item
  * @param {HTMLElement} el 
  */
 T.Item = function(el){
-    this.el = Ext.getDom(el);
-    this.id = Ext.id(this.el);
+    this.el = Ext2.getDom(el);
+    this.id = Ext2.id(this.el);
     this.hidden = false;
 };
 
@@ -359,10 +359,10 @@ T.Item.prototype = {
      */
     destroy : function(){
         if(this.el){
-            var el = Ext.get(this.el);
-            Ext.destroy(el);
+            var el = Ext2.get(this.el);
+            Ext2.destroy(el);
         }
-        Ext.removeNode(this.td);
+        Ext2.removeNode(this.td);
     },
     
     /**
@@ -397,14 +397,14 @@ T.Item.prototype = {
      * Try to focus this item
      */
     focus : function(){
-        Ext.fly(this.el).focus();
+        Ext2.fly(this.el).focus();
     },
     
     /**
      * Disables this item.
      */
     disable : function(){
-        Ext.fly(this.td).addClass("x-item-disabled");
+        Ext2.fly(this.td).addClass("x2-item-disabled");
         this.disabled = true;
         this.el.disabled = true;
     },
@@ -413,20 +413,20 @@ T.Item.prototype = {
      * Enables this item.
      */
     enable : function(){
-        Ext.fly(this.td).removeClass("x-item-disabled");
+        Ext2.fly(this.td).removeClass("x2-item-disabled");
         this.disabled = false;
         this.el.disabled = false;
     }
 };
-Ext.reg('tbitem', T.Item);
+Ext2.reg('tbitem', T.Item);
 
 
 /**
- * @class Ext.Toolbar.Separator
- * @extends Ext.Toolbar.Item
+ * @class Ext2.Toolbar.Separator
+ * @extends Ext2.Toolbar.Item
  * A simple class that adds a vertical separator bar between toolbar items.  Example usage:
  * <pre><code>
-new Ext.Panel({
+new Ext2.Panel({
 	tbar : [
 		'Item 1',
 		{xtype: 'tbseparator'}, // or '-'
@@ -442,19 +442,19 @@ T.Separator = function(){
     s.className = "ytb-sep";
     T.Separator.superclass.constructor.call(this, s);
 };
-Ext.extend(T.Separator, T.Item, {
-    enable:Ext.emptyFn,
-    disable:Ext.emptyFn,
-    focus:Ext.emptyFn
+Ext2.extend(T.Separator, T.Item, {
+    enable:Ext2.emptyFn,
+    disable:Ext2.emptyFn,
+    focus:Ext2.emptyFn
 });
-Ext.reg('tbseparator', T.Separator);
+Ext2.reg('tbseparator', T.Separator);
 
 /**
- * @class Ext.Toolbar.Spacer
- * @extends Ext.Toolbar.Item
+ * @class Ext2.Toolbar.Spacer
+ * @extends Ext2.Toolbar.Item
  * A simple element that adds extra horizontal space between items in a toolbar.
  * <pre><code>
-new Ext.Panel({
+new Ext2.Panel({
 	tbar : [
 		'Item 1',
 		{xtype: 'tbspacer'}, // or ' '
@@ -470,20 +470,20 @@ T.Spacer = function(){
     s.className = "ytb-spacer";
     T.Spacer.superclass.constructor.call(this, s);
 };
-Ext.extend(T.Spacer, T.Item, {
-    enable:Ext.emptyFn,
-    disable:Ext.emptyFn,
-    focus:Ext.emptyFn
+Ext2.extend(T.Spacer, T.Item, {
+    enable:Ext2.emptyFn,
+    disable:Ext2.emptyFn,
+    focus:Ext2.emptyFn
 });
 
-Ext.reg('tbspacer', T.Spacer);
+Ext2.reg('tbspacer', T.Spacer);
 
 /**
- * @class Ext.Toolbar.Fill
- * @extends Ext.Toolbar.Spacer
+ * @class Ext2.Toolbar.Fill
+ * @extends Ext2.Toolbar.Spacer
  * A simple element that adds a greedy (100% width) horizontal space between items in a toolbar.
  * <pre><code>
-new Ext.Panel({
+new Ext2.Panel({
 	tbar : [
 		'Item 1',
 		{xtype: 'tbfill'}, // or '->'
@@ -494,21 +494,21 @@ new Ext.Panel({
  * @constructor
  * Creates a new Spacer
  */
-T.Fill = Ext.extend(T.Spacer, {
+T.Fill = Ext2.extend(T.Spacer, {
     // private
     render : function(td){
         td.style.width = '100%';
         T.Fill.superclass.render.call(this, td);
     }
 });
-Ext.reg('tbfill', T.Fill);
+Ext2.reg('tbfill', T.Fill);
 
 /**
- * @class Ext.Toolbar.TextItem
- * @extends Ext.Toolbar.Item
+ * @class Ext2.Toolbar.TextItem
+ * @extends Ext2.Toolbar.Item
  * A simple class that renders text directly into a toolbar.
  * <pre><code>
-new Ext.Panel({
+new Ext2.Panel({
 	tbar : [
 		{xtype: 'tbtext', text: 'Item 1'} // or simply 'Item 1'
 	]
@@ -524,21 +524,21 @@ T.TextItem = function(t){
     s.innerHTML = t.text ? t.text : t;
     T.TextItem.superclass.constructor.call(this, s);
 };
-Ext.extend(T.TextItem, T.Item, {
-    enable:Ext.emptyFn,
-    disable:Ext.emptyFn,
-    focus:Ext.emptyFn
+Ext2.extend(T.TextItem, T.Item, {
+    enable:Ext2.emptyFn,
+    disable:Ext2.emptyFn,
+    focus:Ext2.emptyFn
 });
-Ext.reg('tbtext', T.TextItem);
+Ext2.reg('tbtext', T.TextItem);
 
 
 /**
- * @class Ext.Toolbar.Button
- * @extends Ext.Button
+ * @class Ext2.Toolbar.Button
+ * @extends Ext2.Button
  * A button that renders into a toolbar. Use the <tt>handler</tt> config to specify a callback function
  * to handle the button's click event.
  * <pre><code>
-new Ext.Panel({
+new Ext2.Panel({
 	tbar : [
 		{text: 'OK', handler: okHandler} // tbbutton is the default xtype if not specified
 	]
@@ -546,9 +546,9 @@ new Ext.Panel({
 </code></pre>
  * @constructor
  * Creates a new Button
- * @param {Object} config A standard {@link Ext.Button} config object
+ * @param {Object} config A standard {@link Ext2.Button} config object
  */
-T.Button = Ext.extend(Ext.Button, {
+T.Button = Ext2.extend(Ext2.Button, {
     hideParent : true,
 
     onDestroy : function(){
@@ -558,20 +558,20 @@ T.Button = Ext.extend(Ext.Button, {
         }
     }
 });
-Ext.reg('tbbutton', T.Button);
+Ext2.reg('tbbutton', T.Button);
 
 /**
- * @class Ext.Toolbar.SplitButton
- * @extends Ext.SplitButton
+ * @class Ext2.Toolbar.SplitButton
+ * @extends Ext2.SplitButton
  * A split button that renders into a toolbar.
  * <pre><code>
-new Ext.Panel({
+new Ext2.Panel({
 	tbar : [
 		{
 			xtype: 'tbsplit',
 		   	text: 'Options',
 		   	handler: optionsHandler, // handle a click on the button itself
-		   	menu: new Ext.menu.Menu({
+		   	menu: new Ext2.menu.Menu({
 		        items: [
 		        	// These items will display in a dropdown menu when the split arrow is clicked
 			        {text: 'Item 1', handler: item1Handler},
@@ -584,9 +584,9 @@ new Ext.Panel({
 </code></pre>
  * @constructor
  * Creates a new SplitButton
- * @param {Object} config A standard {@link Ext.SplitButton} config object
+ * @param {Object} config A standard {@link Ext2.SplitButton} config object
  */
-T.SplitButton = Ext.extend(Ext.SplitButton, {
+T.SplitButton = Ext2.extend(Ext2.SplitButton, {
     hideParent : true,
 
     onDestroy : function(){
@@ -597,7 +597,7 @@ T.SplitButton = Ext.extend(Ext.SplitButton, {
     }
 });
 
-Ext.reg('tbsplit', T.SplitButton);
+Ext2.reg('tbsplit', T.SplitButton);
 // backwards compat
 T.MenuButton = T.SplitButton;
 

@@ -7,18 +7,18 @@
  */
 
 /**
- * @class Ext.menu.MenuMgr
+ * @class Ext2.menu.MenuMgr
  * Provides a common registry of all menu items on a page so that they can be easily accessed by id.
  * @singleton
  */
-Ext.menu.MenuMgr = function(){
+Ext2.menu.MenuMgr = function(){
    var menus, active, groups = {}, attached = false, lastShow = new Date();
 
    // private - called when first menu is created
    function init(){
        menus = {};
-       active = new Ext.util.MixedCollection();
-       Ext.getDoc().addKeyListener(27, function(){
+       active = new Ext2.util.MixedCollection();
+       Ext2.getDoc().addKeyListener(27, function(){
            if(active.length > 0){
                hideAll();
            }
@@ -39,7 +39,7 @@ Ext.menu.MenuMgr = function(){
    function onHide(m){
        active.remove(m);
        if(active.length < 1){
-           Ext.getDoc().un("mousedown", onMouseDown);
+           Ext2.getDoc().un("mousedown", onMouseDown);
            attached = false;
        }
    }
@@ -50,7 +50,7 @@ Ext.menu.MenuMgr = function(){
        lastShow = new Date();
        active.add(m);
        if(!attached){
-           Ext.getDoc().on("mousedown", onMouseDown);
+           Ext2.getDoc().on("mousedown", onMouseDown);
            attached = true;
        }
        if(m.parentMenu){
@@ -84,7 +84,7 @@ Ext.menu.MenuMgr = function(){
 
    // private
    function onMouseDown(e){
-       if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu")){
+       if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x2-menu")){
            hideAll();
        }
    }
@@ -131,10 +131,10 @@ Ext.menu.MenuMgr = function(){
        },
 
         /**
-         * Returns a {@link Ext.menu.Menu} object
+         * Returns a {@link Ext2.menu.Menu} object
          * @param {String/Object} menu The string menu id, an existing menu object reference, or a Menu config that will
          * be used to generate and return a new Menu instance.
-         * @return {Ext.menu.Menu} The specified menu, or null if none are found
+         * @return {Ext2.menu.Menu} The specified menu, or null if none are found
          */
        get : function(menu){
            if(typeof menu == "string"){ // menu id
@@ -145,9 +145,9 @@ Ext.menu.MenuMgr = function(){
            }else if(menu.events){  // menu instance
                return menu;
            }else if(typeof menu.length == 'number'){ // array of menu items?
-               return new Ext.menu.Menu({items:menu});
+               return new Ext2.menu.Menu({items:menu});
            }else{ // otherwise, must be a config
-               return new Ext.menu.Menu(menu);
+               return new Ext2.menu.Menu(menu);
            }
        },
 

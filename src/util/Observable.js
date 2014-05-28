@@ -7,7 +7,7 @@
  */
 
 /**
- * @class Ext.util.Observable
+ * @class Ext2.util.Observable
  * Abstract base class that provides a common interface for publishing events. Subclasses are expected to
  * to have a property "events" with all the events defined.<br>
  * For example:
@@ -19,10 +19,10 @@
         "quit" : true
     });
  }
- Ext.extend(Employee, Ext.util.Observable);
+ Ext2.extend(Employee, Ext2.util.Observable);
 </code></pre>
  */
-Ext.util.Observable = function(){
+Ext2.util.Observable = function(){
     /**
      * @cfg {Object} listeners (optional) A config object containing one or more event handlers to be added to this
      * object during initialization.  This should be a valid listeners config object as specified in the
@@ -33,7 +33,7 @@ Ext.util.Observable = function(){
         delete this.listeners;
     }
 };
-Ext.util.Observable.prototype = {
+Ext2.util.Observable.prototype = {
     /**
      * Fires the specified event with the passed parameters (minus the event name).
      * @param {String} eventName
@@ -65,7 +65,7 @@ Ext.util.Observable.prototype = {
      * <b>If omitted, defaults to the object which fired the event.</b></div></li>
      * <li><b>delay</b> : Number<div class="sub-desc">The number of milliseconds to delay the invocation of the handler after the event fires.</div></li>
      * <li><b>single</b> : Boolean<div class="sub-desc">True to add a handler to handle just the next firing of the event, and then remove itself.</div></li>
-     * <li><b>buffer</b> : Number<div class="sub-desc">Causes the handler to be scheduled to run in an {@link Ext.util.DelayedTask} delayed
+     * <li><b>buffer</b> : Number<div class="sub-desc">Causes the handler to be scheduled to run in an {@link Ext2.util.DelayedTask} delayed
      * by the specified number of milliseconds. If the event fires again within that time, the original
      * handler is <em>not</em> invoked, but the new handler is scheduled in its place.</div></li>
      * <li><b>target</b> : Observable<div class="sub-desc">Only call the handler if the event was fired on the target Observable, <i>not</i>
@@ -133,7 +133,7 @@ myGridPanel.on({
         eventName = eventName.toLowerCase();
         var ce = this.events[eventName] || true;
         if(typeof ce == "boolean"){
-            ce = new Ext.util.Event(this, eventName);
+            ce = new Ext2.util.Event(this, eventName);
             this.events[eventName] = ce;
         }
         ce.addListener(fn, scope, o);
@@ -171,7 +171,7 @@ myGridPanel.on({
     relayEvents : function(o, events){
         var createHandler = function(ename){
             return function(){
-                return this.fireEvent.apply(this, Ext.combine(ename, Array.prototype.slice.call(arguments, 0)));
+                return this.fireEvent.apply(this, Ext2.combine(ename, Array.prototype.slice.call(arguments, 0)));
             };
         };
         for(var i = 0, len = events.length; i < len; i++){
@@ -196,7 +196,7 @@ myGridPanel.on({
                 }
             }
         }else{
-            Ext.applyIf(this.events, o);
+            Ext2.applyIf(this.events, o);
         }
     },
 
@@ -327,7 +327,7 @@ myGridPanel.on({
  * @param {Object}   options  (optional)
  * @method
  */
-Ext.util.Observable.prototype.on = Ext.util.Observable.prototype.addListener;
+Ext2.util.Observable.prototype.on = Ext2.util.Observable.prototype.addListener;
 /**
  * Removes a listener (shorthand for removeListener)
  * @param {String}   eventName     The type of event to listen for
@@ -335,7 +335,7 @@ Ext.util.Observable.prototype.on = Ext.util.Observable.prototype.addListener;
  * @param {Object}   scope  (optional) The scope (this object) for the handler
  * @method
  */
-Ext.util.Observable.prototype.un = Ext.util.Observable.prototype.removeListener;
+Ext2.util.Observable.prototype.un = Ext2.util.Observable.prototype.removeListener;
 
 /**
  * Starts capture on the specified Observable. All events will be passed
@@ -347,7 +347,7 @@ Ext.util.Observable.prototype.un = Ext.util.Observable.prototype.removeListener;
  * @param {Object} scope (optional) The scope (this object) for the fn
  * @static
  */
-Ext.util.Observable.capture = function(o, fn, scope){
+Ext2.util.Observable.capture = function(o, fn, scope){
     o.fireEvent = o.fireEvent.createInterceptor(fn, scope);
 };
 
@@ -356,14 +356,14 @@ Ext.util.Observable.capture = function(o, fn, scope){
  * @param {Observable} o The Observable to release
  * @static
  */
-Ext.util.Observable.releaseCapture = function(o){
-    o.fireEvent = Ext.util.Observable.prototype.fireEvent;
+Ext2.util.Observable.releaseCapture = function(o){
+    o.fireEvent = Ext2.util.Observable.prototype.fireEvent;
 };
 
 (function(){
 
     var createBuffered = function(h, o, scope){
-        var task = new Ext.util.DelayedTask();
+        var task = new Ext2.util.DelayedTask();
         return function(){
             task.delay(o.buffer, h, scope, Array.prototype.slice.call(arguments, 0));
         };
@@ -385,13 +385,13 @@ Ext.util.Observable.releaseCapture = function(o){
         };
     };
 
-    Ext.util.Event = function(obj, name){
+    Ext2.util.Event = function(obj, name){
         this.name = name;
         this.obj = obj;
         this.listeners = [];
     };
 
-    Ext.util.Event.prototype = {
+    Ext2.util.Event.prototype = {
         addListener : function(fn, scope, options){
             scope = scope || this.obj;
             if(!this.isListening(fn, scope)){

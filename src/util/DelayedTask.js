@@ -7,7 +7,7 @@
  */
 
 /**
- * @class Ext.util.DelayedTask
+ * @class Ext2.util.DelayedTask
  * Provides a convenient method of performing setTimeout where a new
  * timeout cancels the old timeout. An example would be performing validation on a keypress.
  * You can use this class to buffer
@@ -18,7 +18,7 @@
  * @param {Object} scope (optional) The default scope of that timeout
  * @param {Array} args (optional) The default Array of arguments
  */
-Ext.util.DelayedTask = function(fn, scope, args){
+Ext2.util.DelayedTask = function(fn, scope, args){
     var id = null;
 
     var call = function(){

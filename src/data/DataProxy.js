@@ -7,19 +7,19 @@
  */
 
 /**
- * @class Ext.data.DataProxy
- * @extends Ext.util.Observable
+ * @class Ext2.data.DataProxy
+ * @extends Ext2.util.Observable
  * This class is an abstract base class for implementations which provide retrieval of
  * unformatted data objects.<br>
  * <p>
- * DataProxy implementations are usually used in conjunction with an implementation of Ext.data.DataReader
+ * DataProxy implementations are usually used in conjunction with an implementation of Ext2.data.DataReader
  * (of the appropriate type which knows how to parse the data object) to provide a block of
- * {@link Ext.data.Records} to an {@link Ext.data.Store}.<br>
+ * {@link Ext2.data.Records} to an {@link Ext2.data.Store}.<br>
  * <p>
  * Custom implementations must implement the load method as described in
- * {@link Ext.data.HttpProxy#load}.
+ * {@link Ext2.data.HttpProxy#load}.
  */
-Ext.data.DataProxy = function(){
+Ext2.data.DataProxy = function(){
     this.addEvents(
         /**
          * @event beforeload
@@ -37,10 +37,10 @@ Ext.data.DataProxy = function(){
          */
         'load'
     );
-    Ext.data.DataProxy.superclass.constructor.call(this);
+    Ext2.data.DataProxy.superclass.constructor.call(this);
 };
 
-Ext.extend(Ext.data.DataProxy, Ext.util.Observable, {
+Ext2.extend(Ext2.data.DataProxy, Ext2.util.Observable, {
     /**
      * Destroys the proxy by purging any event listeners and cancelling any active requests.
      */

@@ -7,18 +7,18 @@
  */
 
 /**
- @class Ext.grid.RowSelectionModel
- * @extends Ext.grid.AbstractSelectionModel
- * The default SelectionModel used by {@link Ext.grid.GridPanel}.
+ @class Ext2.grid.RowSelectionModel
+ * @extends Ext2.grid.AbstractSelectionModel
+ * The default SelectionModel used by {@link Ext2.grid.GridPanel}.
  * It supports multiple selections and keyboard selection/navigation. The objects stored
  * as selections and returned by {@link #getSelected}, and {@link #getSelections} are
- * the {@link Ext.data.Record Record}s which provide the data for the selected rows.
+ * the {@link Ext2.data.Record Record}s which provide the data for the selected rows.
  * @constructor
  * @param {Object} config
  */
-Ext.grid.RowSelectionModel = function(config){
-    Ext.apply(this, config);
-    this.selections = new Ext.util.MixedCollection(false, function(o){
+Ext2.grid.RowSelectionModel = function(config){
+    Ext2.apply(this, config);
+    this.selections = new Ext2.util.MixedCollection(false, function(o){
         return o.id;
     });
 
@@ -46,7 +46,7 @@ Ext.grid.RowSelectionModel = function(config){
 	     * Fires when a row is selected.
 	     * @param {SelectionModel} this
 	     * @param {Number} rowIndex The selected index
-	     * @param {Ext.data.Record} r The selected record
+	     * @param {Ext2.data.Record} r The selected record
 	     */
 	    "rowselect",
         /**
@@ -59,10 +59,10 @@ Ext.grid.RowSelectionModel = function(config){
 	    "rowdeselect"
     );
 
-    Ext.grid.RowSelectionModel.superclass.constructor.call(this);
+    Ext2.grid.RowSelectionModel.superclass.constructor.call(this);
 };
 
-Ext.extend(Ext.grid.RowSelectionModel, Ext.grid.AbstractSelectionModel,  {
+Ext2.extend(Ext2.grid.RowSelectionModel, Ext2.grid.AbstractSelectionModel,  {
     /**
      * @cfg {Boolean} singleSelect
      * True to allow selection of only one row at a time (defaults to false)
@@ -80,7 +80,7 @@ Ext.extend(Ext.grid.RowSelectionModel, Ext.grid.AbstractSelectionModel,  {
             this.grid.on("rowmousedown", this.handleMouseDown, this);
         }
 
-        this.rowNav = new Ext.KeyNav(this.grid.getGridEl(), {
+        this.rowNav = new Ext2.KeyNav(this.grid.getGridEl(), {
             "up" : function(e){
                 if(!e.shiftKey || this.singleSelect){
                     this.selectPrevious(false);
@@ -485,6 +485,6 @@ Ext.extend(Ext.grid.RowSelectionModel, Ext.grid.AbstractSelectionModel,  {
             this.rowNav.disable();
             this.rowNav = null;
         }
-        Ext.grid.RowSelectionModel.superclass.destroy.call(this);
+        Ext2.grid.RowSelectionModel.superclass.destroy.call(this);
     }
 });

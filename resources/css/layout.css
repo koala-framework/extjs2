@@ -6,98 +6,98 @@
  * http://extjs.com/license
  */
 
-.x-border-layout-ct {
+.x2-border-layout-ct {
     background:#dfe8f6;
     position:relative;
 }
-.x-border-panel {
+.x2-border-panel {
     position:absolute;
     left:0;
     top:0;
 }
 
-.x-tool-collapse-south {
+.x2-tool-collapse-south {
     background-position:0 -195px;
 }
-.x-tool-collapse-south-over {
+.x2-tool-collapse-south-over {
     background-position:-15px -195px;
 }
 
-.x-tool-collapse-north {
+.x2-tool-collapse-north {
     background-position:0 -210px;
 }
-.x-tool-collapse-north-over {
+.x2-tool-collapse-north-over {
     background-position:-15px -210px;
 }
 
-.x-tool-collapse-west {
+.x2-tool-collapse-west {
     background-position:0 -180px;
 }
-.x-tool-collapse-west-over {
+.x2-tool-collapse-west-over {
     background-position:-15px -180px;
 }
 
-.x-tool-collapse-east {
+.x2-tool-collapse-east {
     background-position:0 -165px;
 }
-.x-tool-collapse-east-over {
+.x2-tool-collapse-east-over {
     background-position:-15px -165px;
 }
 
 
-.x-tool-expand-south {
+.x2-tool-expand-south {
     background-position:0 -210px;
 }
-.x-tool-expand-south-over {
+.x2-tool-expand-south-over {
     background-position:-15px -210px;
 }
 
-.x-tool-expand-north {
+.x2-tool-expand-north {
     background-position:0 -195px;
 }
-.x-tool-expand-north-over {
+.x2-tool-expand-north-over {
     background-position:-15px -195px;
 }
 
-.x-tool-expand-west {
+.x2-tool-expand-west {
     background-position:0 -165px;
 }
-.x-tool-expand-west-over {
+.x2-tool-expand-west-over {
     background-position:-15px -165px;
 }
 
-.x-tool-expand-east {
+.x2-tool-expand-east {
     background-position:0 -180px;
 }
-.x-tool-expand-east-over {
+.x2-tool-expand-east-over {
     background-position:-15px -180px;
 }
 
-.x-tool-expand-north, .x-tool-expand-south {
+.x2-tool-expand-north, .x2-tool-expand-south {
     float:right;
     margin:3px;
 }
-.x-tool-expand-east, .x-tool-expand-west {
+.x2-tool-expand-east, .x2-tool-expand-west {
     float:none;
     margin:3px auto;
 }
 
 
 
-.x-accordion-hd .x-tool-toggle {
+.x2-accordion-hd .x2-tool-toggle {
     background-position:0 -255px;
 }
-.x-accordion-hd .x-tool-toggle-over {
+.x2-accordion-hd .x2-tool-toggle-over {
     background-position:-15px -255px;
 }
-.x-panel-collapsed .x-accordion-hd .x-tool-toggle {
+.x2-panel-collapsed .x2-accordion-hd .x2-tool-toggle {
     background-position:0 -240px;
 }
-.x-panel-collapsed .x-accordion-hd .x-tool-toggle-over {
+.x2-panel-collapsed .x2-accordion-hd .x2-tool-toggle-over {
     background-position:-15px -240px;
 }
 
-.x-accordion-hd {
+.x2-accordion-hd {
 	color:#222;
 	padding-top:4px;
 	padding-bottom:3px;
@@ -106,7 +106,7 @@
     background: transparent url(../images/default/panel/light-hd.gif) repeat-x 0 -9px;
 }
 
-.x-layout-collapsed{
+.x2-layout-collapsed{
     position:absolute;
     left:-10000px;
     top:-10000px;
@@ -118,15 +118,15 @@
 	border:1px solid #98c0f4;
 	z-index:20;
 }
-.ext-border-box .x-layout-collapsed{
+.ext2-border-box .x2-layout-collapsed{
     width:22px;
     height:22px;
 }
-.x-layout-collapsed-over{
+.x2-layout-collapsed-over{
     cursor:pointer;
 	 background-color:#d9e8fb;
 }
-.x-layout-collapsed-west .x-layout-collapsed-tools, .x-layout-collapsed-east .x-layout-collapsed-tools{
+.x2-layout-collapsed-west .x2-layout-collapsed-tools, .x2-layout-collapsed-east .x2-layout-collapsed-tools{
 	position:absolute;
     top:0;
     left:0;
@@ -135,7 +135,7 @@
 }
 
 
-.x-layout-split{
+.x2-layout-split{
     position:absolute;
     height:5px;
     width:5px;
@@ -146,27 +146,27 @@
 }
 
 /* IE6 strict won't drag w/out a color */
-.ext-strict .ext-ie6 .x-layout-split{
+.ext2-strict .ext2-ie6 .x2-layout-split{
     background-color: #fff !important;
     filter: alpha(opacity=1);
 }
         
-.x-layout-split-h{
+.x2-layout-split-h{
     background-image:url(../images/default/s.gif);
     background-position: left;
 }
-.x-layout-split-v{
+.x2-layout-split-v{
     background-image:url(../images/default/s.gif);
     background-position: top;
 }
 
-.x-column-layout-ct {
+.x2-column-layout-ct {
     overflow:hidden;
     /*padding:3px 3px 3px 3px;*/
     zoom:1;
 }
 
-.x-column {
+.x2-column {
     float:left;
     padding:0;
     margin:0;
@@ -177,7 +177,7 @@
 
 /* mini mode */
 
-.x-layout-mini {
+.x2-layout-mini {
     position:absolute;
     top:0;
     left:0;
@@ -189,27 +189,27 @@
     -moz-opacity:.5;
     filter:alpha(opacity=50);
 }
-.x-layout-mini-over, .x-layout-collapsed-over .x-layout-mini{
+.x2-layout-mini-over, .x2-layout-collapsed-over .x2-layout-mini{
     opacity:1;
     -moz-opacity:1;
     filter:none;
 }
 
-.x-layout-split-west .x-layout-mini {
+.x2-layout-split-west .x2-layout-mini {
     top:48%;
     background-image:url(../images/default/layout/mini-left.gif);
 }
-.x-layout-split-east .x-layout-mini {
+.x2-layout-split-east .x2-layout-mini {
     top:48%;
     background-image:url(../images/default/layout/mini-right.gif);
 }
-.x-layout-split-north .x-layout-mini {
+.x2-layout-split-north .x2-layout-mini {
     left:48%;
     height:5px;
     width:35px;
     background-image:url(../images/default/layout/mini-top.gif);
 }
-.x-layout-split-south .x-layout-mini {
+.x2-layout-split-south .x2-layout-mini {
     left:48%;
     height:5px;
     width:35px;
@@ -217,45 +217,45 @@
 }
 
 
-.x-layout-cmini-west .x-layout-mini {
+.x2-layout-cmini-west .x2-layout-mini {
     top:48%;
     background-image:url(../images/default/layout/mini-right.gif);
 }
 
-.x-layout-cmini-east .x-layout-mini {
+.x2-layout-cmini-east .x2-layout-mini {
     top:48%;
     background-image:url(../images/default/layout/mini-left.gif);
 }
 
-.x-layout-cmini-north .x-layout-mini {
+.x2-layout-cmini-north .x2-layout-mini {
     left:48%;
     height:5px;
     width:35px;
     background-image:url(../images/default/layout/mini-bottom.gif);
 }
 
-.x-layout-cmini-south .x-layout-mini {
+.x2-layout-cmini-south .x2-layout-mini {
     left:48%;
     height:5px;
     width:35px;
     background-image:url(../images/default/layout/mini-top.gif);
 }
 
-.x-layout-cmini-west, .x-layout-cmini-east {
+.x2-layout-cmini-west, .x2-layout-cmini-east {
     border:0 none;
     width:5px !important;
     padding:0;
     background:transparent;
 }
 
-.x-layout-cmini-north, .x-layout-cmini-south {
+.x2-layout-cmini-north, .x2-layout-cmini-south {
     border:0 none;
     height:5px !important;
     padding:0;
     background:transparent;
 }
 
-.x-viewport, .x-viewport body {
+.x2-viewport, .x2-viewport body {
     margin: 0;
     padding: 0;
     border: 0 none;
@@ -263,12 +263,12 @@
     height: 100%;
 }
 
-.x-abs-layout-item {
+.x2-abs-layout-item {
     position:absolute;
     left:0;
     top:0;
 }
 
-.ext-ie input.x-abs-layout-item, .ext-ie textarea.x-abs-layout-item {
+.ext2-ie input.x2-abs-layout-item, .ext2-ie textarea.x2-abs-layout-item {
     margin:0;
 }

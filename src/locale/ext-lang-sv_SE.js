@@ -13,26 +13,26 @@
  * Changed by Cariad, 29 July 2007
  */
 
-Ext.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Laddar...</div>';
+Ext2.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Laddar...</div>';
 
-if(Ext.View){
-   Ext.View.prototype.emptyText = "";
+if(Ext2.View){
+   Ext2.View.prototype.emptyText = "";
 }
 
-if(Ext.grid.GridPanel){
-   Ext.grid.GridPanel.prototype.ddText = "{0} markerade rad(er)";
+if(Ext2.grid.GridPanel){
+   Ext2.grid.GridPanel.prototype.ddText = "{0} markerade rad(er)";
 }
 
-if(Ext.TabPanelItem){
-   Ext.TabPanelItem.prototype.closeText = "Stäng denna flik";
+if(Ext2.TabPanelItem){
+   Ext2.TabPanelItem.prototype.closeText = "Stäng denna flik";
 }
 
-if(Ext.form.Field){
-   Ext.form.Field.prototype.invalidText = "Värdet i detta fält är inte tillåtet";
+if(Ext2.form.Field){
+   Ext2.form.Field.prototype.invalidText = "Värdet i detta fält är inte tillåtet";
 }
 
-if(Ext.LoadMask){
-   Ext.LoadMask.prototype.msg = "Laddar...";
+if(Ext2.LoadMask){
+   Ext2.LoadMask.prototype.msg = "Laddar...";
 }
 
 Date.monthNames = [
@@ -60,8 +60,8 @@ Date.dayNames = [
    "lördag"
 ];
 
-if(Ext.MessageBox){
-   Ext.MessageBox.buttonText = {
+if(Ext2.MessageBox){
+   Ext2.MessageBox.buttonText = {
       ok     : "OK",
       cancel : "Avbryt",
       yes    : "Ja",
@@ -69,16 +69,16 @@ if(Ext.MessageBox){
    };
 }
 
-if(Ext.util.Format){
-   Ext.util.Format.date = function(v, format){
+if(Ext2.util.Format){
+   Ext2.util.Format.date = function(v, format){
       if(!v) return "";
       if(!(v instanceof Date)) v = new Date(Date.parse(v));
       return v.dateFormat(format || "Y-m-d");
    };
 }
 
-if(Ext.DatePicker){
-   Ext.apply(Ext.DatePicker.prototype, {
+if(Ext2.DatePicker){
+   Ext2.apply(Ext2.DatePicker.prototype, {
       todayText         : "Idag",
       minText           : "Detta datum inträffar före det tidigast tillåtna",
       maxText           : "Detta datum inträffar efter det senast tillåtna",
@@ -95,8 +95,8 @@ if(Ext.DatePicker){
    });
 }
 
-if(Ext.PagingToolbar){
-   Ext.apply(Ext.PagingToolbar.prototype, {
+if(Ext2.PagingToolbar){
+   Ext2.apply(Ext2.PagingToolbar.prototype, {
       beforePageText : "Sida",
       afterPageText  : "av {0}",
       firstText      : "Första sidan",
@@ -109,8 +109,8 @@ if(Ext.PagingToolbar){
    });
 }
 
-if(Ext.form.TextField){
-   Ext.apply(Ext.form.TextField.prototype, {
+if(Ext2.form.TextField){
+   Ext2.apply(Ext2.form.TextField.prototype, {
       minLengthText : "Minsta tillåtna längd för detta fält är {0}",
       maxLengthText : "Största tillåtna längd för detta fält är {0}",
       blankText     : "Detta fält är obligatoriskt",
@@ -119,16 +119,16 @@ if(Ext.form.TextField){
    });
 }
 
-if(Ext.form.NumberField){
-   Ext.apply(Ext.form.NumberField.prototype, {
+if(Ext2.form.NumberField){
+   Ext2.apply(Ext2.form.NumberField.prototype, {
       minText : "Minsta tillåtna värde för detta fält är {0}",
       maxText : "Största tillåtna värde för detta fält är {0}",
       nanText : "{0} är inte ett tillåtet nummer"
    });
 }
 
-if(Ext.form.DateField){
-   Ext.apply(Ext.form.DateField.prototype, {
+if(Ext2.form.DateField){
+   Ext2.apply(Ext2.form.DateField.prototype, {
       disabledDaysText  : "Inaktiverad",
       disabledDatesText : "Inaktiverad",
       minText           : "Datumet i detta fält måste inträffa efter {0}",
@@ -138,15 +138,15 @@ if(Ext.form.DateField){
    });
 }
 
-if(Ext.form.ComboBox){
-   Ext.apply(Ext.form.ComboBox.prototype, {
+if(Ext2.form.ComboBox){
+   Ext2.apply(Ext2.form.ComboBox.prototype, {
       loadingText       : "Laddar...",
       valueNotFoundText : undefined
    });
 }
 
-if(Ext.form.VTypes){
-   Ext.apply(Ext.form.VTypes, {
+if(Ext2.form.VTypes){
+   Ext2.apply(Ext2.form.VTypes, {
       emailText    : 'Detta fält ska innehålla en e-post adress i formatet "användare@domän.se"',
       urlText      : 'Detta fält ska innehålla en länk (URL) i formatet "http:/'+'/www.domän.se"',
       alphaText    : 'Detta fält får bara innehålla bokstäver och "_"',
@@ -154,8 +154,8 @@ if(Ext.form.VTypes){
    });
 }
 
-if(Ext.grid.GridView){
-   Ext.apply(Ext.grid.GridView.prototype, {
+if(Ext2.grid.GridView){
+   Ext2.apply(Ext2.grid.GridView.prototype, {
       sortAscText  : "Sortera stigande",
       sortDescText : "Sortera fallande",
       lockText     : "Lås kolumn",
@@ -164,16 +164,16 @@ if(Ext.grid.GridView){
    });
 }
 
-if(Ext.grid.PropertyColumnModel){
-   Ext.apply(Ext.grid.PropertyColumnModel.prototype, {
+if(Ext2.grid.PropertyColumnModel){
+   Ext2.apply(Ext2.grid.PropertyColumnModel.prototype, {
       nameText   : "Namn",
       valueText  : "Värde",
       dateFormat : "Y-m-d"
    });
 }
 
-if(Ext.layout.BorderLayout && Ext.layout.BorderLayout.SplitRegion){
-   Ext.apply(Ext.layout.BorderLayout.SplitRegion.prototype, {
+if(Ext2.layout.BorderLayout && Ext2.layout.BorderLayout.SplitRegion){
+   Ext2.apply(Ext2.layout.BorderLayout.SplitRegion.prototype, {
       splitTip            : "Dra för att ändra storleken.",
       collapsibleSplitTip : "Dra för att ändra storleken. Dubbelklicka för att gömma."
    });

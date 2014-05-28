@@ -7,18 +7,18 @@
  */
 
 /**
- * @class Ext.data.JsonReader
- * @extends Ext.data.DataReader
- * Data reader class to create an Array of {@link Ext.data.Record} objects from a JSON response
- * based on mappings in a provided {@link Ext.data.Record} constructor.<br>
+ * @class Ext2.data.JsonReader
+ * @extends Ext2.data.DataReader
+ * Data reader class to create an Array of {@link Ext2.data.Record} objects from a JSON response
+ * based on mappings in a provided {@link Ext2.data.Record} constructor.<br>
  * <p>
  * Example code:
  * <pre><code>
-var Employee = Ext.data.Record.create([
+var Employee = Ext2.data.Record.create([
     {name: 'firstname'},                  // Map the Record's "firstname" field to the row object's key of the same name
     {name: 'job', mapping: 'occupation'}  // Map the "job" field to the row object's "occupation" key
 ]);
-var myReader = new Ext.data.JsonReader({
+var myReader = new Ext2.data.JsonReader({
     totalProperty: "results",             // The property which contains the total dataset size (optional)
     root: "rows",                         // The property which contains an Array of row objects
     id: "id"                              // The property within each row object that provides an ID for the record (optional)
@@ -37,18 +37,18 @@ var myReader = new Ext.data.JsonReader({
 </code></pre>
  * <p>It is possible to change a JsonReader's metadata at any time by including a
  * <b><tt>metaData</tt></b> property in the data object. If this is detected in the
- * object, a {@link Ext.data.Store Store} object using this Reader will reconfigure
+ * object, a {@link Ext2.data.Store Store} object using this Reader will reconfigure
  * itself to use the newly provided field definition and fire its
- * {@link Ext.data.Store#metachange metachange} event. In
- * undergoing this change, the Store sets its {@link Ext.data.Store#sortInfo sortInfo} property
+ * {@link Ext2.data.Store#metachange metachange} event. In
+ * undergoing this change, the Store sets its {@link Ext2.data.Store#sortInfo sortInfo} property
  * from the <tt>sortInfo</tt> property in the new metadata. Note that reconfiguring a Store
  * potentially invalidates objects which may refer to Fields or Records which no longer exist.</p>
  *
  * <p>The <b><tt>metaData</tt></b> property may contain any of the configuration
  * options for this class. Additionally, it may contain a <b><tt>fields</tt></b>
- * property which the JsonReader will use as an argument to {@link Ext.data.Record#create}
+ * property which the JsonReader will use as an argument to {@link Ext2.data.Record#create}
  * to configure the layout of the Records which it will produce.<p>
- * Using the <b><tt>metaData</tt></b> property, and the Store's {@link Ext.data.Store#metachange metachange} event,
+ * Using the <b><tt>metaData</tt></b> property, and the Store's {@link Ext2.data.Store#metachange metachange} event,
  * it is possible to have a Store-driven control initialize itself. The metachange
  * event handler may interrogate the <b><tt>metaData</tt></b> property (which
  * may contain any user-defined properties needed) and the <b><tt>metaData.fields</tt></b>
@@ -57,7 +57,7 @@ var myReader = new Ext.data.JsonReader({
  * <p>To use this facility to send the same data as the above example without
  * having to code the creation of the Record constructor, you would create the
  * JsonReader like this:</p><pre><code>
-var myReader = new Ext.data.JsonReader();
+var myReader = new Ext2.data.JsonReader();
 </code></pre>
  * <p>The first data packet from the server would configure the reader by
  * containing a metaData property as well as the data:</p><pre><code>
@@ -88,13 +88,13 @@ var myReader = new Ext.data.JsonReader();
  * Create a new JsonReader
  * @param {Object} meta Metadata configuration options.
  * @param {Object} recordType Either an Array of field definition objects as passed to
- * {@link Ext.data.Record#create}, or a {@link Ext.data.Record Record} constructor created using {@link Ext.data.Record#create}.
+ * {@link Ext2.data.Record#create}, or a {@link Ext2.data.Record Record} constructor created using {@link Ext2.data.Record#create}.
  */
-Ext.data.JsonReader = function(meta, recordType){
+Ext2.data.JsonReader = function(meta, recordType){
     meta = meta || {};
-    Ext.data.JsonReader.superclass.constructor.call(this, meta, recordType || meta.fields);
+    Ext2.data.JsonReader.superclass.constructor.call(this, meta, recordType || meta.fields);
 };
-Ext.extend(Ext.data.JsonReader, Ext.data.DataReader, {
+Ext2.extend(Ext2.data.JsonReader, Ext2.data.DataReader, {
     /**
      * This JsonReader's metadata as passed to the constructor, or as passed in
      * the last data packet's <b><tt>metaData</tt></b> property.
@@ -104,8 +104,8 @@ Ext.extend(Ext.data.JsonReader, Ext.data.DataReader, {
     /**
      * This method is only used by a DataProxy which has retrieved data from a remote server.
      * @param {Object} response The XHR object which contains the JSON data in its responseText.
-     * @return {Object} data A data block which is used by an Ext.data.Store object as
-     * a cache of Ext.data.Records.
+     * @return {Object} data A data block which is used by an Ext2.data.Store object as
+     * a cache of Ext2.data.Records.
      */
     read : function(response){
         var json = response.responseText;
@@ -141,17 +141,17 @@ Ext.extend(Ext.data.JsonReader, Ext.data.DataReader, {
                         return obj[expr];
                     };
             } catch(e){}
-            return Ext.emptyFn;
+            return Ext2.emptyFn;
         };
     }(),
 
     /**
-     * Create a data block containing Ext.data.Records from a JSON object.
+     * Create a data block containing Ext2.data.Records from a JSON object.
      * @param {Object} o An object which contains an Array of row objects in the property specified
      * in the config as 'root, and optionally a property, specified in the config as 'totalProperty'
      * which contains the total size of the dataset.
-     * @return {Object} data A data block which is used by an Ext.data.Store object as
-     * a cache of Ext.data.Records.
+     * @return {Object} data A data block which is used by an Ext2.data.Store object as
+     * a cache of Ext2.data.Records.
      */
     readRecords : function(o){
         /**
@@ -163,7 +163,7 @@ Ext.extend(Ext.data.JsonReader, Ext.data.DataReader, {
         if(o.metaData){
             delete this.ef;
             this.meta = o.metaData;
-            this.recordType = Ext.data.Record.create(o.metaData.fields);
+            this.recordType = Ext2.data.Record.create(o.metaData.fields);
             this.onMetaChange(this.meta, this.recordType, o);
         }
         var s = this.meta, Record = this.recordType,

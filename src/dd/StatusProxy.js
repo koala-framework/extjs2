@@ -7,39 +7,39 @@
  */
 
 /**
- * @class Ext.dd.StatusProxy
- * A specialized drag proxy that supports a drop status icon, {@link Ext.Layer} styles and auto-repair.  This is the
- * default drag proxy used by all Ext.dd components.
+ * @class Ext2.dd.StatusProxy
+ * A specialized drag proxy that supports a drop status icon, {@link Ext2.Layer} styles and auto-repair.  This is the
+ * default drag proxy used by all Ext2.dd components.
  * @constructor
  * @param {Object} config
  */
-Ext.dd.StatusProxy = function(config){
-    Ext.apply(this, config);
-    this.id = this.id || Ext.id();
-    this.el = new Ext.Layer({
+Ext2.dd.StatusProxy = function(config){
+    Ext2.apply(this, config);
+    this.id = this.id || Ext2.id();
+    this.el = new Ext2.Layer({
         dh: {
-            id: this.id, tag: "div", cls: "x-dd-drag-proxy "+this.dropNotAllowed, children: [
-                {tag: "div", cls: "x-dd-drop-icon"},
-                {tag: "div", cls: "x-dd-drag-ghost"}
+            id: this.id, tag: "div", cls: "x2-dd-drag-proxy "+this.dropNotAllowed, children: [
+                {tag: "div", cls: "x2-dd-drop-icon"},
+                {tag: "div", cls: "x2-dd-drag-ghost"}
             ]
         }, 
         shadow: !config || config.shadow !== false
     });
-    this.ghost = Ext.get(this.el.dom.childNodes[1]);
+    this.ghost = Ext2.get(this.el.dom.childNodes[1]);
     this.dropStatus = this.dropNotAllowed;
 };
 
-Ext.dd.StatusProxy.prototype = {
+Ext2.dd.StatusProxy.prototype = {
     /**
      * @cfg {String} dropAllowed
-     * The CSS class to apply to the status element when drop is allowed (defaults to "x-dd-drop-ok").
+     * The CSS class to apply to the status element when drop is allowed (defaults to "x2-dd-drop-ok").
      */
-    dropAllowed : "x-dd-drop-ok",
+    dropAllowed : "x2-dd-drop-ok",
     /**
      * @cfg {String} dropNotAllowed
-     * The CSS class to apply to the status element when drop is not allowed (defaults to "x-dd-drop-nodrop").
+     * The CSS class to apply to the status element when drop is not allowed (defaults to "x2-dd-drop-nodrop").
      */
-    dropNotAllowed : "x-dd-drop-nodrop",
+    dropNotAllowed : "x2-dd-drop-nodrop",
 
     /**
      * Updates the proxy's visual element to indicate the status of whether or not drop is allowed
@@ -59,7 +59,7 @@ Ext.dd.StatusProxy.prototype = {
      * @param {Boolean} clearGhost True to also remove all content from the ghost, false to preserve it
      */
     reset : function(clearGhost){
-        this.el.dom.className = "x-dd-drag-proxy " + this.dropNotAllowed;
+        this.el.dom.className = "x2-dd-drag-proxy " + this.dropNotAllowed;
         this.dropStatus = this.dropNotAllowed;
         if(clearGhost){
             this.ghost.update("");
@@ -81,13 +81,13 @@ Ext.dd.StatusProxy.prototype = {
         }
         var el = this.ghost.dom.firstChild; 
         if(el){
-            Ext.fly(el).setStyle(Ext.isIE ? 'styleFloat' : 'cssFloat', 'none');
+            Ext2.fly(el).setStyle(Ext2.isIE ? 'styleFloat' : 'cssFloat', 'none');
         }
     },
 
     /**
-     * Returns the underlying proxy {@link Ext.Layer}
-     * @return {Ext.Layer} el
+     * Returns the underlying proxy {@link Ext2.Layer}
+     * @return {Ext2.Layer} el
     */
     getEl : function(){
         return this.el;
@@ -95,7 +95,7 @@ Ext.dd.StatusProxy.prototype = {
 
     /**
      * Returns the ghost element
-     * @return {Ext.Element} el
+     * @return {Ext2.Element} el
      */
     getGhost : function(){
         return this.ghost;
@@ -146,7 +146,7 @@ Ext.dd.StatusProxy.prototype = {
         this.callback = callback;
         this.scope = scope;
         if(xy && this.animRepair !== false){
-            this.el.addClass("x-dd-drag-repair");
+            this.el.addClass("x2-dd-drag-repair");
             this.el.hideUnders(true);
             this.anim = this.el.shift({
                 duration: this.repairDuration || .5,

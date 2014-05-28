@@ -15,26 +15,26 @@
  * 17 May 2008
  */
  
-Ext.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Učitavanje...</div>';
+Ext2.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Učitavanje...</div>';
 
-if(Ext.View){
-   Ext.View.prototype.emptyText = "";
+if(Ext2.View){
+   Ext2.View.prototype.emptyText = "";
 }
 
-if(Ext.grid.GridPanel){
-   Ext.grid.GridPanel.prototype.ddText = "{0} odabranih redova";
+if(Ext2.grid.GridPanel){
+   Ext2.grid.GridPanel.prototype.ddText = "{0} odabranih redova";
 }
 
-if(Ext.TabPanelItem){
-   Ext.TabPanelItem.prototype.closeText = "Zatvori ovaj tab";
+if(Ext2.TabPanelItem){
+   Ext2.TabPanelItem.prototype.closeText = "Zatvori ovaj tab";
 }
 
-if(Ext.form.Field){
-   Ext.form.Field.prototype.invalidText = "Unesena vrijednost u ovom polju je neispravna";
+if(Ext2.form.Field){
+   Ext2.form.Field.prototype.invalidText = "Unesena vrijednost u ovom polju je neispravna";
 }
 
-if(Ext.LoadMask){
-    Ext.LoadMask.prototype.msg = "Učitavanje...";
+if(Ext2.LoadMask){
+    Ext2.LoadMask.prototype.msg = "Učitavanje...";
 }
 
 Date.monthNames = [
@@ -89,8 +89,8 @@ Date.getShortDayName = function(day) {
   return Date.dayNames[day].substring(0, 3);
 };
 
-if(Ext.MessageBox){
-   Ext.MessageBox.buttonText = {
+if(Ext2.MessageBox){
+   Ext2.MessageBox.buttonText = {
       ok     : "U redu",
       cancel : "Odustani",
       yes    : "Da",
@@ -98,16 +98,16 @@ if(Ext.MessageBox){
    };
 }
 
-if(Ext.util.Format){
-   Ext.util.Format.date = function(v, format){
+if(Ext2.util.Format){
+   Ext2.util.Format.date = function(v, format){
       if(!v) return "";
       if(!(v instanceof Date)) v = new Date(Date.parse(v));
       return v.dateFormat(format || "d.m.Y");
    };
 }
 
-if(Ext.DatePicker){
-   Ext.apply(Ext.DatePicker.prototype, {
+if(Ext2.DatePicker){
+   Ext2.apply(Ext2.DatePicker.prototype, {
       todayText         : "Danas",
       minText           : "Taj datum je prije najmanjeg datuma",
       maxText           : "Taj datum je poslije najvećeg datuma",
@@ -126,8 +126,8 @@ if(Ext.DatePicker){
    });
 }
 
-if(Ext.PagingToolbar){
-   Ext.apply(Ext.PagingToolbar.prototype, {
+if(Ext2.PagingToolbar){
+   Ext2.apply(Ext2.PagingToolbar.prototype, {
       beforePageText : "Stranica",
       afterPageText  : "od {0}",
       firstText      : "Prva stranica",
@@ -140,8 +140,8 @@ if(Ext.PagingToolbar){
    });
 }
 
-if(Ext.form.TextField){
-   Ext.apply(Ext.form.TextField.prototype, {
+if(Ext2.form.TextField){
+   Ext2.apply(Ext2.form.TextField.prototype, {
       minLengthText : "Minimalna dužina za ovo polje je {0}",
       maxLengthText : "Maksimalna dužina za ovo polje je {0}",
       blankText     : "Ovo polje je obavezno",
@@ -150,16 +150,16 @@ if(Ext.form.TextField){
    });
 }
 
-if(Ext.form.NumberField){
-   Ext.apply(Ext.form.NumberField.prototype, {
+if(Ext2.form.NumberField){
+   Ext2.apply(Ext2.form.NumberField.prototype, {
       minText : "Minimalna vrijednost za ovo polje je {0}",
       maxText : "Maksimalna vrijednost za ovo polje je {0}",
       nanText : "{0} nije ispravan broj"
    });
 }
 
-if(Ext.form.DateField){
-   Ext.apply(Ext.form.DateField.prototype, {
+if(Ext2.form.DateField){
+   Ext2.apply(Ext2.form.DateField.prototype, {
       disabledDaysText  : "Neaktivno",
       disabledDatesText : "Neaktivno",
       minText           : "Datum u ovom polje mora biti poslije {0}",
@@ -169,15 +169,15 @@ if(Ext.form.DateField){
    });
 }
 
-if(Ext.form.ComboBox){
-   Ext.apply(Ext.form.ComboBox.prototype, {
+if(Ext2.form.ComboBox){
+   Ext2.apply(Ext2.form.ComboBox.prototype, {
       loadingText       : "Učitavanje...",
       valueNotFoundText : undefined
    });
 }
 
-if(Ext.form.VTypes){
-   Ext.apply(Ext.form.VTypes, {
+if(Ext2.form.VTypes){
+   Ext2.apply(Ext2.form.VTypes, {
       emailText    : 'Ovdje možete unijeti samo e-mail adresu u obliku "korisnik@domena.com"',
       urlText      : 'Ovdje možete unijeti samo URL u obliku "http:/'+'/www.domena.com"',
       alphaText    : 'Ovo polje može sadržavati samo slova i znak _',
@@ -185,86 +185,86 @@ if(Ext.form.VTypes){
    });
 }
 
-if(Ext.form.HtmlEditor){
-  Ext.apply(Ext.form.HtmlEditor.prototype, {
+if(Ext2.form.HtmlEditor){
+  Ext2.apply(Ext2.form.HtmlEditor.prototype, {
     createLinkText : 'Unesite URL za link:',
     buttonTips : {
       bold : {
         title: 'Podebljano (Ctrl+B)',
         text: 'Podebljavanje označenog teksta.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       italic : {
         title: 'Kurziv (Ctrl+I)',
         text: 'Pretvaranje označenog tekst u kurziv',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       underline : {
         title: 'Podcrtano (Ctrl+U)',
         text: 'Potcrtavanje označenog teksta',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       increasefontsize : {
         title: 'Povećanje teksta',
         text: 'Povećavanje veličine fonta.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       decreasefontsize : {
         title: 'Smanjivanje teksta',
         text: 'Smanjivanje veličine fonta.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       backcolor : {
         title: 'Boja označenog teksta',
         text: 'Promjena boje pozadine označenog teksta.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       forecolor : {
         title: 'Boja fonta',
         text: 'Promjena boje označenog teksta.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifyleft : {
         title: 'Lijevo poravnanje teksta',
         text: 'Poravnanje teksta na lijevu stranu.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifycenter : {
         title: 'Centriranje teksta',
         text: 'Centriranje teksta u uređivaču teksta.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifyright : {
         title: 'Desno poravnanje teksta',
         text: 'Poravnanje teksta na desnu stranu.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       insertunorderedlist : {
         title: 'Označena lista',
         text: 'Započinjanje označene liste.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       insertorderedlist : {
         title: 'Numerirana lista',
         text: 'Započinjanje numerirane liste.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       createlink : {
         title: 'Hiperveza',
         text: 'Stvaranje hiperveze od označenog teksta.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       sourceedit : {
         title: 'Uređivanje izvornog koda',
         text: 'Prebacivanje u način rada za uređivanje izvornog koda.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       }
     }
   });
 }
 
-if(Ext.grid.GridView){
-   Ext.apply(Ext.grid.GridView.prototype, {
+if(Ext2.grid.GridView){
+   Ext2.apply(Ext2.grid.GridView.prototype, {
       sortAscText  : "Sortiraj rastućim redoslijedom",
       sortDescText : "Sortiraj padajućim redoslijedom",
       lockText     : "Zaključaj stupac",
@@ -273,24 +273,24 @@ if(Ext.grid.GridView){
    });
 }
 
-if(Ext.grid.GroupingView){
-  Ext.apply(Ext.grid.GroupingView.prototype, {
+if(Ext2.grid.GroupingView){
+  Ext2.apply(Ext2.grid.GroupingView.prototype, {
     emptyGroupText : '(Ništa)',
     groupByText    : 'Grupiranje po ovom polju',
     showGroupsText : 'Prikaz u grupama'
   });
 }
 
-if(Ext.grid.PropertyColumnModel){
-   Ext.apply(Ext.grid.PropertyColumnModel.prototype, {
+if(Ext2.grid.PropertyColumnModel){
+   Ext2.apply(Ext2.grid.PropertyColumnModel.prototype, {
       nameText   : "Naziv",
       valueText  : "Vrijednost",
       dateFormat : "d.m.Y"
    });
 }
 
-if(Ext.layout.BorderLayout.SplitRegion){
-   Ext.apply(Ext.layout.BorderLayout.SplitRegion.prototype, {
+if(Ext2.layout.BorderLayout.SplitRegion){
+   Ext2.apply(Ext2.layout.BorderLayout.SplitRegion.prototype, {
       splitTip            : "Povuci za promjenu veličine.",
       collapsibleSplitTip : "Povuci za promjenu veličine. Dvostruki klik za skrivanje."
    });

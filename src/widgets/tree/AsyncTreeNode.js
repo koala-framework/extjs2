@@ -7,16 +7,16 @@
  */
 
 /**
- * @class Ext.tree.AsyncTreeNode
- * @extends Ext.tree.TreeNode
+ * @class Ext2.tree.AsyncTreeNode
+ * @extends Ext2.tree.TreeNode
  * @cfg {TreeLoader} loader A TreeLoader to be used by this node (defaults to the loader defined on the tree)
  * @constructor
  * @param {Object/String} attributes The attributes/config for the node or just a string with the text for the node 
  */
- Ext.tree.AsyncTreeNode = function(config){
+ Ext2.tree.AsyncTreeNode = function(config){
     this.loaded = config && config.loaded === true;
     this.loading = false;
-    Ext.tree.AsyncTreeNode.superclass.constructor.apply(this, arguments);
+    Ext2.tree.AsyncTreeNode.superclass.constructor.apply(this, arguments);
     /**
     * @event beforeload
     * Fires before this node is loaded, return false to cancel
@@ -34,7 +34,7 @@
      * @property loader
      */
 };
-Ext.extend(Ext.tree.AsyncTreeNode, Ext.tree.TreeNode, {
+Ext2.extend(Ext2.tree.AsyncTreeNode, Ext2.tree.TreeNode, {
     expand : function(deep, anim, callback){
         if(this.loading){ // if an async load is already running, waiting til it's done
             var timer;
@@ -59,7 +59,7 @@ Ext.extend(Ext.tree.AsyncTreeNode, Ext.tree.TreeNode, {
                 return;
             }
         }
-        Ext.tree.AsyncTreeNode.superclass.expand.call(this, deep, anim, callback);
+        Ext2.tree.AsyncTreeNode.superclass.expand.call(this, deep, anim, callback);
     },
     
     /**
@@ -90,7 +90,7 @@ Ext.extend(Ext.tree.AsyncTreeNode, Ext.tree.TreeNode, {
         if(!this.isLeaf() && !this.loaded){
             return true;
         }else{
-            return Ext.tree.AsyncTreeNode.superclass.hasChildNodes.call(this);
+            return Ext2.tree.AsyncTreeNode.superclass.hasChildNodes.call(this);
         }
     },
 
@@ -112,4 +112,4 @@ Ext.extend(Ext.tree.AsyncTreeNode, Ext.tree.TreeNode, {
     }
 });
 
-Ext.tree.TreePanel.nodeTypes.async = Ext.tree.AsyncTreeNode;
+Ext2.tree.TreePanel.nodeTypes.async = Ext2.tree.AsyncTreeNode;

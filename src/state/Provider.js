@@ -7,12 +7,12 @@
  */
 
 /**
- * @class Ext.state.Provider
+ * @class Ext2.state.Provider
  * Abstract base class for state provider implementations. This class provides methods
  * for encoding and decoding <b>typed</b> variables including dates and defines the 
  * Provider interface.
  */
-Ext.state.Provider = function(){
+Ext2.state.Provider = function(){
     /**
      * @event statechange
      * Fires when a state change occurs.
@@ -22,9 +22,9 @@ Ext.state.Provider = function(){
      */
     this.addEvents("statechange");
     this.state = {};
-    Ext.state.Provider.superclass.constructor.call(this);
+    Ext2.state.Provider.superclass.constructor.call(this);
 };
-Ext.extend(Ext.state.Provider, Ext.util.Observable, {
+Ext2.extend(Ext2.state.Provider, Ext2.util.Observable, {
     /**
      * Returns the current value for a key
      * @param {String} name The key name
@@ -104,9 +104,9 @@ Ext.extend(Ext.state.Provider, Ext.util.Observable, {
             enc = "n:" + v;
         }else if(typeof v == "boolean"){
             enc = "b:" + (v ? "1" : "0");
-        }else if(Ext.isDate(v)){
+        }else if(Ext2.isDate(v)){
             enc = "d:" + v.toGMTString();
-        }else if(Ext.isArray(v)){
+        }else if(Ext2.isArray(v)){
             var flat = "";
             for(var i = 0, len = v.length; i < len; i++){
                 flat += this.encodeValue(v[i]);

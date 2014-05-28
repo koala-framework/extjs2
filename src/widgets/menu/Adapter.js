@@ -7,20 +7,20 @@
  */
 
 /**
- * @class Ext.menu.Adapter
- * @extends Ext.menu.BaseItem
+ * @class Ext2.menu.Adapter
+ * @extends Ext2.menu.BaseItem
  * A base utility class that adapts a non-menu component so that it can be wrapped by a menu item and added to a menu.
  * It provides basic rendering, activation management and enable/disable logic required to work in menus.
  * @constructor
  * Creates a new Adapter
- * @param {Ext.Component} component The component being adapted to render into a menu
+ * @param {Ext2.Component} component The component being adapted to render into a menu
  * @param {Object} config Configuration options
  */
-Ext.menu.Adapter = function(component, config){
-    Ext.menu.Adapter.superclass.constructor.call(this, config);
+Ext2.menu.Adapter = function(component, config){
+    Ext2.menu.Adapter.superclass.constructor.call(this, config);
     this.component = component;
 };
-Ext.extend(Ext.menu.Adapter, Ext.menu.BaseItem, {
+Ext2.extend(Ext2.menu.Adapter, Ext2.menu.BaseItem, {
     // private
     canActivate : true,
 
@@ -48,12 +48,12 @@ Ext.extend(Ext.menu.Adapter, Ext.menu.BaseItem, {
     // private
     disable : function(){
         this.component.disable();
-        Ext.menu.Adapter.superclass.disable.call(this);
+        Ext2.menu.Adapter.superclass.disable.call(this);
     },
 
     // private
     enable : function(){
         this.component.enable();
-        Ext.menu.Adapter.superclass.enable.call(this);
+        Ext2.menu.Adapter.superclass.enable.call(this);
     }
 });

@@ -7,17 +7,17 @@
  */
 
 /**
- * @class Ext.QuickTip
- * @extends Ext.ToolTip
+ * @class Ext2.QuickTip
+ * @extends Ext2.ToolTip
  * A specialized tooltip class for tooltips that can be specified in markup and automatically managed by the global
- * {@link Ext.QuickTips} instance.  See the QuickTips class header for additional usage details and examples.
+ * {@link Ext2.QuickTips} instance.  See the QuickTips class header for additional usage details and examples.
  * @constructor
  * Create a new Tip
  * @param {Object} config The configuration options
  */
-Ext.QuickTip = Ext.extend(Ext.ToolTip, {
+Ext2.QuickTip = Ext2.extend(Ext2.ToolTip, {
     /**
-     * @cfg {Mixed} target The target HTMLElement, Ext.Element or id to associate with this quicktip (defaults to the document).
+     * @cfg {Mixed} target The target HTMLElement, Ext2.Element or id to associate with this quicktip (defaults to the document).
      */
     /**
      * @cfg {Boolean} interceptTitles True to automatically use the element's DOM title value if available (defaults to false).
@@ -38,14 +38,14 @@ Ext.QuickTip = Ext.extend(Ext.ToolTip, {
 
     // private
     initComponent : function(){
-        this.target = this.target || Ext.getDoc();
+        this.target = this.target || Ext2.getDoc();
         this.targets = this.targets || {};
-        Ext.QuickTip.superclass.initComponent.call(this);
+        Ext2.QuickTip.superclass.initComponent.call(this);
     },
 
     /**
      * Configures a new quick tip instance and assigns it to a target element.  The following config values are
-     * supported (for example usage, see the {@link Ext.QuickTips} class header):
+     * supported (for example usage, see the {@link Ext2.QuickTips} class header):
      * <div class="mdetail-params"><ul>
      * <li>autoHide</li>
      * <li>cls</li>
@@ -57,17 +57,17 @@ Ext.QuickTip = Ext.extend(Ext.ToolTip, {
      * @param {Object} config The config object
      */
     register : function(config){
-        var cs = Ext.isArray(config) ? config : arguments;
+        var cs = Ext2.isArray(config) ? config : arguments;
         for(var i = 0, len = cs.length; i < len; i++){
             var c = cs[i];
             var target = c.target;
             if(target){
-                if(Ext.isArray(target)){
+                if(Ext2.isArray(target)){
                     for(var j = 0, jlen = target.length; j < jlen; j++){
-                        this.targets[Ext.id(target[j])] = c;
+                        this.targets[Ext2.id(target[j])] = c;
                     }
                 } else{
-                    this.targets[Ext.id(target)] = c;
+                    this.targets[Ext2.id(target)] = c;
                 }
             }
         }
@@ -78,7 +78,7 @@ Ext.QuickTip = Ext.extend(Ext.ToolTip, {
      * @param {String/HTMLElement/Element} el The element from which the quick tip is to be removed.
      */
     unregister : function(el){
-        delete this.targets[Ext.id(el)];
+        delete this.targets[Ext2.id(el)];
     },
 
     // private
@@ -102,7 +102,7 @@ Ext.QuickTip = Ext.extend(Ext.ToolTip, {
             this.delayShow();
             return;
         }
-        var ttp, et = Ext.fly(t), cfg = this.tagConfig;
+        var ttp, et = Ext2.fly(t), cfg = this.tagConfig;
         var ns = cfg.namespace;
         if(this.interceptTitles && t.title){
             ttp = t.title;
@@ -140,7 +140,7 @@ Ext.QuickTip = Ext.extend(Ext.ToolTip, {
         var t = this.activeTarget;
         if(t){
             if(!this.rendered){
-                this.render(Ext.getBody());
+                this.render(Ext2.getBody());
                 this.activeTarget = t;
             }
             if(t.width){
@@ -169,12 +169,12 @@ Ext.QuickTip = Ext.extend(Ext.ToolTip, {
                 this.constrainPosition = true;
             }
         }
-        Ext.QuickTip.superclass.showAt.call(this, xy);
+        Ext2.QuickTip.superclass.showAt.call(this, xy);
     },
 
     // inherit docs
     hide: function(){
         delete this.activeTarget;
-        Ext.QuickTip.superclass.hide.call(this);
+        Ext2.QuickTip.superclass.hide.call(this);
     }
 });

@@ -6,14 +6,14 @@
  * http://extjs.com/license
  */
 
-.x-tree .x-panel-body{
+.x2-tree .x2-panel-body{
     background-color:#fff;
 }
-.ext-strict .ext-ie .x-tree .x-panel-bwrap{
+.ext2-strict .ext2-ie .x2-tree .x2-panel-bwrap{
     position:relative;
     overflow:hidden;
 }
-.x-tree-icon, .x-tree-ec-icon, .x-tree-elbow-line, .x-tree-elbow, .x-tree-elbow-end, .x-tree-elbow-plus, .x-tree-elbow-minus, .x-tree-elbow-end-plus, .x-tree-elbow-end-minus{
+.x2-tree-icon, .x2-tree-ec-icon, .x2-tree-elbow-line, .x2-tree-elbow, .x2-tree-elbow-end, .x2-tree-elbow-plus, .x2-tree-elbow-minus, .x2-tree-elbow-end-plus, .x2-tree-elbow-end-minus{
 	border: 0 none;
 	height: 18px;
 	margin: 0;
@@ -22,7 +22,7 @@
 	width: 16px;
     background-repeat: no-repeat;
 }
-.x-tree-node-collapsed .x-tree-node-icon, .x-tree-node-expanded .x-tree-node-icon, .x-tree-node-leaf .x-tree-node-icon{
+.x2-tree-node-collapsed .x2-tree-node-icon, .x2-tree-node-expanded .x2-tree-node-icon, .x2-tree-node-leaf .x2-tree-node-icon{
 	border: 0 none;
 	height: 18px;
 	margin: 0;
@@ -32,151 +32,151 @@
 	background-position:center;
     background-repeat: no-repeat;
 }
-.ext-ie .x-tree-node-indent img, .ext-ie .x-tree-node-icon, .ext-ie .x-tree-ec-icon {
+.ext2-ie .x2-tree-node-indent img, .ext2-ie .x2-tree-node-icon, .ext2-ie .x2-tree-ec-icon {
     vertical-align:middle !important;
 }
 /* some default icons for leaf/folder */
-.x-tree-node-expanded .x-tree-node-icon{
+.x2-tree-node-expanded .x2-tree-node-icon{
 	background-image:url(../images/default/tree/folder-open.gif);
 }
-.x-tree-node-leaf .x-tree-node-icon{
+.x2-tree-node-leaf .x2-tree-node-icon{
 	background-image:url(../images/default/tree/leaf.gif);
 }
-.x-tree-node-collapsed .x-tree-node-icon{
+.x2-tree-node-collapsed .x2-tree-node-icon{
 	background-image:url(../images/default/tree/folder.gif);
 }
 /* checkboxes */
-.ext-ie input.x-tree-node-cb {
+.ext2-ie input.x2-tree-node-cb {
     width:15px;
     height:15px;
 }
-input.x-tree-node-cb {
+input.x2-tree-node-cb {
     margin-left:1px;
 }
-.ext-ie input.x-tree-node-cb {
+.ext2-ie input.x2-tree-node-cb {
     margin-left:0;
 }
 
-.x-tree-noicon .x-tree-node-icon{
+.x2-tree-noicon .x2-tree-node-icon{
 	width:0; height:0;
 }
 /* loading icon */
-.x-tree-node-loading .x-tree-node-icon{
+.x2-tree-node-loading .x2-tree-node-icon{
 	background-image:url(../images/default/tree/loading.gif) !important;
 }
-.x-tree-node-loading a span{
+.x2-tree-node-loading a span{
 	 font-style: italic;
 	 color:#444444;
 }
-.ext-ie .x-tree-node-el input {
+.ext2-ie .x2-tree-node-el input {
     width:15px;
     height:15px;
 }
 /* Line styles */
-.x-tree-lines .x-tree-elbow{
+.x2-tree-lines .x2-tree-elbow{
 	background-image:url(../images/default/tree/elbow.gif);
 }
-.x-tree-lines .x-tree-elbow-plus{
+.x2-tree-lines .x2-tree-elbow-plus{
 	background-image:url(../images/default/tree/elbow-plus.gif);
 }
-.x-tree-lines .x-tree-elbow-minus{
+.x2-tree-lines .x2-tree-elbow-minus{
 	background-image:url(../images/default/tree/elbow-minus.gif);
 }
-.x-tree-lines .x-tree-elbow-end{
+.x2-tree-lines .x2-tree-elbow-end{
 	background-image:url(../images/default/tree/elbow-end.gif);
 }
-.x-tree-lines .x-tree-elbow-end-plus{
+.x2-tree-lines .x2-tree-elbow-end-plus{
 	background-image:url(../images/default/tree/elbow-end-plus.gif);
 }
-.x-tree-lines .x-tree-elbow-end-minus{
+.x2-tree-lines .x2-tree-elbow-end-minus{
 	background-image:url(../images/default/tree/elbow-end-minus.gif);
 }
-.x-tree-lines .x-tree-elbow-line{
+.x2-tree-lines .x2-tree-elbow-line{
 	background-image:url(../images/default/tree/elbow-line.gif);
 }
 
 /* No line styles */
-.x-tree-no-lines .x-tree-elbow{
+.x2-tree-no-lines .x2-tree-elbow{
 	background:transparent;
 }
-.x-tree-no-lines .x-tree-elbow-plus{
+.x2-tree-no-lines .x2-tree-elbow-plus{
 	background-image:url(../images/default/tree/elbow-plus-nl.gif);
 }
-.x-tree-no-lines .x-tree-elbow-minus{
+.x2-tree-no-lines .x2-tree-elbow-minus{
 	background-image:url(../images/default/tree/elbow-minus-nl.gif);
 }
-.x-tree-no-lines .x-tree-elbow-end{
+.x2-tree-no-lines .x2-tree-elbow-end{
 	background:transparent;
 }
-.x-tree-no-lines .x-tree-elbow-end-plus{
+.x2-tree-no-lines .x2-tree-elbow-end-plus{
 	background-image:url(../images/default/tree/elbow-end-plus-nl.gif);
 }
-.x-tree-no-lines .x-tree-elbow-end-minus{
+.x2-tree-no-lines .x2-tree-elbow-end-minus{
 	background-image:url(../images/default/tree/elbow-end-minus-nl.gif);
 }
-.x-tree-no-lines .x-tree-elbow-line{
+.x2-tree-no-lines .x2-tree-elbow-line{
 	background:transparent;
 }
 
 
 /* Arrows */
-.x-tree-arrows .x-tree-elbow{
+.x2-tree-arrows .x2-tree-elbow{
 	background:transparent;
 }
-.x-tree-arrows .x-tree-elbow-plus{
+.x2-tree-arrows .x2-tree-elbow-plus{
     background:transparent url(../images/default/tree/arrows.gif) no-repeat 0 0;
 }
-.x-tree-arrows .x-tree-elbow-minus{
+.x2-tree-arrows .x2-tree-elbow-minus{
     background:transparent url(../images/default/tree/arrows.gif) no-repeat -16px 0;
 }
-.x-tree-arrows .x-tree-elbow-end{
+.x2-tree-arrows .x2-tree-elbow-end{
 	background:transparent;
 }
-.x-tree-arrows .x-tree-elbow-end-plus{
+.x2-tree-arrows .x2-tree-elbow-end-plus{
     background:transparent url(../images/default/tree/arrows.gif) no-repeat 0 0;
 }
-.x-tree-arrows .x-tree-elbow-end-minus{
+.x2-tree-arrows .x2-tree-elbow-end-minus{
     background:transparent url(../images/default/tree/arrows.gif) no-repeat -16px 0;
 }
-.x-tree-arrows .x-tree-elbow-line{
+.x2-tree-arrows .x2-tree-elbow-line{
 	background:transparent;
 }
 
-.x-tree-arrows .x-tree-ec-over .x-tree-elbow-plus{
+.x2-tree-arrows .x2-tree-ec-over .x2-tree-elbow-plus{
     background-position:-32px 0;
 }
-.x-tree-arrows .x-tree-ec-over .x-tree-elbow-minus{
+.x2-tree-arrows .x2-tree-ec-over .x2-tree-elbow-minus{
     background-position:-48px 0;
 }
-.x-tree-arrows .x-tree-ec-over .x-tree-elbow-end-plus{
+.x2-tree-arrows .x2-tree-ec-over .x2-tree-elbow-end-plus{
     background-position:-32px 0;
 }
-.x-tree-arrows .x-tree-ec-over .x-tree-elbow-end-minus{
+.x2-tree-arrows .x2-tree-ec-over .x2-tree-elbow-end-minus{
     background-position:-48px 0;
 }
 
 
 
-.x-tree-elbow-plus, .x-tree-elbow-minus, .x-tree-elbow-end-plus, .x-tree-elbow-end-minus{
+.x2-tree-elbow-plus, .x2-tree-elbow-minus, .x2-tree-elbow-end-plus, .x2-tree-elbow-end-minus{
 	cursor:pointer;
 }
-.ext-ie ul.x-tree-node-ct{
+.ext2-ie ul.x2-tree-node-ct{
     font-size:0;
     line-height:0;
     zoom:1;
 }
-.x-tree-node{
+.x2-tree-node{
 	color: black;
 	font: normal 11px arial, tahoma, helvetica, sans-serif;
 	white-space: nowrap;
 }
 
-.x-tree-node-el {
+.x2-tree-node-el {
     line-height:18px;
     cursor:pointer;
 }
 
-.x-tree-node a, .x-dd-drag-ghost a{
+.x2-tree-node a, .x2-dd-drag-ghost a{
 	text-decoration:none;
 	color:black;
 	-moz-user-select:none;
@@ -187,69 +187,69 @@ input.x-tree-node-cb {
     -moz-outline: 0 none;
     outline:0 none;
 }
-.x-tree-node a span, .x-dd-drag-ghost a span{
+.x2-tree-node a span, .x2-dd-drag-ghost a span{
 	text-decoration:none;
 	color:black;
 	padding:1px 3px 1px 2px;
 }
-.x-tree-node .x-tree-node-disabled a span{
+.x2-tree-node .x2-tree-node-disabled a span{
 	color:gray !important;
 }
-.x-tree-node .x-tree-node-disabled .x-tree-node-icon{
+.x2-tree-node .x2-tree-node-disabled .x2-tree-node-icon{
 	-moz-opacity: 0.5;
    opacity:.5;
    filter: alpha(opacity=50);
 }
-.x-tree-node .x-tree-node-inline-icon{
+.x2-tree-node .x2-tree-node-inline-icon{
 	background:transparent;
 }
-.x-tree-node a:hover, .x-dd-drag-ghost a:hover{
+.x2-tree-node a:hover, .x2-dd-drag-ghost a:hover{
 	text-decoration:none;
 }
-.x-tree-node div.x-tree-drag-insert-below{
+.x2-tree-node div.x2-tree-drag-insert-below{
  	 border-bottom:1px dotted #3366cc;
 }
-.x-tree-node div.x-tree-drag-insert-above{
+.x2-tree-node div.x2-tree-drag-insert-above{
 	 border-top:1px dotted #3366cc;
 }
-.x-tree-dd-underline .x-tree-node div.x-tree-drag-insert-below{
+.x2-tree-dd-underline .x2-tree-node div.x2-tree-drag-insert-below{
  	 border-bottom:0 none;
 }
-.x-tree-dd-underline .x-tree-node div.x-tree-drag-insert-above{
+.x2-tree-dd-underline .x2-tree-node div.x2-tree-drag-insert-above{
 	 border-top:0 none;
 }
-.x-tree-dd-underline .x-tree-node div.x-tree-drag-insert-below a{
+.x2-tree-dd-underline .x2-tree-node div.x2-tree-drag-insert-below a{
  	 border-bottom:2px solid #3366cc;
 }
-.x-tree-dd-underline .x-tree-node div.x-tree-drag-insert-above a{
+.x2-tree-dd-underline .x2-tree-node div.x2-tree-drag-insert-above a{
 	 border-top:2px solid #3366cc;
 }
-.x-tree-node .x-tree-drag-append a span{
+.x2-tree-node .x2-tree-drag-append a span{
 	 background:#dddddd;
 	 border:1px dotted gray;
 }
-.x-tree-node .x-tree-node-over {
+.x2-tree-node .x2-tree-node-over {
 	background-color: #eee;
 }
-.x-tree-node .x-tree-selected {
+.x2-tree-node .x2-tree-selected {
 	background-color: #d9e8fb;
 }
-.x-dd-drag-ghost .x-tree-node-indent, .x-dd-drag-ghost .x-tree-ec-icon{
+.x2-dd-drag-ghost .x2-tree-node-indent, .x2-dd-drag-ghost .x2-tree-ec-icon{
 	display:none !important;
 }
-.x-tree-drop-ok-append .x-dd-drop-icon{
+.x2-tree-drop-ok-append .x2-dd-drop-icon{
   background-image: url(../images/default/tree/drop-add.gif);
 }
-.x-tree-drop-ok-above .x-dd-drop-icon{
+.x2-tree-drop-ok-above .x2-dd-drop-icon{
   background-image: url(../images/default/tree/drop-over.gif);
 }
-.x-tree-drop-ok-below .x-dd-drop-icon{
+.x2-tree-drop-ok-below .x2-dd-drop-icon{
   background-image: url(../images/default/tree/drop-under.gif);
 }
-.x-tree-drop-ok-between .x-dd-drop-icon{
+.x2-tree-drop-ok-between .x2-dd-drop-icon{
   background-image: url(../images/default/tree/drop-between.gif);
 }
 /* Fix for ie rootVisible:false issue */
-.x-tree-root-ct {
+.x2-tree-root-ct {
     zoom:1;
 }

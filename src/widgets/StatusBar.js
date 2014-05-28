@@ -7,19 +7,19 @@
  */
 
 /**
- * @class Ext.StatusBar
- * <p>Basic status bar component that can be used as the bottom toolbar of any {@link Ext.Panel}.  In addition to
- * supporting the standard {@link Ext.Toolbar} interface for adding buttons, menus and other items, the StatusBar
+ * @class Ext2.StatusBar
+ * <p>Basic status bar component that can be used as the bottom toolbar of any {@link Ext2.Panel}.  In addition to
+ * supporting the standard {@link Ext2.Toolbar} interface for adding buttons, menus and other items, the StatusBar
  * provides a greedy status element that can be aligned to either side and has convenient methods for setting the
  * status text and icon.  You can also indicate that something is processing using the {@link #showBusy} method.</p>
- * <p><b>Note:</b> Although StatusBar supports xtype:'statusbar', at this time Ext.Toolbar (the base class) does
+ * <p><b>Note:</b> Although StatusBar supports xtype:'statusbar', at this time Ext2.Toolbar (the base class) does
  * not support xtype.  For this reason, if you are adding Toolbar items into the StatusBar you must declare it
  * using the "new StatusBar()" syntax for the items to render correctly.</p> 
  * <pre><code>
-new Ext.Panel({
+new Ext2.Panel({
     title: 'StatusBar',
     // etc.
-    bbar: new Ext.StatusBar({
+    bbar: new Ext2.StatusBar({
         id: 'my-status',
         
         // defaults to use when the status is cleared:
@@ -38,7 +38,7 @@ new Ext.Panel({
 });
 
 // Update the status bar later in code:
-var sb = Ext.getCmp('my-status');
+var sb = Ext2.getCmp('my-status');
 sb.setStatus({
     text: 'OK',
     iconCls: 'ok-icon',
@@ -52,12 +52,12 @@ sb.showBusy();
  
 sb.clearStatus(); // once completeed
 </code></pre>
- * @extends Ext.Toolbar
+ * @extends Ext2.Toolbar
  * @constructor
  * Creates a new StatusBar
  * @param {Object/Array} config A config object
  */
-Ext.StatusBar = Ext.extend(Ext.Toolbar, {
+Ext2.StatusBar = Ext2.extend(Ext2.Toolbar, {
     /**
      * @cfg {String} statusAlign
      * The alignment of the status element within the overall StatusBar layout.  When the StatusBar is rendered,
@@ -68,10 +68,10 @@ Ext.StatusBar = Ext.extend(Ext.Toolbar, {
      * <pre><code>
 // Create a left-aligned status bar containing a button,
 // separator and text item that will be right-aligned (default):
-new Ext.Panel({
+new Ext2.Panel({
     title: 'StatusBar',
     // etc.
-    bbar: new Ext.StatusBar({
+    bbar: new Ext2.StatusBar({
         defaultText: 'Default status text',
         id: 'status-id',
         items: [{
@@ -83,10 +83,10 @@ new Ext.Panel({
 // By adding the statusAlign config, this will create the
 // exact same toolbar, except the status and toolbar item
 // layout will be reversed from the previous example:
-new Ext.Panel({
+new Ext2.Panel({
     title: 'StatusBar',
     // etc.
-    bbar: new Ext.StatusBar({
+    bbar: new Ext2.StatusBar({
         defaultText: 'Default status text',
         id: 'status-id',
         statusAlign: 'right',
@@ -118,36 +118,36 @@ new Ext.Panel({
      * status text, so the rule should provide the appropriate padding on the div to make room for the image. 
      * Example usage:<pre><code>
 // Example CSS rule:
-.x-statusbar .x-status-custom {
+.x2-statusbar .x2-status-custom {
     padding-left: 25px;
     background: transparent url(images/custom-icon.gif) no-repeat 3px 3px;
 }
 
 // Initializing the status bar:
-var sb = new Ext.StatusBar({
-    defaultIconCls: 'x-status-custom'
+var sb = new Ext2.StatusBar({
+    defaultIconCls: 'x2-status-custom'
 });
 
 // Setting it in code:
 sb.setStatus({
     text: 'New status',
-    iconCls: 'x-status-custom'
+    iconCls: 'x2-status-custom'
 });
 </code></pre>
      */
     
     /**
      * @cfg {String} cls
-     * The base class applied to the containing element for this component on render (defaults to 'x-statusbar')
+     * The base class applied to the containing element for this component on render (defaults to 'x2-statusbar')
      */
-    cls : 'x-statusbar',
+    cls : 'x2-statusbar',
     /**
      * @cfg {String} busyIconCls
-     * The default {@link #iconCls} applied when calling {@link #showBusy} (defaults to 'x-status-busy'). It can be
+     * The default {@link #iconCls} applied when calling {@link #showBusy} (defaults to 'x2-status-busy'). It can be
      * overridden at any time by passing the <tt>iconCls</tt> argument into <tt>showBusy</tt>. See the 
      * iconCls docs for additional details about customizing the icon.
      */
-    busyIconCls : 'x-status-busy',
+    busyIconCls : 'x2-status-busy',
     /**
      * @cfg {String} busyText
      * The default {@link #text} applied when calling {@link #showBusy} (defaults to 'Loading...'). It can be
@@ -170,17 +170,17 @@ sb.setStatus({
     // private
     initComponent : function(){
         if(this.statusAlign=='right'){
-            this.cls += ' x-status-right';
+            this.cls += ' x2-status-right';
         }
-        Ext.StatusBar.superclass.initComponent.call(this);
+        Ext2.StatusBar.superclass.initComponent.call(this);
     },
     
     // private
     afterRender : function(){
-        Ext.StatusBar.superclass.afterRender.call(this);
+        Ext2.StatusBar.superclass.afterRender.call(this);
         
         var right = this.statusAlign=='right',
-            td = Ext.get(this.nextBlock());
+            td = Ext2.get(this.nextBlock());
         
         if(right){
             this.tr.appendChild(td.dom);
@@ -189,7 +189,7 @@ sb.setStatus({
         }
         
         this.statusEl = td.createChild({
-            cls: 'x-status-text ' + (this.iconCls || this.defaultIconCls || ''),
+            cls: 'x2-status-text ' + (this.iconCls || this.defaultIconCls || ''),
             html: this.text || this.defaultText || ''
         });
         this.statusEl.unselectable();
@@ -233,14 +233,14 @@ statusBar.setStatus('New status');
 // Set the status and icon, auto-clearing with default options:
 statusBar.setStatus({
     text: 'New status',
-    iconCls: 'x-status-custom',
+    iconCls: 'x2-status-custom',
     clear: true
 });
 
 // Auto-clear with custom options:
 statusBar.setStatus({
     text: 'New status',
-    iconCls: 'x-status-custom',
+    iconCls: 'x2-status-custom',
     clear: {
         wait: 8000,
         anim: false,
@@ -248,7 +248,7 @@ statusBar.setStatus({
     }
 });
 </code></pre>
-     * @return {Ext.StatusBar} this
+     * @return {Ext2.StatusBar} this
      */
     setStatus : function(o){
         o = o || {};
@@ -269,7 +269,7 @@ statusBar.setStatus({
                 defaults = {useDefaults: true, anim: true};
             
             if(typeof c == 'object'){
-                c = Ext.applyIf(c, defaults);
+                c = Ext2.applyIf(c, defaults);
                 if(c.wait){
                     wait = c.wait;
                 }
@@ -295,7 +295,7 @@ statusBar.setStatus({
      * <li><tt>useDefaults</tt> {Boolean} : (optional) True to reset the text and icon using {@link #defaultText} and 
      * {@link #defaultIconCls} (defaults to false which sets the text to '' and removes any existing icon class).</li>
      * </ul>
-     * @return {Ext.StatusBar} this
+     * @return {Ext2.StatusBar} this
      */
     clearStatus : function(o){
         o = o || {};
@@ -338,7 +338,7 @@ statusBar.setStatus({
     /**
      * Convenience method for setting the status text directly.  For more flexible options see {@link #setStatus}.
      * @param {String} text (optional) The text to set (defaults to '')
-     * @return {Ext.StatusBar} this
+     * @return {Ext2.StatusBar} this
      */
     setText : function(text){
         this.activeThreadId++;
@@ -361,7 +361,7 @@ statusBar.setStatus({
      * Convenience method for setting the status icon directly.  For more flexible options see {@link #setStatus}.
      * See {@link #iconCls} for complete details about customizing the icon.
      * @param {String} iconCls (optional) The icon class to set (defaults to '', and any current icon class is removed)
-     * @return {Ext.StatusBar} this
+     * @return {Ext2.StatusBar} this
      */
     setIcon : function(cls){
         this.activeThreadId++;
@@ -390,17 +390,17 @@ statusBar.setStatus({
      * <tt>text</tt> and/or <tt>iconCls</tt> properties on the config to override the default {@link #busyText} 
      * and {@link #busyIconCls} settings. If the config argument is not specified, {@link #busyText} and 
      * {@link #busyIconCls} will be used in conjunction with all of the default options for {@link #setStatus}.
-     * @return {Ext.StatusBar} this
+     * @return {Ext2.StatusBar} this
      */
     showBusy : function(o){
         if(typeof o == 'string'){
             o = {text:o};
         }
-        o = Ext.applyIf(o || {}, {
+        o = Ext2.applyIf(o || {}, {
             text: this.busyText,
             iconCls: this.busyIconCls
         });
         return this.setStatus(o);
     }
 });
-Ext.reg('statusbar', Ext.StatusBar);
+Ext2.reg('statusbar', Ext2.StatusBar);

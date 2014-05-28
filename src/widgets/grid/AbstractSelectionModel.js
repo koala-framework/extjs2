@@ -7,18 +7,18 @@
  */
 
 /**
- * @class Ext.grid.AbstractSelectionModel
- * @extends Ext.util.Observable
+ * @class Ext2.grid.AbstractSelectionModel
+ * @extends Ext2.util.Observable
  * Abstract base class for grid SelectionModels.  It provides the interface that should be
  * implemented by descendant classes.  This class should not be directly instantiated.
  * @constructor
  */
-Ext.grid.AbstractSelectionModel = function(){
+Ext2.grid.AbstractSelectionModel = function(){
     this.locked = false;
-    Ext.grid.AbstractSelectionModel.superclass.constructor.call(this);
+    Ext2.grid.AbstractSelectionModel.superclass.constructor.call(this);
 };
 
-Ext.extend(Ext.grid.AbstractSelectionModel, Ext.util.Observable,  {
+Ext2.extend(Ext2.grid.AbstractSelectionModel, Ext2.util.Observable,  {
     /**
      * The GridPanel for which this SelectionModel is handling selection. Read-only.
      * @type Object

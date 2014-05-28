@@ -7,23 +7,23 @@
  */
 
 /**
- * @class Ext.data.Field
+ * @class Ext2.data.Field
  * <p>This class encpasulates the field definition information specified in the field definition objects
- * passed to {@link Ext.data.Record#create}.</p>
- * <p>Developers do not need to instantiate this class. Instances are created by {@link Ext.data.Record.create}
- * and cached in the {@link Ext.data.Record#fields fields} property of the created Record constructor's <b>prototype.</b></p>
+ * passed to {@link Ext2.data.Record#create}.</p>
+ * <p>Developers do not need to instantiate this class. Instances are created by {@link Ext2.data.Record.create}
+ * and cached in the {@link Ext2.data.Record#fields fields} property of the created Record constructor's <b>prototype.</b></p>
  */
-Ext.data.Field = function(config){
+Ext2.data.Field = function(config){
     if(typeof config == "string"){
         config = {name: config};
     }
-    Ext.apply(this, config);
+    Ext2.apply(this, config);
 
     if(!this.type){
         this.type = "auto";
     }
 
-    var st = Ext.data.SortTypes;
+    var st = Ext2.data.SortTypes;
     // named sortTypes are supported, here we look them up
     if(typeof this.sortType == "string"){
         this.sortType = st[this.sortType];
@@ -80,7 +80,7 @@ Ext.data.Field = function(config){
                     if(!v){
                         return '';
                     }
-                    if(Ext.isDate(v)){
+                    if(Ext2.isDate(v)){
                         return v;
                     }
                     if(dateFormat){
@@ -102,11 +102,11 @@ Ext.data.Field = function(config){
     }
 };
 
-Ext.data.Field.prototype = {
+Ext2.data.Field.prototype = {
     /**
      * @cfg {String} name
      * The name by which the field is referenced within the Record. This is referenced by,
-     * for example, the <em>dataIndex</em> property in column definition objects passed to {@link Ext.grid.ColumnModel}
+     * for example, the <em>dataIndex</em> property in column definition objects passed to {@link Ext2.grid.ColumnModel}
      */
     /**
      * @cfg {String} type
@@ -137,16 +137,16 @@ Ext.data.Field.prototype = {
     /**
      * @cfg {Mixed} defaultValue
      * (Optional) The default value used <b>when a Record is being created by a
-     * {@link Ext.data.Reader Reader}</b> when the item referenced by the <b><tt>mapping</tt></b> does not exist in the data object
+     * {@link Ext2.data.Reader Reader}</b> when the item referenced by the <b><tt>mapping</tt></b> does not exist in the data object
      * (i.e. undefined). (defaults to "")
      */
     defaultValue: "",
     /**
      * @cfg {String} mapping
-     * (Optional) A path specification for use by the {@link Ext.data.Reader} implementation
-     * that is creating the Record to access the data value from the data object. If an {@link Ext.data.JsonReader}
+     * (Optional) A path specification for use by the {@link Ext2.data.Reader} implementation
+     * that is creating the Record to access the data value from the data object. If an {@link Ext2.data.JsonReader}
      * is being used, then this is a string containing the javascript expression to reference the data relative to
-     * the Record item's root. If an {@link Ext.data.XmlReader} is being used, this is an {@link Ext.DomQuery} path
+     * the Record item's root. If an {@link Ext2.data.XmlReader} is being used, this is an {@link Ext2.DomQuery} path
      * to the data item relative to the Record element. If the mapping expression is the same as the field name,
      * this may be omitted.
      */
@@ -154,7 +154,7 @@ Ext.data.Field.prototype = {
     /**
      * @cfg {Function} sortType
      * (Optional) A function which converts a Field's value to a comparable value in order to ensure correct
-     * sort ordering. Predefined functions are provided in {@link Ext.data.SortTypes}
+     * sort ordering. Predefined functions are provided in {@link Ext2.data.SortTypes}
      */
     sortType : null,
     /**

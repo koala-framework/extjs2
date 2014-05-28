@@ -7,19 +7,19 @@
  */
 
 /**
- * @class Ext.grid.EditorGridPanel
- * @extends Ext.grid.GridPanel
+ * @class Ext2.grid.EditorGridPanel
+ * @extends Ext2.grid.GridPanel
  * <p>This class extends the GridPanel to provide cell editing on selected columns.</p>
- * The editable columns are specified by providing an {@link Ext.grid.ColumnModel#editor editor}
+ * The editable columns are specified by providing an {@link Ext2.grid.ColumnModel#editor editor}
  * in the column configuration.</p>
  * <p>Editability of columns may be controlled programatically by inserting an implementation
- * of {@link Ext.grid.ColumnModel#isCellEditable isCellEditable} into your ColumnModel.</p>
+ * of {@link Ext2.grid.ColumnModel#isCellEditable isCellEditable} into your ColumnModel.</p>
  * <p>Editing is performed on the value of the <i>field</i> specified by the column's
- * {@link Ext.grid.ColumnModel#dataIndex dataIndex} in the backing {@link Ext.data.Store Store}
- * (so if you are using a {@link Ext.grid.ColumnModel#setRenderer renderer} in order to display
+ * {@link Ext2.grid.ColumnModel#dataIndex dataIndex} in the backing {@link Ext2.data.Store Store}
+ * (so if you are using a {@link Ext2.grid.ColumnModel#setRenderer renderer} in order to display
  * transformed data, this must be accounted for).</p>
- * <p>If a value-to-description mapping is used to render a column, then a {Ext.form.Field#ComboBox ComboBox}
- * which uses the same {@link Ext.form.Field#valueField value}-to-{@link Ext.form.Field#displayFieldField description}
+ * <p>If a value-to-description mapping is used to render a column, then a {Ext2.form.Field#ComboBox ComboBox}
+ * which uses the same {@link Ext2.form.Field#valueField value}-to-{@link Ext2.form.Field#displayFieldField description}
  * mapping would be an appropriate editor.</p>
  * If there is a more complex mismatch between the visible data in the grid, and the editable data in
  * the {@link Edt.data.Store Store}, then code to transform the data both before and after editing can be
@@ -27,7 +27,7 @@
  * @constructor
  * @param {Object} config The config object
  */
-Ext.grid.EditorGridPanel = Ext.extend(Ext.grid.GridPanel, {
+Ext2.grid.EditorGridPanel = Ext2.extend(Ext2.grid.GridPanel, {
     /**
      * @cfg {Number} clicksToEdit
      * <p>The number of clicks on a cell required to display the cell's editor (defaults to 2).</p>
@@ -55,16 +55,16 @@ Ext.grid.EditorGridPanel = Ext.extend(Ext.grid.GridPanel, {
 
     // private
     initComponent : function(){
-        Ext.grid.EditorGridPanel.superclass.initComponent.call(this);
+        Ext2.grid.EditorGridPanel.superclass.initComponent.call(this);
 
         if(!this.selModel){
             /**
              * @cfg {Object} selModel Any subclass of AbstractSelectionModel that will provide the selection model for
-             * the grid (defaults to {@link Ext.grid.CellSelectionModel} if not specified). Note that the SelectionModel
+             * the grid (defaults to {@link Ext2.grid.CellSelectionModel} if not specified). Note that the SelectionModel
              * must be compatible with the model of selecting cells individually, and should support a method named
-             * <tt>getSelectedCell</tt> (for these reasons, {@link Ext.grid.RowSelectionModel} is not compatible).
+             * <tt>getSelectedCell</tt> (for these reasons, {@link Ext2.grid.RowSelectionModel} is not compatible).
              */
-            this.selModel = new Ext.grid.CellSelectionModel();
+            this.selModel = new Ext2.grid.CellSelectionModel();
         }
 
         this.activeEditor = null;
@@ -122,7 +122,7 @@ Ext.grid.EditorGridPanel = Ext.extend(Ext.grid.GridPanel, {
 
     // private
     initEvents : function(){
-        Ext.grid.EditorGridPanel.superclass.initEvents.call(this);
+        Ext2.grid.EditorGridPanel.superclass.initEvents.call(this);
 
         this.on("bodyscroll", this.stopEditing, this, [true]);
         this.on("columnresize", this.stopEditing, this, [true]);
@@ -226,7 +226,7 @@ Ext.grid.EditorGridPanel = Ext.extend(Ext.grid.GridPanel, {
                     ed.on("specialkey", this.selModel.onEditorKey, this.selModel);
                     /**
                      * The currently active editor or null
-                      * @type Ext.Editor
+                      * @type Ext2.Editor
                      */
                     this.activeEditor = ed;
                     var v = this.preEditValue(r, field);
@@ -239,12 +239,12 @@ Ext.grid.EditorGridPanel = Ext.extend(Ext.grid.GridPanel, {
     // private
 	preEditValue : function(r, field){
         var value = r.data[field];
-		return this.autoEncode && typeof value == 'string' ? Ext.util.Format.htmlDecode(value) : value;
+		return this.autoEncode && typeof value == 'string' ? Ext2.util.Format.htmlDecode(value) : value;
 	},
 
     // private
 	postEditValue : function(value, originalValue, r, field){
-		return this.autoEncode && typeof value == 'string' ? Ext.util.Format.htmlEncode(value) : value;
+		return this.autoEncode && typeof value == 'string' ? Ext2.util.Format.htmlEncode(value) : value;
 	},
 
     /**
@@ -258,4 +258,4 @@ Ext.grid.EditorGridPanel = Ext.extend(Ext.grid.GridPanel, {
         this.activeEditor = null;
     }
 });
-Ext.reg('editorgrid', Ext.grid.EditorGridPanel);
+Ext2.reg('editorgrid', Ext2.grid.EditorGridPanel);

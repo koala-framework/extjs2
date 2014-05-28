@@ -12,26 +12,26 @@
  * 04-08-2007, 03:07 AM
  */
 
-Ext.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">En cours de chargement...</div>';
+Ext2.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">En cours de chargement...</div>';
 
-if(Ext.View){
-   Ext.View.prototype.emptyText = "";
+if(Ext2.View){
+   Ext2.View.prototype.emptyText = "";
 }
 
-if(Ext.grid.GridPanel){
-   Ext.grid.GridPanel.prototype.ddText = "{0} ligne(s) sélectionné(s)";
+if(Ext2.grid.GridPanel){
+   Ext2.grid.GridPanel.prototype.ddText = "{0} ligne(s) sélectionné(s)";
 }
 
-if(Ext.TabPanelItem){
-   Ext.TabPanelItem.prototype.closeText = "Fermer cette onglet";
+if(Ext2.TabPanelItem){
+   Ext2.TabPanelItem.prototype.closeText = "Fermer cette onglet";
 }
 
-if(Ext.form.Field){
-   Ext.form.Field.prototype.invalidText = "La valeur de ce champ est invalide";
+if(Ext2.form.Field){
+   Ext2.form.Field.prototype.invalidText = "La valeur de ce champ est invalide";
 }
 
-if(Ext.LoadMask){
-    Ext.LoadMask.prototype.msg = "En cours de chargement...";
+if(Ext2.LoadMask){
+    Ext2.LoadMask.prototype.msg = "En cours de chargement...";
 }
 
 Date.shortMonthNames = [
@@ -84,7 +84,7 @@ Date.monthNumbers = {
 };
 
 Date.getMonthNumber = function(name) {
-  return Date.monthNumbers[Ext.util.Format.capitalize(name)];
+  return Date.monthNumbers[Ext2.util.Format.capitalize(name)];
 };
 
 Date.dayNames = [
@@ -101,8 +101,8 @@ Date.getShortDayName = function(day) {
   return Date.dayNames[day].substring(0, 3);
 };
 
-if(Ext.MessageBox){
-   Ext.MessageBox.buttonText = {
+if(Ext2.MessageBox){
+   Ext2.MessageBox.buttonText = {
       ok     : "OK",
       cancel : "Annuler",
       yes    : "Oui",
@@ -110,16 +110,16 @@ if(Ext.MessageBox){
    };
 }
 
-if(Ext.util.Format){
-   Ext.util.Format.date = function(v, format){
+if(Ext2.util.Format){
+   Ext2.util.Format.date = function(v, format){
       if(!v) return "";
       if(!(v instanceof Date)) v = new Date(Date.parse(v));
       return v.dateFormat(format || "d/m/Y");
    };
 }
 
-if(Ext.DatePicker){
-   Ext.apply(Ext.DatePicker.prototype, {
+if(Ext2.DatePicker){
+   Ext2.apply(Ext2.DatePicker.prototype, {
       todayText         : "Aujourd'hui",
       minText           : "Cette date est plus petite que la date minimum",
       maxText           : "Cette date est plus grande que la date maximum",
@@ -135,8 +135,8 @@ if(Ext.DatePicker){
    });
 }
 
-if(Ext.PagingToolbar){
-   Ext.apply(Ext.PagingToolbar.prototype, {
+if(Ext2.PagingToolbar){
+   Ext2.apply(Ext2.PagingToolbar.prototype, {
       beforePageText : "Page",
       afterPageText  : "de {0}",
       firstText      : "Première page",
@@ -149,8 +149,8 @@ if(Ext.PagingToolbar){
    });
 }
 
-if(Ext.form.TextField){
-   Ext.apply(Ext.form.TextField.prototype, {
+if(Ext2.form.TextField){
+   Ext2.apply(Ext2.form.TextField.prototype, {
       minLengthText : "La longueur minimum de ce champ est de {0} caractères",
       maxLengthText : "La longueur maximum de ce champ est de {0} caractères",
       blankText     : "Ce champ est obligatoire",
@@ -159,16 +159,16 @@ if(Ext.form.TextField){
    });
 }
 
-if(Ext.form.NumberField){
-   Ext.apply(Ext.form.NumberField.prototype, {
+if(Ext2.form.NumberField){
+   Ext2.apply(Ext2.form.NumberField.prototype, {
       minText : "La valeur minimum de ce champ doit être de {0}",
       maxText : "La valeur maximum de ce champ doit être de {0}",
       nanText : "{0} n'est pas un nombre valide"
    });
 }
 
-if(Ext.form.DateField){
-   Ext.apply(Ext.form.DateField.prototype, {
+if(Ext2.form.DateField){
+   Ext2.apply(Ext2.form.DateField.prototype, {
       disabledDaysText  : "Désactivé",
       disabledDatesText : "Désactivé",
       minText           : "La date de ce champ doit être avant le {0}",
@@ -178,15 +178,15 @@ if(Ext.form.DateField){
    });
 }
 
-if(Ext.form.ComboBox){
-   Ext.apply(Ext.form.ComboBox.prototype, {
+if(Ext2.form.ComboBox){
+   Ext2.apply(Ext2.form.ComboBox.prototype, {
       loadingText       : "En cours de chargement...",
       valueNotFoundText : undefined
    });
 }
 
-if(Ext.form.VTypes){
-   Ext.apply(Ext.form.VTypes, {
+if(Ext2.form.VTypes){
+   Ext2.apply(Ext2.form.VTypes, {
       emailText    : 'Ce champ doit contenir un courriel et doit être sous ce format: "usager@domaine.com"',
       urlText      : 'Ce champ doit contenir une URL sous le format suivant: "http:/'+'/www.domaine.com"',
       alphaText    : 'Ce champ ne peut contenir que des lettres et le caractère souligné (_)',
@@ -194,8 +194,8 @@ if(Ext.form.VTypes){
    });
 }
 
-if(Ext.grid.GridView){
-   Ext.apply(Ext.grid.GridView.prototype, {
+if(Ext2.grid.GridView){
+   Ext2.apply(Ext2.grid.GridView.prototype, {
       sortAscText  : "Tri ascendant",
       sortDescText : "Tri descendant",
       lockText     : "Verrouillé la colonne",
@@ -204,16 +204,16 @@ if(Ext.grid.GridView){
    });
 }
 
-if(Ext.grid.PropertyColumnModel){
-   Ext.apply(Ext.grid.PropertyColumnModel.prototype, {
+if(Ext2.grid.PropertyColumnModel){
+   Ext2.apply(Ext2.grid.PropertyColumnModel.prototype, {
       nameText   : "Propriété",
       valueText  : "Valeur",
       dateFormat : "d/m/Y"
    });
 }
 
-if(Ext.layout.BorderLayout && Ext.layout.BorderLayout.SplitRegion){
-   Ext.apply(Ext.layout.BorderLayout.SplitRegion.prototype, {
+if(Ext2.layout.BorderLayout && Ext2.layout.BorderLayout.SplitRegion){
+   Ext2.apply(Ext2.layout.BorderLayout.SplitRegion.prototype, {
       splitTip            : "Cliquer et glisser pour redimensionner le panneau.",
       collapsibleSplitTip : "Cliquer et glisser pour redimensionner le panneau. Double-cliquer pour cacher le panneau."
    });

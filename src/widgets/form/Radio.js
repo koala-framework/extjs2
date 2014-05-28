@@ -7,19 +7,19 @@
  */
 
 /**
- * @class Ext.form.Radio
- * @extends Ext.form.Checkbox
+ * @class Ext2.form.Radio
+ * @extends Ext2.form.Checkbox
  * Single radio field.  Same as Checkbox, but provided as a convenience for automatically setting the input type.
  * Radio grouping is handled automatically by the browser if you give each radio in a group the same name.
  * @constructor
  * Creates a new Radio
  * @param {Object} config Configuration options
  */
-Ext.form.Radio = Ext.extend(Ext.form.Checkbox, {
+Ext2.form.Radio = Ext2.extend(Ext2.form.Checkbox, {
     // private
     inputType: 'radio',
     // private
-    baseCls: 'x-form-radio',
+    baseCls: 'x2-form-radio',
     
     /**
      * If this radio is part of a group, it will return the selected value
@@ -32,7 +32,7 @@ Ext.form.Radio = Ext.extend(Ext.form.Checkbox, {
     
     // private
     getParent : function(){
-        return this.el.up('form') || Ext.getBody();
+        return this.el.up('form') || Ext2.getBody();
     },
 
     // private
@@ -43,7 +43,7 @@ Ext.form.Radio = Ext.extend(Ext.form.Checkbox, {
                 if(el.dom.id == this.id){
                     this.setValue(true);
                 }else{
-                    Ext.getCmp(el.dom.id).setValue(false);
+                    Ext2.getCmp(el.dom.id).setValue(false);
                 }
             }, this);
         }
@@ -56,11 +56,11 @@ Ext.form.Radio = Ext.extend(Ext.form.Checkbox, {
      */
     setValue : function(v){
         if(typeof v=='boolean') {
-            Ext.form.Radio.superclass.setValue.call(this, v);
+            Ext2.form.Radio.superclass.setValue.call(this, v);
         }else{
             var r = this.getParent().child('input[name='+this.el.dom.name+'][value='+v+']', true);
             if(r && !r.checked){
-                Ext.getCmp(r.id).toggleValue();
+                Ext2.getCmp(r.id).toggleValue();
             };
         }
     },
@@ -69,12 +69,12 @@ Ext.form.Radio = Ext.extend(Ext.form.Checkbox, {
      * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
      * @method
      */
-    markInvalid : Ext.emptyFn,
+    markInvalid : Ext2.emptyFn,
     /**
      * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
      * @method
      */
-    clearInvalid : Ext.emptyFn
+    clearInvalid : Ext2.emptyFn
     
 });
-Ext.reg('radio', Ext.form.Radio);
+Ext2.reg('radio', Ext2.form.Radio);

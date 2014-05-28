@@ -7,22 +7,22 @@
  */
 
 /**
- * @class Ext.menu.TextItem
- * @extends Ext.menu.BaseItem
+ * @class Ext2.menu.TextItem
+ * @extends Ext2.menu.BaseItem
  * Adds a static text string to a menu, usually used as either a heading or group separator.
  * @constructor
  * Creates a new TextItem
  * @param {Object/String} config If config is a string, it is used as the text to display, otherwise it
  * is applied as a config object (and should contain a <tt>text</tt> property).
  */
-Ext.menu.TextItem = function(cfg){
+Ext2.menu.TextItem = function(cfg){
     if(typeof cfg == 'string'){
         cfg = {text: cfg}
     }
-    Ext.menu.TextItem.superclass.constructor.call(this, cfg);
+    Ext2.menu.TextItem.superclass.constructor.call(this, cfg);
 };
 
-Ext.extend(Ext.menu.TextItem, Ext.menu.BaseItem, {
+Ext2.extend(Ext2.menu.TextItem, Ext2.menu.BaseItem, {
     /**
      * @cfg {String} text The text to display for this item (defaults to '')
      */
@@ -31,9 +31,9 @@ Ext.extend(Ext.menu.TextItem, Ext.menu.BaseItem, {
      */
     hideOnClick : false,
     /**
-     * @cfg {String} itemCls The default CSS class to use for text items (defaults to "x-menu-text")
+     * @cfg {String} itemCls The default CSS class to use for text items (defaults to "x2-menu-text")
      */
-    itemCls : "x-menu-text",
+    itemCls : "x2-menu-text",
 
     // private
     onRender : function(){
@@ -41,6 +41,6 @@ Ext.extend(Ext.menu.TextItem, Ext.menu.BaseItem, {
         s.className = this.itemCls;
         s.innerHTML = this.text;
         this.el = s;
-        Ext.menu.TextItem.superclass.onRender.apply(this, arguments);
+        Ext2.menu.TextItem.superclass.onRender.apply(this, arguments);
     }
 });

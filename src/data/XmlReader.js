@@ -7,21 +7,21 @@
  */
 
 /**
- * @class Ext.data.XmlReader
- * @extends Ext.data.DataReader
- * Data reader class to create an Array of {@link Ext.data.Record} objects from an XML document
- * based on mappings in a provided {@link Ext.data.Record} constructor.<br><br>
+ * @class Ext2.data.XmlReader
+ * @extends Ext2.data.DataReader
+ * Data reader class to create an Array of {@link Ext2.data.Record} objects from an XML document
+ * based on mappings in a provided {@link Ext2.data.Record} constructor.<br><br>
  * <p>
  * <em>Note that in order for the browser to parse a returned XML document, the Content-Type
  * header in the HTTP response must be set to "text/xml" or "application/xml".</em>
  * <p>
  * Example code:
  * <pre><code>
-var Employee = Ext.data.Record.create([
+var Employee = Ext2.data.Record.create([
    {name: 'name', mapping: 'name'},     // "mapping" property not needed if it's the same as "name"
    {name: 'occupation'}                 // This field will use "occupation" as the mapping.
 ]);
-var myReader = new Ext.data.XmlReader({
+var myReader = new Ext2.data.XmlReader({
    totalRecords: "results", // The element which contains the total dataset size (optional)
    record: "row",           // The repeated element which contains row information
    id: "id"                 // The element within the row that provides an ID for the record (optional)
@@ -56,19 +56,19 @@ var myReader = new Ext.data.XmlReader({
  * Create a new XmlReader.
  * @param {Object} meta Metadata configuration options
  * @param {Object} recordType Either an Array of field definition objects as passed to
- * {@link Ext.data.Record#create}, or a Record constructor object created using {@link Ext.data.Record#create}.
+ * {@link Ext2.data.Record#create}, or a Record constructor object created using {@link Ext2.data.Record#create}.
  */
-Ext.data.XmlReader = function(meta, recordType){
+Ext2.data.XmlReader = function(meta, recordType){
     meta = meta || {};
-    Ext.data.XmlReader.superclass.constructor.call(this, meta, recordType || meta.fields);
+    Ext2.data.XmlReader.superclass.constructor.call(this, meta, recordType || meta.fields);
 };
-Ext.extend(Ext.data.XmlReader, Ext.data.DataReader, {
+Ext2.extend(Ext2.data.XmlReader, Ext2.data.DataReader, {
     /**
      * This method is only used by a DataProxy which has retrieved data from a remote server.
 	 * @param {Object} response The XHR object which contains the parsed XML document.  The response is expected
 	 * to contain a property called <tt>responseXML</tt> which refers to an XML document object.
-     * @return {Object} records A data block which is used by an {@link Ext.data.Store} as
-     * a cache of Ext.data.Records.
+     * @return {Object} records A data block which is used by an {@link Ext2.data.Store} as
+     * a cache of Ext2.data.Records.
      */
     read : function(response){
         var doc = response.responseXML;
@@ -79,10 +79,10 @@ Ext.extend(Ext.data.XmlReader, Ext.data.DataReader, {
     },
 
     /**
-     * Create a data block containing Ext.data.Records from an XML document.
+     * Create a data block containing Ext2.data.Records from an XML document.
 	 * @param {Object} doc A parsed XML document.
-     * @return {Object} records A data block which is used by an {@link Ext.data.Store} as
-     * a cache of Ext.data.Records.
+     * @return {Object} records A data block which is used by an {@link Ext2.data.Store} as
+     * a cache of Ext2.data.Records.
      */
     readRecords : function(doc){
         /**
@@ -91,7 +91,7 @@ Ext.extend(Ext.data.XmlReader, Ext.data.DataReader, {
          */
         this.xmlData = doc;
         var root = doc.documentElement || doc;
-    	var q = Ext.DomQuery;
+    	var q = Ext2.DomQuery;
     	var recordType = this.recordType, fields = recordType.prototype.fields;
     	var sid = this.meta.id;
     	var totalRecords = 0, success = true;
@@ -111,7 +111,7 @@ Ext.extend(Ext.data.XmlReader, Ext.data.DataReader, {
 	        var id = sid ? q.selectValue(sid, n) : undefined;
 	        for(var j = 0, jlen = fields.length; j < jlen; j++){
 	            var f = fields.items[j];
-                var v = q.selectValue(Ext.isEmpty(f.mapping, true) ? f.name : f.mapping, n, f.defaultValue);
+                var v = q.selectValue(Ext2.isEmpty(f.mapping, true) ? f.name : f.mapping, n, f.defaultValue);
 	            v = f.convert(v, n);
 	            values[f.name] = v;
 	        }

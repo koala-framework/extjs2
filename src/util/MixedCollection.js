@@ -7,8 +7,8 @@
  */
 
 /**
- * @class Ext.util.MixedCollection
- * @extends Ext.util.Observable
+ * @class Ext2.util.MixedCollection
+ * @extends Ext2.util.Observable
  * A Collection class that maintains both numeric indexes and keys and exposes events.
  * @constructor
  * @param {Boolean} allowFunctions True if the addAll function should add function references to the
@@ -18,7 +18,7 @@
  * were passed without an explicit key parameter to a MixedCollection method.  Passing this parameter is
  * equivalent to providing an implementation for the {@link #getKey} method.
  */
-Ext.util.MixedCollection = function(allowFunctions, keyFn){
+Ext2.util.MixedCollection = function(allowFunctions, keyFn){
     this.items = [];
     this.map = {};
     this.keys = [];
@@ -58,10 +58,10 @@ Ext.util.MixedCollection = function(allowFunctions, keyFn){
     if(keyFn){
         this.getKey = keyFn;
     }
-    Ext.util.MixedCollection.superclass.constructor.call(this);
+    Ext2.util.MixedCollection.superclass.constructor.call(this);
 };
 
-Ext.extend(Ext.util.MixedCollection, Ext.util.Observable, {
+Ext2.extend(Ext2.util.MixedCollection, Ext2.util.Observable, {
     allowFunctions : false,
 
 /**
@@ -99,13 +99,13 @@ Ext.extend(Ext.util.MixedCollection, Ext.util.Observable, {
   * to return a different value as in the following examples:
 <pre><code>
 // normal way
-var mc = new Ext.util.MixedCollection();
+var mc = new Ext2.util.MixedCollection();
 mc.add(someEl.dom.id, someEl);
 mc.add(otherEl.dom.id, otherEl);
 //and so on
 
 // using getKey
-var mc = new Ext.util.MixedCollection();
+var mc = new Ext2.util.MixedCollection();
 mc.getKey = function(el){
    return el.dom.id;
 };
@@ -113,7 +113,7 @@ mc.add(someEl);
 mc.add(otherEl);
 
 // or via the constructor
-var mc = new Ext.util.MixedCollection(false, function(el){
+var mc = new Ext2.util.MixedCollection(false, function(el){
    return el.dom.id;
 });
 mc.add(someEl);
@@ -159,7 +159,7 @@ mc.add(otherEl);
  * an Array of values, each of which are added to the collection.
  */
     addAll : function(objs){
-        if(arguments.length > 1 || Ext.isArray(objs)){
+        if(arguments.length > 1 || Ext2.isArray(objs)){
             var args = arguments.length > 1 ? arguments : objs;
             for(var i = 0, len = args.length; i < len; i++){
                 this.add(args[i]);
@@ -473,7 +473,7 @@ mc.add(otherEl);
      * @return {MixedCollection} The new filtered collection
      */
     filter : function(property, value, anyMatch, caseSensitive){
-        if(Ext.isEmpty(value, false)){
+        if(Ext2.isEmpty(value, false)){
             return this.clone();
         }
         value = this.createValueMatcher(value, anyMatch, caseSensitive);
@@ -491,7 +491,7 @@ mc.add(otherEl);
      * @return {MixedCollection} The new filtered collection
      */
     filterBy : function(fn, scope){
-        var r = new Ext.util.MixedCollection();
+        var r = new Ext2.util.MixedCollection();
         r.getKey = this.getKey;
         var k = this.keys, it = this.items;
         for(var i = 0, len = it.length; i < len; i++){
@@ -513,7 +513,7 @@ mc.add(otherEl);
      * @return {Number} The matched index or -1
      */
     findIndex : function(property, value, start, anyMatch, caseSensitive){
-        if(Ext.isEmpty(value, false)){
+        if(Ext2.isEmpty(value, false)){
             return -1;
         }
         value = this.createValueMatcher(value, anyMatch, caseSensitive);
@@ -544,7 +544,7 @@ mc.add(otherEl);
     createValueMatcher : function(value, anyMatch, caseSensitive){
         if(!value.exec){ // not a regex
             value = String(value);
-            value = new RegExp((anyMatch === true ? '' : '^') + Ext.escapeRe(value), caseSensitive ? '' : 'i');
+            value = new RegExp((anyMatch === true ? '' : '^') + Ext2.escapeRe(value), caseSensitive ? '' : 'i');
         }
         return value;
     },
@@ -554,7 +554,7 @@ mc.add(otherEl);
      * @return {MixedCollection}
      */
     clone : function(){
-        var r = new Ext.util.MixedCollection();
+        var r = new Ext2.util.MixedCollection();
         var k = this.keys, it = this.items;
         for(var i = 0, len = it.length; i < len; i++){
             r.add(k[i], it[i]);
@@ -569,4 +569,4 @@ mc.add(otherEl);
  * @param {String/Number} key The key or index of the item.
  * @return {Object} The item associated with the passed key.
  */
-Ext.util.MixedCollection.prototype.get = Ext.util.MixedCollection.prototype.item;
+Ext2.util.MixedCollection.prototype.get = Ext2.util.MixedCollection.prototype.item;

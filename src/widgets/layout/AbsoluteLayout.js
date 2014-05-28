@@ -7,22 +7,22 @@
  */
 
 /**
- * @class Ext.layout.AbsoluteLayout
- * @extends Ext.layout.AnchorLayout
- * <p>Inherits the anchoring of {@link Ext.layout.AnchorLayout} and adds the ability for x/y positioning using the
+ * @class Ext2.layout.AbsoluteLayout
+ * @extends Ext2.layout.AnchorLayout
+ * <p>Inherits the anchoring of {@link Ext2.layout.AnchorLayout} and adds the ability for x/y positioning using the
  * standard x and y component config options.</p>
  */
-Ext.layout.AbsoluteLayout = Ext.extend(Ext.layout.AnchorLayout, {
+Ext2.layout.AbsoluteLayout = Ext2.extend(Ext2.layout.AnchorLayout, {
     /**
      * @cfg {String} extraCls
-     * An optional extra CSS class that will be added to the container (defaults to 'x-abs-layout-item').  This can be useful for
+     * An optional extra CSS class that will be added to the container (defaults to 'x2-abs-layout-item').  This can be useful for
      * adding customized styles to the container or any of its children using standard CSS rules.
      */
-    extraCls: 'x-abs-layout-item',
+    extraCls: 'x2-abs-layout-item',
     isForm: false,
     // private
     setContainer : function(ct){
-        Ext.layout.AbsoluteLayout.superclass.setContainer.call(this, ct);
+        Ext2.layout.AbsoluteLayout.superclass.setContainer.call(this, ct);
         if(ct.isXType('form')){
             this.isForm = true;
         }
@@ -30,17 +30,17 @@ Ext.layout.AbsoluteLayout = Ext.extend(Ext.layout.AnchorLayout, {
 
     onLayout : function(ct, target){
         if(this.isForm){ ct.body.position(); } else { target.position(); }
-        Ext.layout.AbsoluteLayout.superclass.onLayout.call(this, ct, target);
+        Ext2.layout.AbsoluteLayout.superclass.onLayout.call(this, ct, target);
     },
 
     // private
     getAnchorViewSize : function(ct, target){
-        return this.isForm ? ct.body.getStyleSize() : Ext.layout.AbsoluteLayout.superclass.getAnchorViewSize.call(this, ct, target);
+        return this.isForm ? ct.body.getStyleSize() : Ext2.layout.AbsoluteLayout.superclass.getAnchorViewSize.call(this, ct, target);
     },
 
     // private
     isValidParent : function(c, target){
-        return this.isForm ? true : Ext.layout.AbsoluteLayout.superclass.isValidParent.call(this, c, target);
+        return this.isForm ? true : Ext2.layout.AbsoluteLayout.superclass.isValidParent.call(this, c, target);
     },
 
     // private
@@ -57,4 +57,4 @@ Ext.layout.AbsoluteLayout = Ext.extend(Ext.layout.AnchorLayout, {
      * @hide
      */
 });
-Ext.Container.LAYOUTS['absolute'] = Ext.layout.AbsoluteLayout;
+Ext2.Container.LAYOUTS['absolute'] = Ext2.layout.AbsoluteLayout;

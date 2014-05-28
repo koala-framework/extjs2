@@ -6,7 +6,7 @@
  * http://extjs.com/license
  */
 
-.x-toolbar{
+.x2-toolbar{
 	border-color:#a9bfd3;
     border-style:solid;
     border-width:0 0 1px 0;
@@ -16,93 +16,93 @@
     position:relative;
     zoom:1;
 }
-.x-toolbar .x-item-disabled .x-btn-icon {
+.x2-toolbar .x2-item-disabled .x2-btn-icon {
     opacity: .35;
     -moz-opacity: .35;
     filter: alpha(opacity=35);
 }
-.x-toolbar td {
+.x2-toolbar td {
 	vertical-align:middle;
 }
-.mso .x-toolbar, .x-grid-mso .x-toolbar{
+.mso .x2-toolbar, .x2-grid-mso .x2-toolbar{
 	border: 0 none;
 	background: url(../images/default/grid/mso-hd.gif);
 }
-.x-toolbar td,.x-toolbar span,.x-toolbar input,.x-toolbar div,.x-toolbar select,.x-toolbar label{
+.x2-toolbar td,.x2-toolbar span,.x2-toolbar input,.x2-toolbar div,.x2-toolbar select,.x2-toolbar label{
 	white-space: nowrap;
     font:normal 11px tahoma, arial, helvetica, sans-serif;
 }
-.x-toolbar .x-item-disabled {
+.x2-toolbar .x2-item-disabled {
 	color:gray;
 	cursor:default;
 	opacity:.6;
 	-moz-opacity:.6;
 	filter:alpha(opacity=60);
 }
-.x-toolbar .x-item-disabled * {
+.x2-toolbar .x2-item-disabled * {
 	color:gray;
 	cursor:default;
 }
-.x-toolbar .x-btn-left{
+.x2-toolbar .x2-btn-left{
 	background:none;
 }
-.x-toolbar .x-btn-right{
+.x2-toolbar .x2-btn-right{
 	background:none;
 }
-.x-toolbar .x-btn-center{
+.x2-toolbar .x2-btn-center{
 	background:none;
 	padding:0 0;
 }
-.x-toolbar .x-btn-menu-text-wrap .x-btn-center button{
+.x2-toolbar .x2-btn-menu-text-wrap .x2-btn-center button{
 	padding-right:2px;
 }
-.ext-gecko .x-toolbar .x-btn-menu-text-wrap .x-btn-center button{
+.ext2-gecko .x2-toolbar .x2-btn-menu-text-wrap .x2-btn-center button{
 	padding-right:0;
 }
-.x-toolbar .x-btn-menu-arrow-wrap .x-btn-center button{
+.x2-toolbar .x2-btn-menu-arrow-wrap .x2-btn-center button{
 	padding:0 2px;
 }
 
-.x-toolbar .x-btn-menu-arrow-wrap .x-btn-center button {
+.x2-toolbar .x2-btn-menu-arrow-wrap .x2-btn-center button {
     width:12px;
     background:transparent url(../images/default/toolbar/btn-arrow.gif) no-repeat 0 3px;
 }
-.x-toolbar .x-btn-text-icon .x-btn-menu-arrow-wrap .x-btn-center button {
+.x2-toolbar .x2-btn-text-icon .x2-btn-menu-arrow-wrap .x2-btn-center button {
     width:12px;
     background:transparent url(../images/default/toolbar/btn-arrow.gif) no-repeat 0 3px;
 }
-.x-toolbar .x-btn-over .x-btn-menu-arrow-wrap .x-btn-center button {
+.x2-toolbar .x2-btn-over .x2-btn-menu-arrow-wrap .x2-btn-center button {
 	background-position: 0 -47px;
 }
-.x-toolbar .x-btn-over .x-btn-left{
+.x2-toolbar .x2-btn-over .x2-btn-left{
 	background: url(../images/default/toolbar/tb-btn-sprite.gif) no-repeat 0 0;
 }
-.x-toolbar .x-btn-over .x-btn-right{
+.x2-toolbar .x2-btn-over .x2-btn-right{
 	background: url(../images/default/toolbar/tb-btn-sprite.gif) no-repeat 0 -21px;
 }
-.x-toolbar .x-btn-over .x-btn-center{
+.x2-toolbar .x2-btn-over .x2-btn-center{
 	background: url(../images/default/toolbar/tb-btn-sprite.gif) repeat-x 0 -42px;
 }
 
-.x-toolbar .x-btn-click .x-btn-left, .x-toolbar .x-btn-pressed .x-btn-left, .x-toolbar .x-btn-menu-active .x-btn-left{
+.x2-toolbar .x2-btn-click .x2-btn-left, .x2-toolbar .x2-btn-pressed .x2-btn-left, .x2-toolbar .x2-btn-menu-active .x2-btn-left{
 	background: url(../images/default/toolbar/tb-btn-sprite.gif) no-repeat 0 -63px;
 }
-.x-toolbar .x-btn-click .x-btn-right, .x-toolbar .x-btn-pressed .x-btn-right, .x-toolbar .x-btn-menu-active .x-btn-right{
+.x2-toolbar .x2-btn-click .x2-btn-right, .x2-toolbar .x2-btn-pressed .x2-btn-right, .x2-toolbar .x2-btn-menu-active .x2-btn-right{
 	background: url(../images/default/toolbar/tb-btn-sprite.gif) no-repeat 0 -84px;
 }
 
-.x-toolbar .x-btn-click .x-btn-center, .x-toolbar .x-btn-pressed .x-btn-center, .x-toolbar .x-btn-menu-active .x-btn-center{
+.x2-toolbar .x2-btn-click .x2-btn-center, .x2-toolbar .x2-btn-pressed .x2-btn-center, .x2-toolbar .x2-btn-menu-active .x2-btn-center{
 	background: url(../images/default/toolbar/tb-btn-sprite.gif) repeat-x 0 -105px;
 }
 
-.x-toolbar .x-btn-with-menu .x-btn-center em{
+.x2-toolbar .x2-btn-with-menu .x2-btn-center em{
 	padding-right:8px;
 }
 
-.x-toolbar .ytb-text{
+.x2-toolbar .ytb-text{
    padding:2px;
 }
-.x-toolbar .ytb-sep {
+.x2-toolbar .ytb-sep {
 	background-image: url(../images/default/grid/grid-blue-split.gif);
 	background-position: center;
 	background-repeat: no-repeat;
@@ -115,47 +115,47 @@
 	margin: 0 2px 0;
 	border:0;
 }
-.x-toolbar .ytb-spacer {
+.x2-toolbar .ytb-spacer {
     width:2px;
 }
 
 /* Paging Toolbar */
 
-.x-tbar-page-number{
+.x2-tbar-page-number{
 	width:24px;
 	height:14px;
 }
-.x-tbar-page-first{
+.x2-tbar-page-first{
 	background-image: url(../images/default/grid/page-first.gif) !important;
 }
-.x-tbar-loading{
+.x2-tbar-loading{
 	background-image: url(../images/default/grid/refresh.gif) !important;
 }
-.x-tbar-page-last{
+.x2-tbar-page-last{
 	background-image: url(../images/default/grid/page-last.gif) !important;
 }
-.x-tbar-page-next{
+.x2-tbar-page-next{
 	background-image: url(../images/default/grid/page-next.gif) !important;
 }
-.x-tbar-page-prev{
+.x2-tbar-page-prev{
 	background-image: url(../images/default/grid/page-prev.gif) !important;
 }
-.x-item-disabled .x-tbar-loading{
+.x2-item-disabled .x2-tbar-loading{
 	background-image: url(../images/default/grid/loading.gif) !important;
 }
-.x-item-disabled .x-tbar-page-first{
+.x2-item-disabled .x2-tbar-page-first{
 	background-image: url(../images/default/grid/page-first-disabled.gif) !important;
 }
-.x-item-disabled .x-tbar-page-last{
+.x2-item-disabled .x2-tbar-page-last{
 	background-image: url(../images/default/grid/page-last-disabled.gif) !important;
 }
-.x-item-disabled .x-tbar-page-next{
-	background-image: url(../images/default/grid/page-next-disabled.gif) !important;
+.x2-item-disabled .x2-tbar-page-next{
+	background-image: url(../images/default/grid/page-n.ext2-disabled.gif) !important;
 }
-.x-item-disabled .x-tbar-page-prev{
+.x2-item-disabled .x2-tbar-page-prev{
 	background-image: url(../images/default/grid/page-prev-disabled.gif) !important;
 }
-.x-paging-info {
+.x2-paging-info {
     position:absolute;
     top:5px;
     right: 8px;
@@ -164,17 +164,17 @@
 
 /* StatusBar */
 
-.x-statusbar .x-status-text {
+.x2-statusbar .x2-status-text {
     height: 21px;
     line-height: 21px;
     padding: 0 4px;
     cursor: default;
 }
-.x-statusbar .x-status-busy {
+.x2-statusbar .x2-status-busy {
     padding-left: 25px;
     background: transparent url(../images/default/grid/loading.gif) no-repeat 3px 3px;
 }
-.x-statusbar .x-status-text-panel {
+.x2-statusbar .x2-status-text-panel {
     border-top: 1px solid #99BBE8;
     border-right: 1px solid #fff;
     border-bottom: 1px solid #fff;

@@ -17,26 +17,26 @@
  * 2008-10-05, 06:22 PM
  */
 
-Ext.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Yükleniyor ...</div>';
+Ext2.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Yükleniyor ...</div>';
 
-if(Ext.View){
-  Ext.View.prototype.emptyText = "";
+if(Ext2.View){
+  Ext2.View.prototype.emptyText = "";
 }
 
-if(Ext.grid.Grid){
-  Ext.grid.Grid.prototype.ddText = "Seçili satýr sayýsý : {0}";
+if(Ext2.grid.Grid){
+  Ext2.grid.Grid.prototype.ddText = "Seçili satýr sayýsý : {0}";
 }
 
-if(Ext.TabPanelItem){
-  Ext.TabPanelItem.prototype.closeText = "Sekmeyi kapat";
+if(Ext2.TabPanelItem){
+  Ext2.TabPanelItem.prototype.closeText = "Sekmeyi kapat";
 }
 
-if(Ext.form.Field){
-  Ext.form.Field.prototype.invalidText = "Bu alandaki deðer geçersiz";
+if(Ext2.form.Field){
+  Ext2.form.Field.prototype.invalidText = "Bu alandaki deðer geçersiz";
 }
 
-if(Ext.LoadMask){
-  Ext.LoadMask.prototype.msg = "Yükleniyor ...";
+if(Ext2.LoadMask){
+  Ext2.LoadMask.prototype.msg = "Yükleniyor ...";
 }
 
 Date.monthNames = [
@@ -101,8 +101,8 @@ Date.getShortDayName = function(day) {
   return Date.shortDayNames[day];
 };
 
-if(Ext.MessageBox){
-  Ext.MessageBox.buttonText = {
+if(Ext2.MessageBox){
+  Ext2.MessageBox.buttonText = {
     ok     : "Tamam",
     cancel : "Ä°ptal",
     yes    : "Evet",
@@ -110,16 +110,16 @@ if(Ext.MessageBox){
   };
 }
 
-if(Ext.util.Format){
-  Ext.util.Format.date = function(v, format){
+if(Ext2.util.Format){
+  Ext2.util.Format.date = function(v, format){
     if(!v) return "";
     if(!(v instanceof Date)) v = new Date(Date.parse(v));
     return v.dateFormat(format || "d/m/Y");
   };
 }
 
-if(Ext.DatePicker){
-  Ext.apply(Ext.DatePicker.prototype, {
+if(Ext2.DatePicker){
+  Ext2.apply(Ext2.DatePicker.prototype, {
     todayText         : "Bugün",
     minText           : "Bu tarih izin verilen en küçük tarihten daha önce",
     maxText           : "Bu tarih izin verilen en büyük tarihten daha sonra",
@@ -138,8 +138,8 @@ if(Ext.DatePicker){
   });
 }
 
-if(Ext.PagingToolbar){
-  Ext.apply(Ext.PagingToolbar.prototype, {
+if(Ext2.PagingToolbar){
+  Ext2.apply(Ext2.PagingToolbar.prototype, {
     beforePageText : "Sayfa",
     afterPageText  : " / {0}",
     firstText      : "Ä°lk Sayfa",
@@ -152,8 +152,8 @@ if(Ext.PagingToolbar){
   });
 }
 
-if(Ext.form.TextField){
-  Ext.apply(Ext.form.TextField.prototype, {
+if(Ext2.form.TextField){
+  Ext2.apply(Ext2.form.TextField.prototype, {
     minLengthText : "Girilen verinin uzunluðu en az {0} olabilir",
     maxLengthText : "Girilen verinin uzunluðu en fazla {0} olabilir",
     blankText     : "Bu alan boþŸ býrakýlamaz",
@@ -162,16 +162,16 @@ if(Ext.form.TextField){
   });
 }
 
-if(Ext.form.NumberField){
-  Ext.apply(Ext.form.NumberField.prototype, {
+if(Ext2.form.NumberField){
+  Ext2.apply(Ext2.form.NumberField.prototype, {
     minText : "En az {0} girilebilir",
     maxText : "En çok {0} girilebilir",
     nanText : "{0} geçersiz bir sayýdýr"
   });
 }
 
-if(Ext.form.DateField){
-  Ext.apply(Ext.form.DateField.prototype, {
+if(Ext2.form.DateField){
+  Ext2.apply(Ext2.form.DateField.prototype, {
     disabledDaysText  : "Disabled",
     disabledDatesText : "Disabled",
     minText           : "Bu tarih, {0} tarihinden daha sonra olmalýdýr", 
@@ -182,100 +182,100 @@ if(Ext.form.DateField){
   });
 }
 
-if(Ext.form.ComboBox){
-  Ext.apply(Ext.form.ComboBox.prototype, {
+if(Ext2.form.ComboBox){
+  Ext2.apply(Ext2.form.ComboBox.prototype, {
     loadingText       : "Yükleniyor ...",
     valueNotFoundText : undefined
   });
 }
 
-if(Ext.form.VTypes){
-	Ext.form.VTypes["emailText"]='Bu alan "user@domain.com" þŸeklinde elektronik posta formatýnda olmalýdýr';
-	Ext.form.VTypes["urlText"]='Bu alan "http://www.domain.com" þŸeklinde URL adres formatýnda olmalýdýr';
-	Ext.form.VTypes["alphaText"]='Bu alan sadece harf ve _ içermeli';
-	Ext.form.VTypes["alphanumText"]='Bu alan sadece harf, sayý ve _ içermeli';
+if(Ext2.form.VTypes){
+	Ext2.form.VTypes["emailText"]='Bu alan "user@domain.com" þŸeklinde elektronik posta formatýnda olmalýdýr';
+	Ext2.form.VTypes["urlText"]='Bu alan "http://www.domain.com" þŸeklinde URL adres formatýnda olmalýdýr';
+	Ext2.form.VTypes["alphaText"]='Bu alan sadece harf ve _ içermeli';
+	Ext2.form.VTypes["alphanumText"]='Bu alan sadece harf, sayý ve _ içermeli';
 }
 
-if(Ext.form.HtmlEditor){
-  Ext.apply(Ext.form.HtmlEditor.prototype, {
+if(Ext2.form.HtmlEditor){
+  Ext2.apply(Ext2.form.HtmlEditor.prototype, {
     createLinkText : 'Lütfen bu baðlantý için gerekli URL adresini giriniz:',
     buttonTips : {
       bold : {
         title: 'Kalýn(Bold) (Ctrl+B)',
         text: 'Þžeçili yazýyý kalýn yapar.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       italic : {
         title: 'Ä°talik(Italic) (Ctrl+I)',
         text: 'Þžeçili yazýyý italik yapar.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       underline : {
         title: 'Alt Ã‡izgi(Underline) (Ctrl+U)',
         text: 'Þžeçili yazýnýn altýný çizer.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       increasefontsize : {
         title: 'Fontu büyült',
         text: 'Yazý fontunu büyütür.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       decreasefontsize : {
         title: 'Fontu küçült',
         text: 'Yazý fontunu küçültür.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       backcolor : {
         title: 'Arka Plan Rengi',
         text: 'Seçili yazýnýn arka plan rengini deðiþŸtir.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       forecolor : {
         title: 'Yazý Rengi',
         text: 'Seçili yazýnýn rengini deðiþŸtir.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifyleft : {
         title: 'Sola Daya',
         text: 'Yazýyý sola daya.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifycenter : {
         title: 'Ortala',
         text: 'Yazýyý editörde ortala.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifyright : {
         title: 'Saða daya',
         text: 'Yazýyý saða daya.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       insertunorderedlist : {
         title: 'Noktalý Liste',
         text: 'Noktalý listeye baþŸla.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       insertorderedlist : {
         title: 'Numaralý Liste',
         text: 'Numaralý lisyeye baþŸla.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       createlink : {
         title: 'Web Adresi(Hyperlink)',
         text: 'Seçili yazýyý web adresi(hyperlink) yap.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       sourceedit : {
         title: 'Kaynak kodu Düzenleme',
         text: 'Kaynak kodu düzenleme moduna geç.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       }
     }
   });
 }
 
-if(Ext.grid.GridView){
-  Ext.apply(Ext.grid.GridView.prototype, {
+if(Ext2.grid.GridView){
+  Ext2.apply(Ext2.grid.GridView.prototype, {
     sortAscText  : "Artan sýrada sýrala",
     sortDescText : "Azalan sýrada sýrala",
     lockText     : "Kolonu kilitle",
@@ -284,24 +284,24 @@ if(Ext.grid.GridView){
   });
 }
 
-if(Ext.grid.GroupingView){
-  Ext.apply(Ext.grid.GroupingView.prototype, {
+if(Ext2.grid.GroupingView){
+  Ext2.apply(Ext2.grid.GroupingView.prototype, {
     emptyGroupText : '(Yok)',
     groupByText    : 'Bu Alana Göre Grupla',
     showGroupsText : 'Gruplar Halinde Göster'
   });
 }
 
-if(Ext.grid.PropertyColumnModel){
-  Ext.apply(Ext.grid.PropertyColumnModel.prototype, {
+if(Ext2.grid.PropertyColumnModel){
+  Ext2.apply(Ext2.grid.PropertyColumnModel.prototype, {
     nameText   : "Ad",
     valueText  : "Deðer",
     dateFormat : "d/m/Y"
   });
 }
 
-if(Ext.layout.BorderLayout.SplitRegion){
-  Ext.apply(Ext.layout.BorderLayout.SplitRegion.prototype, {
+if(Ext2.layout.BorderLayout.SplitRegion){
+  Ext2.apply(Ext2.layout.BorderLayout.SplitRegion.prototype, {
     splitTip            : "Yeniden boyutlandýrmak için sürükle.",
     collapsibleSplitTip : "Yeniden boyutlandýrmak için sürükle. Saklamak için çift týkla."
   });

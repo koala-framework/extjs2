@@ -7,26 +7,26 @@
  */
 
 /**
- * @class Ext.data.HttpProxy
- * @extends Ext.data.DataProxy
- * An implementation of {@link Ext.data.DataProxy} that reads a data object from a {@link Ext.data.Connection Connection} object
+ * @class Ext2.data.HttpProxy
+ * @extends Ext2.data.DataProxy
+ * An implementation of {@link Ext2.data.DataProxy} that reads a data object from a {@link Ext2.data.Connection Connection} object
  * configured to reference a certain URL.<br>
  * <p>
  * <b>Note that this class cannot be used to retrieve data from a domain other than the domain
  * from which the running page was served.<br>
  * <p>
- * For cross-domain access to remote data, use a {@link Ext.data.ScriptTagProxy ScriptTagProxy}.</b><br>
+ * For cross-domain access to remote data, use a {@link Ext2.data.ScriptTagProxy ScriptTagProxy}.</b><br>
  * <p>
  * Be aware that to enable the browser to parse an XML document, the server must set
  * the Content-Type header in the HTTP response to "text/xml".
  * @constructor
- * @param {Object} conn an {@link Ext.data.Connection} object, or options parameter to {@link Ext.Ajax#request}.
- * If an options parameter is passed, the singleton {@link Ext.Ajax} object will be used to make the request.
+ * @param {Object} conn an {@link Ext2.data.Connection} object, or options parameter to {@link Ext2.Ajax#request}.
+ * If an options parameter is passed, the singleton {@link Ext2.Ajax} object will be used to make the request.
  */
-Ext.data.HttpProxy = function(conn){
-    Ext.data.HttpProxy.superclass.constructor.call(this);
+Ext2.data.HttpProxy = function(conn){
+    Ext2.data.HttpProxy.superclass.constructor.call(this);
     /**
-     * The Connection object (Or options parameter to {@link Ext.Ajax#request}) which this HttpProxy uses to make requests to the server.
+     * The Connection object (Or options parameter to {@link Ext2.Ajax#request}) which this HttpProxy uses to make requests to the server.
      * Properties of this object may be changed dynamically to change the way data is requested.
      * @property
      */
@@ -42,7 +42,7 @@ Ext.data.HttpProxy = function(conn){
      * <li><b>The load succeeded but the reader could not read the response.</b>  This means the server returned
      * data, but the configured Reader threw an error while reading the data.  In this case, this event will be 
      * raised and the caught error will be passed along as the fourth parameter of this event.</li></ul>
-     * Note that this event is also relayed through {@link Ext.data.Store}, so you can listen for it directly
+     * Note that this event is also relayed through {@link Ext2.data.Store}, so you can listen for it directly
      * on any Store instance.
      * @param {Object} this
      * @param {Object} options The loading options that were specified (see {@link #load} for details)
@@ -52,25 +52,25 @@ Ext.data.HttpProxy = function(conn){
      */
 };
 
-Ext.extend(Ext.data.HttpProxy, Ext.data.DataProxy, {
+Ext2.extend(Ext2.data.HttpProxy, Ext2.data.DataProxy, {
     /**
-     * Return the {@link Ext.data.Connection} object being used by this Proxy.
+     * Return the {@link Ext2.data.Connection} object being used by this Proxy.
      * @return {Connection} The Connection object. This object may be used to subscribe to events on
      * a finer-grained basis than the DataProxy events.
      */
     getConnection : function(){
-        return this.useAjax ? Ext.Ajax : this.conn;
+        return this.useAjax ? Ext2.Ajax : this.conn;
     },
 
     /**
-     * Load data from the configured {@link Ext.data.Connection}, read the data object into
-     * a block of Ext.data.Records using the passed {@link Ext.data.DataReader} implementation, and
+     * Load data from the configured {@link Ext2.data.Connection}, read the data object into
+     * a block of Ext2.data.Records using the passed {@link Ext2.data.DataReader} implementation, and
      * process that block using the passed callback.
      * @param {Object} params An object containing properties which are to be used as HTTP parameters
      * for the request to the remote server.
-     * @param {Ext.data.DataReader} reader The Reader object which converts the data
-     * object into a block of Ext.data.Records.
-     * @param {Function} callback The function into which to pass the block of Ext.data.Records.
+     * @param {Ext2.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Ext2.data.Records.
+     * @param {Function} callback The function into which to pass the block of Ext2.data.Records.
      * The function must be passed <ul>
      * <li>The Record block object</li>
      * <li>The "arg" argument from the load function</li>
@@ -93,11 +93,11 @@ Ext.extend(Ext.data.HttpProxy, Ext.data.DataProxy, {
                 scope: this
             };
             if(this.useAjax){
-                Ext.applyIf(o, this.conn);
+                Ext2.applyIf(o, this.conn);
                 if(this.activeRequest){
-                    Ext.Ajax.abort(this.activeRequest);
+                    Ext2.Ajax.abort(this.activeRequest);
                 }
-                this.activeRequest = Ext.Ajax.request(o);
+                this.activeRequest = Ext2.Ajax.request(o);
             }else{
                 this.conn.request(o);
             }
@@ -141,8 +141,8 @@ Ext.extend(Ext.data.HttpProxy, Ext.data.DataProxy, {
         if(!this.useAjax){
             this.conn.abort();
         }else if(this.activeRequest){
-            Ext.Ajax.abort(this.activeRequest);
+            Ext2.Ajax.abort(this.activeRequest);
         }
-        Ext.data.HttpProxy.superclass.destroy.call(this);
+        Ext2.data.HttpProxy.superclass.destroy.call(this);
     }
 });

@@ -13,26 +13,26 @@
  * Encoding: utf-8
  */
 
-Ext.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Wczytywanie danych...</div>';
+Ext2.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Wczytywanie danych...</div>';
 
-if(Ext.View){
-   Ext.View.prototype.emptyText = "";
+if(Ext2.View){
+   Ext2.View.prototype.emptyText = "";
 }
 
-if(Ext.grid.GridPanel){
-   Ext.grid.GridPanel.prototype.ddText = "{0} wybrano wiersze(y)";
+if(Ext2.grid.GridPanel){
+   Ext2.grid.GridPanel.prototype.ddText = "{0} wybrano wiersze(y)";
 }
 
-if(Ext.TabPanelItem){
-   Ext.TabPanelItem.prototype.closeText = "Zamknij zakładkę";
+if(Ext2.TabPanelItem){
+   Ext2.TabPanelItem.prototype.closeText = "Zamknij zakładkę";
 }
 
-if(Ext.form.Field){
-   Ext.form.Field.prototype.invalidText = "Wartość tego pola jest niewłaściwa";
+if(Ext2.form.Field){
+   Ext2.form.Field.prototype.invalidText = "Wartość tego pola jest niewłaściwa";
 }
 
-if(Ext.LoadMask){
-    Ext.LoadMask.prototype.msg = "Wczytywanie danych...";
+if(Ext2.LoadMask){
+    Ext2.LoadMask.prototype.msg = "Wczytywanie danych...";
 }
 
 Date.monthNames = [
@@ -96,8 +96,8 @@ Date.getShortDayName = function(day) {
 	}
 };
 
-if(Ext.MessageBox){
-   Ext.MessageBox.buttonText = {
+if(Ext2.MessageBox){
+   Ext2.MessageBox.buttonText = {
       ok     : "OK",
       cancel : "Anuluj",
       yes    : "Tak",
@@ -105,16 +105,16 @@ if(Ext.MessageBox){
    };
 }
 
-if(Ext.util.Format){
-   Ext.util.Format.date = function(v, format){
+if(Ext2.util.Format){
+   Ext2.util.Format.date = function(v, format){
       if(!v) return "";
       if(!(v instanceof Date)) v = new Date(Date.parse(v));
       return v.dateFormat(format || "Y-m-d");
    };
 }
 
-if(Ext.DatePicker){
-	Ext.apply(Ext.DatePicker.prototype, {
+if(Ext2.DatePicker){
+	Ext2.apply(Ext2.DatePicker.prototype, {
 		startDay			: 1,
 		todayText			: "Dzisiaj",
 		minText				: "Data jest wcześniejsza od daty minimalnej",
@@ -134,8 +134,8 @@ if(Ext.DatePicker){
 	});
 }
 
-if(Ext.PagingToolbar){
-	Ext.apply(Ext.PagingToolbar.prototype, {
+if(Ext2.PagingToolbar){
+	Ext2.apply(Ext2.PagingToolbar.prototype, {
 		beforePageText	: "Strona",
 		afterPageText	: "z {0}",
 		firstText		: "Pierwsza strona",
@@ -148,8 +148,8 @@ if(Ext.PagingToolbar){
 	});
 }
 
-if(Ext.form.TextField){
-	Ext.apply(Ext.form.TextField.prototype, {
+if(Ext2.form.TextField){
+	Ext2.apply(Ext2.form.TextField.prototype, {
 	    minLengthText	: "Minimalna ilość znaków dla tego pola to {0}",
 		maxLengthText	: "Maksymalna ilość znaków dla tego pola to {0}",
 	    blankText		: "To pole jest wymagane",
@@ -158,16 +158,16 @@ if(Ext.form.TextField){
 	});
 }
 
-if(Ext.form.NumberField){
-	Ext.apply(Ext.form.NumberField.prototype, {
+if(Ext2.form.NumberField){
+	Ext2.apply(Ext2.form.NumberField.prototype, {
 	    minText	: "Minimalna wartość dla tego pola to {0}",
 	    maxText	: "Maksymalna wartość dla tego pola to {0}",
 		nanText	: "{0} to nie jest właściwa wartość"
 	});
 }
 
-if(Ext.form.DateField){
-	Ext.apply(Ext.form.DateField.prototype, {
+if(Ext2.form.DateField){
+	Ext2.apply(Ext2.form.DateField.prototype, {
 	    disabledDaysText	: "Wyłączony",
 	    disabledDatesText	: "Wyłączony",
 		minText				: "Data w tym polu musi być późniejsza od {0}",
@@ -178,15 +178,15 @@ if(Ext.form.DateField){
 	});
 }
 
-if(Ext.form.ComboBox){
-	Ext.apply(Ext.form.ComboBox.prototype, {
+if(Ext2.form.ComboBox){
+	Ext2.apply(Ext2.form.ComboBox.prototype, {
 		loadingText       : "Wczytuję...",
 		valueNotFoundText : undefined
 	});
 }
 
-if(Ext.form.VTypes){
-	Ext.apply(Ext.form.VTypes, {
+if(Ext2.form.VTypes){
+	Ext2.apply(Ext2.form.VTypes, {
 	    emailText		: 'To pole wymaga podania adresu e-mail w formacie: "nazwa@domena.pl"',
 	    urlText			: 'To pole wymaga podania adresu strony www w formacie: "http:/'+'/www.domena.pl"',
 		alphaText		: 'To pole wymaga podania tylko liter i _',
@@ -194,86 +194,86 @@ if(Ext.form.VTypes){
 	});
 }
 
-if(Ext.form.HtmlEditor){
-  Ext.apply(Ext.form.HtmlEditor.prototype, {
+if(Ext2.form.HtmlEditor){
+  Ext2.apply(Ext2.form.HtmlEditor.prototype, {
     createLinkText : 'Wprowadź adres URL strony:',
     buttonTips : {
       bold : {
         title: 'Pogrubienie (Ctrl+B)',
         text: 'Ustaw styl zaznaczonego tekstu na pogrubiony.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       italic : {
         title: 'Kursywa (Ctrl+I)',
         text: 'Ustaw styl zaznaczonego tekstu na kursywę.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       underline : {
         title: 'Podkreślenie (Ctrl+U)',
         text: 'Podkreśl zaznaczony tekst.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       increasefontsize : {
         title: 'Zwiększ czcionkę',
         text: 'Zwiększ rozmiar czcionki.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       decreasefontsize : {
         title: 'Zmniejsz czcionkę',
         text: 'Zmniejsz rozmiar czcionki.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       backcolor : {
         title: 'Wyróżnienie',
         text: 'Zmień kolor wyróżnienia zaznaczonego tekstu.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       forecolor : {
         title: 'Kolor czcionki',
         text: 'Zmień kolor zaznaczonego tekstu.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifyleft : {
         title: 'Do lewej',
         text: 'Wyrównaj tekst do lewej.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifycenter : {
         title: 'Wyśrodkuj',
         text: 'Wyrównaj tekst do środka.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifyright : {
         title: 'Do prawej',
         text: 'Wyrównaj tekst do prawej.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       insertunorderedlist : {
         title: 'Lista wypunktowana',
         text: 'Rozpocznij listę wypunktowaną.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       insertorderedlist : {
         title: 'Lista numerowana',
         text: 'Rozpocznij listę numerowaną.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       createlink : {
         title: 'Hiperłącze',
         text: 'Przekształć zaznaczony tekst w hiperłącze.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       sourceedit : {
         title: 'Edycja źródła',
         text: 'Przełącz w tryb edycji źródła.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       }
     }
   });
 }
 
-if(Ext.grid.GridView){
-	Ext.apply(Ext.grid.GridView.prototype, {
+if(Ext2.grid.GridView){
+	Ext2.apply(Ext2.grid.GridView.prototype, {
 	    sortAscText		: "Sortuj rosnąco",
 	    sortDescText	: "Sortuj malejąco",
 		lockText		: "Zablokuj kolumnę",
@@ -282,24 +282,24 @@ if(Ext.grid.GridView){
 	});
 }
 
-if(Ext.grid.GroupingView){
-  Ext.apply(Ext.grid.GroupingView.prototype, {
+if(Ext2.grid.GroupingView){
+  Ext2.apply(Ext2.grid.GroupingView.prototype, {
     emptyGroupText : '(None)',
     groupByText    : 'Grupuj po tym polu',
     showGroupsText : 'Pokaż w grupach'
   });
 }
 
-if(Ext.grid.PropertyColumnModel){
-	Ext.apply(Ext.grid.PropertyColumnModel.prototype, {
+if(Ext2.grid.PropertyColumnModel){
+	Ext2.apply(Ext2.grid.PropertyColumnModel.prototype, {
 	    nameText	: "Nazwa",
 	    valueText	: "Wartość",
 		dateFormat	: "Y-m-d"
 	});
 }
 
-if(Ext.layout.BorderLayout && Ext.layout.BorderLayout.SplitRegion){
-	Ext.apply(Ext.layout.BorderLayout.SplitRegion.prototype, {
+if(Ext2.layout.BorderLayout && Ext2.layout.BorderLayout.SplitRegion){
+	Ext2.apply(Ext2.layout.BorderLayout.SplitRegion.prototype, {
 	    splitTip			: "Przeciągnij aby zmienić rozmiar.",
 		collapsibleSplitTip	: "Przeciągnij aby zmienić rozmiar. Kliknij dwukrotnie aby ukryć."
 	});

@@ -7,20 +7,20 @@
  */
 
 /**
- * @class Ext.Editor
- * @extends Ext.Component
+ * @class Ext2.Editor
+ * @extends Ext2.Component
  * A base editor field that handles displaying/hiding on demand and has some built-in sizing and event handling logic.
  * @constructor
  * Create a new Editor
- * @param {Ext.form.Field} field The Field object (or descendant)
+ * @param {Ext2.form.Field} field The Field object (or descendant)
  * @param {Object} config The config object
  */
-Ext.Editor = function(field, config){
+Ext2.Editor = function(field, config){
     this.field = field;
-    Ext.Editor.superclass.constructor.call(this, config);
+    Ext2.Editor.superclass.constructor.call(this, config);
 };
 
-Ext.extend(Ext.Editor, Ext.Component, {
+Ext2.extend(Ext2.Editor, Ext2.Component, {
     /**
      * @cfg {Boolean/String} autoSize
      * True for the editor to automatically adopt the size of the underlying field, "width" to adopt the width only,
@@ -48,7 +48,7 @@ Ext.extend(Ext.Editor, Ext.Component, {
     value : "",
     /**
      * @cfg {String} alignment
-     * The position to align to (see {@link Ext.Element#alignTo} for more details, defaults to "c-c?").
+     * The position to align to (see {@link Ext2.Element#alignTo} for more details, defaults to "c-c?").
      */
     alignment: "c-c?",
     /**
@@ -78,21 +78,21 @@ Ext.extend(Ext.Editor, Ext.Component, {
     updateEl : false,
 
     initComponent : function(){
-        Ext.Editor.superclass.initComponent.call(this);
+        Ext2.Editor.superclass.initComponent.call(this);
         this.addEvents(
             /**
              * @event beforestartedit
              * Fires when editing is initiated, but before the value changes.  Editing can be canceled by returning
              * false from the handler of this event.
              * @param {Editor} this
-             * @param {Ext.Element} boundEl The underlying element bound to this editor
+             * @param {Ext2.Element} boundEl The underlying element bound to this editor
              * @param {Mixed} value The field value being set
              */
             "beforestartedit",
             /**
              * @event startedit
              * Fires when this editor is displayed
-             * @param {Ext.Element} boundEl The underlying element bound to this editor
+             * @param {Ext2.Element} boundEl The underlying element bound to this editor
              * @param {Mixed} value The starting field value
              */
             "startedit",
@@ -126,9 +126,9 @@ Ext.extend(Ext.Editor, Ext.Component, {
             /**
              * @event specialkey
              * Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check
-             * {@link Ext.EventObject#getKey} to determine which key was pressed.
-             * @param {Ext.form.Field} this
-             * @param {Ext.EventObject} e The event object
+             * {@link Ext2.EventObject#getKey} to determine which key was pressed.
+             * @param {Ext2.form.Field} this
+             * @param {Ext2.EventObject} e The event object
              */
             "specialkey"
         );
@@ -136,22 +136,22 @@ Ext.extend(Ext.Editor, Ext.Component, {
 
     // private
     onRender : function(ct, position){
-        this.el = new Ext.Layer({
+        this.el = new Ext2.Layer({
             shadow: this.shadow,
-            cls: "x-editor",
+            cls: "x2-editor",
             parentEl : ct,
             shim : this.shim,
             shadowOffset:4,
             id: this.id,
             constrain: this.constrain
         });
-        this.el.setStyle("overflow", Ext.isGecko ? "auto" : "hidden");
+        this.el.setStyle("overflow", Ext2.isGecko ? "auto" : "hidden");
         if(this.field.msgTarget != 'title'){
             this.field.msgTarget = 'qtip';
         }
         this.field.inEditor = true;
         this.field.render(this.el);
-        if(Ext.isGecko){
+        if(Ext2.isGecko){
             this.field.el.dom.setAttribute('autocomplete', 'off');
         }
         this.field.on("specialkey", this.onSpecialKey, this);
@@ -191,7 +191,7 @@ Ext.extend(Ext.Editor, Ext.Component, {
         if(this.editing){
             this.completeEdit();
         }
-        this.boundEl = Ext.get(el);
+        this.boundEl = Ext2.get(el);
         var v = value !== undefined ? value : this.boundEl.dom.innerHTML;
         if(!this.rendered){
             this.render(this.parentEl || document.body);
@@ -233,7 +233,7 @@ Ext.extend(Ext.Editor, Ext.Component, {
         delete this.field.lastSize;
         this.field.setSize(w, h);
         if(this.el){
-	        if(Ext.isGecko2 || Ext.isOpera){
+	        if(Ext2.isGecko2 || Ext2.isOpera){
 	            // prevent layer scrollbars
 	            this.el.setSize(w, h);
 	        }
@@ -284,7 +284,7 @@ Ext.extend(Ext.Editor, Ext.Component, {
             this.boundEl.hide();
         }
         this.field.show();
-        if(Ext.isIE && !this.fixIEFocus){ // IE has problems with focusing the first time
+        if(Ext2.isIE && !this.fixIEFocus){ // IE has problems with focusing the first time
             this.fixIEFocus = true;
             this.deferredFocus.defer(50, this);
         }else{
@@ -362,8 +362,8 @@ Ext.extend(Ext.Editor, Ext.Component, {
     },
 
     beforeDestroy : function(){
-        Ext.destroy(this.field);
+        Ext2.destroy(this.field);
         this.field = null;
     }
 });
-Ext.reg('editor', Ext.Editor);
+Ext2.reg('editor', Ext2.Editor);

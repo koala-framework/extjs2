@@ -7,8 +7,8 @@
  */
 
 /**
- * @class Ext.form.ComboBox
- * @extends Ext.form.TriggerField
+ * @class Ext2.form.ComboBox
+ * @extends Ext2.form.TriggerField
  * <p>A combobox control with support for autocomplete, remote-loading, paging and many other features.</p>
  * A ComboBox works in a similar manner to a traditional HTML &lt;select> field. The difference is that to submit the
  * {@link #valueField}, you must specify a {@link #hiddenName} to create a hidden input field to hold the
@@ -18,24 +18,24 @@
  * Create a new ComboBox.
  * @param {Object} config Configuration options
  */
-Ext.form.ComboBox = Ext.extend(Ext.form.TriggerField, {
+Ext2.form.ComboBox = Ext2.extend(Ext2.form.TriggerField, {
     /**
      * @cfg {Mixed} transform The id, DOM node or element of an existing HTML SELECT to convert to a ComboBox.
-     * Note that if you specify this and the combo is going to be in a {@link Ext.form.BasicForm} or
-     * {@link Ext.form.FormPanel}, you must also set {@link #lazyRender} = true.
+     * Note that if you specify this and the combo is going to be in a {@link Ext2.form.BasicForm} or
+     * {@link Ext2.form.FormPanel}, you must also set {@link #lazyRender} = true.
      */
     /**
      * @cfg {Boolean} lazyRender True to prevent the ComboBox from rendering until requested (should always be used when
-     * rendering into an Ext.Editor, defaults to false).
+     * rendering into an Ext2.Editor, defaults to false).
      */
     /**
      * @cfg {Boolean/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to:
      * {tag: "input", type: "text", size: "24", autocomplete: "off"})
      */
     /**
-     * @cfg {Ext.data.Store/Array} store The data source to which this combo is bound (defaults to undefined).  This can be
-     * any {@link Ext.data.Store} subclass, a 1-dimensional array (e.g., ['Foo','Bar']) or a 2-dimensional array (e.g.,
-     * [['f','Foo'],['b','Bar']]).  Arrays will be converted to a {@link Ext.data.SimpleStore} internally.
+     * @cfg {Ext2.data.Store/Array} store The data source to which this combo is bound (defaults to undefined).  This can be
+     * any {@link Ext2.data.Store} subclass, a 1-dimensional array (e.g., ['Foo','Bar']) or a 2-dimensional array (e.g.,
+     * [['f','Foo'],['b','Bar']]).  Arrays will be converted to a {@link Ext2.data.SimpleStore} internally.
      * 1-dimensional arrays will automatically be expanded (each array item will be the combo value and text) and
      * for multi-dimensional arrays, the value in index 0 of each item will be assumed to be the combo value, while
      * the value at index 1 is assumed to be the combo text.
@@ -48,7 +48,7 @@ Ext.form.ComboBox = Ext.extend(Ext.form.TriggerField, {
     // private
     defaultAutoCreate : {tag: "input", type: "text", size: "24", autocomplete: "off"},
     /**
-     * @cfg {Number} listWidth The width (used as a parameter to {@link Ext.Element#setWidth}) of the dropdown list (defaults to the width of the ComboBox field)
+     * @cfg {Number} listWidth The width (used as a parameter to {@link Ext2.Element#setWidth}) of the dropdown list (defaults to the width of the ComboBox field)
      */
     /**
      * @cfg {String} displayField The underlying data field name to bind to this ComboBox (defaults to undefined if
@@ -76,21 +76,21 @@ Ext.form.ComboBox = Ext.extend(Ext.form.TriggerField, {
      */
     listClass: '',
     /**
-     * @cfg {String} selectedClass CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')
+     * @cfg {String} selectedClass CSS class to apply to the selected item in the dropdown list (defaults to 'x2-combo-selected')
      */
-    selectedClass: 'x-combo-selected',
+    selectedClass: 'x2-combo-selected',
     /**
      * @cfg {String} triggerClass An additional CSS class used to style the trigger button.  The trigger will always get the
-     * class 'x-form-trigger' and triggerClass will be <b>appended</b> if specified (defaults to 'x-form-arrow-trigger'
+     * class 'x2-form-trigger' and triggerClass will be <b>appended</b> if specified (defaults to 'x2-form-arrow-trigger'
      * which displays a downward arrow icon).
      */
-    triggerClass : 'x-form-arrow-trigger',
+    triggerClass : 'x2-form-arrow-trigger',
     /**
      * @cfg {Boolean/String} shadow True or "sides" for the default effect, "frame" for 4-way shadow, and "drop" for bottom-right
      */
     shadow:'sides',
     /**
-     * @cfg {String} listAlign A valid anchor position value. See {@link Ext.Element#alignTo} for details on supported
+     * @cfg {String} listAlign A valid anchor position value. See {@link Ext2.Element#alignTo} for details on supported
      * anchor positions (defaults to 'tl-bl')
      */
     listAlign: 'tl-bl?',
@@ -192,7 +192,7 @@ Ext.form.ComboBox = Ext.extend(Ext.form.TriggerField, {
     /**
      * The value of the match string used to filter the store. Delete this property to force a requery.
      * Example use:<pre><code>
-var combo = new Ext.form.ComboBox({
+var combo = new Ext2.form.ComboBox({
     ...
     mode: 'remote',
     ...
@@ -211,33 +211,33 @@ var combo = new Ext.form.ComboBox({
 
     // private
     initComponent : function(){
-        Ext.form.ComboBox.superclass.initComponent.call(this);
+        Ext2.form.ComboBox.superclass.initComponent.call(this);
         this.addEvents(
             /**
              * @event expand
              * Fires when the dropdown list is expanded
-             * @param {Ext.form.ComboBox} combo This combo box
+             * @param {Ext2.form.ComboBox} combo This combo box
              */
             'expand',
             /**
              * @event collapse
              * Fires when the dropdown list is collapsed
-             * @param {Ext.form.ComboBox} combo This combo box
+             * @param {Ext2.form.ComboBox} combo This combo box
              */
             'collapse',
             /**
              * @event beforeselect
              * Fires before a list item is selected. Return false to cancel the selection.
-             * @param {Ext.form.ComboBox} combo This combo box
-             * @param {Ext.data.Record} record The data record returned from the underlying store
+             * @param {Ext2.form.ComboBox} combo This combo box
+             * @param {Ext2.data.Record} record The data record returned from the underlying store
              * @param {Number} index The index of the selected item in the dropdown list
              */
             'beforeselect',
             /**
              * @event select
              * Fires when a list item is selected
-             * @param {Ext.form.ComboBox} combo This combo box
-             * @param {Ext.data.Record} record The data record returned from the underlying store
+             * @param {Ext2.form.ComboBox} combo This combo box
+             * @param {Ext2.data.Record} record The data record returned from the underlying store
              * @param {Number} index The index of the selected item in the dropdown list
              */
             'select',
@@ -246,7 +246,7 @@ var combo = new Ext.form.ComboBox({
              * Fires before all queries are processed. Return false to cancel the query or set the queryEvent's
              * cancel property to true.
              * @param {Object} queryEvent An object that has these properties:<ul>
-             * <li><code>combo</code> : Ext.form.ComboBox <div class="sub-desc">This combo box</div></li>
+             * <li><code>combo</code> : Ext2.form.ComboBox <div class="sub-desc">This combo box</div></li>
              * <li><code>query</code> : String <div class="sub-desc">The query</div></li>
              * <li><code>forceAll</code> : Boolean <div class="sub-desc">True to force "all" query</div></li>
              * <li><code>cancel</code> : Boolean <div class="sub-desc">Set to true to cancel the query</div></li>
@@ -256,7 +256,7 @@ var combo = new Ext.form.ComboBox({
         );
         if(this.transform){
             this.allowDomMove = false;
-            var s = Ext.getDom(this.transform);
+            var s = Ext2.getDom(this.transform);
             if(!this.hiddenName){
                 this.hiddenName = s.name;
             }
@@ -271,7 +271,7 @@ var combo = new Ext.form.ComboBox({
                     }
                     d.push([value, o.text]);
                 }
-                this.store = new Ext.data.SimpleStore({
+                this.store = new Ext2.data.SimpleStore({
                     'id': 0,
                     fields: ['value', 'text'],
                     data : d
@@ -279,26 +279,26 @@ var combo = new Ext.form.ComboBox({
                 this.valueField = 'value';
                 this.displayField = 'text';
             }
-            s.name = Ext.id(); // wipe out the name in case somewhere else they have a reference
+            s.name = Ext2.id(); // wipe out the name in case somewhere else they have a reference
             if(!this.lazyRender){
                 this.target = true;
-                this.el = Ext.DomHelper.insertBefore(s, this.autoCreate || this.defaultAutoCreate);
-                Ext.removeNode(s); // remove it
+                this.el = Ext2.DomHelper.insertBefore(s, this.autoCreate || this.defaultAutoCreate);
+                Ext2.removeNode(s); // remove it
                 this.render(this.el.parentNode);
             }else{
-                Ext.removeNode(s); // remove it
+                Ext2.removeNode(s); // remove it
             }
         }
         //auto-configure store from local array data
-        else if(Ext.isArray(this.store)){
-            if (Ext.isArray(this.store[0])){
-                this.store = new Ext.data.SimpleStore({
+        else if(Ext2.isArray(this.store)){
+            if (Ext2.isArray(this.store[0])){
+                this.store = new Ext2.data.SimpleStore({
                     fields: ['value','text'],
                     data: this.store
                 });
                 this.valueField = 'value';
             }else{
-                this.store = new Ext.data.SimpleStore({
+                this.store = new Ext2.data.SimpleStore({
                     fields: ['text'],
                     data: this.store,
                     expandData: true
@@ -322,7 +322,7 @@ var combo = new Ext.form.ComboBox({
 
     // private
     onRender : function(ct, position){
-        Ext.form.ComboBox.superclass.onRender.call(this, ct, position);
+        Ext2.form.ComboBox.superclass.onRender.call(this, ct, position);
         if(this.hiddenName){
             this.hiddenField = this.el.insertSibling({tag:'input', type:'hidden', name: this.hiddenName,
                     id: (this.hiddenId||this.hiddenName)}, 'before', true);
@@ -330,7 +330,7 @@ var combo = new Ext.form.ComboBox({
             // prevent input submission
             this.el.dom.removeAttribute('name');
         }
-        if(Ext.isGecko){
+        if(Ext2.isGecko){
             this.el.dom.setAttribute('autocomplete', 'off');
         }
 
@@ -348,7 +348,7 @@ var combo = new Ext.form.ComboBox({
 
     // private
     initValue : function(){
-        Ext.form.ComboBox.superclass.initValue.call(this);
+        Ext2.form.ComboBox.superclass.initValue.call(this);
         if(this.hiddenField){
             this.hiddenField.value =
                 this.hiddenValue !== undefined ? this.hiddenValue :
@@ -359,9 +359,9 @@ var combo = new Ext.form.ComboBox({
     // private
     initList : function(){
         if(!this.list){
-            var cls = 'x-combo-list';
+            var cls = 'x2-combo-list';
 
-            this.list = new Ext.Layer({
+            this.list = new Ext2.Layer({
                 shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
             });
 
@@ -382,7 +382,7 @@ var combo = new Ext.form.ComboBox({
 
             if(this.pageSize){
                 this.footer = this.list.createChild({cls:cls+'-ft'});
-                this.pageTb = new Ext.PagingToolbar({
+                this.pageTb = new Ext2.PagingToolbar({
                     store:this.store,
                     pageSize: this.pageSize,
                     renderTo:this.footer
@@ -392,25 +392,25 @@ var combo = new Ext.form.ComboBox({
 
             if(!this.tpl){
                 /**
-                * @cfg {String/Ext.XTemplate} tpl The template string, or {@link Ext.XTemplate}
+                * @cfg {String/Ext2.XTemplate} tpl The template string, or {@link Ext2.XTemplate}
                 * instance to use to display each item in the dropdown list. Use
                 * this to create custom UI layouts for items in the list.
                 * <p>
                 * If you wish to preserve the default visual look of list items, add the CSS
-                * class name <pre>x-combo-list-item</pre> to the template's container element.
+                * class name <pre>x2-combo-list-item</pre> to the template's container element.
                 * <p>
                 * <b>The template must contain one or more substitution parameters using field
                 * names from the Combo's</b> {@link #store Store}. An example of a custom template
                 * would be adding an <pre>ext:qtip</pre> attribute which might display other fields
                 * from the Store.
                 * <p>
-                * The dropdown list is displayed in a DataView. See {@link Ext.DataView} for details.
+                * The dropdown list is displayed in a DataView. See {@link Ext2.DataView} for details.
                 */
                 this.tpl = '<tpl for="."><div class="'+cls+'-item">{' + this.displayField + '}</div></tpl>';
                 /**
                  * @cfg {String} itemSelector
                  * <b>This setting is required if a custom XTemplate has been specified in {@link #tpl}
-                 * which assigns a class other than <pre>'x-combo-list-item'</pre> to dropdown list items</b>.
+                 * which assigns a class other than <pre>'x2-combo-list-item'</pre> to dropdown list items</b>.
                  * A simple CSS selector (e.g. div.some-class or span:first-child) that will be
                  * used to determine what nodes the DataView which handles the dropdown display will
                  * be working with.
@@ -418,10 +418,10 @@ var combo = new Ext.form.ComboBox({
             }
 
             /**
-            * The {@link Ext.DataView DataView} used to display the ComboBox's options.
-            * @type Ext.DataView
+            * The {@link Ext2.DataView DataView} used to display the ComboBox's options.
+            * @type Ext2.DataView
             */
-            this.view = new Ext.DataView({
+            this.view = new Ext2.DataView({
                 applyTo: this.innerList,
                 tpl: this.tpl,
                 singleSelect: true,
@@ -434,7 +434,7 @@ var combo = new Ext.form.ComboBox({
             this.bindStore(this.store, true);
 
             if(this.resizable){
-                this.resizer = new Ext.Resizable(this.list,  {
+                this.resizer = new Ext2.Resizable(this.list,  {
                    pinned:true, handles:'se'
                 });
                 this.resizer.on('resize', function(r, w, h){
@@ -450,7 +450,7 @@ var combo = new Ext.form.ComboBox({
     
     /**
      * Returns the store associated with this combo.
-     * @return {Ext.data.Store} The store
+     * @return {Ext2.data.Store} The store
      */
     getStore : function(){
         return this.store;
@@ -470,7 +470,7 @@ var combo = new Ext.form.ComboBox({
             }
         }
         if(store){
-            this.store = Ext.StoreMgr.lookup(store);
+            this.store = Ext2.StoreMgr.lookup(store);
 
             this.store.on('beforeload', this.onBeforeLoad, this);
             this.store.on('load', this.onLoad, this);
@@ -484,9 +484,9 @@ var combo = new Ext.form.ComboBox({
 
     // private
     initEvents : function(){
-        Ext.form.ComboBox.superclass.initEvents.call(this);
+        Ext2.form.ComboBox.superclass.initEvents.call(this);
 
-        this.keyNav = new Ext.KeyNav(this.el, {
+        this.keyNav = new Ext2.KeyNav(this.el, {
             "up" : function(e){
                 this.inKeyMode = true;
                 this.selectPrev();
@@ -520,7 +520,7 @@ var combo = new Ext.form.ComboBox({
 
             doRelay : function(foo, bar, hname){
                 if(hname == 'down' || this.scope.isExpanded()){
-                   return Ext.KeyNav.prototype.doRelay.apply(this, arguments);
+                   return Ext2.KeyNav.prototype.doRelay.apply(this, arguments);
                 }
                 return true;
             },
@@ -529,9 +529,9 @@ var combo = new Ext.form.ComboBox({
         });
         this.queryDelay = Math.max(this.queryDelay || 10,
                 this.mode == 'local' ? 10 : 250);
-        this.dqTask = new Ext.util.DelayedTask(this.initQuery, this);
+        this.dqTask = new Ext2.util.DelayedTask(this.initQuery, this);
         if(this.typeAhead){
-            this.taTask = new Ext.util.DelayedTask(this.onTypeAhead, this);
+            this.taTask = new Ext2.util.DelayedTask(this.onTypeAhead, this);
         }
         if(this.editable !== false && !this.enableKeyEvents){
             this.el.on("keyup", this.onKeyUp, this);
@@ -545,14 +545,14 @@ var combo = new Ext.form.ComboBox({
             this.dqTask = null;
         }
         this.bindStore(null);
-        Ext.destroy(
+        Ext2.destroy(
             this.resizer,
             this.view,
             this.pageTb,
             this.innerList,
             this.list
         );
-        Ext.form.ComboBox.superclass.onDestroy.call(this);
+        Ext2.form.ComboBox.superclass.onDestroy.call(this);
     },
 
     // private
@@ -569,8 +569,8 @@ var combo = new Ext.form.ComboBox({
         };
         //For some reason I can't track down, the events fire in a different order in webkit.
         //Need a slight delay here
-        if(this.inEditor && Ext.isWebKit && e.getKey() == e.TAB){
-            fn.defer(10, this, [new Ext.EventObjectImpl(e)]);
+        if(this.inEditor && Ext2.isWebKit && e.getKey() == e.TAB){
+            fn.defer(10, this, [new Ext2.EventObjectImpl(e)]);
         }else{
             fn.call(this, e);
         }
@@ -578,7 +578,7 @@ var combo = new Ext.form.ComboBox({
 
     // private
     onResize: function(w, h){
-        Ext.form.ComboBox.superclass.onResize.apply(this, arguments);
+        Ext2.form.ComboBox.superclass.onResize.apply(this, arguments);
         if(this.list && this.listWidth === undefined){
             var lw = Math.max(w, this.minListWidth);
             this.list.setWidth(lw);
@@ -588,7 +588,7 @@ var combo = new Ext.form.ComboBox({
 
     // private
     onEnable: function(){
-        Ext.form.ComboBox.superclass.onEnable.apply(this, arguments);
+        Ext2.form.ComboBox.superclass.onEnable.apply(this, arguments);
         if(this.hiddenField){
             this.hiddenField.disabled = false;
         }
@@ -596,7 +596,7 @@ var combo = new Ext.form.ComboBox({
 
     // private
     onDisable: function(){
-        Ext.form.ComboBox.superclass.onDisable.apply(this, arguments);
+        Ext2.form.ComboBox.superclass.onDisable.apply(this, arguments);
         if(this.hiddenField){
             this.hiddenField.disabled = true;
         }
@@ -616,11 +616,11 @@ var combo = new Ext.form.ComboBox({
         if(!value){
             this.el.dom.setAttribute('readOnly', true);
             this.el.on('mousedown', this.onTriggerClick,  this);
-            this.el.addClass('x-combo-noedit');
+            this.el.addClass('x2-combo-noedit');
         }else{
             this.el.dom.removeAttribute('readOnly');
             this.el.un('mousedown', this.onTriggerClick,  this);
-            this.el.removeClass('x-combo-noedit');
+            this.el.removeClass('x2-combo-noedit');
         }
     },
 
@@ -652,7 +652,7 @@ var combo = new Ext.form.ComboBox({
                 }
             }else{
                 this.selectNext();
-                if(this.typeAhead && this.lastKey != Ext.EventObject.BACKSPACE && this.lastKey != Ext.EventObject.DELETE){
+                if(this.typeAhead && this.lastKey != Ext2.EventObject.BACKSPACE && this.lastKey != Ext2.EventObject.DELETE){
                     this.taTask.delay(this.typeAheadDelay);
                 }
             }
@@ -688,7 +688,7 @@ var combo = new Ext.form.ComboBox({
     // inherit docs
     getName: function(){
         var hf = this.hiddenField;
-        return hf && hf.name ? hf.name : this.hiddenName || Ext.form.ComboBox.superclass.getName.call(this);    
+        return hf && hf.name ? hf.name : this.hiddenName || Ext2.form.ComboBox.superclass.getName.call(this);    
     },
 
     /**
@@ -699,7 +699,7 @@ var combo = new Ext.form.ComboBox({
         if(this.valueField){
             return typeof this.value != 'undefined' ? this.value : '';
         }else{
-            return Ext.form.ComboBox.superclass.getValue.call(this);
+            return Ext2.form.ComboBox.superclass.getValue.call(this);
         }
     },
 
@@ -737,7 +737,7 @@ var combo = new Ext.form.ComboBox({
         if(this.hiddenField){
             this.hiddenField.value = v;
         }
-        Ext.form.ComboBox.superclass.setValue.call(this, text);
+        Ext2.form.ComboBox.superclass.setValue.call(this, text);
         this.value = v;
     },
 
@@ -790,8 +790,8 @@ var combo = new Ext.form.ComboBox({
         var inner = this.innerList.dom;
         var pad = this.list.getFrameWidth('tb')+(this.resizable?this.handleHeight:0)+this.assetHeight;
         var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
-        var ha = this.getPosition()[1]-Ext.getBody().getScroll().top;
-        var hb = Ext.lib.Dom.getViewHeight()-ha-this.getSize().height;
+        var ha = this.getPosition()[1]-Ext2.getBody().getScroll().top;
+        var hb = Ext2.lib.Dom.getViewHeight()-ha-this.getSize().height;
         var space = Math.max(ha, hb, this.minHeight || 0)-this.list.shadowOffset-pad-5;
         h = Math.min(h, space, this.maxHeight);
 
@@ -882,7 +882,7 @@ var combo = new Ext.form.ComboBox({
             this.lastKey = k;
             this.dqTask.delay(this.queryDelay);
         }
-        Ext.form.ComboBox.superclass.onKeyUp.call(this, e);
+        Ext2.form.ComboBox.superclass.onKeyUp.call(this, e);
     },
 
     // private
@@ -981,8 +981,8 @@ var combo = new Ext.form.ComboBox({
             return;
         }
         this.list.hide();
-        Ext.getDoc().un('mousewheel', this.collapseIf, this);
-        Ext.getDoc().un('mousedown', this.collapseIf, this);
+        Ext2.getDoc().un('mousewheel', this.collapseIf, this);
+        Ext2.getDoc().un('mousedown', this.collapseIf, this);
         this.fireEvent('collapse', this);
     },
 
@@ -1002,11 +1002,11 @@ var combo = new Ext.form.ComboBox({
         }
         this.list.alignTo(this.wrap, this.listAlign);
         this.list.show();
-        if(Ext.isGecko2){
+        if(Ext2.isGecko2){
             this.innerList.setOverflow('auto'); // necessary for FF 2.0/Mac
         }
-        Ext.getDoc().on('mousewheel', this.collapseIf, this);
-        Ext.getDoc().on('mousedown', this.collapseIf, this);
+        Ext2.getDoc().on('mousewheel', this.collapseIf, this);
+        Ext2.getDoc().on('mousedown', this.collapseIf, this);
         this.fireEvent('expand', this);
     },
 
@@ -1049,4 +1049,4 @@ var combo = new Ext.form.ComboBox({
      */
 
 });
-Ext.reg('combo', Ext.form.ComboBox);
+Ext2.reg('combo', Ext2.form.ComboBox);

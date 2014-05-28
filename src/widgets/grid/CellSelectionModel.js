@@ -7,14 +7,14 @@
  */
 
 /**
- * @class Ext.grid.CellSelectionModel
- * @extends Ext.grid.AbstractSelectionModel
+ * @class Ext2.grid.CellSelectionModel
+ * @extends Ext2.grid.AbstractSelectionModel
  * This class provides the basic implementation for single cell selection in a grid. The object stored
  * as the selection and returned by {@link getSelectedCell} contains the following properties:
  * <div class="mdetail-params"><ul>
- * <li><b>record</b> : Ext.data.record<p class="sub-desc">The {@link Ext.data.Record Record}
+ * <li><b>record</b> : Ext2.data.record<p class="sub-desc">The {@link Ext2.data.Record Record}
  * which provides the data for the row containing the selection</p></li>
- * <li><b>cell</b> : Ext.data.record<p class="sub-desc">An object containing the
+ * <li><b>cell</b> : Ext2.data.record<p class="sub-desc">An object containing the
  * following properties:
  * <div class="mdetail-params"><ul>
  * <li><b>rowIndex</b> : Number<p class="sub-desc">The index of the selected row</p></li>
@@ -30,8 +30,8 @@
  * @constructor
  * @param {Object} config The object containing the configuration of this model.
  */
-Ext.grid.CellSelectionModel = function(config){
-    Ext.apply(this, config);
+Ext2.grid.CellSelectionModel = function(config){
+    Ext2.apply(this, config);
 
     this.selection = null;
 
@@ -65,15 +65,15 @@ Ext.grid.CellSelectionModel = function(config){
 	    "selectionchange"
     );
 
-    Ext.grid.CellSelectionModel.superclass.constructor.call(this);
+    Ext2.grid.CellSelectionModel.superclass.constructor.call(this);
 };
 
-Ext.extend(Ext.grid.CellSelectionModel, Ext.grid.AbstractSelectionModel,  {
+Ext2.extend(Ext2.grid.CellSelectionModel, Ext2.grid.AbstractSelectionModel,  {
 
     /** @ignore */
     initEvents : function(){
         this.grid.on("cellmousedown", this.handleMouseDown, this);
-        this.grid.getGridEl().on(Ext.isIE || (Ext.isWebKit && !Ext.isSafari2) ? "keydown" : "keypress", this.handleKeyDown, this);
+        this.grid.getGridEl().on(Ext2.isIE || (Ext2.isWebKit && !Ext2.isSafari2) ? "keydown" : "keypress", this.handleKeyDown, this);
         var view = this.grid.view;
         view.on("refresh", this.onViewChange, this);
         view.on("rowupdated", this.onRowUpdated, this);

@@ -7,8 +7,8 @@
  */
 
 /**
- * @class Ext.tree.TreeNode
- * @extends Ext.data.Node
+ * @class Ext2.tree.TreeNode
+ * @extends Ext2.data.Node
  * @cfg {String} text The text for this node
  * @cfg {Boolean} expanded true to start the node expanded
  * @cfg {Boolean} allowDrag False to make this node undraggable if {@link #draggable} = true (defaults to true)
@@ -21,28 +21,28 @@
  * @cfg {String} href URL of the link used for the node (defaults to #)
  * @cfg {String} hrefTarget target frame for the link
  * @cfg {Boolean} hidden True to render hidden. (Defaults to false).
- * @cfg {String} qtip An Ext QuickTip for the node
+ * @cfg {String} qtip An Ext2 QuickTip for the node
  * @cfg {Boolean} expandable If set to true, the node will always show a plus/minus icon, even when empty
- * @cfg {String} qtipCfg An Ext QuickTip config for the node (used instead of qtip)
+ * @cfg {String} qtipCfg An Ext2 QuickTip config for the node (used instead of qtip)
  * @cfg {Boolean} singleClickExpand True for single click expand on this node
- * @cfg {Function} uiProvider A UI <b>class</b> to use for this node (defaults to Ext.tree.TreeNodeUI)
+ * @cfg {Function} uiProvider A UI <b>class</b> to use for this node (defaults to Ext2.tree.TreeNodeUI)
  * @cfg {Boolean} checked True to render a checked checkbox for this node, false to render an unchecked checkbox
  * (defaults to undefined with no checkbox rendered)
  * @cfg {Boolean} draggable True to make this node draggable (defaults to false)
  * @cfg {Boolean} isTarget False to not allow this node to act as a drop target (defaults to true)
  * @cfg {Boolean} allowChildren False to not allow this node to have child nodes (defaults to true)
- * @cfg {Boolean} editable False to not allow this node to be edited by an (@link Ext.tree.TreeEditor} (defaults to true)
+ * @cfg {Boolean} editable False to not allow this node to be edited by an (@link Ext2.tree.TreeEditor} (defaults to true)
  * @constructor
  * @param {Object/String} attributes The attributes/config for the node or just a string with the text for the node
  */
-Ext.tree.TreeNode = function(attributes){
+Ext2.tree.TreeNode = function(attributes){
     attributes = attributes || {};
     if(typeof attributes == "string"){
         attributes = {text: attributes};
     }
     this.childrenRendered = false;
     this.rendered = false;
-    Ext.tree.TreeNode.superclass.constructor.call(this, attributes);
+    Ext2.tree.TreeNode.superclass.constructor.call(this, attributes);
     this.expanded = attributes.expanded === true;
     this.isTarget = attributes.isTarget !== false;
     this.draggable = attributes.draggable !== false && attributes.allowDrag !== false;
@@ -112,14 +112,14 @@ Ext.tree.TreeNode = function(attributes){
         * @event beforeclick
         * Fires before click processing. Return false to cancel the default action.
         * @param {Node} this This node
-        * @param {Ext.EventObject} e The event object
+        * @param {Ext2.EventObject} e The event object
         */
         "beforeclick",
         /**
         * @event click
         * Fires when this node is clicked
         * @param {Node} this This node
-        * @param {Ext.EventObject} e The event object
+        * @param {Ext2.EventObject} e The event object
         */
         "click",
         /**
@@ -133,14 +133,14 @@ Ext.tree.TreeNode = function(attributes){
         * @event dblclick
         * Fires when this node is double clicked
         * @param {Node} this This node
-        * @param {Ext.EventObject} e The event object
+        * @param {Ext2.EventObject} e The event object
         */
         "dblclick",
         /**
         * @event contextmenu
         * Fires when this node is right clicked
         * @param {Node} this This node
-        * @param {Ext.EventObject} e The event object
+        * @param {Ext2.EventObject} e The event object
         */
         "contextmenu",
         /**
@@ -151,7 +151,7 @@ Ext.tree.TreeNode = function(attributes){
         "beforechildrenrendered"
     );
 
-    var uiClass = this.attributes.uiProvider || this.defaultUI || Ext.tree.TreeNodeUI;
+    var uiClass = this.attributes.uiProvider || this.defaultUI || Ext2.tree.TreeNodeUI;
 
     /**
      * Read-only. The UI for this node
@@ -159,7 +159,7 @@ Ext.tree.TreeNode = function(attributes){
      */
     this.ui = new uiClass(this);
 };
-Ext.extend(Ext.tree.TreeNode, Ext.data.Node, {
+Ext2.extend(Ext2.tree.TreeNode, Ext2.data.Node, {
     preventHScroll: true,
     /**
      * Returns true if this node is expanded
@@ -173,7 +173,7 @@ Ext.extend(Ext.tree.TreeNode, Ext.data.Node, {
  * Returns the UI object for this node.
  * @return {TreeNodeUI} The object which is providing the user interface for this tree
  * node. Unless otherwise specified in the {@link #uiProvider}, this will be an instance
- * of {@link Ext.tree.TreeNodeUI}
+ * of {@link Ext2.tree.TreeNodeUI}
  */
     getUI : function(){
         return this.ui;
@@ -181,13 +181,13 @@ Ext.extend(Ext.tree.TreeNode, Ext.data.Node, {
 
     getLoader : function(){
         var owner;
-        return this.loader || ((owner = this.getOwnerTree()) && owner.loader ? owner.loader : new Ext.tree.TreeLoader());
+        return this.loader || ((owner = this.getOwnerTree()) && owner.loader ? owner.loader : new Ext2.tree.TreeLoader());
     },
 
     // private override
     setFirstChild : function(node){
         var of = this.firstChild;
-        Ext.tree.TreeNode.superclass.setFirstChild.call(this, node);
+        Ext2.tree.TreeNode.superclass.setFirstChild.call(this, node);
         if(this.childrenRendered && of && node != of){
             of.renderIndent(true, true);
         }
@@ -199,7 +199,7 @@ Ext.extend(Ext.tree.TreeNode, Ext.data.Node, {
     // private override
     setLastChild : function(node){
         var ol = this.lastChild;
-        Ext.tree.TreeNode.superclass.setLastChild.call(this, node);
+        Ext2.tree.TreeNode.superclass.setLastChild.call(this, node);
         if(this.childrenRendered && ol && node != ol){
             ol.renderIndent(true, true);
         }
@@ -211,10 +211,10 @@ Ext.extend(Ext.tree.TreeNode, Ext.data.Node, {
     // these methods are overridden to provide lazy rendering support
     // private override
     appendChild : function(n){
-        if(!n.render && !Ext.isArray(n)){
+        if(!n.render && !Ext2.isArray(n)){
             n = this.getLoader().createNode(n);
         }
-        var node = Ext.tree.TreeNode.superclass.appendChild.call(this, n);
+        var node = Ext2.tree.TreeNode.superclass.appendChild.call(this, n);
         if(node && this.childrenRendered){
             node.render();
         }
@@ -225,7 +225,7 @@ Ext.extend(Ext.tree.TreeNode, Ext.data.Node, {
     // private override
     removeChild : function(node){
         this.ownerTree.getSelectionModel().unselect(node);
-        Ext.tree.TreeNode.superclass.removeChild.apply(this, arguments);
+        Ext2.tree.TreeNode.superclass.removeChild.apply(this, arguments);
         // if it's been rendered remove dom node
         if(this.childrenRendered){
             node.ui.remove();
@@ -246,7 +246,7 @@ Ext.extend(Ext.tree.TreeNode, Ext.data.Node, {
         if(!node.render){ 
             node = this.getLoader().createNode(node);
         }
-        var newNode = Ext.tree.TreeNode.superclass.insertBefore.apply(this, arguments);
+        var newNode = Ext2.tree.TreeNode.superclass.insertBefore.apply(this, arguments);
         if(newNode && refNode && this.childrenRendered){
             node.render();
         }
@@ -407,7 +407,7 @@ Ext.extend(Ext.tree.TreeNode, Ext.data.Node, {
         tree.expandPath(this.parentNode ? this.parentNode.getPath() : this.getPath(), false, function(){
             var node = tree.getNodeById(this.id);  // Somehow if we don't do this, we lose changes that happened to node in the meantime
             tree.getTreeEl().scrollChildIntoView(node.ui.anchor);
-            Ext.callback(callback);
+            Ext2.callback(callback);
         }.createDelegate(this));
     },
 
@@ -470,7 +470,7 @@ Ext.extend(Ext.tree.TreeNode, Ext.data.Node, {
 
     // private
     sort : function(fn, scope){
-        Ext.tree.TreeNode.superclass.sort.apply(this, arguments);
+        Ext2.tree.TreeNode.superclass.sort.apply(this, arguments);
         if(this.childrenRendered){
             var cs = this.childNodes;
             for(var i = 0, len = cs.length; i < len; i++){
@@ -530,4 +530,4 @@ Ext.extend(Ext.tree.TreeNode, Ext.data.Node, {
     }
 });
 
-Ext.tree.TreePanel.nodeTypes.node = Ext.tree.TreeNode;
+Ext2.tree.TreePanel.nodeTypes.node = Ext2.tree.TreeNode;

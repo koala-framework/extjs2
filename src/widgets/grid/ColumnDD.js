@@ -8,21 +8,21 @@
 
 // private
 // This is a support class used internally by the Grid components
-Ext.grid.HeaderDragZone = function(grid, hd, hd2){
+Ext2.grid.HeaderDragZone = function(grid, hd, hd2){
     this.grid = grid;
     this.view = grid.getView();
     this.ddGroup = "gridHeader" + this.grid.getGridEl().id;
-    Ext.grid.HeaderDragZone.superclass.constructor.call(this, hd);
+    Ext2.grid.HeaderDragZone.superclass.constructor.call(this, hd);
     if(hd2){
-        this.setHandleElId(Ext.id(hd));
-        this.setOuterHandleElId(Ext.id(hd2));
+        this.setHandleElId(Ext2.id(hd));
+        this.setOuterHandleElId(Ext2.id(hd2));
     }
     this.scroll = false;
 };
-Ext.extend(Ext.grid.HeaderDragZone, Ext.dd.DragZone, {
+Ext2.extend(Ext2.grid.HeaderDragZone, Ext2.dd.DragZone, {
     maxDragWidth: 120,
     getDragData : function(e){
-        var t = Ext.lib.Event.getTarget(e);
+        var t = Ext2.lib.Event.getTarget(e);
         var h = this.view.findHeaderCell(t);
         if(h){
             return {ddel: h.firstChild, header:h};
@@ -33,7 +33,7 @@ Ext.extend(Ext.grid.HeaderDragZone, Ext.dd.DragZone, {
     onInitDrag : function(e){
         this.view.headersDisabled = true;
         var clone = this.dragData.ddel.cloneNode(true);
-        clone.id = Ext.id();
+        clone.id = Ext2.id();
         clone.style.width = Math.min(this.dragData.header.offsetWidth,this.maxDragWidth) + "px";
         this.proxy.update(clone);
         return true;
@@ -56,14 +56,14 @@ Ext.extend(Ext.grid.HeaderDragZone, Ext.dd.DragZone, {
 
 // private
 // This is a support class used internally by the Grid components
-Ext.grid.HeaderDropZone = function(grid, hd, hd2){
+Ext2.grid.HeaderDropZone = function(grid, hd, hd2){
     this.grid = grid;
     this.view = grid.getView();
     // split the proxies so they don't interfere with mouse events
-    this.proxyTop = Ext.DomHelper.append(document.body, {
+    this.proxyTop = Ext2.DomHelper.append(document.body, {
         cls:"col-move-top", html:"&#160;"
     }, true);
-    this.proxyBottom = Ext.DomHelper.append(document.body, {
+    this.proxyBottom = Ext2.DomHelper.append(document.body, {
         cls:"col-move-bottom", html:"&#160;"
     }, true);
     this.proxyTop.hide = this.proxyBottom.hide = function(){
@@ -72,15 +72,15 @@ Ext.grid.HeaderDropZone = function(grid, hd, hd2){
     };
     this.ddGroup = "gridHeader" + this.grid.getGridEl().id;
     // temporarily disabled
-    //Ext.dd.ScrollManager.register(this.view.scroller.dom);
-    Ext.grid.HeaderDropZone.superclass.constructor.call(this, grid.getGridEl().dom);
+    //Ext2.dd.ScrollManager.register(this.view.scroller.dom);
+    Ext2.grid.HeaderDropZone.superclass.constructor.call(this, grid.getGridEl().dom);
 };
-Ext.extend(Ext.grid.HeaderDropZone, Ext.dd.DropZone, {
+Ext2.extend(Ext2.grid.HeaderDropZone, Ext2.dd.DropZone, {
     proxyOffsets : [-4, -9],
-    fly: Ext.Element.fly,
+    fly: Ext2.Element.fly,
 
     getTargetFromEvent : function(e){
-        var t = Ext.lib.Event.getTarget(e);
+        var t = Ext2.lib.Event.getTarget(e);
         var cindex = this.view.findCellIndex(t);
         if(cindex !== false){
             return this.view.getHeaderCell(cindex);
@@ -112,8 +112,8 @@ Ext.extend(Ext.grid.HeaderDropZone, Ext.dd.DropZone, {
     },
 
     positionIndicator : function(h, n, e){
-        var x = Ext.lib.Event.getPageX(e);
-        var r = Ext.lib.Dom.getRegion(n.firstChild);
+        var x = Ext2.lib.Event.getPageX(e);
+        var r = Ext2.lib.Dom.getRegion(n.firstChild);
         var px, pt, py = r.top + this.proxyOffsets[1];
         if((r.right - x) <= (r.right-r.left)/2){
             px = r.right+this.view.borderWidth;
@@ -178,8 +178,8 @@ Ext.extend(Ext.grid.HeaderDropZone, Ext.dd.DropZone, {
         var h = data.header;
         if(h != n){
             var cm = this.grid.colModel;
-            var x = Ext.lib.Event.getPageX(e);
-            var r = Ext.lib.Dom.getRegion(n.firstChild);
+            var x = Ext2.lib.Event.getPageX(e);
+            var r = Ext2.lib.Dom.getRegion(n.firstChild);
             var pt = (r.right - x) <= ((r.right-r.left)/2) ? "after" : "before";
             var oldIndex = this.view.getCellIndex(h);
             var newIndex = this.view.getCellIndex(n);
@@ -203,17 +203,17 @@ Ext.extend(Ext.grid.HeaderDropZone, Ext.dd.DropZone, {
 });
 
 
-Ext.grid.GridView.ColumnDragZone = function(grid, hd){
-    Ext.grid.GridView.ColumnDragZone.superclass.constructor.call(this, grid, hd, null);
-    this.proxy.el.addClass('x-grid3-col-dd');
+Ext2.grid.GridView.ColumnDragZone = function(grid, hd){
+    Ext2.grid.GridView.ColumnDragZone.superclass.constructor.call(this, grid, hd, null);
+    this.proxy.el.addClass('x2-grid3-col-dd');
 };
 
-Ext.extend(Ext.grid.GridView.ColumnDragZone, Ext.grid.HeaderDragZone, {
+Ext2.extend(Ext2.grid.GridView.ColumnDragZone, Ext2.grid.HeaderDragZone, {
     handleMouseDown : function(e){
 
     },
 
     callHandleMouseDown : function(e){
-        Ext.grid.GridView.ColumnDragZone.superclass.handleMouseDown.call(this, e);
+        Ext2.grid.GridView.ColumnDragZone.superclass.handleMouseDown.call(this, e);
     }
 });

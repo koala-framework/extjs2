@@ -7,22 +7,22 @@
  */
 
 /**
- * @class Ext.Viewport
- * @extends Ext.Container
+ * @class Ext2.Viewport
+ * @extends Ext2.Container
  * A specialized container representing the viewable application area (the browser viewport).
  * <p> The Viewport renders itself to the document body, and automatically sizes itself to the size of
  * the browser viewport and manages window resizing. There may only be one Viewport created
- * in a page. Inner layouts are available by virtue of the fact that all {@link Ext.Panel Panel}s
+ * in a page. Inner layouts are available by virtue of the fact that all {@link Ext2.Panel Panel}s
  * added to the Viewport, either through its {@link #items}, or through the items, or the {@link #add}
  * method of any of its child Panels may themselves have a layout.</p>
  * <p>The Viewport does not provide scrolling, so child Panels within the Viewport should provide
  * for scrolling if needed using the {@link #autoScroll} config.</p>
  * Example showing a classic application border layout :<pre><code>
-new Ext.Viewport({
+new Ext2.Viewport({
     layout: 'border',
     items: [{
         region: 'north',
-        html: '&lt;h1 class="x-panel-header">Page Title&lt;/h1>',
+        html: '&lt;h1 class="x2-panel-header">Page Title&lt;/h1>',
         autoHeight: true,
         border: false,
         margins: '0 0 5 0'
@@ -34,8 +34,8 @@ new Ext.Viewport({
         width: 200,
         autoScroll: true,
         split: true,
-        loader: new Ext.tree.TreeLoader(),
-        root: new Ext.tree.AsyncTreeNode({
+        loader: new Ext2.tree.TreeLoader(),
+        root: new Ext2.tree.AsyncTreeNode({
             expanded: true,
             children: [{
                 text: 'Menu Option 1',
@@ -51,7 +51,7 @@ new Ext.Viewport({
         rootVisible: false,
         listeners: {
             click: function(n) {
-                Ext.Msg.alert('Navigation Tree Click', 'You clicked: "' + n.attributes.text + '"');
+                Ext2.Msg.alert('Navigation Tree Click', 'You clicked: "' + n.attributes.text + '"');
             }
         }
     }, {
@@ -76,7 +76,7 @@ new Ext.Viewport({
  * Create a new Viewport
  * @param {Object} config The config object
  */
-Ext.Viewport = Ext.extend(Ext.Container, {
+Ext2.Viewport = Ext2.extend(Ext2.Container, {
 	/*
 	 * Privatize config options which, if used, would interfere with the
 	 * correct operation of the Viewport as the sole manager of the
@@ -116,17 +116,17 @@ Ext.Viewport = Ext.extend(Ext.Container, {
      * @cfg {Boolean} monitorResize @hide
 	 */
     initComponent : function() {
-        Ext.Viewport.superclass.initComponent.call(this);
-        document.getElementsByTagName('html')[0].className += ' x-viewport';
-        this.el = Ext.getBody();
-        this.el.setHeight = Ext.emptyFn;
-        this.el.setWidth = Ext.emptyFn;
-        this.el.setSize = Ext.emptyFn;
+        Ext2.Viewport.superclass.initComponent.call(this);
+        document.getElementsByTagName('html')[0].className += ' x2-viewport';
+        this.el = Ext2.getBody();
+        this.el.setHeight = Ext2.emptyFn;
+        this.el.setWidth = Ext2.emptyFn;
+        this.el.setSize = Ext2.emptyFn;
         this.el.dom.scroll = 'no';
         this.allowDomMove = false;
         this.autoWidth = true;
         this.autoHeight = true;
-        Ext.EventManager.onWindowResize(this.fireResize, this);
+        Ext2.EventManager.onWindowResize(this.fireResize, this);
         this.renderTo = this.el;
     },
 
@@ -134,4 +134,4 @@ Ext.Viewport = Ext.extend(Ext.Container, {
         this.fireEvent('resize', this, w, h, w, h);
     }
 });
-Ext.reg('viewport', Ext.Viewport);
+Ext2.reg('viewport', Ext2.Viewport);

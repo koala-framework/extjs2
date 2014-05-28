@@ -7,14 +7,14 @@
  */
 
 /**
- * @class Ext.form.DateField
- * @extends Ext.form.TriggerField
- * Provides a date input field with a {@link Ext.DatePicker} dropdown and automatic date validation.
+ * @class Ext2.form.DateField
+ * @extends Ext2.form.TriggerField
+ * Provides a date input field with a {@link Ext2.DatePicker} dropdown and automatic date validation.
  * @constructor
  * Create a new DateField
  * @param {Object} config
  */
-Ext.form.DateField = Ext.extend(Ext.form.TriggerField,  {
+Ext2.form.DateField = Ext2.extend(Ext2.form.TriggerField,  {
     /**
      * @cfg {String} format
      * The default date format string which can be overriden for localization support.  The format must be
@@ -58,10 +58,10 @@ Ext.form.DateField = Ext.extend(Ext.form.TriggerField,  {
     /**
      * @cfg {String} triggerClass
      * An additional CSS class used to style the trigger button.  The trigger will always get the
-     * class 'x-form-trigger' and triggerClass will be <b>appended</b> if specified (defaults to 'x-form-date-trigger'
+     * class 'x2-form-trigger' and triggerClass will be <b>appended</b> if specified (defaults to 'x2-form-date-trigger'
      * which displays a calendar icon).
      */
-    triggerClass : 'x-form-date-trigger',
+    triggerClass : 'x2-form-date-trigger',
     /**
      * @cfg {Boolean} showToday
      * False to hide the footer area of the DatePicker containing the Today button and disable the keyboard
@@ -107,13 +107,13 @@ Ext.form.DateField = Ext.extend(Ext.form.TriggerField,  {
     defaultAutoCreate : {tag: "input", type: "text", size: "10", autocomplete: "off"},
 
     initComponent : function(){
-        Ext.form.DateField.superclass.initComponent.call(this);
+        Ext2.form.DateField.superclass.initComponent.call(this);
 
         this.addEvents(
             /**
              * @event select
              * Fires when a date is selected via the date picker.
-             * @param {Ext.form.DateField} this
+             * @param {Ext2.form.DateField} this
              * @param {Date} date The date that was selected
              */
             'select'
@@ -192,7 +192,7 @@ Ext.form.DateField = Ext.extend(Ext.form.TriggerField,  {
     // private
     validateValue : function(value){
         value = this.formatDate(value);
-        if(!Ext.form.DateField.superclass.validateValue.call(this, value)){
+        if(!Ext2.form.DateField.superclass.validateValue.call(this, value)){
             return false;
         }
         if(value.length < 1){ // if it's blank and textfield didn't flag it then it's valid
@@ -241,7 +241,7 @@ Ext.form.DateField = Ext.extend(Ext.form.TriggerField,  {
      * @return {Date} The date value
      */
     getValue : function(){
-        return this.parseDate(Ext.form.DateField.superclass.getValue.call(this)) || "";
+        return this.parseDate(Ext2.form.DateField.superclass.getValue.call(this)) || "";
     },
 
     /**
@@ -266,12 +266,12 @@ dateField.setValue('2006-05-04');
      * @param {String/Date} date The date or valid date string
      */
     setValue : function(date){
-        Ext.form.DateField.superclass.setValue.call(this, this.formatDate(this.parseDate(date)));
+        Ext2.form.DateField.superclass.setValue.call(this, this.formatDate(this.parseDate(date)));
     },
 
     // private
     parseDate : function(value){
-        if(!value || Ext.isDate(value)){
+        if(!value || Ext2.isDate(value)){
             return value;
         }
         var v = Date.parseDate(value, this.format);
@@ -291,12 +291,12 @@ dateField.setValue('2006-05-04');
         if(this.menu) {
             this.menu.destroy();
         }
-        Ext.form.DateField.superclass.onDestroy.call(this);
+        Ext2.form.DateField.superclass.onDestroy.call(this);
     },
 
     // private
     formatDate : function(date){
-        return Ext.isDate(date) ? date.dateFormat(this.format) : date;
+        return Ext2.isDate(date) ? date.dateFormat(this.format) : date;
     },
 
     // private
@@ -328,9 +328,9 @@ dateField.setValue('2006-05-04');
             return;
         }
         if(this.menu == null){
-            this.menu = new Ext.menu.DateMenu();
+            this.menu = new Ext2.menu.DateMenu();
         }
-        Ext.apply(this.menu.picker,  {
+        Ext2.apply(this.menu.picker,  {
             minDate : this.minValue,
             maxDate : this.maxValue,
             disabledDatesRE : this.disabledDatesRE,
@@ -342,7 +342,7 @@ dateField.setValue('2006-05-04');
             minText : String.format(this.minText, this.formatDate(this.minValue)),
             maxText : String.format(this.maxText, this.formatDate(this.maxValue))
         });
-        this.menu.on(Ext.apply({}, this.menuListeners, {
+        this.menu.on(Ext2.apply({}, this.menuListeners, {
             scope:this
         }));
         this.menu.picker.setValue(this.getValue() || new Date());
@@ -371,4 +371,4 @@ dateField.setValue('2006-05-04');
      * @method autoSize
      */
 });
-Ext.reg('datefield', Ext.form.DateField);
+Ext2.reg('datefield', Ext2.form.DateField);

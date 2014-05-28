@@ -13,7 +13,7 @@ if(typeof jQuery == "undefined"){
 (function(){
 var libFlyweight;
 
-Ext.lib.Dom = {
+Ext2.lib.Dom = {
     getViewWidth : function(full){
         // jQuery doesn't report full window size on document query, so max both
         return full ? Math.max(jQuery(document).width(),jQuery(window).width()) : jQuery(window).width();
@@ -25,11 +25,11 @@ Ext.lib.Dom = {
     },
 
     isAncestor : function(p, c){
-        p = Ext.getDom(p);
-        c = Ext.getDom(c);
+        p = Ext2.getDom(p);
+        c = Ext2.getDom(c);
         if (!p || !c) {return false;}
 
-        if(p.contains && !Ext.isWebKit) {
+        if(p.contains && !Ext2.isWebKit) {
             return p.contains(c);
         }else if(p.compareDocumentPosition) {
             return !!(p.compareDocumentPosition(c) & 16);
@@ -49,7 +49,7 @@ Ext.lib.Dom = {
     },
 
     getRegion : function(el){
-        return Ext.lib.Region.getRegion(el);
+        return Ext2.lib.Region.getRegion(el);
     },
 
     //////////////////////////////////////////////////////////////////////////////////////
@@ -67,7 +67,7 @@ Ext.lib.Dom = {
 
     getXY : function(el) {
         var p, pe, b, scroll, bd = (document.body || document.documentElement);
-        el = Ext.getDom(el);
+        el = Ext2.getDom(el);
 
         if(el == bd){
             return [0, 0];
@@ -93,7 +93,7 @@ Ext.lib.Dom = {
                 hasAbsolute = true;
             }
 
-            if (Ext.isGecko) {
+            if (Ext2.isGecko) {
                 pe = fly(p);
 
                 var bt = parseInt(pe.getStyle("borderTopWidth"), 10) || 0;
@@ -112,12 +112,12 @@ Ext.lib.Dom = {
             p = p.offsetParent;
         }
 
-        if (Ext.isWebKit && hasAbsolute) {
+        if (Ext2.isWebKit && hasAbsolute) {
             x -= bd.offsetLeft;
             y -= bd.offsetTop;
         }
 
-        if (Ext.isGecko && !hasAbsolute) {
+        if (Ext2.isGecko && !hasAbsolute) {
             var dbd = fly(bd);
             x += parseInt(dbd.getStyle("borderLeftWidth"), 10) || 0;
             y += parseInt(dbd.getStyle("borderTopWidth"), 10) || 0;
@@ -125,7 +125,7 @@ Ext.lib.Dom = {
 
         p = el.parentNode;
         while (p && p != bd) {
-            if (!Ext.isOpera || (p.tagName != 'TR' && fly(p).getStyle("display") != "inline")) {
+            if (!Ext2.isOpera || (p.tagName != 'TR' && fly(p).getStyle("display") != "inline")) {
                 x -= p.scrollLeft;
                 y -= p.scrollTop;
             }
@@ -135,7 +135,7 @@ Ext.lib.Dom = {
     },
 
     setXY : function(el, xy){
-        el = Ext.fly(el, '_setXY');
+        el = Ext2.fly(el, '_setXY');
         el.position();
         var pts = el.translatePoints(xy);
         if(xy[0] !== false){
@@ -158,12 +158,12 @@ Ext.lib.Dom = {
 // all lib flyweight calls use their own flyweight to prevent collisions with developer flyweights
 function fly(el){
     if(!libFlyweight){
-        libFlyweight = new Ext.Element.Flyweight();
+        libFlyweight = new Ext2.Element.Flyweight();
     }
     libFlyweight.dom = el;
     return libFlyweight;
 }
-Ext.lib.Event = {
+Ext2.lib.Event = {
     getPageX : function(e){
         e = e.browserEvent || e;
         return e.pageX;
@@ -183,7 +183,7 @@ Ext.lib.Event = {
         return e.target;
     },
 
-    // all Ext events will go through event manager which provides scoping
+    // all Ext2 events will go through event manager which provides scoping
     on : function(el, eventName, fn, scope, override){
         jQuery(el).bind(eventName, fn);
     },
@@ -257,7 +257,7 @@ Ext.lib.Event = {
     }
 };
 
-Ext.lib.Ajax = function(){
+Ext2.lib.Ajax = function(){
     var createComplete = function(cb){
          return function(xhr, status){
             if((status == 'error' || status == 'timeout') && cb.failure){
@@ -295,7 +295,7 @@ Ext.lib.Ajax = function(){
                         o.contentType = 'text/xml';
                     }
                 }else if(options.jsonData){
-                    o.data = typeof options.jsonData == 'object' ? Ext.encode(options.jsonData) : options.jsonData;
+                    o.data = typeof options.jsonData == 'object' ? Ext2.encode(options.jsonData) : options.jsonData;
                     o.processData = false;
                     o.type = (method ? method : (options.method ? options.method : 'POST'));
                     if (!hs || !hs['Content-Type']){
@@ -317,7 +317,7 @@ Ext.lib.Ajax = function(){
 
         formRequest : function(form, uri, cb, data, isUpload, sslUri){
             jQuery.ajax({
-                type: Ext.getDom(form).method ||'POST',
+                type: Ext2.getDom(form).method ||'POST',
                 url: uri,
                 data: jQuery(form).serialize()+(data?'&'+data:''),
                 timeout: cb.timeout,
@@ -339,7 +339,7 @@ Ext.lib.Ajax = function(){
     };
 }();
 
-Ext.lib.Anim = function(){
+Ext2.lib.Anim = function(){
     var createAnim = function(cb, scope){
         var animated = true;
         return {
@@ -353,7 +353,7 @@ Ext.lib.Anim = function(){
 
             proxyCallback : function(){
                 animated = false;
-                Ext.callback(cb, scope);
+                Ext2.callback(cb, scope);
             }
         };
     };
@@ -361,7 +361,7 @@ Ext.lib.Anim = function(){
         scroll : function(el, args, duration, easing, cb, scope){
             // scroll anim not supported so just scroll immediately
             var anim = createAnim(cb, scope);
-            el = Ext.getDom(el);
+            el = Ext2.getDom(el);
             if(typeof args.scroll.to[0] == 'number'){
                 el.scrollLeft = args.scroll.to[0];
             }
@@ -384,7 +384,7 @@ Ext.lib.Anim = function(){
         },
 
         run : function(el, args, duration, easing, cb, scope, type){
-            var anim = createAnim(cb, scope), e = Ext.fly(el, '_animrun');
+            var anim = createAnim(cb, scope), e = Ext2.fly(el, '_animrun');
             var o = {};
             for(var k in args){
                 switch(k){   // jquery doesn't support, so convert
@@ -449,7 +449,7 @@ Ext.lib.Anim = function(){
 }();
 
 
-Ext.lib.Region = function(t, r, b, l) {
+Ext2.lib.Region = function(t, r, b, l) {
     this.top = t;
     this[1] = t;
     this.right = r;
@@ -458,7 +458,7 @@ Ext.lib.Region = function(t, r, b, l) {
     this[0] = l;
 };
 
-Ext.lib.Region.prototype = {
+Ext2.lib.Region.prototype = {
     contains : function(region) {
         return ( region.left   >= this.left   &&
                  region.right  <= this.right  &&
@@ -478,7 +478,7 @@ Ext.lib.Region.prototype = {
         var l = Math.max( this.left,   region.left   );
 
         if (b >= t && r >= l) {
-            return new Ext.lib.Region(t, r, b, l);
+            return new Ext2.lib.Region(t, r, b, l);
         } else {
             return null;
         }
@@ -489,7 +489,7 @@ Ext.lib.Region.prototype = {
         var b = Math.max( this.bottom, region.bottom );
         var l = Math.min( this.left,   region.left   );
 
-        return new Ext.lib.Region(t, r, b, l);
+        return new Ext2.lib.Region(t, r, b, l);
     },
 
     constrainTo : function(r) {
@@ -509,19 +509,19 @@ Ext.lib.Region.prototype = {
     }
 };
 
-Ext.lib.Region.getRegion = function(el) {
-    var p = Ext.lib.Dom.getXY(el);
+Ext2.lib.Region.getRegion = function(el) {
+    var p = Ext2.lib.Dom.getXY(el);
 
     var t = p[1];
     var r = p[0] + el.offsetWidth;
     var b = p[1] + el.offsetHeight;
     var l = p[0];
 
-    return new Ext.lib.Region(t, r, b, l);
+    return new Ext2.lib.Region(t, r, b, l);
 };
 
-Ext.lib.Point = function(x, y) {
-   if (Ext.isArray(x)) {
+Ext2.lib.Point = function(x, y) {
+   if (Ext2.isArray(x)) {
       y = x[1];
       x = x[0];
    }
@@ -529,10 +529,10 @@ Ext.lib.Point = function(x, y) {
     this.y = this.top = this.bottom = this[1] = y;
 };
 
-Ext.lib.Point.prototype = new Ext.lib.Region();
+Ext2.lib.Point.prototype = new Ext2.lib.Region();
 
 // prevent IE leaks
-if(Ext.isIE) {
+if(Ext2.isIE) {
     function fnCleanUp() {
         var p = Function.prototype;
         delete p.createSequence;

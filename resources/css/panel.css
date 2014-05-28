@@ -6,13 +6,13 @@
  * http://extjs.com/license
  */
 
-.x-panel {
+.x2-panel {
     border-style: solid;
     border-color: #99bbe8;
     border-width:0;
 }
 
-.x-panel-header {
+.x2-panel-header {
     overflow:hidden;
     zoom:1;
     color:#15428b;
@@ -23,7 +23,7 @@
     background: transparent url(../images/default/panel/white-top-bottom.gif) repeat-x 0 -1px;
 }
 
-.x-panel-body {
+.x2-panel-body {
     border:1px solid #99bbe8;
     border-top:0 none;
     overflow:hidden;
@@ -31,7 +31,7 @@
     position: relative; /* added for item scroll positioning */
 }
 
-.x-panel-bbar .x-toolbar {
+.x2-panel-bbar .x2-toolbar {
     border:1px solid #99bbe8;
     border-top:0 none;
     overflow:hidden;
@@ -39,38 +39,38 @@
 }
 
 
-.x-panel-tbar .x-toolbar {
+.x2-panel-tbar .x2-toolbar {
     border:1px solid #99bbe8;
     border-top:0 none;
     overflow:hidden;
     padding:2px;
 }
 
-.x-panel-tbar-noheader .x-toolbar, .x-panel-mc .x-panel-tbar .x-toolbar {
+.x2-panel-tbar-noheader .x2-toolbar, .x2-panel-mc .x2-panel-tbar .x2-toolbar {
     border-top:1px solid #99bbe8;
     border-bottom: 0 none;
 }
-.x-panel-body-noheader, .x-panel-mc .x-panel-body {
+.x2-panel-body-noheader, .x2-panel-mc .x2-panel-body {
     border-top:1px solid #99bbe8;
 }
-.x-panel-header {
+.x2-panel-header {
     overflow:hidden;
     zoom:1;
 }
-.x-panel-tl .x-panel-header {
+.x2-panel-tl .x2-panel-header {
     color:#15428b;
 	 font:bold 11px tahoma,arial,verdana,sans-serif;
     padding:5px 0 4px 0;
     border:0 none;
     background:transparent;
 }
-.x-panel-tl .x-panel-icon, .x-window-tl .x-panel-icon {
+.x2-panel-tl .x2-panel-icon, .x2-window-tl .x2-panel-icon {
     padding-left:20px !important;
     background-repeat:no-repeat;
     background-position:0 4px;
     zoom:1;
 }
-.x-panel-inline-icon {
+.x2-panel-inline-icon {
     width:16px;
 	 height:16px;
     background-repeat:no-repeat;
@@ -80,44 +80,44 @@
 	 margin-top:-1px;
 	 margin-bottom:-1px;
 }
-.x-panel-tc {
+.x2-panel-tc {
 	background: transparent url(../images/default/panel/top-bottom.gif) repeat-x 0 0;
 	overflow:hidden;
 }
 /* fix ie7 strict mode bug */
-.ext-strict .ext-ie7 .x-panel-tc {
+.ext2-strict .ext2-ie7 .x2-panel-tc {
     overflow: visible;
 }
-.x-panel-tl {
+.x2-panel-tl {
 	background: transparent url(../images/default/panel/corners-sprite.gif) no-repeat 0 0;
 	padding-left:6px;
     zoom:1;
     border-bottom:1px solid #99bbe8;
 }
-.x-panel-tr {
+.x2-panel-tr {
 	background: transparent url(../images/default/panel/corners-sprite.gif) no-repeat right 0;
 	zoom:1;
     padding-right:6px;
 }
-.x-panel-bc {
+.x2-panel-bc {
 	background: transparent url(../images/default/panel/top-bottom.gif) repeat-x 0 bottom;
     zoom:1;
 }
-.x-panel-bc .x-panel-footer {
+.x2-panel-bc .x2-panel-footer {
     zoom:1;
 }
 
-.x-panel-bl {
+.x2-panel-bl {
 	background: transparent url(../images/default/panel/corners-sprite.gif) no-repeat 0 bottom;
 	padding-left:6px;
     zoom:1;
 }
-.x-panel-br {
+.x2-panel-br {
 	background: transparent url(../images/default/panel/corners-sprite.gif) no-repeat right bottom;
 	padding-right:6px;
     zoom:1;
 }
-.x-panel-mc {
+.x2-panel-mc {
     border:0 none;
     padding:0;
     margin:0;
@@ -125,73 +125,73 @@
     padding-top:6px;
     background:#dfe8f6;
 }
-.x-panel-mc .x-panel-body {
+.x2-panel-mc .x2-panel-body {
     background:transparent;
     border: 0 none;
 }
-.x-panel-ml {
+.x2-panel-ml {
 	background: #fff url(../images/default/panel/left-right.gif) repeat-y 0 0;
 	padding-left:6px;
     zoom:1;
 }
-.x-panel-mr {
+.x2-panel-mr {
 	background: transparent url(../images/default/panel/left-right.gif) repeat-y right 0;
 	padding-right:6px;
     zoom:1;
 }
-.x-panel-bc .x-panel-footer {
+.x2-panel-bc .x2-panel-footer {
     padding-bottom:6px;
 }
-.x-panel-nofooter .x-panel-bc, .x-panel-nofooter .x-window-bc {
+.x2-panel-nofooter .x2-panel-bc, .x2-panel-nofooter .x2-window-bc {
 	height:6px;
     font-size:0;
     line-height:0;
 }
 
-.x-panel-bwrap {
+.x2-panel-bwrap {
     overflow:hidden;
     zoom:1;
     left:0;top:0;
 }
-.x-panel-body {
+.x2-panel-body {
     overflow:hidden;
     zoom:1;
 }
 
-.x-panel-collapsed .x-resizable-handle{
+.x2-panel-collapsed .x2-resizable-handle{
     display:none;
 }
 
-.ext-gecko .x-panel-animated div {
+.ext2-gecko .x2-panel-animated div {
     overflow:hidden !important;
 }
 
 /* Plain */
-.x-plain-body {
+.x2-plain-body {
     overflow:hidden;
 }
 
-.x-plain-bbar .x-toolbar {
-    overflow:hidden;
-    padding:2px;
-}
-
-.x-plain-tbar .x-toolbar {
+.x2-plain-bbar .x2-toolbar {
     overflow:hidden;
     padding:2px;
 }
 
-.x-plain-bwrap {
+.x2-plain-tbar .x2-toolbar {
+    overflow:hidden;
+    padding:2px;
+}
+
+.x2-plain-bwrap {
     overflow:hidden;
     zoom:1;
 }
 
-.x-plain {
+.x2-plain {
     overflow:hidden;
 }
 
 /* Tools */
-.x-tool {
+.x2-tool {
     overflow:hidden;
     width:15px;
     height:15px;
@@ -202,137 +202,137 @@
 }
 
 /* expand / collapse tools */
-.x-tool-toggle {
+.x2-tool-toggle {
     background-position:0 -60px;
 }
-.x-tool-toggle-over {
+.x2-tool-toggle-over {
     background-position:-15px -60px;
 }
-.x-panel-collapsed .x-tool-toggle {
+.x2-panel-collapsed .x2-tool-toggle {
     background-position:0 -75px;
 }
-.x-panel-collapsed .x-tool-toggle-over {
+.x2-panel-collapsed .x2-tool-toggle-over {
     background-position:-15px -75px;
 }
 
-.x-tool-close {
+.x2-tool-close {
     background-position:0 -0;
 }
-.x-tool-close-over {
+.x2-tool-close-over {
     background-position:-15px 0;
 }
 
-.x-tool-minimize {
+.x2-tool-minimize {
     background-position:0 -15px;
 }
-.x-tool-minimize-over {
+.x2-tool-minimize-over {
     background-position:-15px -15px;
 }
 
-.x-tool-maximize {
+.x2-tool-maximize {
     background-position:0 -30px;
 }
-.x-tool-maximize-over {
+.x2-tool-maximize-over {
     background-position:-15px -30px;
 }
 
-.x-tool-restore {
+.x2-tool-restore {
     background-position:0 -45px;
 }
-.x-tool-restore-over {
+.x2-tool-restore-over {
     background-position:-15px -45px;
 }
 
-.x-tool-gear {
+.x2-tool-gear {
     background-position:0 -90px;
 }
-.x-tool-gear-over {
+.x2-tool-gear-over {
     background-position:-15px -90px;
 }
 
-.x-tool-pin {
+.x2-tool-pin {
     background-position:0 -135px;
 }
-.x-tool-pin-over {
+.x2-tool-pin-over {
     background-position:-15px -135px;
 }
-.x-tool-unpin {
+.x2-tool-unpin {
     background-position:0 -150px;
 }
-.x-tool-unpin-over {
+.x2-tool-unpin-over {
     background-position:-15px -150px;
 }
-.x-tool-right {
+.x2-tool-right {
     background-position:0 -165px;
 }
-.x-tool-right-over {
+.x2-tool-right-over {
     background-position:-15px -165px;
 }
-.x-tool-left {
+.x2-tool-left {
     background-position:0 -180px;
 }
-.x-tool-left-over {
+.x2-tool-left-over {
     background-position:-15px -180px;
 }
-.x-tool-up {
+.x2-tool-up {
     background-position:0 -210px;
 }
-.x-tool-up-over {
+.x2-tool-up-over {
     background-position:-15px -210px;
 }
-.x-tool-down {
+.x2-tool-down {
     background-position:0 -195px;
 }
-.x-tool-down-over {
+.x2-tool-down-over {
     background-position:-15px -195px;
 }
-.x-tool-refresh {
+.x2-tool-refresh {
     background-position:0 -225px;
 }
-.x-tool-refresh-over {
+.x2-tool-refresh-over {
     background-position:-15px -225px;
 }
 
-.x-tool-minus {
+.x2-tool-minus {
     background-position:0 -255px;
 }
-.x-tool-minus-over {
+.x2-tool-minus-over {
     background-position:-15px -255px;
 }
-.x-tool-plus {
+.x2-tool-plus {
     background-position:0 -240px;
 }
-.x-tool-plus-over {
+.x2-tool-plus-over {
     background-position:-15px -240px;
 }
 
-.x-tool-search {
+.x2-tool-search {
     background-position:0 -270px;
 }
-.x-tool-search-over {
+.x2-tool-search-over {
     background-position:-15px -270px;
 }
-.x-tool-save {
+.x2-tool-save {
     background-position:0 -285px;
 }
-.x-tool-save-over {
+.x2-tool-save-over {
     background-position:-15px -285px;
 }
-.x-tool-help {
+.x2-tool-help {
     background-position:0 -300px;
 }
-.x-tool-help-over {
+.x2-tool-help-over {
     background-position:-15px -300px;
 }
-.x-tool-print {
+.x2-tool-print {
     background-position:0 -315px;
 }
-.x-tool-print-over {
+.x2-tool-print-over {
     background-position:-15px -315px;
 }
 
 /* Ghosting */
-.x-panel-ghost {
+.x2-panel-ghost {
     background:#cbddf3;
     z-index:12000;
     overflow:hidden;
@@ -343,7 +343,7 @@
     filter:alpha(opacity=65);
 }
 
-.x-panel-ghost ul {
+.x2-panel-ghost ul {
     margin:0;
     padding:0;
     overflow:hidden;
@@ -354,71 +354,71 @@
     display:block;
 }
 
-.x-panel-ghost * {
+.x2-panel-ghost * {
     cursor:move !important;
 }
 
-.x-panel-dd-spacer {
+.x2-panel-dd-spacer {
     border:2px dashed #99bbe8;
 }
 /* Buttons */
 
-.x-panel-btns-ct {
+.x2-panel-btns-ct {
     padding:5px;
 }
 
-.x-panel-btns-ct .x-btn{
+.x2-panel-btns-ct .x2-btn{
 	float:right;
 	clear:none;
 }
-.x-panel-btns-ct .x-panel-btns td {
+.x2-panel-btns-ct .x2-panel-btns td {
 	border:0;
 	padding:0;
 }
-.x-panel-btns-ct .x-panel-btns-right table{
+.x2-panel-btns-ct .x2-panel-btns-right table{
 	float:right;
 	clear:none;
 }
-.x-panel-btns-ct .x-panel-btns-left table{
+.x2-panel-btns-ct .x2-panel-btns-left table{
 	float:left;
 	clear:none;
 }
-.x-panel-btns-ct .x-panel-btns-center{
+.x2-panel-btns-ct .x2-panel-btns-center{
 	text-align:center; /*ie*/
 }
-.x-panel-btns-ct .x-panel-btns-center table{
+.x2-panel-btns-ct .x2-panel-btns-center table{
 	margin:0 auto; /*everyone else*/
 }
-.x-panel-btns-ct table td.x-panel-btn-td{
+.x2-panel-btns-ct table td.x2-panel-btn-td{
 	padding:3px;
 }
 
-.x-panel-btns-ct .x-btn-focus .x-btn-left{
+.x2-panel-btns-ct .x2-btn-focus .x2-btn-left{
 	background-position:0 -147px;
 }
-.x-panel-btns-ct .x-btn-focus .x-btn-right{
+.x2-panel-btns-ct .x2-btn-focus .x2-btn-right{
 	background-position:0 -168px;
 }
-.x-panel-btns-ct .x-btn-focus .x-btn-center{
+.x2-panel-btns-ct .x2-btn-focus .x2-btn-center{
 	background-position:0 -189px;
 }
 
-.x-panel-btns-ct .x-btn-over .x-btn-left{
+.x2-panel-btns-ct .x2-btn-over .x2-btn-left{
 	background-position:0 -63px;
 }
-.x-panel-btns-ct .x-btn-over .x-btn-right{
+.x2-panel-btns-ct .x2-btn-over .x2-btn-right{
 	background-position:0 -84px;
 }
-.x-panel-btns-ct .x-btn-over .x-btn-center{
+.x2-panel-btns-ct .x2-btn-over .x2-btn-center{
 	background-position:0 -105px;
 }
 
-.x-panel-btns-ct .x-btn-click .x-btn-center{
+.x2-panel-btns-ct .x2-btn-click .x2-btn-center{
 	background-position:0 -126px;
 }
-.x-panel-btns-ct .x-btn-click  .x-btn-right{
+.x2-panel-btns-ct .x2-btn-click  .x2-btn-right{
 	background-position:0 -84px;
 }
-.x-panel-btns-ct .x-btn-click .x-btn-left{
+.x2-panel-btns-ct .x2-btn-click .x2-btn-left{
 	background-position:0 -63px;
 }

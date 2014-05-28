@@ -7,16 +7,16 @@
  */
 
 /**
- * @class Ext.ToolTip
- * @extends Ext.Tip
+ * @class Ext2.ToolTip
+ * @extends Ext2.Tip
  * A standard tooltip implementation for providing additional information when hovering over a target element.
  * @constructor
  * Create a new Tooltip
  * @param {Object} config The configuration options
  */
-Ext.ToolTip = Ext.extend(Ext.Tip, {
+Ext2.ToolTip = Ext2.extend(Ext2.Tip, {
     /**
-     * @cfg {Mixed} target The target HTMLElement, Ext.Element or id to associate with this tooltip.
+     * @cfg {Mixed} target The target HTMLElement, Ext2.Element or id to associate with this tooltip.
      */
     /**
      * @cfg {Boolean} autoHide True to automatically hide the tooltip after the mouse exits the target element
@@ -50,7 +50,7 @@ Ext.ToolTip = Ext.extend(Ext.Tip, {
 
     // private
     initComponent: function(){
-        Ext.ToolTip.superclass.initComponent.call(this);
+        Ext2.ToolTip.superclass.initComponent.call(this);
         this.lastActive = new Date();
         this.initTarget();
     },
@@ -58,7 +58,7 @@ Ext.ToolTip = Ext.extend(Ext.Tip, {
     // private
     initTarget : function(){
         if(this.target){
-            this.target = Ext.get(this.target);
+            this.target = Ext2.get(this.target);
             this.target.on('mouseover', this.onTargetOver, this);
             this.target.on('mouseout', this.onTargetOut, this);
             this.target.on('mousemove', this.onMouseMove, this);
@@ -125,7 +125,7 @@ Ext.ToolTip = Ext.extend(Ext.Tip, {
     hide: function(){
         this.clearTimer('dismiss');
         this.lastActive = new Date();
-        Ext.ToolTip.superclass.hide.call(this);
+        Ext2.ToolTip.superclass.hide.call(this);
     },
 
     /**
@@ -139,7 +139,7 @@ Ext.ToolTip = Ext.extend(Ext.Tip, {
     showAt : function(xy){
         this.lastActive = new Date();
         this.clearTimers();
-        Ext.ToolTip.superclass.showAt.call(this, xy);
+        Ext2.ToolTip.superclass.showAt.call(this, xy);
         if(this.dismissDelay && this.autoHide !== false){
             this.dismissTimer = this.hide.defer(this.dismissDelay, this);
         }
@@ -161,14 +161,14 @@ Ext.ToolTip = Ext.extend(Ext.Tip, {
 
     // private
     onShow : function(){
-        Ext.ToolTip.superclass.onShow.call(this);
-        Ext.getDoc().on('mousedown', this.onDocMouseDown, this);
+        Ext2.ToolTip.superclass.onShow.call(this);
+        Ext2.getDoc().on('mousedown', this.onDocMouseDown, this);
     },
 
     // private
     onHide : function(){
-        Ext.ToolTip.superclass.onHide.call(this);
-        Ext.getDoc().un('mousedown', this.onDocMouseDown, this);
+        Ext2.ToolTip.superclass.onHide.call(this);
+        Ext2.getDoc().un('mousedown', this.onDocMouseDown, this);
     },
 
     // private
@@ -197,8 +197,8 @@ Ext.ToolTip = Ext.extend(Ext.Tip, {
 
     // private
     onDestroy : function(){
-        Ext.ToolTip.superclass.onDestroy.call(this);
-        Ext.getDoc().un('mousedown', this.onDocMouseDown, this);
+        Ext2.ToolTip.superclass.onDestroy.call(this);
+        Ext2.getDoc().un('mousedown', this.onDocMouseDown, this);
         if(this.target){
             this.target.un('mouseover', this.onTargetOver, this);
             this.target.un('mouseout', this.onTargetOut, this);

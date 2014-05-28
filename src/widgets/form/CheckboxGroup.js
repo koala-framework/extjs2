@@ -7,16 +7,16 @@
  */
 
 /**
- * @class Ext.form.CheckboxGroup
- * @extends Ext.form.Field
- * A grouping container for {@link Ext.form.Checkbox} controls.
+ * @class Ext2.form.CheckboxGroup
+ * @extends Ext2.form.Field
+ * A grouping container for {@link Ext2.form.Checkbox} controls.
  * @constructor
  * Creates a new CheckboxGroup
  * @param {Object} config Configuration options
  */
-Ext.form.CheckboxGroup = Ext.extend(Ext.form.Field, {
+Ext2.form.CheckboxGroup = Ext2.extend(Ext2.form.Field, {
     /**
-     * @cfg {Array} items An Array of {@link Ext.form.Checkbox Checkbox}es or Checkbox config objects
+     * @cfg {Array} items An Array of {@link Ext2.form.Checkbox Checkbox}es or Checkbox config objects
      * to arrange in the group.
      */
     /**
@@ -55,7 +55,7 @@ Ext.form.CheckboxGroup = Ext.extend(Ext.form.Field, {
     defaultType : 'checkbox',
     
     // private
-    groupCls: 'x-form-check-group',
+    groupCls: 'x2-form-check-group',
     
     // private
     initComponent: function(){
@@ -63,12 +63,12 @@ Ext.form.CheckboxGroup = Ext.extend(Ext.form.Field, {
             /**
              * @event change
              * Fires when the state of a child checkbox changes.
-             * @param {Ext.form.CheckboxGroup} this
+             * @param {Ext2.form.CheckboxGroup} this
              * @param {Array} checked An array containing the checked boxes.
              */
             'change'
         );   
-        Ext.form.CheckboxGroup.superclass.initComponent.call(this);
+        Ext2.form.CheckboxGroup.superclass.initComponent.call(this);
     },
     
     // private
@@ -94,13 +94,13 @@ Ext.form.CheckboxGroup = Ext.extend(Ext.form.Field, {
                 
                 // The container has standard ColumnLayout configs, so pass them in directly
                 
-                Ext.apply(panelCfg, {
+                Ext2.apply(panelCfg, {
                     layoutConfig: {columns: this.items.length},
                     defaults: this.defaults,
                     items: this.items
                 })
                 for(var i=0, len=this.items.length; i<len; i++){
-                    Ext.applyIf(this.items[i], colCfg);
+                    Ext2.applyIf(this.items[i], colCfg);
                 };
                 
             }else{
@@ -113,7 +113,7 @@ Ext.form.CheckboxGroup = Ext.extend(Ext.form.Field, {
                 if(typeof this.columns == 'string'){ // 'auto' so create a col per item
                     this.columns = this.items.length;
                 }
-                if(!Ext.isArray(this.columns)){
+                if(!Ext2.isArray(this.columns)){
                     var cs = [];
                     for(var i=0; i<this.columns; i++){
                         cs.push((100/this.columns)*.01); // distribute by even %
@@ -125,10 +125,10 @@ Ext.form.CheckboxGroup = Ext.extend(Ext.form.Field, {
                 
                 // Generate the column configs with the correct width setting
                 for(var i=0; i<numCols; i++){
-                    var cc = Ext.apply({items:[]}, colCfg);
+                    var cc = Ext2.apply({items:[]}, colCfg);
                     cc[this.columns[i] <= 1 ? 'columnWidth' : 'width'] = this.columns[i];
                     if(this.defaults){
-                        cc.defaults = Ext.apply(cc.defaults || {}, this.defaults)
+                        cc.defaults = Ext2.apply(cc.defaults || {}, this.defaults)
                     }
                     cols.push(cc);
                 };
@@ -155,13 +155,13 @@ Ext.form.CheckboxGroup = Ext.extend(Ext.form.Field, {
                     };
                 }
                 
-                Ext.apply(panelCfg, {
+                Ext2.apply(panelCfg, {
                     layoutConfig: {columns: numCols},
                     items: cols
                 });
             }
             
-            this.panel = new Ext.Panel(panelCfg);
+            this.panel = new Ext2.Panel(panelCfg);
             this.panel.ownerCt = this;
             this.el = this.panel.getEl();
             
@@ -176,14 +176,14 @@ Ext.form.CheckboxGroup = Ext.extend(Ext.form.Field, {
                 return c.isFormField;
             }, this);
             
-            this.items = new Ext.util.MixedCollection();
+            this.items = new Ext2.util.MixedCollection();
             this.items.addAll(fields);
         }
-        Ext.form.CheckboxGroup.superclass.onRender.call(this, ct, position);
+        Ext2.form.CheckboxGroup.superclass.onRender.call(this, ct, position);
     },
     
     afterRender : function(){
-        Ext.form.CheckboxGroup.superclass.afterRender.call(this);
+        Ext2.form.CheckboxGroup.superclass.afterRender.call(this);
         this.items.each(function(item){
             item.on('check', this.fireChecked, this);
         }, this);
@@ -219,8 +219,8 @@ Ext.form.CheckboxGroup = Ext.extend(Ext.form.Field, {
     
     // private
     onDestroy: function() {
-        Ext.destroy(this.panel);
-        Ext.form.CheckboxGroup.superclass.onDestroy.call(this);
+        Ext2.destroy(this.panel);
+        Ext2.form.CheckboxGroup.superclass.onDestroy.call(this);
     },
     
     // private
@@ -261,7 +261,7 @@ Ext.form.CheckboxGroup = Ext.extend(Ext.form.Field, {
     
     // inherit docs from Field
     reset : function(){
-        Ext.form.CheckboxGroup.superclass.reset.call(this);
+        Ext2.form.CheckboxGroup.superclass.reset.call(this);
         this.items.each(function(c){
             if(c.reset){
                 c.reset();
@@ -277,28 +277,28 @@ Ext.form.CheckboxGroup = Ext.extend(Ext.form.Field, {
      * @method initValue
      * @hide
      */
-    initValue : Ext.emptyFn,
+    initValue : Ext2.emptyFn,
     /**
      * @method getValue
      * @hide
      */
-    getValue : Ext.emptyFn,
+    getValue : Ext2.emptyFn,
     /**
      * @method getRawValue
      * @hide
      */
-    getRawValue : Ext.emptyFn,
+    getRawValue : Ext2.emptyFn,
     /**
      * @method setValue
      * @hide
      */
-    setValue : Ext.emptyFn,
+    setValue : Ext2.emptyFn,
     /**
      * @method setRawValue
      * @hide
      */
-    setRawValue : Ext.emptyFn
+    setRawValue : Ext2.emptyFn
     
 });
 
-Ext.reg('checkboxgroup', Ext.form.CheckboxGroup);
+Ext2.reg('checkboxgroup', Ext2.form.CheckboxGroup);

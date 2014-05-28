@@ -7,11 +7,11 @@
  */
 
 /**
- * @class Ext.layout.ColumnLayout
- * @extends Ext.layout.ContainerLayout
+ * @class Ext2.layout.ColumnLayout
+ * @extends Ext2.layout.ContainerLayout
  * <p>This is the layout style of choice for creating structural layouts in a multi-column format where the width of
  * each column can be specified as a percentage or fixed width, but the height is allowed to vary based on the content.
- * This class is intended to be extended or created via the layout:'column' {@link Ext.Container#layout} config,
+ * This class is intended to be extended or created via the layout:'column' {@link Ext2.Container#layout} config,
  * and should generally not need to be created directly via the new keyword.</p>
  * <p>ColumnLayout does not have any direct config options (other than inherited ones), but it does support a
  * specific config property of <b><tt>columnWidth</tt></b> that can be included in the config of any panel added to it.  The
@@ -30,7 +30,7 @@
  * layout may not render as expected.  Example usage:</p>
  * <pre><code>
 // All columns are percentages -- they must add up to 1
-var p = new Ext.Panel({
+var p = new Ext2.Panel({
     title: 'Column Layout - Percentage Only',
     layout:'column',
     items: [{
@@ -48,7 +48,7 @@ var p = new Ext.Panel({
 // Mix of width and columnWidth -- all columnWidth values must add up
 // to 1. The first column will take up exactly 120px, and the last two
 // columns will fill the remaining container width.
-var p = new Ext.Panel({
+var p = new Ext2.Panel({
     title: 'Column Layout - Mixed',
     layout:'column',
     items: [{
@@ -64,16 +64,16 @@ var p = new Ext.Panel({
 });
 </code></pre>
  */
-Ext.layout.ColumnLayout = Ext.extend(Ext.layout.ContainerLayout, {
+Ext2.layout.ColumnLayout = Ext2.extend(Ext2.layout.ContainerLayout, {
     // private
     monitorResize:true,
     
     /**
      * @cfg {String} extraCls
-     * An optional extra CSS class that will be added to the container (defaults to 'x-column').  This can be useful for
+     * An optional extra CSS class that will be added to the container (defaults to 'x2-column').  This can be useful for
      * adding customized styles to the container or any of its children using standard CSS rules.
      */
-    extraCls: 'x-column',
+    extraCls: 'x2-column',
 
     scrollOffset : 0,
 
@@ -87,16 +87,16 @@ Ext.layout.ColumnLayout = Ext.extend(Ext.layout.ContainerLayout, {
         var cs = ct.items.items, len = cs.length, c, i;
 
         if(!this.innerCt){
-            target.addClass('x-column-layout-ct');
+            target.addClass('x2-column-layout-ct');
 
             // the innerCt prevents wrapping and shuffling while
             // the container is resizing
-            this.innerCt = target.createChild({cls:'x-column-inner'});
-            this.innerCt.createChild({cls:'x-clear'});
+            this.innerCt = target.createChild({cls:'x2-column-inner'});
+            this.innerCt.createChild({cls:'x2-clear'});
         }
         this.renderAll(ct, this.innerCt);
 
-        var size = Ext.isIE && target.dom != Ext.getBody().dom ? target.getStyleSize() : target.getViewSize();
+        var size = Ext2.isIE && target.dom != Ext2.getBody().dom ? target.getStyleSize() : target.getViewSize();
 
         if(size.width < 1 && size.height < 1){ // display none?
             return;
@@ -134,4 +134,4 @@ Ext.layout.ColumnLayout = Ext.extend(Ext.layout.ContainerLayout, {
      */
 });
 
-Ext.Container.LAYOUTS['column'] = Ext.layout.ColumnLayout;
+Ext2.Container.LAYOUTS['column'] = Ext2.layout.ColumnLayout;

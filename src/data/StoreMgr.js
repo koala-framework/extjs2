@@ -7,22 +7,22 @@
  */
 
 /**
- * @class Ext.StoreMgr
- * @extends Ext.util.MixedCollection
+ * @class Ext2.StoreMgr
+ * @extends Ext2.util.MixedCollection
  * The default global group of stores.
  * @singleton
  */
-Ext.StoreMgr = Ext.apply(new Ext.util.MixedCollection(), {
+Ext2.StoreMgr = Ext2.apply(new Ext2.util.MixedCollection(), {
     /**
      * @cfg {Object} listeners @hide
      */
 
     /**
      * Registers one or more Stores with the StoreMgr. You do not normally need to register stores
-     * manually.  Any store initialized with a {@link Ext.data.Store#storeId} will be auto-registered. 
-     * @param {Ext.data.Store} store1 A Store instance
-     * @param {Ext.data.Store} store2 (optional)
-     * @param {Ext.data.Store} etc... (optional)
+     * manually.  Any store initialized with a {@link Ext2.data.Store#storeId} will be auto-registered. 
+     * @param {Ext2.data.Store} store1 A Store instance
+     * @param {Ext2.data.Store} store2 (optional)
+     * @param {Ext2.data.Store} etc... (optional)
      */
     register : function(){
         for(var i = 0, s; s = arguments[i]; i++){
@@ -45,7 +45,7 @@ Ext.StoreMgr = Ext.apply(new Ext.util.MixedCollection(), {
     /**
      * Gets a registered Store by id
      * @param {String/Object} id The id of the Store, or a Store instance
-     * @return {Ext.data.Store}
+     * @return {Ext2.data.Store}
      */
     lookup : function(id){
         return typeof id == "object" ? id : this.get(id);

@@ -7,24 +7,24 @@
  */
 
 /**
- * @class Ext.data.Store
- * @extends Ext.util.Observable
- * The Store class encapsulates a client side cache of {@link Ext.data.Record Record}
- * objects which provide input data for Components such as the {@link Ext.grid.GridPanel GridPanel},
- * the {@link Ext.form.ComboBox ComboBox}, or the {@link Ext.DataView DataView}</p>
- * <p>A Store object uses its {@link #proxy configured} implementation of {@link Ext.data.DataProxy DataProxy}
+ * @class Ext2.data.Store
+ * @extends Ext2.util.Observable
+ * The Store class encapsulates a client side cache of {@link Ext2.data.Record Record}
+ * objects which provide input data for Components such as the {@link Ext2.grid.GridPanel GridPanel},
+ * the {@link Ext2.form.ComboBox ComboBox}, or the {@link Ext2.DataView DataView}</p>
+ * <p>A Store object uses its {@link #proxy configured} implementation of {@link Ext2.data.DataProxy DataProxy}
  * to access a data object unless you call {@link #loadData} directly and pass in your data.</p>
  * <p>A Store object has no knowledge of the format of the data returned by the Proxy.</p>
- * <p>A Store object uses its {@link #reader configured} implementation of {@link Ext.data.DataReader DataReader}
- * to create {@link Ext.data.Record Record} instances from the data object. These Records
+ * <p>A Store object uses its {@link #reader configured} implementation of {@link Ext2.data.DataReader DataReader}
+ * to create {@link Ext2.data.Record Record} instances from the data object. These Records
  * are cached and made available through accessor functions.</p>
  * @constructor
  * Creates a new Store.
  * @param {Object} config A config object containing the objects needed for the Store to access data,
  * and read the data into Records.
  */
-Ext.data.Store = function(config){
-    this.data = new Ext.util.MixedCollection(false);
+Ext2.data.Store = function(config){
+    this.data = new Ext2.util.MixedCollection(false);
     this.data.getKey = function(o){
         return o.id;
     };
@@ -48,7 +48,7 @@ Ext.data.Store = function(config){
      * <p>The server must produce the requested data block upon receipt of these parameter names.
      * If different parameter names are required, this property can be overriden using a configuration
      * property.</p>
-     * <p>A {@link Ext.PagingToolbar PagingToolbar} bound to this grid uses this property to determine
+     * <p>A {@link Ext2.PagingToolbar PagingToolbar} bound to this grid uses this property to determine
      * the parameter names to use in its requests.
      * @property
      */
@@ -64,10 +64,10 @@ Ext.data.Store = function(config){
         delete config.data;
     }
 
-    Ext.apply(this, config);
+    Ext2.apply(this, config);
 
     if(this.url && !this.proxy){
-        this.proxy = new Ext.data.HttpProxy({url: this.url});
+        this.proxy = new Ext2.data.HttpProxy({url: this.url});
     }
 
     if(this.reader){ // reader passed
@@ -80,18 +80,18 @@ Ext.data.Store = function(config){
     }
 
     /**
-     * The {@link Ext.data.Record Record} constructor as supplied to (or created by) the {@link Ext.data.Reader#Reader Reader}. Read-only.
+     * The {@link Ext2.data.Record Record} constructor as supplied to (or created by) the {@link Ext2.data.Reader#Reader Reader}. Read-only.
      * <p>If the Reader was constructed by passing in an Array of field definition objects, instead of a created
-     * Record constructor it will have {@link Ext.data.Record#create created a constructor} from that Array.</p>
+     * Record constructor it will have {@link Ext2.data.Record#create created a constructor} from that Array.</p>
      * <p>This property may be used to create new Records of the type held in this Store.</p>
      * @property recordType
      * @type Function
      */
     if(this.recordType){
         /**
-         * A MixedCollection containing the defined {@link Ext.data.Field Field}s for the Records stored in this Store. Read-only.
+         * A MixedCollection containing the defined {@link Ext2.data.Field Field}s for the Records stored in this Store. Read-only.
          * @property fields
-         * @type Ext.util.MixedCollection
+         * @type Ext2.util.MixedCollection
          */
         this.fields = this.recordType.prototype.fields;
     }
@@ -116,7 +116,7 @@ Ext.data.Store = function(config){
          * @event add
          * Fires when Records have been added to the Store
          * @param {Store} this
-         * @param {Ext.data.Record[]} records The array of Records added
+         * @param {Ext2.data.Record[]} records The array of Records added
          * @param {Number} index The index at which the record(s) were added
          */
         'add',
@@ -124,7 +124,7 @@ Ext.data.Store = function(config){
          * @event remove
          * Fires when a Record has been removed from the Store
          * @param {Store} this
-         * @param {Ext.data.Record} record The Record that was removed
+         * @param {Ext2.data.Record} record The Record that was removed
          * @param {Number} index The index at which the record was removed
          */
         'remove',
@@ -132,12 +132,12 @@ Ext.data.Store = function(config){
          * @event update
          * Fires when a Record has been updated
          * @param {Store} this
-         * @param {Ext.data.Record} record The Record that was updated
+         * @param {Ext2.data.Record} record The Record that was updated
          * @param {String} operation The update operation being performed.  Value may be one of:
          * <pre><code>
- Ext.data.Record.EDIT
- Ext.data.Record.REJECT
- Ext.data.Record.COMMIT
+ Ext2.data.Record.EDIT
+ Ext2.data.Record.REJECT
+ Ext2.data.Record.COMMIT
          * </code></pre>
          */
         'update',
@@ -159,7 +159,7 @@ Ext.data.Store = function(config){
          * @event load
          * Fires after a new set of Records has been loaded.
          * @param {Store} this
-         * @param {Ext.data.Record[]} records The Records that were loaded
+         * @param {Ext2.data.Record[]} records The Records that were loaded
          * @param {Object} options The loading options that were specified (see {@link #load} for details)
          */
         'load',
@@ -180,10 +180,10 @@ Ext.data.Store = function(config){
         this.setDefaultSort(this.sortInfo.field, this.sortInfo.direction);
     }
 
-    Ext.data.Store.superclass.constructor.call(this);
+    Ext2.data.Store.superclass.constructor.call(this);
 
     if(this.storeId || this.id){
-        Ext.StoreMgr.register(this);
+        Ext2.StoreMgr.register(this);
     }
     if(this.inlineData){
         this.loadData(this.inlineData);
@@ -194,7 +194,7 @@ Ext.data.Store = function(config){
                 this.autoLoad : undefined]);
     }
 };
-Ext.extend(Ext.data.Store, Ext.util.Observable, {
+Ext2.extend(Ext2.data.Store, Ext2.util.Observable, {
     /**
     * @cfg {String} storeId If passed, the id to use to register with the StoreMgr
     */
@@ -205,14 +205,14 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
     * @cfg {Boolean/Object} autoLoad If passed, this store's load method is automatically called after creation with the autoLoad object
     */
     /**
-    * @cfg {Ext.data.DataProxy} proxy The Proxy object which provides access to a data object.
+    * @cfg {Ext2.data.DataProxy} proxy The Proxy object which provides access to a data object.
     */
     /**
     * @cfg {Array} data Inline data to be loaded when the store is initialized.
     */
     /**
-    * @cfg {Ext.data.DataReader} reader The DataReader object which processes the data object and returns
-    * an Array of Ext.data.Record objects which are cached keyed by their <em>id</em> property.
+    * @cfg {Ext2.data.DataReader} reader The DataReader object which processes the data object and returns
+    * an Array of Ext2.data.Record objects which are cached keyed by their <em>id</em> property.
     */
     /**
     * @cfg {Object} baseParams<p>An object containing properties which are to be sent as parameters.</p>
@@ -255,17 +255,17 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
 
     destroy : function(){
         if(this.storeId || this.id){
-            Ext.StoreMgr.unregister(this);
+            Ext2.StoreMgr.unregister(this);
         }
         this.data = null;
-        Ext.destroy(this.proxy);
+        Ext2.destroy(this.proxy);
         this.reader = null;
         this.purgeListeners();
     },
 
     /**
      * Add Records to the Store and fires the {@link #add} event.
-     * @param {Ext.data.Record[]} records An Array of Ext.data.Record objects to add to the cache.
+     * @param {Ext2.data.Record[]} records An Array of Ext2.data.Record objects to add to the cache.
      */
     add : function(records){
         records = [].concat(records);
@@ -286,7 +286,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
     /**
      * (Local sort only) Inserts the passed Record into the Store at the index where it
      * should go based on the current sort information.
-     * @param {Ext.data.Record} record
+     * @param {Ext2.data.Record} record
      */
     addSorted : function(record){
         var index = this.findInsertIndex(record);
@@ -295,7 +295,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
 
     /**
      * Remove a Record from the Store and fires the {@link #remove} event.
-     * @param {Ext.data.Record} record The Ext.data.Record object to remove from the cache.
+     * @param {Ext2.data.Record} record The Ext2.data.Record object to remove from the cache.
      */
     remove : function(record){
         var index = this.data.indexOf(record);
@@ -336,7 +336,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
     /**
      * Inserts Records into the Store at the given index and fires the {@link #add} event.
      * @param {Number} index The start index at which to insert the passed Records.
-     * @param {Ext.data.Record[]} records An Array of Ext.data.Record objects to add to the cache.
+     * @param {Ext2.data.Record[]} records An Array of Ext2.data.Record objects to add to the cache.
      */
     insert : function(index, records){
         records = [].concat(records);
@@ -349,7 +349,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
 
     /**
      * Get the index within the cache of the passed Record.
-     * @param {Ext.data.Record} record The Ext.data.Record object to find.
+     * @param {Ext2.data.Record} record The Ext2.data.Record object to find.
      * @return {Number} The index of the passed Record. Returns -1 if not found.
      */
     indexOf : function(record){
@@ -368,7 +368,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
     /**
      * Get the Record with the specified id.
      * @param {String} id The id of the Record to find.
-     * @return {Ext.data.Record} The Record with the passed id. Returns undefined if not found.
+     * @return {Ext2.data.Record} The Record with the passed id. Returns undefined if not found.
      */
     getById : function(id){
         return this.data.key(id);
@@ -377,7 +377,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
     /**
      * Get the Record at the specified index.
      * @param {Number} index The index of the Record to find.
-     * @return {Ext.data.Record} The Record at the passed index. Returns undefined if not found.
+     * @return {Ext2.data.Record} The Record at the passed index. Returns undefined if not found.
      */
     getAt : function(index){
         return this.data.itemAt(index);
@@ -387,7 +387,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
      * Returns a range of Records between specified indices.
      * @param {Number} startIndex (optional) The starting index (defaults to 0)
      * @param {Number} endIndex (optional) The ending index (defaults to the last Record in the Store)
-     * @return {Ext.data.Record[]} An array of Records
+     * @return {Ext2.data.Record[]} An array of Records
      */
     getRange : function(start, end){
         return this.data.getRange(start, end);
@@ -395,7 +395,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
 
     // private
     storeOptions : function(o){
-        o = Ext.apply({}, o);
+        o = Ext2.apply({}, o);
         delete o.callback;
         delete o.scope;
         this.lastOptions = o;
@@ -414,7 +414,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
      * <p>Parameters are encoded as standard HTTP parameters using {@link Ext#urlEncode}.</p></li>
      * <li><b>callback</b> : Function<p class="sub-desc">A function to be called after the Records have been loaded. The callback is
      * passed the following arguments:<ul>
-     * <li>r : Ext.data.Record[]</li>
+     * <li>r : Ext2.data.Record[]</li>
      * <li>options: Options object from the load call</li>
      * <li>success: Boolean success indicator</li></ul></p></li>
      * <li><b>scope</b> : Object<p class="sub-desc">Scope with which to call the callback (defaults to the Store object)</p></li>
@@ -426,7 +426,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
         options = options || {};
         if(this.fireEvent("beforeload", this, options) !== false){
             this.storeOptions(options);
-            var p = Ext.apply(options.params || {}, this.baseParams);
+            var p = Ext2.apply(options.params || {}, this.baseParams);
             if(this.sortInfo && this.remoteSort){
                 var pn = this.paramNames;
                 p[pn["sort"]] = this.sortInfo.field;
@@ -450,7 +450,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
      * the most recently used options are reused).
      */
     reload : function(options){
-        this.load(Ext.applyIf(options||{}, this.lastOptions));
+        this.load(Ext2.applyIf(options||{}, this.lastOptions));
     },
 
     // private
@@ -498,7 +498,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
      * @param {Object} data The data block from which to read the Records.  The format of the data expected
      * is dependent on the type of Reader that is configured and should correspond to that Reader's readRecords parameter.
      * @param {Boolean} append (Optional) True to append the new Records rather than replace the existing cache. <b>Remember that
-     * Records in a Store are keyed by their {@link Ext.data.Record#id id}, so added Records with ids which are already present in
+     * Records in a Store are keyed by their {@link Ext2.data.Record#id id}, so added Records with ids which are already present in
      * the Store will <i>replace</i> existing Records. Records with new, unique ids will be added.</b>
      */
     loadData : function(o, append){
@@ -625,7 +625,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
     /**
      * Gets all records modified since the last commit.  Modified records are persisted across load operations
      * (e.g., during paging).
-     * @return {Ext.data.Record[]} An array of Records containing outstanding modifications.
+     * @return {Ext2.data.Record[]} An array of Records containing outstanding modifications.
      */
     getModifiedRecords : function(){
         return this.modified;
@@ -633,7 +633,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
 
     // private
     createFilterFn : function(property, value, anyMatch, caseSensitive){
-        if(Ext.isEmpty(value, false)){
+        if(Ext2.isEmpty(value, false)){
             return false;
         }
         value = this.data.createValueMatcher(value, anyMatch, caseSensitive);
@@ -678,8 +678,8 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
      * Record in this Store. If the function returns <tt>true</tt> the Record is included,
      * otherwise it is filtered out.
      * @param {Function} fn The function to be called. It will be passed the following parameters:<ul>
-     * <li><b>record</b> : Ext.data.Record<p class="sub-desc">The {@link Ext.data.Record record}
-     * to test for filtering. Access field values using {@link Ext.data.Record#get}.</p></li>
+     * <li><b>record</b> : Ext2.data.Record<p class="sub-desc">The {@link Ext2.data.Record record}
+     * to test for filtering. Access field values using {@link Ext2.data.Record#get}.</p></li>
      * <li><b>id</b> : Object<p class="sub-desc">The ID of the Record passed.</p></li>
      * </ul>
      * @param {Object} scope (optional) The scope of the function (defaults to this)
@@ -697,7 +697,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
      * should begin with, or a RegExp to test against the field.
      * @param {Boolean} anyMatch (optional) True to match any part not just the beginning
      * @param {Boolean} caseSensitive (optional) True for case sensitive comparison
-     * @return {MixedCollection} Returns an Ext.util.MixedCollection of the matched records
+     * @return {MixedCollection} Returns an Ext2.util.MixedCollection of the matched records
      */
     query : function(property, value, anyMatch, caseSensitive){
         var fn = this.createFilterFn(property, value, anyMatch, caseSensitive);
@@ -709,12 +709,12 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
      * will be called with each record in this Store. If the function returns <tt>true</tt> the record is
      * included in the results.
      * @param {Function} fn The function to be called. It will be passed the following parameters:<ul>
-     * <li><b>record</b> : Ext.data.Record<p class="sub-desc">The {@link Ext.data.Record record}
-     * to test for filtering. Access field values using {@link Ext.data.Record#get}.</p></li>
+     * <li><b>record</b> : Ext2.data.Record<p class="sub-desc">The {@link Ext2.data.Record record}
+     * to test for filtering. Access field values using {@link Ext2.data.Record#get}.</p></li>
      * <li><b>id</b> : Object<p class="sub-desc">The ID of the Record passed.</p></li>
      * </ul>
      * @param {Object} scope (optional) The scope of the function (defaults to this)
-     * @return {MixedCollection} Returns an Ext.util.MixedCollection of the matched records
+     * @return {MixedCollection} Returns an Ext2.util.MixedCollection of the matched records
      **/
     queryBy : function(fn, scope){
         var data = this.snapshot || this.data;
@@ -740,8 +740,8 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
      * Find the index of the first matching Record in this Store by a function.
      * If the function returns <tt>true</tt> it is considered a match.
      * @param {Function} fn The function to be called. It will be passed the following parameters:<ul>
-     * <li><b>record</b> : Ext.data.Record<p class="sub-desc">The {@link Ext.data.Record record}
-     * to test for filtering. Access field values using {@link Ext.data.Record#get}.</p></li>
+     * <li><b>record</b> : Ext2.data.Record<p class="sub-desc">The {@link Ext2.data.Record record}
+     * to test for filtering. Access field values using {@link Ext2.data.Record#get}.</p></li>
      * <li><b>id</b> : Object<p class="sub-desc">The ID of the Record passed.</p></li>
      * </ul>
      * @param {Object} scope (optional) The scope of the function (defaults to this)
@@ -766,7 +766,7 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
         for(var i = 0, len = d.length; i < len; i++){
             v = d[i].data[dataIndex];
             sv = String(v);
-            if((allowNull || !Ext.isEmpty(v)) && !l[sv]){
+            if((allowNull || !Ext2.isEmpty(v)) && !l[sv]){
                 l[sv] = true;
                 r[r.length] = v;
             }
@@ -801,24 +801,24 @@ Ext.extend(Ext.data.Store, Ext.util.Observable, {
         if(this.modified.indexOf(record) == -1){
             this.modified.push(record);
         }
-        this.fireEvent("update", this, record, Ext.data.Record.EDIT);
+        this.fireEvent("update", this, record, Ext2.data.Record.EDIT);
     },
 
     // private
     afterReject : function(record){
         this.modified.remove(record);
-        this.fireEvent("update", this, record, Ext.data.Record.REJECT);
+        this.fireEvent("update", this, record, Ext2.data.Record.REJECT);
     },
 
     // private
     afterCommit : function(record){
         this.modified.remove(record);
-        this.fireEvent("update", this, record, Ext.data.Record.COMMIT);
+        this.fireEvent("update", this, record, Ext2.data.Record.COMMIT);
     },
 
     /**
      * Commit all Records with outstanding changes. To handle updates for changes, subscribe to the
-     * Store's "update" event, and perform updating when the third parameter is Ext.data.Record.COMMIT.
+     * Store's "update" event, and perform updating when the third parameter is Ext2.data.Record.COMMIT.
      */
     commitChanges : function(){
         var m = this.modified.slice(0);

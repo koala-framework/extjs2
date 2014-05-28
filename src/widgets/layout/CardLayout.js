@@ -7,11 +7,11 @@
  */
 
 /**
- * @class Ext.layout.CardLayout
- * @extends Ext.layout.FitLayout
+ * @class Ext2.layout.CardLayout
+ * @extends Ext2.layout.FitLayout
  * <p>This layout manages multiple child Components, each fitted to the Container, where only a single child Component can be
  * visible at any given time.  This layout style is most commonly used for wizards, tab implementations, etc.
- * This class is intended to be extended or created via the layout:'card' {@link Ext.Container#layout} config,
+ * This class is intended to be extended or created via the layout:'card' {@link Ext2.Container#layout} config,
  * and should generally not need to be created directly via the new keyword.</p>
  * <p>The CardLayout's focal method is {@link #setActiveItem}.  Since only one panel is displayed at a time,
  * the only way to move from one Component to the next is by calling setActiveItem, passing the id or index of
@@ -33,7 +33,7 @@ var navHandler = function(direction){
     // done as a subclass of CardLayout in a real-world implementation.
 };
 
-var card = new Ext.Panel({
+var card = new Ext2.Panel({
     title: 'Example Wizard',
     layout:'card',
     activeItem: 0, // make sure the active item is set on the container config!
@@ -71,7 +71,7 @@ var card = new Ext.Panel({
 });
 </code></pre>
  */
-Ext.layout.CardLayout = Ext.extend(Ext.layout.FitLayout, {
+Ext2.layout.CardLayout = Ext2.extend(Ext2.layout.FitLayout, {
     /**
      * @cfg {Boolean} deferredRender
      * True to render each contained item at the time it becomes active, false to render all contained items
@@ -105,8 +105,8 @@ Ext.layout.CardLayout = Ext.extend(Ext.layout.FitLayout, {
         if(this.deferredRender){
             this.renderItem(this.activeItem, undefined, target);
         }else{
-            Ext.layout.CardLayout.superclass.renderAll.call(this, ct, target);
+            Ext2.layout.CardLayout.superclass.renderAll.call(this, ct, target);
         }
     }
 });
-Ext.Container.LAYOUTS['card'] = Ext.layout.CardLayout;
+Ext2.Container.LAYOUTS['card'] = Ext2.layout.CardLayout;

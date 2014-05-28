@@ -7,14 +7,14 @@
  */
 
 /**
- * @class Ext.KeyNav
+ * @class Ext2.KeyNav
  * <p>Provides a convenient wrapper for normalized keyboard navigation.  KeyNav allows you to bind
  * navigation keys to function calls that will get called when the keys are pressed, providing an easy
  * way to implement custom navigation schemes for any UI component.</p>
  * <p>The following are all of the possible keys that can be implemented: enter, left, right, up, down, tab, esc,
  * pageUp, pageDown, del, home, end.  Usage:</p>
  <pre><code>
-var nav = new Ext.KeyNav("my-element", {
+var nav = new Ext2.KeyNav("my-element", {
     "left" : function(e){
         this.moveLeft(e.ctrlKey);
     },
@@ -31,16 +31,16 @@ var nav = new Ext.KeyNav("my-element", {
  * @param {Mixed} el The element to bind to
  * @param {Object} config The config
  */
-Ext.KeyNav = function(el, config){
-    this.el = Ext.get(el);
-    Ext.apply(this, config);
+Ext2.KeyNav = function(el, config){
+    this.el = Ext2.get(el);
+    Ext2.apply(this, config);
     if(!this.disabled){
         this.disabled = true;
         this.enable();
     }
 };
 
-Ext.KeyNav.prototype = {
+Ext2.KeyNav.prototype = {
     /**
      * @cfg {Boolean} disabled
      * True to disable this KeyNav instance (defaults to false)
@@ -48,9 +48,9 @@ Ext.KeyNav.prototype = {
     disabled : false,
     /**
      * @cfg {String} defaultEventAction
-     * The method to call on the {@link Ext.EventObject} after this KeyNav intercepts a key.  Valid values are
-     * {@link Ext.EventObject#stopEvent}, {@link Ext.EventObject#preventDefault} and
-     * {@link Ext.EventObject#stopPropagation} (defaults to 'stopEvent')
+     * The method to call on the {@link Ext2.EventObject} after this KeyNav intercepts a key.  Valid values are
+     * {@link Ext2.EventObject#stopEvent}, {@link Ext2.EventObject#preventDefault} and
+     * {@link Ext2.EventObject#stopPropagation} (defaults to 'stopEvent')
      */
     defaultEventAction: "stopEvent",
     /**
@@ -68,7 +68,7 @@ Ext.KeyNav.prototype = {
         //if(h && this[h]){
         //    e.stopPropagation();
         //}
-        if(Ext.isSafari2 && h && k >= 37 && k <= 40){
+        if(Ext2.isSafari2 && h && k >= 37 && k <= 40){
             e.stopEvent();
         }
     },
@@ -151,6 +151,6 @@ Ext.KeyNav.prototype = {
     
     // private
     isKeyDown: function(){
-        return this.forceKeyDown || Ext.isIE || (Ext.isWebKit && !Ext.isSafari2) || Ext.isAir;
+        return this.forceKeyDown || Ext2.isIE || (Ext2.isWebKit && !Ext2.isSafari2) || Ext2.isAir;
     }
 };

@@ -7,12 +7,12 @@
  */
 
 /**
- * @class Ext.util.TextMetrics
+ * @class Ext2.util.TextMetrics
  * Provides precise pixel measurements for blocks of text so that you can determine exactly how high and
  * wide, in pixels, a given block of text will be.
  * @singleton
  */
-Ext.util.TextMetrics = function(){
+Ext2.util.TextMetrics = function(){
     var shared;
     return {
         /**
@@ -26,7 +26,7 @@ Ext.util.TextMetrics = function(){
          */
         measure : function(el, text, fixedWidth){
             if(!shared){
-                shared = Ext.util.TextMetrics.Instance(el, fixedWidth);
+                shared = Ext2.util.TextMetrics.Instance(el, fixedWidth);
             }
             shared.bind(el);
             shared.setFixedWidth(fixedWidth || 'auto');
@@ -39,16 +39,16 @@ Ext.util.TextMetrics = function(){
          * @param {String/HTMLElement} el The element, dom node or id that the instance will be bound to
          * @param {Number} fixedWidth (optional) If the text will be multiline, you have to set a fixed width
          * in order to accurately measure the text height
-         * @return {Ext.util.TextMetrics.Instance} instance The new instance
+         * @return {Ext2.util.TextMetrics.Instance} instance The new instance
          */
         createInstance : function(el, fixedWidth){
-            return Ext.util.TextMetrics.Instance(el, fixedWidth);
+            return Ext2.util.TextMetrics.Instance(el, fixedWidth);
         }
     };
 }();
 
-Ext.util.TextMetrics.Instance = function(bindTo, fixedWidth){
-    var ml = new Ext.Element(document.createElement('div'));
+Ext2.util.TextMetrics.Instance = function(bindTo, fixedWidth){
+    var ml = new Ext2.Element(document.createElement('div'));
     document.body.appendChild(ml.dom);
     ml.position('absolute');
     ml.setLeftTop(-1000, -1000);
@@ -78,7 +78,7 @@ Ext.util.TextMetrics.Instance = function(bindTo, fixedWidth){
          */
         bind : function(el){
             ml.setStyle(
-                Ext.fly(el).getStyles('font-size','font-style', 'font-weight', 'font-family','line-height', 'text-transform', 'letter-spacing')
+                Ext2.fly(el).getStyles('font-size','font-style', 'font-weight', 'font-family','line-height', 'text-transform', 'letter-spacing')
             );
         },
 
@@ -118,4 +118,4 @@ Ext.util.TextMetrics.Instance = function(bindTo, fixedWidth){
 };
 
 // backwards compat
-Ext.Element.measureText = Ext.util.TextMetrics.measure;
+Ext2.Element.measureText = Ext2.util.TextMetrics.measure;

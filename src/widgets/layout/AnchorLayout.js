@@ -7,11 +7,11 @@
  */
 
 /**
- * @class Ext.layout.AnchorLayout
- * @extends Ext.layout.ContainerLayout
+ * @class Ext2.layout.AnchorLayout
+ * @extends Ext2.layout.ContainerLayout
  * <p>This is a layout that enables anchoring of contained elements relative to the container's dimensions.  If
  * the container is resized, all anchored items are automatically rerendered according to their anchor rules.
- * This class is intended to be extended or created via the layout:'anchor' {@link Ext.Container#layout} config,
+ * This class is intended to be extended or created via the layout:'anchor' {@link Ext2.Container#layout} config,
  * and should generally not need to be created directly via the new keyword.</p>
  * <p>AnchorLayout does not have any direct config options (other than inherited ones).  However, the container
  * using the AnchorLayout can supply an anchoring-specific config property of <b>anchorSize</b>.  By default,
@@ -37,7 +37,7 @@
  * <p>Anchor values can also be mixed as needed.  For example, '-50 75%' would render the width offset from the
  * container right edge by 50 pixels and 75% of the container's height.</p>
  */
-Ext.layout.AnchorLayout = Ext.extend(Ext.layout.ContainerLayout, {
+Ext2.layout.AnchorLayout = Ext2.extend(Ext2.layout.ContainerLayout, {
     // private
     monitorResize:true,
 
@@ -49,7 +49,7 @@ Ext.layout.AnchorLayout = Ext.extend(Ext.layout.ContainerLayout, {
 
     // private
     onLayout : function(ct, target){
-        Ext.layout.AnchorLayout.superclass.onLayout.call(this, ct, target);
+        Ext2.layout.AnchorLayout.superclass.onLayout.call(this, ct, target);
 
         var size = this.getAnchorViewSize(ct, target);
 
@@ -145,4 +145,4 @@ Ext.layout.AnchorLayout = Ext.extend(Ext.layout.ContainerLayout, {
      * @hide
      */
 });
-Ext.Container.LAYOUTS['anchor'] = Ext.layout.AnchorLayout;
+Ext2.Container.LAYOUTS['anchor'] = Ext2.layout.AnchorLayout;

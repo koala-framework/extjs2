@@ -7,18 +7,18 @@
  */
 
 /**
- * @class Ext.tree.TreeFilter
+ * @class Ext2.tree.TreeFilter
  * Note this class is experimental and doesn't update the indent (lines) or expand collapse icons of the nodes
  * @param {TreePanel} tree
  * @param {Object} config (optional)
  */
-Ext.tree.TreeFilter = function(tree, config){
+Ext2.tree.TreeFilter = function(tree, config){
     this.tree = tree;
     this.filtered = {};
-    Ext.apply(this, config);
+    Ext2.apply(this, config);
 };
 
-Ext.tree.TreeFilter.prototype = {
+Ext2.tree.TreeFilter.prototype = {
     clearBlank:false,
     reverse:false,
     autoClear:false,

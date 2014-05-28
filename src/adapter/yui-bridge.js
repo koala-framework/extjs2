@@ -19,7 +19,7 @@ var ES = YAHOO.util.Easing;
 var A = YAHOO.util.Anim;
 var libFlyweight;
 
-Ext.lib.Dom = {
+Ext2.lib.Dom = {
     getViewWidth : function(full){
         return full ? D.getDocumentWidth() : D.getViewportWidth();
     },
@@ -49,7 +49,7 @@ Ext.lib.Dom = {
     // and boosts performance by removing the batch overhead, repetitive dom lookups and array index calls
     getXY : function(el){
         var p, pe, b, scroll, bd = (document.body || document.documentElement);
-        el = Ext.getDom(el);
+        el = Ext2.getDom(el);
 
         if(el == bd){
             return [0, 0];
@@ -75,7 +75,7 @@ Ext.lib.Dom = {
                 hasAbsolute = true;
             }
 
-            if (Ext.isGecko) {
+            if (Ext2.isGecko) {
                 pe = fly(p);
 
                 var bt = parseInt(pe.getStyle("borderTopWidth"), 10) || 0;
@@ -94,12 +94,12 @@ Ext.lib.Dom = {
             p = p.offsetParent;
         }
 
-        if (Ext.isWebKit && hasAbsolute) {
+        if (Ext2.isWebKit && hasAbsolute) {
             x -= bd.offsetLeft;
             y -= bd.offsetTop;
         }
 
-        if (Ext.isGecko && !hasAbsolute) {
+        if (Ext2.isGecko && !hasAbsolute) {
             var dbd = fly(bd);
             x += parseInt(dbd.getStyle("borderLeftWidth"), 10) || 0;
             y += parseInt(dbd.getStyle("borderTopWidth"), 10) || 0;
@@ -107,7 +107,7 @@ Ext.lib.Dom = {
 
         p = el.parentNode;
         while (p && p != bd) {
-            if (!Ext.isOpera || (p.tagName != 'TR' && fly(p).getStyle("display") != "inline")) {
+            if (!Ext2.isOpera || (p.tagName != 'TR' && fly(p).getStyle("display") != "inline")) {
                 x -= p.scrollLeft;
                 y -= p.scrollTop;
             }
@@ -117,7 +117,7 @@ Ext.lib.Dom = {
     },
 
     setXY : function(el, xy){
-        el = Ext.fly(el, '_setXY');
+        el = Ext2.fly(el, '_setXY');
         el.position();
         var pts = el.translatePoints(xy);
         if(xy[0] !== false){
@@ -137,7 +137,7 @@ Ext.lib.Dom = {
     }
 };
 
-Ext.lib.Event = {
+Ext2.lib.Event = {
     getPageX : function(e){
         return E.getPageX(e.browserEvent || e);
     },
@@ -187,7 +187,7 @@ Ext.lib.Event = {
     }
 };
 
-Ext.lib.Ajax = {
+Ext2.lib.Ajax = {
     request : function(method, uri, cb, data, options){
         if(options){
             var hs = options.headers;
@@ -209,7 +209,7 @@ Ext.lib.Ajax = {
                     CN.initHeader('Content-Type', 'application/json', false);
                 }
                 method = (method ? method : (options.method ? options.method : 'POST'));
-                data = typeof options.jsonData == 'object' ? Ext.encode(options.jsonData) : options.jsonData;
+                data = typeof options.jsonData == 'object' ? Ext2.encode(options.jsonData) : options.jsonData;
             }
         }
         return CN.asyncRequest(method, uri, cb, data);
@@ -217,7 +217,7 @@ Ext.lib.Ajax = {
 
     formRequest : function(form, uri, cb, data, isUpload, sslUri){
         CN.setForm(form, isUpload, sslUri);
-        return CN.asyncRequest(Ext.getDom(form).method ||'POST', uri, cb, data);
+        return CN.asyncRequest(Ext2.getDom(form).method ||'POST', uri, cb, data);
     },
 
     isCallInProgress : function(trans){
@@ -235,11 +235,11 @@ Ext.lib.Ajax = {
     }
 };
 
-Ext.lib.Region = YAHOO.util.Region;
-Ext.lib.Point = YAHOO.util.Point;
+Ext2.lib.Region = YAHOO.util.Region;
+Ext2.lib.Point = YAHOO.util.Point;
 
 
-Ext.lib.Anim = {
+Ext2.lib.Anim = {
     scroll : function(el, args, duration, easing, cb, scope){
         this.run(el, args, duration, easing, cb, scope, YAHOO.util.Scroll);
     },
@@ -259,7 +259,7 @@ Ext.lib.Anim = {
         }
         var anim = new type(el, args, duration, easing);
         anim.animateX(function(){
-            Ext.callback(cb, scope);
+            Ext2.callback(cb, scope);
         });
         return anim;
     }
@@ -268,14 +268,14 @@ Ext.lib.Anim = {
 // all lib flyweight calls use their own flyweight to prevent collisions with developer flyweights
 function fly(el){
     if(!libFlyweight){
-        libFlyweight = new Ext.Element.Flyweight();
+        libFlyweight = new Ext2.Element.Flyweight();
     }
     libFlyweight.dom = el;
     return libFlyweight;
 }
 
 // prevent IE leaks
-if(Ext.isIE) {
+if(Ext2.isIE) {
     function fnCleanUp() {
         var p = Function.prototype;
         delete p.createSequence;
@@ -304,14 +304,14 @@ if(YAHOO.util.Anim){
     };
 }
 
-if(YAHOO.util.DragDrop && Ext.dd.DragDrop){
-    YAHOO.util.DragDrop.defaultPadding = Ext.dd.DragDrop.defaultPadding;
-    YAHOO.util.DragDrop.constrainTo = Ext.dd.DragDrop.constrainTo;
+if(YAHOO.util.DragDrop && Ext2.dd.DragDrop){
+    YAHOO.util.DragDrop.defaultPadding = Ext2.dd.DragDrop.defaultPadding;
+    YAHOO.util.DragDrop.constrainTo = Ext2.dd.DragDrop.constrainTo;
 }
 
 YAHOO.util.Dom.getXY = function(el) {
     var f = function(el) {
-        return Ext.lib.Dom.getXY(el);
+        return Ext2.lib.Dom.getXY(el);
     };
     return YAHOO.util.Dom.batch(el, f, YAHOO.util.Dom, true);
 };

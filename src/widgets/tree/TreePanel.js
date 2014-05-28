@@ -7,62 +7,62 @@
  */
 
 /**
- * @class Ext.tree.TreePanel
+ * @class Ext2.tree.TreePanel
  * <p>The TreePanel provides tree-structured UI representation of tree-structured data.</p>
- * <p>{@link Ext.tree.TreeNode TreeNode}s added to the TreePanel may each contain metadata
- * used by your application in their {@link Ext.tree.TreeNode#attributes attributes} property.</p>
+ * <p>{@link Ext2.tree.TreeNode TreeNode}s added to the TreePanel may each contain metadata
+ * used by your application in their {@link Ext2.tree.TreeNode#attributes attributes} property.</p>
  * <p><b>A TreePanel must have a {@link #root} node before it is rendered.</b> This may either be
  * specified using the {@link #root} config option, or using the {@link #setRootNode} method.
- * @extends Ext.Panel
+ * @extends Ext2.Panel
 
- * @cfg {Ext.tree.TreeNode} root The root node for the tree.
+ * @cfg {Ext2.tree.TreeNode} root The root node for the tree.
  * @cfg {Boolean} rootVisible false to hide the root node (defaults to true)
  * @cfg {Boolean} lines false to disable tree lines (defaults to true)
  * @cfg {Boolean} enableDD true to enable drag and drop
  * @cfg {Boolean} enableDrag true to enable just drag
  * @cfg {Boolean} enableDrop true to enable just drop
- * @cfg {Object} dragConfig Custom config to pass to the {@link Ext.tree.TreeDragZone} instance
- * @cfg {Object} dropConfig Custom config to pass to the {@link Ext.tree.TreeDropZone} instance
+ * @cfg {Object} dragConfig Custom config to pass to the {@link Ext2.tree.TreeDragZone} instance
+ * @cfg {Object} dropConfig Custom config to pass to the {@link Ext2.tree.TreeDropZone} instance
  * @cfg {String} ddGroup The DD group this TreePanel belongs to
  * @cfg {String} ddAppendOnly True if the tree should only allow append drops (use for trees which are sorted)
  * @cfg {Boolean} ddScroll true to enable body scrolling
  * @cfg {Boolean} containerScroll true to register this container with ScrollManager
- * @cfg {Boolean} hlDrop false to disable node highlight on drop (defaults to the value of Ext.enableFx)
+ * @cfg {Boolean} hlDrop false to disable node highlight on drop (defaults to the value of Ext2.enableFx)
  * @cfg {String} hlColor The color of the node highlight (defaults to C3DAF9)
- * @cfg {Boolean} animate true to enable animated expand/collapse (defaults to the value of Ext.enableFx)
+ * @cfg {Boolean} animate true to enable animated expand/collapse (defaults to the value of Ext2.enableFx)
  * @cfg {Boolean} singleExpand true if only 1 node per branch may be expanded
- * @cfg {Object} selModel A tree selection model to use with this TreePanel (defaults to a {@link Ext.tree.DefaultSelectionModel})
+ * @cfg {Object} selModel A tree selection model to use with this TreePanel (defaults to a {@link Ext2.tree.DefaultSelectionModel})
  * @cfg {Boolean} trackMouseOver False to disable mouse over highlighting 
- * @cfg {Ext.tree.TreeLoader} loader A {@link Ext.tree.TreeLoader} for use with this TreePanel
+ * @cfg {Ext2.tree.TreeLoader} loader A {@link Ext2.tree.TreeLoader} for use with this TreePanel
  * @cfg {String} pathSeparator The token used to separate sub-paths in path strings (defaults to '/')
  * @cfg {Boolean} useArrows True to use Vista-style arrows in the tree (defaults to false)
  *
  * @constructor
  * @param {Object} config
  */
-Ext.tree.TreePanel = Ext.extend(Ext.Panel, {
+Ext2.tree.TreePanel = Ext2.extend(Ext2.Panel, {
     rootVisible : true,
-    animate: Ext.enableFx,
+    animate: Ext2.enableFx,
     lines : true,
     enableDD : false,
-    hlDrop : Ext.enableFx,
+    hlDrop : Ext2.enableFx,
     pathSeparator: "/",
 
     initComponent : function(){
-        Ext.tree.TreePanel.superclass.initComponent.call(this);
+        Ext2.tree.TreePanel.superclass.initComponent.call(this);
 
         if(!this.eventModel){
-            this.eventModel = new Ext.tree.TreeEventModel(this);
+            this.eventModel = new Ext2.tree.TreeEventModel(this);
         }
         
         // initialize the loader
         var l = this.loader;
         if(!l){
-            l = new Ext.tree.TreeLoader({
+            l = new Ext2.tree.TreeLoader({
                 dataUrl: this.dataUrl
             });
         }else if(typeof l == 'object' && !l.load){
-            l = new Ext.tree.TreeLoader(l);
+            l = new Ext2.tree.TreeLoader(l);
         }
         this.loader = l;
         
@@ -70,7 +70,7 @@ Ext.tree.TreePanel = Ext.extend(Ext.Panel, {
 
         /**
         * The root node of this tree.
-        * @type Ext.tree.TreeNode
+        * @type Ext2.tree.TreeNode
         * @property root
         */
         if(this.root){
@@ -210,14 +210,14 @@ Ext.tree.TreePanel = Ext.extend(Ext.Panel, {
             * @event beforeclick
             * Fires before click processing on a node. Return false to cancel the default action.
             * @param {Node} node The node
-            * @param {Ext.EventObject} e The event object
+            * @param {Ext2.EventObject} e The event object
             */
             "beforeclick",
             /**
             * @event click
             * Fires when a node is clicked
             * @param {Node} node The node
-            * @param {Ext.EventObject} e The event object
+            * @param {Ext2.EventObject} e The event object
             */
             "click",
             /**
@@ -231,24 +231,24 @@ Ext.tree.TreePanel = Ext.extend(Ext.Panel, {
             * @event dblclick
             * Fires when a node is double clicked
             * @param {Node} node The node
-            * @param {Ext.EventObject} e The event object
+            * @param {Ext2.EventObject} e The event object
             */
             "dblclick",
             /**
             * @event contextmenu
             * Fires when a node is right clicked. To display a context menu in response to this
-            * event, first create a Menu object (see {@link Ext.menu.Menu} for details), then add
+            * event, first create a Menu object (see {@link Ext2.menu.Menu} for details), then add
             * a handler for this event:<code><pre>
-new Ext.tree.TreePanel({
+new Ext2.tree.TreePanel({
     title: 'My TreePanel',
-    root: new Ext.tree.AsyncTreeNode({
+    root: new Ext2.tree.AsyncTreeNode({
         text: 'The Root',
         children: [
             { text: 'Child node 1', leaf: true },
             { text: 'Child node 2', leaf: true }
         ]
     }),
-    contextMenu: new Ext.menu.Menu({
+    contextMenu: new Ext2.menu.Menu({
         items: [{
             id: 'delete-node',
             text: 'Delete Node'
@@ -269,7 +269,7 @@ new Ext.tree.TreePanel({
     listeners: {
         contextmenu: function(node, e) {
 //          Register the context node with the menu so that a Menu Item's handler function can access
-//          it via its {@link Ext.menu.BaseItem#parentMenu parentMenu} property.
+//          it via its {@link Ext2.menu.BaseItem#parentMenu parentMenu} property.
             node.select();
             var c = node.getOwnerTree().contextMenu;
             c.contextNode = node;
@@ -279,7 +279,7 @@ new Ext.tree.TreePanel({
 });
 </pre></code>
             * @param {Node} node The node
-            * @param {Ext.EventObject} e The event object
+            * @param {Ext2.EventObject} e The event object
             */
             "contextmenu",
             /**
@@ -291,24 +291,24 @@ new Ext.tree.TreePanel({
            /**
              * @event startdrag
              * Fires when a node starts being dragged
-             * @param {Ext.tree.TreePanel} this
-             * @param {Ext.tree.TreeNode} node
+             * @param {Ext2.tree.TreePanel} this
+             * @param {Ext2.tree.TreeNode} node
              * @param {event} e The raw browser event
              */
             "startdrag",
             /**
              * @event enddrag
              * Fires when a drag operation is complete
-             * @param {Ext.tree.TreePanel} this
-             * @param {Ext.tree.TreeNode} node
+             * @param {Ext2.tree.TreePanel} this
+             * @param {Ext2.tree.TreeNode} node
              * @param {event} e The raw browser event
              */
             "enddrag",
             /**
              * @event dragdrop
              * Fires when a dragged node is dropped on a valid DD target
-             * @param {Ext.tree.TreePanel} this
-             * @param {Ext.tree.TreeNode} node
+             * @param {Ext2.tree.TreePanel} this
+             * @param {Ext2.tree.TreeNode} node
              * @param {DD} dd The dd it was dropped on
              * @param {event} e The raw browser event
              */
@@ -405,7 +405,7 @@ new Ext.tree.TreePanel({
         this.registerNode(node);
         if(!this.rootVisible){
         	var uiP = node.attributes.uiProvider;
-        	node.ui = uiP ? new uiP(node) : new Ext.tree.RootTreeNodeUI(node); 
+        	node.ui = uiP ? new uiP(node) : new Ext2.tree.RootTreeNodeUI(node); 
         }
         return node;
     },
@@ -472,8 +472,8 @@ new Ext.tree.TreePanel({
     },
 
     /**
-     * Returns the default {@link Ext.tree.TreeLoader} for this TreePanel.
-     * @return {Ext.tree.TreeLoader} The TreeLoader for this TreePanel.
+     * Returns the default {@link Ext2.tree.TreeLoader} for this TreePanel.
+     * @return {Ext2.tree.TreeLoader} The TreeLoader for this TreePanel.
      */
     getLoader : function(){
         return this.loader;
@@ -499,15 +499,15 @@ new Ext.tree.TreePanel({
      */
     getSelectionModel : function(){
         if(!this.selModel){
-            this.selModel = new Ext.tree.DefaultSelectionModel();
+            this.selModel = new Ext2.tree.DefaultSelectionModel();
         }
         return this.selModel;
     },
 
     /**
-     * Expands a specified path in this TreePanel. A path can be retrieved from a node with {@link Ext.data.Node#getPath}
+     * Expands a specified path in this TreePanel. A path can be retrieved from a node with {@link Ext2.data.Node#getPath}
      * @param {String} path
-     * @param {String} attr (optional) The attribute used in the path (see {@link Ext.data.Node#getPath} for more info)
+     * @param {String} attr (optional) The attribute used in the path (see {@link Ext2.data.Node#getPath} for more info)
      * @param {Function} callback (optional) The callback to call when the expand is complete. The callback will be called with
      * (bSuccess, oLastNode) where bSuccess is if the expand was successful and oLastNode is the last node that was expanded.
      */
@@ -543,9 +543,9 @@ new Ext.tree.TreePanel({
     },
 
     /**
-     * Selects the node in this tree at the specified path. A path can be retrieved from a node with {@link Ext.data.Node#getPath}
+     * Selects the node in this tree at the specified path. A path can be retrieved from a node with {@link Ext2.data.Node#getPath}
      * @param {String} path
-     * @param {String} attr (optional) The attribute used in the path (see {@link Ext.data.Node#getPath} for more info)
+     * @param {String} attr (optional) The attribute used in the path (see {@link Ext2.data.Node#getPath} for more info)
      * @param {Function} callback (optional) The callback to call when the selection is complete. The callback will be called with
      * (bSuccess, oSelNode) where bSuccess is if the selection was successful and oSelNode is the selected node.
      */
@@ -582,7 +582,7 @@ new Ext.tree.TreePanel({
 
     /**
      * Returns the underlying Element for this tree
-     * @return {Ext.Element} The Element
+     * @return {Ext2.Element} The Element
      */
     getTreeEl : function(){
         return this.body;
@@ -590,27 +590,27 @@ new Ext.tree.TreePanel({
 
     // private
     onRender : function(ct, position){
-        Ext.tree.TreePanel.superclass.onRender.call(this, ct, position);
-        this.el.addClass('x-tree');
+        Ext2.tree.TreePanel.superclass.onRender.call(this, ct, position);
+        this.el.addClass('x2-tree');
         this.innerCt = this.body.createChild({tag:"ul",
-               cls:"x-tree-root-ct " +
-               (this.useArrows ? 'x-tree-arrows' : this.lines ? "x-tree-lines" : "x-tree-no-lines")});
+               cls:"x2-tree-root-ct " +
+               (this.useArrows ? 'x2-tree-arrows' : this.lines ? "x2-tree-lines" : "x2-tree-no-lines")});
     },
 
     // private
     initEvents : function(){
-        Ext.tree.TreePanel.superclass.initEvents.call(this);
+        Ext2.tree.TreePanel.superclass.initEvents.call(this);
 
         if(this.containerScroll){
-            Ext.dd.ScrollManager.register(this.body);
+            Ext2.dd.ScrollManager.register(this.body);
         }
         if((this.enableDD || this.enableDrop) && !this.dropZone){
            /**
             * The dropZone used by this tree if drop is enabled
             * @property dropZone
-            * @type Ext.tree.TreeDropZone
+            * @type Ext2.tree.TreeDropZone
             */
-             this.dropZone = new Ext.tree.TreeDropZone(this, this.dropConfig || {
+             this.dropZone = new Ext2.tree.TreeDropZone(this, this.dropConfig || {
                ddGroup: this.ddGroup || "TreeDD", appendOnly: this.ddAppendOnly === true
            });
         }
@@ -618,9 +618,9 @@ new Ext.tree.TreePanel({
            /**
             * The dragZone used by this tree if drag is enabled
             * @property dragZone
-            * @type Ext.tree.TreeDragZone
+            * @type Ext2.tree.TreeDragZone
             */
-            this.dragZone = new Ext.tree.TreeDragZone(this, this.dragConfig || {
+            this.dragZone = new Ext2.tree.TreeDragZone(this, this.dragConfig || {
                ddGroup: this.ddGroup || "TreeDD",
                scroll: this.ddScroll
            });
@@ -630,7 +630,7 @@ new Ext.tree.TreePanel({
 
     // private
     afterRender : function(){
-        Ext.tree.TreePanel.superclass.afterRender.call(this);
+        Ext2.tree.TreePanel.superclass.afterRender.call(this);
         this.root.render();
         if(!this.rootVisible){
             this.root.renderChildren();
@@ -640,7 +640,7 @@ new Ext.tree.TreePanel({
     onDestroy : function(){
         if(this.rendered){
             this.body.removeAllListeners();
-            Ext.dd.ScrollManager.unregister(this.body);
+            Ext2.dd.ScrollManager.unregister(this.body);
             if(this.dropZone){
                 this.dropZone.unreg();
             }
@@ -650,7 +650,7 @@ new Ext.tree.TreePanel({
         }
         this.root.destroy();
         this.nodeHash = null;
-        Ext.tree.TreePanel.superclass.onDestroy.call(this);
+        Ext2.tree.TreePanel.superclass.onDestroy.call(this);
     }
     
     /** 
@@ -823,6 +823,6 @@ new Ext.tree.TreePanel({
      */
 });
 
-Ext.tree.TreePanel.nodeTypes = {};
+Ext2.tree.TreePanel.nodeTypes = {};
 
-Ext.reg('treepanel', Ext.tree.TreePanel);
+Ext2.reg('treepanel', Ext2.tree.TreePanel);

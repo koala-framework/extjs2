@@ -7,20 +7,20 @@
  */
 
 /**
- * @class Ext.data.ArrayReader
- * @extends Ext.data.JsonReader
- * Data reader class to create an Array of {@link Ext.data.Record} objects from an Array.
+ * @class Ext2.data.ArrayReader
+ * @extends Ext2.data.JsonReader
+ * Data reader class to create an Array of {@link Ext2.data.Record} objects from an Array.
  * Each element of that Array represents a row of data fields. The
  * fields are pulled into a Record object using as a subscript, the <em>mapping</em> property
  * of the field definition if it exists, or the field's ordinal position in the definition.<br>
  * <p>
  * Example code:.
  * <pre><code>
-var Employee = Ext.data.Record.create([
+var Employee = Ext2.data.Record.create([
     {name: 'name', mapping: 1},         // "mapping" only needed if an "id" field is present which
     {name: 'occupation', mapping: 2}    // precludes using the ordinal position as the index.
 ]);
-var myReader = new Ext.data.ArrayReader({
+var myReader = new Ext2.data.ArrayReader({
     id: 0                     // The subscript within row Array that provides an ID for the Record (optional)
 }, Employee);
 </code></pre>
@@ -34,11 +34,11 @@ var myReader = new Ext.data.ArrayReader({
  * Create a new ArrayReader
  * @param {Object} meta Metadata configuration options.
  * @param {Object} recordType Either an Array of field definition objects
- * as specified to {@link Ext.data.Record#create},
- * or a {@link Ext.data.Record Record} constructor
- * created using {@link Ext.data.Record#create}.
+ * as specified to {@link Ext2.data.Record#create},
+ * or a {@link Ext2.data.Record Record} constructor
+ * created using {@link Ext2.data.Record#create}.
  */
-Ext.data.ArrayReader = Ext.extend(Ext.data.JsonReader, {
+Ext2.data.ArrayReader = Ext2.extend(Ext2.data.JsonReader, {
     /**
      * @cfg {String} totalProperty
      * @hide
@@ -52,10 +52,10 @@ Ext.data.ArrayReader = Ext.extend(Ext.data.JsonReader, {
      * @hide
      */
     /**
-     * Create a data block containing Ext.data.Records from an Array.
+     * Create a data block containing Ext2.data.Records from an Array.
      * @param {Object} o An Array of row objects which represents the dataset.
-     * @return {Object} data A data block which is used by an Ext.data.Store object as
-     * a cache of Ext.data.Records.
+     * @return {Object} data A data block which is used by an Ext2.data.Store object as
+     * a cache of Ext2.data.Records.
      */
     readRecords : function(o){
         var sid = this.meta ? this.meta.id : null;

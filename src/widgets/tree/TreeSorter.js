@@ -7,12 +7,12 @@
  */
 
 /**
- * @class Ext.tree.TreeSorter
- * Provides sorting of nodes in a {@link Ext.tree.TreePanel}.  The TreeSorter automatically monitors events on the 
+ * @class Ext2.tree.TreeSorter
+ * Provides sorting of nodes in a {@link Ext2.tree.TreePanel}.  The TreeSorter automatically monitors events on the 
  * associated TreePanel that might affect the tree's sort order (beforechildrenrendered, append, insert and textchange).
  * Example usage:<br />
  * <pre><code>
-new Ext.tree.TreeSorter(myTree, {
+new Ext2.tree.TreeSorter(myTree, {
     folderSort: true,
     dir: "desc",
     sortType: function(node) {
@@ -25,7 +25,7 @@ new Ext.tree.TreeSorter(myTree, {
  * @param {TreePanel} tree
  * @param {Object} config
  */
-Ext.tree.TreeSorter = function(tree, config){
+Ext2.tree.TreeSorter = function(tree, config){
     /**
 	 * @cfg {Boolean} folderSort True to sort leaf nodes under non-leaf nodes (defaults to false)
      */
@@ -44,13 +44,13 @@ Ext.tree.TreeSorter = function(tree, config){
      */
     /** 
 	 * @cfg {Function} sortType A custom "casting" function used to convert node values before sorting.  The function
-     * will be called with a single parameter (the {@link Ext.tree.TreeNode} being evaluated) and is expected to return
+     * will be called with a single parameter (the {@link Ext2.tree.TreeNode} being evaluated) and is expected to return
      * the node's sort value cast to the specific data type required for sorting.  This could be used, for example, when
      * a node's text (or other attribute) should be sorted as a date or numeric value.  See the class description for 
      * example usage.  Note that if a sortType is specified, any {@link #property} config will be ignored.
      */
     
-    Ext.apply(this, config);
+    Ext2.apply(this, config);
     tree.on("beforechildrenrendered", this.doSort, this);
     tree.on("append", this.updateSort, this);
     tree.on("insert", this.updateSort, this);
@@ -84,7 +84,7 @@ Ext.tree.TreeSorter = function(tree, config){
     };
 };
 
-Ext.tree.TreeSorter.prototype = {
+Ext2.tree.TreeSorter.prototype = {
     doSort : function(node){
         node.sort(this.sortFn);
     },

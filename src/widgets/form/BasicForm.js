@@ -7,12 +7,12 @@
  */
 
 /**
- * @class Ext.form.BasicForm
- * @extends Ext.util.Observable
- * <p>Encapsulates the DOM &lt;form> element at the heart of the {@link Ext.form.FormPanel FormPanel} class, and provides
+ * @class Ext2.form.BasicForm
+ * @extends Ext2.util.Observable
+ * <p>Encapsulates the DOM &lt;form> element at the heart of the {@link Ext2.form.FormPanel FormPanel} class, and provides
  * input field management, validation, submission, and form loading services.</p>
- * <p>By default, Ext Forms are submitted through Ajax, using an instance of {@link Ext.form.Action.Submit}.
- * To enable normal browser submission of an Ext Form, use the {@link #standardSubmit} config option.</p>
+ * <p>By default, Ext2 Forms are submitted through Ajax, using an instance of {@link Ext2.form.Action.Submit}.
+ * To enable normal browser submission of an Ext2 Form, use the {@link #standardSubmit} config option.</p>
  * <p><h2>File Uploads</h2>{@link #fileUpload File uploads} are not performed using Ajax submission, that
  * is they are <b>not</b> performed using XMLHttpRequests. Instead the form is submitted in the standard
  * manner with the DOM <tt>&lt;form></tt> element temporarily modified to have its
@@ -35,38 +35,38 @@
  * @param {Mixed} el The form element or its id
  * @param {Object} config Configuration options
  */
-Ext.form.BasicForm = function(el, config){
-    Ext.apply(this, config);
+Ext2.form.BasicForm = function(el, config){
+    Ext2.apply(this, config);
     /*
      * @property items
-     * A {@link Ext.util.MixedCollection MixedCollection) containing all the Ext.form.Fields in this form.<p>
-     * Note that in Ext 2.*, Fields which are within Containers <i>dynamically added</i> to a {@link Ext.form.FormPanel FormPanel}
+     * A {@link Ext2.util.MixedCollection MixedCollection) containing all the Ext2.form.Fields in this form.<p>
+     * Note that in Ext2 2.*, Fields which are within Containers <i>dynamically added</i> to a {@link Ext2.form.FormPanel FormPanel}
      * are not automatically added to this Collection, and must be programatically added in order to participate in the BasicForm's operations.
      * @type MixedCollection
      */
-    this.items = new Ext.util.MixedCollection(false, function(o){
-        return o.id || (o.id = Ext.id());
+    this.items = new Ext2.util.MixedCollection(false, function(o){
+        return o.id || (o.id = Ext2.id());
     });
     this.addEvents(
         /**
          * @event beforeaction
          * Fires before any action is performed. Return false to cancel the action.
          * @param {Form} this
-         * @param {Action} action The {@link Ext.form.Action} to be performed
+         * @param {Action} action The {@link Ext2.form.Action} to be performed
          */
         'beforeaction',
         /**
          * @event actionfailed
          * Fires when an action fails.
          * @param {Form} this
-         * @param {Action} action The {@link Ext.form.Action} that failed
+         * @param {Action} action The {@link Ext2.form.Action} that failed
          */
         'actionfailed',
         /**
          * @event actioncomplete
          * Fires when an action is completed.
          * @param {Form} this
-         * @param {Action} action The {@link Ext.form.Action} that completed
+         * @param {Action} action The {@link Ext2.form.Action} that completed
          */
         'actioncomplete'
     );
@@ -74,22 +74,22 @@ Ext.form.BasicForm = function(el, config){
     if(el){
         this.initEl(el);
     }
-    Ext.form.BasicForm.superclass.constructor.call(this);
+    Ext2.form.BasicForm.superclass.constructor.call(this);
 };
 
-Ext.extend(Ext.form.BasicForm, Ext.util.Observable, {
+Ext2.extend(Ext2.form.BasicForm, Ext2.util.Observable, {
     /**
      * @cfg {String} method
      * The request method to use (GET or POST) for form actions if one isn't supplied in the action options.
      */
     /**
      * @cfg {DataReader} reader
-     * An Ext.data.DataReader (e.g. {@link Ext.data.XmlReader}) to be used to read data when executing "load" actions.
+     * An Ext2.data.DataReader (e.g. {@link Ext2.data.XmlReader}) to be used to read data when executing "load" actions.
      * This is optional as there is built-in support for processing JSON.
      */
     /**
      * @cfg {DataReader} errorReader
-     * <p>An Ext.data.DataReader (e.g. {@link Ext.data.XmlReader}) to be used to read field error messages returned from "submit" actions.
+     * <p>An Ext2.data.DataReader (e.g. {@link Ext2.data.XmlReader}) to be used to read field error messages returned from "submit" actions.
      * This is completely optional as there is built-in support for processing JSON.</p>
      * <p>The Records which provide messages for the invalid Fields must use the Field name (or id) as the Record ID,
      * and must contain a field called "msg" which contains the error message.</p>
@@ -153,7 +153,7 @@ Ext.extend(Ext.form.BasicForm, Ext.util.Observable, {
      * hidden fields within the form.</p>
      */
     /**
-     * By default wait messages are displayed with Ext.MessageBox.wait. You can target a specific
+     * By default wait messages are displayed with Ext2.MessageBox.wait. You can target a specific
      * element by passing it or its id or mask the form itself by passing in true.
      * @type Mixed
      * @property waitMsgTarget
@@ -161,17 +161,17 @@ Ext.extend(Ext.form.BasicForm, Ext.util.Observable, {
 
     // private
     initEl : function(el){
-        this.el = Ext.get(el);
-        this.id = this.el.id || Ext.id();
+        this.el = Ext2.get(el);
+        this.id = this.el.id || Ext2.id();
         if(!this.standardSubmit){
             this.el.on('submit', this.onSubmit, this);
         }
-        this.el.addClass('x-form');
+        this.el.addClass('x2-form');
     },
 
     /**
      * Get the HTML form Element
-     * @return Ext.Element
+     * @return Ext2.Element
      */
     getEl: function(){
         return this.el;
@@ -185,7 +185,7 @@ Ext.extend(Ext.form.BasicForm, Ext.util.Observable, {
     // private
     destroy: function() {
         this.items.each(function(f){
-            Ext.destroy(f);
+            Ext2.destroy(f);
         });
         if(this.el){
             this.el.removeAllListeners();
@@ -226,12 +226,12 @@ Ext.extend(Ext.form.BasicForm, Ext.util.Observable, {
     },
 
     /**
-     * Performs a predefined action ({@link Ext.form.Action.Submit} or
-     * {@link Ext.form.Action.Load}) or a custom extension of {@link Ext.form.Action} 
+     * Performs a predefined action ({@link Ext2.form.Action.Submit} or
+     * {@link Ext2.form.Action.Load}) or a custom extension of {@link Ext2.form.Action} 
      * to perform application-specific processing.
      * @param {String/Object} actionName The name of the predefined action type,
-     * or instance of {@link Ext.form.Action} to perform.
-     * @param {Object} options (optional) The options to pass to the {@link Ext.form.Action}. 
+     * or instance of {@link Ext2.form.Action} to perform.
+     * @param {Object} options (optional) The options to pass to the {@link Ext2.form.Action}. 
      * All of the config options listed below are supported by both the submit
      * and load actions unless otherwise noted (custom actions could also accept
      * other config options):<ul>
@@ -246,29 +246,29 @@ Ext.extend(Ext.form.BasicForm, Ext.util.Observable, {
      * (defaults to the form's default headers)</p></li>
      * <li><b>success</b> : Function<p style="margin-left:1em">The callback that will
      * be invoked after a successful response.  The function is passed the following parameters:<ul>
-     * <li><code>form</code> : Ext.form.BasicForm<div class="sub-desc">The form that requested the action</div></li>
-     * <li><code>action</code> : Ext.form.Action<div class="sub-desc">The {@link Ext.form.Action Action} object which performed the operation. The {@link Ext.form.Action#result result}
+     * <li><code>form</code> : Ext2.form.BasicForm<div class="sub-desc">The form that requested the action</div></li>
+     * <li><code>action</code> : Ext2.form.Action<div class="sub-desc">The {@link Ext2.form.Action Action} object which performed the operation. The {@link Ext2.form.Action#result result}
      * property of this object may be examined to perform custom postprocessing.</div></li>
      * </ul></p></li>
      * <li><b>failure</b> : Function<p style="margin-left:1em">The callback that will
      * be invoked after a failed transaction attempt.  The function
      * is passed the following parameters:<ul>
-     * <li><code>form</code> : Ext.form.BasicForm<div class="sub-desc">The form that requested the action</div></li>
-     * <li><code>action</code> : Ext.form.Action<div class="sub-desc">The {@link Ext.form.Action Action} object which performed the operation. If an Ajax
-     * error ocurred, the failure type will be in {@link Ext.form.Action#failureType failureType}. The {@link Ext.form.Action#result result}
+     * <li><code>form</code> : Ext2.form.BasicForm<div class="sub-desc">The form that requested the action</div></li>
+     * <li><code>action</code> : Ext2.form.Action<div class="sub-desc">The {@link Ext2.form.Action Action} object which performed the operation. If an Ajax
+     * error ocurred, the failure type will be in {@link Ext2.form.Action#failureType failureType}. The {@link Ext2.form.Action#result result}
      * property of this object may be examined to perform custom postprocessing.</div></li>
      * </ul></p></li>
      * <li><b>scope</b> : Object<p style="margin-left:1em">The scope in which to call the
      * callback functions (The <tt>this</tt> reference for the callback functions).</p></li>
      * <li><b>clientValidation</b> : Boolean<p style="margin-left:1em">Submit Action only.
      * Determines whether a Form's fields are validated in a final call to
-     * {@link Ext.form.BasicForm#isValid isValid} prior to submission. Set to <tt>false</tt>
+     * {@link Ext2.form.BasicForm#isValid isValid} prior to submission. Set to <tt>false</tt>
      * to prevent this. If undefined, pre-submission field validation is performed.</p></li></ul>
      * @return {BasicForm} this
      */
     doAction : function(action, options){
         if(typeof action == 'string'){
-            action = new Ext.form.Action.ACTION_TYPES[action](this, options);
+            action = new Ext2.form.Action.ACTION_TYPES[action](this, options);
         }
         if(this.fireEvent('beforeaction', this, action) !== false){
             this.beforeAction(action);
@@ -289,18 +289,18 @@ myFormPanel.getForm().submit({
         newStatus: 'delivered'
     },
     success: function(form, action) {
-       Ext.Msg.alert("Success", action.result.msg);
+       Ext2.Msg.alert("Success", action.result.msg);
     },
     failure: function(form, action) {
         switch (action.failureType) {
-            case Ext.form.Action.CLIENT_INVALID:
-                Ext.Msg.alert("Failure", "Form fields may not be submitted with invalid values");
+            case Ext2.form.Action.CLIENT_INVALID:
+                Ext2.Msg.alert("Failure", "Form fields may not be submitted with invalid values");
                 break;
-            case Ext.form.Action.CONNECT_FAILURE:
-                Ext.Msg.alert("Failure", "Ajax communication failed");
+            case Ext2.form.Action.CONNECT_FAILURE:
+                Ext2.Msg.alert("Failure", "Ajax communication failed");
                 break;
-            case Ext.form.Action.SERVER_INVALID:
-               Ext.Msg.alert("Failure", action.result.msg);
+            case Ext2.form.Action.SERVER_INVALID:
+               Ext2.Msg.alert("Failure", action.result.msg);
        }
     }
 });
@@ -342,7 +342,7 @@ myFormPanel.getForm().submit({
     },
 
     /**
-     * Persists the values in this form into the passed Ext.data.Record object in a beginEdit/endEdit block.
+     * Persists the values in this form into the passed Ext2.data.Record object in a beginEdit/endEdit block.
      * @param {Record} record The record to edit
      * @return {BasicForm} this
      */
@@ -360,7 +360,7 @@ myFormPanel.getForm().submit({
     },
 
     /**
-     * Loads an Ext.data.Record into this form.
+     * Loads an Ext2.data.Record into this form.
      * @param {Record} record The record to load
      * @return {BasicForm} this
      */
@@ -374,12 +374,12 @@ myFormPanel.getForm().submit({
         var o = action.options;
         if(o.waitMsg){
             if(this.waitMsgTarget === true){
-                this.el.mask(o.waitMsg, 'x-mask-loading');
+                this.el.mask(o.waitMsg, 'x2-mask-loading');
             }else if(this.waitMsgTarget){
-                this.waitMsgTarget = Ext.get(this.waitMsgTarget);
-                this.waitMsgTarget.mask(o.waitMsg, 'x-mask-loading');
+                this.waitMsgTarget = Ext2.get(this.waitMsgTarget);
+                this.waitMsgTarget.mask(o.waitMsg, 'x2-mask-loading');
             }else{
-                Ext.MessageBox.wait(o.waitMsg, o.waitTitle || this.waitTitle || 'Please Wait...');
+                Ext2.MessageBox.wait(o.waitMsg, o.waitTitle || this.waitTitle || 'Please Wait...');
             }
         }
     },
@@ -394,24 +394,24 @@ myFormPanel.getForm().submit({
             }else if(this.waitMsgTarget){
                 this.waitMsgTarget.unmask();
             }else{
-                Ext.MessageBox.updateProgress(1);
-                Ext.MessageBox.hide();
+                Ext2.MessageBox.updateProgress(1);
+                Ext2.MessageBox.hide();
             }
         }
         if(success){
             if(o.reset){
                 this.reset();
             }
-            Ext.callback(o.success, o.scope, [this, action]);
+            Ext2.callback(o.success, o.scope, [this, action]);
             this.fireEvent('actioncomplete', this, action);
         }else{
-            Ext.callback(o.failure, o.scope, [this, action]);
+            Ext2.callback(o.failure, o.scope, [this, action]);
             this.fireEvent('actionfailed', this, action);
         }
     },
 
     /**
-     * Find a Ext.form.Field in this form by id, dataIndex, name or hiddenName.
+     * Find a Ext2.form.Field in this form by id, dataIndex, name or hiddenName.
      * @param {String} id The value to search for
      * @return Field
      */
@@ -435,7 +435,7 @@ myFormPanel.getForm().submit({
      * @return {BasicForm} this
      */
     markInvalid : function(errors){
-        if(Ext.isArray(errors)){
+        if(Ext2.isArray(errors)){
             for(var i = 0, len = errors.length; i < len; i++){
                 var fieldError = errors[i];
                 var f = this.findField(fieldError.id);
@@ -469,7 +469,7 @@ myFormPanel.getForm().submit({
      * @return {BasicForm} this
      */
     setValues : function(values){
-        if(Ext.isArray(values)){ // array of objects
+        if(Ext2.isArray(values)){ // array of objects
             for(var i = 0, len = values.length; i < len; i++){
                 var v = values[i];
                 var f = this.findField(v.id);
@@ -499,17 +499,17 @@ myFormPanel.getForm().submit({
      * If multiple fields exist with the same name they are returned as an array.</p>
      *
      * <p><b>Note:</b> The values are collected from all enabled HTML input elements within the form, <u>not</u> from
-     * the Ext Field objects. This means that all returned values are Strings (or Arrays of Strings) and that the the
+     * the Ext2 Field objects. This means that all returned values are Strings (or Arrays of Strings) and that the the
      * value can potentionally be the emptyText of a field.</p>
      * @param {Boolean} asString (optional) Pass true to return the values as a string. (defaults to false, returning an Object)
      * @return {String/Object}
      */
     getValues : function(asString){
-        var fs = Ext.lib.Ajax.serializeForm(this.el.dom);
+        var fs = Ext2.lib.Ajax.serializeForm(this.el.dom);
         if(asString === true){
             return fs;
         }
-        return Ext.urlDecode(fs);
+        return Ext2.urlDecode(fs);
     },
 
     /**
@@ -535,11 +535,11 @@ myFormPanel.getForm().submit({
     },
 
     /**
-     * Add Ext.form Components to this form's Collection. This does not result in rendering of
+     * Add Ext2.form Components to this form's Collection. This does not result in rendering of
      * the passed Component, it just enables the form to validate Fields, and distribute values to
      * Fields.
      * <p><b>You will not usually call this function. In order to be rendered, a Field must be added
-     * to a {@link Ext.Container Container}, usually an {@link Ext.form.FormPanel FormPanel}.
+     * to a {@link Ext2.Container Container}, usually an {@link Ext2.form.FormPanel FormPanel}.
      * The FormPanel to which the field is added takes care of adding the Field to the BasicForm's
      * collection.</b></p>
      * @param {Field} field1
@@ -564,8 +564,8 @@ myFormPanel.getForm().submit({
     },
 
     /**
-     * Iterates through the {@link Ext.form.Field Field}s which have been {@link #add add}ed to this BasicForm,
-     * checks them for an id attribute, and calls {@link Ext.form.Field#applyToMarkup} on the existing dom element with that id.
+     * Iterates through the {@link Ext2.form.Field Field}s which have been {@link #add add}ed to this BasicForm,
+     * checks them for an id attribute, and calls {@link Ext2.form.Field#applyToMarkup} on the existing dom element with that id.
      * @return {BasicForm} this
      */
     render : function(){
@@ -584,7 +584,7 @@ myFormPanel.getForm().submit({
      */
     applyToFields : function(o){
         this.items.each(function(f){
-           Ext.apply(f, o);
+           Ext2.apply(f, o);
         });
         return this;
     },
@@ -596,11 +596,11 @@ myFormPanel.getForm().submit({
      */
     applyIfToFields : function(o){
         this.items.each(function(f){
-           Ext.applyIf(f, o);
+           Ext2.applyIf(f, o);
         });
         return this;
     }
 });
 
 // back compat
-Ext.BasicForm = Ext.form.BasicForm;
+Ext2.BasicForm = Ext2.form.BasicForm;

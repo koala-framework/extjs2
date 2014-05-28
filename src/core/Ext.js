@@ -7,14 +7,14 @@
  */
 
 
-Ext = {version: '2.3.0'};
+Ext2 = {version: '2.3.0'};
 
 // for old browsers
 window["undefined"] = window["undefined"];
 
 /**
  * @class Ext
- * Ext core utilities and functions.
+ * Ext2 core utilities and functions.
  * @singleton
  */
 
@@ -24,12 +24,12 @@ window["undefined"] = window["undefined"];
  * @param {Object} config The source of the properties
  * @param {Object} defaults A different object that will also be applied for default values
  * @return {Object} returns obj
- * @member Ext apply
+ * @member Ext2 apply
  */
-Ext.apply = function(o, c, defaults){
+Ext2.apply = function(o, c, defaults){
     if(defaults){
         // no "this" reference for friendly out of scope calls
-        Ext.apply(o, defaults);
+        Ext2.apply(o, defaults);
     }
     if(o && c && typeof c == 'object'){
         for(var p in c){
@@ -56,7 +56,10 @@ Ext.apply = function(o, c, defaults){
         isIE = !isOpera && check(/msie/),
         isIE7 = isIE && check(/msie 7/),
         isIE8 = isIE && check(/msie 8/),
-        isIE6 = isIE && !isIE7 && !isIE8,
+        isIE9 = isIE && check(/msie 9/),
+        isIE10 = isIE && check(/msie 10/),
+        isIE11 = isIE && check(/msie 11/),
+        isIE6 = isIE && !isIE7 && !isIE8 && !isIE9 && !isIE10 && !isIE11,
         isGecko = !isWebKit && check(/gecko/),
         isGecko2 = isGecko && check(/rv:1\.8/),
         isGecko3 = isGecko && check(/rv:1\.9/),
@@ -74,7 +77,7 @@ Ext.apply = function(o, c, defaults){
         }catch(e){}
     }
 
-    Ext.apply(Ext, {
+    Ext2.apply(Ext2, {
         /**
          * True if the browser is in strict (standards-compliant) mode, as opposed to quirks mode
          * @type Boolean
@@ -92,7 +95,7 @@ Ext.apply = function(o, c, defaults){
         isReady : false,
 
         /**
-         * True to automatically uncache orphaned Ext.Elements periodically (defaults to true)
+         * True to automatically uncache orphaned Ext2.Elements periodically (defaults to true)
          * @type Boolean
          */
         enableGarbageCollector : true,
@@ -106,14 +109,14 @@ Ext.apply = function(o, c, defaults){
 
 
         /**
-         * URL to a blank file used by Ext when in secure mode for iframe src and onReady src to prevent
+         * URL to a blank file used by Ext2 when in secure mode for iframe src and onReady src to prevent
          * the IE insecure content warning (defaults to javascript:false).
          * @type String
          */
         SSL_SECURE_URL : "javascript:false",
 
         /**
-         * URL to a 1x1 transparent gif image used by Ext to create inline icons with CSS background images. (Defaults to
+         * URL to a 1x1 transparent gif image used by Ext2 to create inline icons with CSS background images. (Defaults to
          * "http://extjs.com/s.gif" and you should change this to a URL on your server).
          * @type String
          */
@@ -145,7 +148,7 @@ Ext.apply = function(o, c, defaults){
          * Applies event listeners to elements by selectors when the document is ready.
          * The event name is specified with an @ suffix.
 <pre><code>
-Ext.addBehaviors({
+Ext2.addBehaviors({
    // add a listener for click on all anchors in element with id foo
    '#foo a@click' : function(e, t){
        // do something
@@ -160,9 +163,9 @@ Ext.addBehaviors({
          * @param {Object} obj The list of behaviors to apply
          */
         addBehaviors : function(o){
-            if(!Ext.isReady){
-                Ext.onReady(function(){
-                    Ext.addBehaviors(o);
+            if(!Ext2.isReady){
+                Ext2.onReady(function(){
+                    Ext2.addBehaviors(o);
                 });
                 return;
             }
@@ -172,7 +175,7 @@ Ext.addBehaviors({
                 if(parts[1]){ // for Object prototype breakers
                     var s = parts[0];
                     if(!cache[s]){
-                        cache[s] = Ext.select(s);
+                        cache[s] = Ext2.select(s);
                     }
                     cache[s].on(parts[1], o[b]);
                 }
@@ -188,7 +191,7 @@ Ext.addBehaviors({
          */
         id : function(el, prefix){
             prefix = prefix || "ext-gen";
-            el = Ext.getDom(el);
+            el = Ext2.getDom(el);
             var id = prefix + (++idSeed);
             return el ? (el.id ? el.id : (el.id = id)) : id;
         },
@@ -211,9 +214,9 @@ Ext.addBehaviors({
          * <i>not</i> specified, a constructor is generated and returned which just calls the
          * superclass's constructor passing on its parameters.</p></div></li>
          * </ul></div></p><p>
-         * For example, to create a subclass of the Ext GridPanel:
+         * For example, to create a subclass of the Ext2 GridPanel:
          * <pre><code>
-    MyGridPanel = Ext.extend(Ext.grid.GridPanel, {
+    MyGridPanel = Ext2.extend(Ext2.grid.GridPanel, {
         constructor: function(config) {
             // Your preprocessing here
             MyGridPanel.superclass.constructor.apply(this, arguments);
@@ -257,11 +260,11 @@ Ext.addBehaviors({
                     spp.constructor=sp;
                 }
                 sb.override = function(o){
-                    Ext.override(sb, o);
+                    Ext2.override(sb, o);
                 };
                 sbp.override = io;
-                Ext.override(sb, overrides);
-                sb.extend = function(o){Ext.extend(sb, o);};
+                Ext2.override(sb, overrides);
+                sb.extend = function(o){Ext2.extend(sb, o);};
                 return sb;
             };
         }(),
@@ -269,7 +272,7 @@ Ext.addBehaviors({
         /**
          * Adds a list of functions to the prototype of an existing class, overwriting any existing methods with the same name.
          * Usage:<pre><code>
-Ext.override(MyClass, {
+Ext2.override(MyClass, {
     newMethod1: function(){
         // etc.
     },
@@ -289,7 +292,7 @@ Ext.override(MyClass, {
                 for(var method in overrides){
                     p[method] = overrides[method];
                 }
-                if(Ext.isIE && overrides.toString != origclass.toString){
+                if(Ext2.isIE && overrides.toString != origclass.toString){
                     p.toString = overrides.toString;
                 }
             }
@@ -298,7 +301,7 @@ Ext.override(MyClass, {
         /**
          * Creates namespaces to be used for scoping variables and classes so that they are not global.  Usage:
          * <pre><code>
-Ext.namespace('Company', 'Company.data');
+Ext2.namespace('Company', 'Company.data');
 Company.Widget = function() { ... }
 Company.data.CustomStore = function(config) { ... }
 </code></pre>
@@ -321,7 +324,7 @@ Company.data.CustomStore = function(config) { ... }
         },
 
         /**
-         * Takes an object and converts it to an encoded URL. e.g. Ext.urlEncode({foo: 1, bar: 2}); would return "foo=1&bar=2".  Optionally, property values can be arrays, instead of keys and the resulting string that's returned will contain a name/value pair for each array value.
+         * Takes an object and converts it to an encoded URL. e.g. Ext2.urlEncode({foo: 1, bar: 2}); would return "foo=1&bar=2".  Optionally, property values can be arrays, instead of keys and the resulting string that's returned will contain a name/value pair for each array value.
          * @param {Object} o
          * @return {String}
          */
@@ -337,10 +340,10 @@ Company.data.CustomStore = function(config) { ... }
                     buf.push(k, "=&");
                 }else if(type != "function" && type != "object"){
                     buf.push(k, "=", encodeURIComponent(ov), "&");
-                }else if(Ext.isDate(ov)){
-                    var s = Ext.encode(ov).replace(/"/g, '');
+                }else if(Ext2.isDate(ov)){
+                    var s = Ext2.encode(ov).replace(/"/g, '');
                     buf.push(k, "=", s, "&");
-                }else if(Ext.isArray(ov)){
+                }else if(Ext2.isArray(ov)){
                     if (ov.length) {
                         for(var i = 0, len = ov.length; i < len; i++) {
                             buf.push(k, "=", encodeURIComponent(ov[i] === undefined ? '' : ov[i]), "&");
@@ -356,8 +359,8 @@ Company.data.CustomStore = function(config) { ... }
 
         /**
          * Takes an encoded URL and and converts it to an object. Example: <pre><code>
-Ext.urlDecode("foo=1&bar=2"); // returns {foo: "1", bar: "2"}
-Ext.urlDecode("foo=1&bar=2&bar=3&bar=4", false); // returns {foo: "1", bar: ["2", "3", "4"]}
+Ext2.urlDecode("foo=1&bar=2"); // returns {foo: "1", bar: "2"}
+Ext2.urlDecode("foo=1&bar=2&bar=3&bar=4", false); // returns {foo: "1", bar: ["2", "3", "4"]}
          * </code></pre>
          * @param {String} string
          * @param {Boolean} overwrite (optional) Items of the same name will overwrite previous values instead of creating an an array (Defaults to false).
@@ -412,7 +415,7 @@ Ext.urlDecode("foo=1&bar=2&bar=3&bar=4", false); // returns {foo: "1", bar: ["2"
             var as = arguments, l = as.length, r = [];
             for(var i = 0; i < l; i++){
                 var a = as[i];
-                if(Ext.isArray(a)){
+                if(Ext2.isArray(a)){
                     r = r.concat(a);
                 }else if(a.length !== undefined && !a.substr){
                     r = r.concat(Array.prototype.slice.call(a, 0));
@@ -444,7 +447,7 @@ Ext.urlDecode("foo=1&bar=2&bar=3&bar=4", false); // returns {foo: "1", bar: ["2"
         },
 
         /**
-         * Return the dom node for the passed string (id), dom node, or Ext.Element
+         * Return the dom node for the passed string (id), dom node, or Ext2.Element
          * @param {Mixed} el
          * @return HTMLElement
          */
@@ -456,28 +459,28 @@ Ext.urlDecode("foo=1&bar=2&bar=3&bar=4", false); // returns {foo: "1", bar: ["2"
         },
 
         /**
-        * Returns the current HTML document object as an {@link Ext.Element}.
-        * @return Ext.Element The document
+        * Returns the current HTML document object as an {@link Ext2.Element}.
+        * @return Ext2.Element The document
         */
         getDoc : function(){
-            return Ext.get(document);
+            return Ext2.get(document);
         },
 
         /**
-        * Returns the current document body as an {@link Ext.Element}.
-        * @return Ext.Element The document body
+        * Returns the current document body as an {@link Ext2.Element}.
+        * @return Ext2.Element The document body
         */
         getBody : function(){
-            return Ext.get(document.body || document.documentElement);
+            return Ext2.get(document.body || document.documentElement);
         },
 
         /**
-        * Shorthand for {@link Ext.ComponentMgr#get}
+        * Shorthand for {@link Ext2.ComponentMgr#get}
         * @param {String} id
-        * @return Ext.Component
+        * @return Ext2.Component
         */
         getCmp : function(id){
-            return Ext.ComponentMgr.get(id);
+            return Ext2.ComponentMgr.get(id);
         },
 
         /**
@@ -494,10 +497,10 @@ Ext.urlDecode("foo=1&bar=2&bar=3&bar=4", false); // returns {foo: "1", bar: ["2"
         /**
          * Attempts to destroy any objects passed to it by removing all event listeners, removing them from the
          * DOM (if applicable) and calling their destroy functions (if available).  This method is primarily
-         * intended for arguments of type {@link Ext.Element} and {@link Ext.Component}, but any subclass of
-         * {@link Ext.util.Observable} can be passed in.  Any number of elements and/or components can be
+         * intended for arguments of type {@link Ext2.Element} and {@link Ext2.Component}, but any subclass of
+         * {@link Ext2.util.Observable} can be passed in.  Any number of elements and/or components can be
          * passed into this function in a single call as separate arguments.
-         * @param {Mixed} arg1 An {@link Ext.Element} or {@link Ext.Component} to destroy
+         * @param {Mixed} arg1 An {@link Ext2.Element} or {@link Ext2.Component} to destroy
          * @param {Mixed} arg2 (optional)
          * @param {Mixed} etc... (optional)
          */
@@ -600,7 +603,7 @@ Ext.urlDecode("foo=1&bar=2&bar=3&bar=4", false); // returns {foo: "1", bar: ["2"
          * @return {Mixed} value, if non-empty, else defaultValue
          */
         value : function(v, defaultValue, allowBlank){
-            return Ext.isEmpty(v, allowBlank) ? defaultValue : v;
+            return Ext2.isEmpty(v, allowBlank) ? defaultValue : v;
         },
 
         /**
@@ -677,6 +680,21 @@ Ext.urlDecode("foo=1&bar=2&bar=3&bar=4", false); // returns {foo: "1", bar: ["2"
          */
         isIE8 : isIE8,
         /**
+         * True if the detected browser is Internet Explorer 9.x.
+         * @type Boolean
+         */
+        isIE9 : isIE9,
+        /**
+         * True if the detected browser is Internet Explorer 10.x.
+         * @type Boolean
+         */
+        isIE10 : isIE10,
+        /**
+         * True if the detected browser is Internet Explorer 11.x.
+         * @type Boolean
+         */
+        isIE11 : isIE11,
+        /**
          * True if the detected browser uses the Gecko layout engine (e.g. Mozilla, Firefox).
          * @type Boolean
          */
@@ -718,7 +736,7 @@ Ext.urlDecode("foo=1&bar=2&bar=3&bar=4", false); // returns {foo: "1", bar: ["2"
         isAir : isAir,
 
         /**
-         * By default, Ext intelligently decides whether floating elements should be shimmed. If you are using flash,
+         * By default, Ext2 intelligently decides whether floating elements should be shimmed. If you are using flash,
          * you may want to set this to true.
          * @type Boolean
          */
@@ -726,18 +744,18 @@ Ext.urlDecode("foo=1&bar=2&bar=3&bar=4", false); // returns {foo: "1", bar: ["2"
     });
 
     // in intellij using keyword "namespace" causes parsing errors
-    Ext.ns = Ext.namespace;
+    Ext2.ns = Ext2.namespace;
 })();
 
-Ext.ns("Ext", "Ext.util", "Ext.grid", "Ext.dd", "Ext.tree", "Ext.data",
-                "Ext.form", "Ext.menu", "Ext.state", "Ext.lib", "Ext.layout", "Ext.app", "Ext.ux");
+Ext2.ns("Ext", "Ext2.util", "Ext2.grid", "Ext2.dd", "Ext2.tree", "Ext2.data",
+                "Ext2.form", "Ext2.menu", "Ext2.state", "Ext2.lib", "Ext2.layout", "Ext2.app", "Ext2.ux");
 
 
 /**
  * @class Function
  * These functions are available on every Function object (any JavaScript function).
  */
-Ext.apply(Function.prototype, {
+Ext2.apply(Function.prototype, {
      /**
      * Creates a callback that passes arguments[0], arguments[1], arguments[2], ...
      * Call directly on any function. Example: <code>myFunction.createCallback(arg1, arg2)</code>
@@ -754,9 +772,9 @@ var sayHi = function(name){
 }
 
 // clicking the button alerts "Hi, Fred"
-new Ext.Button({
+new Ext2.Button({
     text: 'Say Hi',
-    renderTo: Ext.getBody(),
+    renderTo: Ext2.getBody(),
     handler: sayHi.createCallback('Fred')
 });
 </code></pre>
@@ -785,9 +803,9 @@ var sayHi = function(name){
     alert('Hi, ' + name + '. You clicked the "' + this.text + '" button.');
 }
 
-var btn = new Ext.Button({
+var btn = new Ext2.Button({
     text: 'Say Hi',
-    renderTo: Ext.getBody()
+    renderTo: Ext2.getBody()
 });
 
 // This callback will execute in the scope of the
@@ -929,7 +947,7 @@ sayHiToFriend('Brian'); // alerts "Hi, Brian"
  * @class String
  * These functions are available as static methods on the JavaScript String object.
  */
-Ext.applyIf(String, {
+Ext2.applyIf(String, {
 
     /**
      * Escapes the passed string for ' and \
@@ -1023,7 +1041,7 @@ String.prototype.trim = function(){
 /**
  * @class Number
  */
-Ext.applyIf(Number.prototype, {
+Ext2.applyIf(Number.prototype, {
     /**
      * Checks whether or not the current number is within a desired range.  If the number is already within the
      * range it is returned, otherwise the min or max value is returned depending on which side of the range is
@@ -1039,7 +1057,7 @@ Ext.applyIf(Number.prototype, {
 /**
  * @class Array
  */
-Ext.applyIf(Array.prototype, {
+Ext2.applyIf(Array.prototype, {
     /**
      * Checks whether or not the specified object exists in the array.
      * @param {Object} o The object to check for

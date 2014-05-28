@@ -7,12 +7,12 @@
  */
 
 /**
- * @class Ext.dd.Registry
+ * @class Ext2.dd.Registry
  * Provides easy access to all drag drop components that are registered on a page.  Items can be retrieved either
  * directly by DOM node id, or by passing in the drag drop event that occurred and looking up the event target.
  * @singleton
  */
-Ext.dd.Registry = function(){
+Ext2.dd.Registry = function(){
     var elements = {}; 
     var handles = {}; 
     var autoIdSeed = 0;
@@ -100,7 +100,7 @@ isHandle   True if the element passed in triggers<br />
      * @return {Object} handle The custom handle data
      */
         getHandleFromEvent : function(e){
-            var t = Ext.lib.Event.getTarget(e);
+            var t = Ext2.lib.Event.getTarget(e);
             return t ? handles[t.id] : null;
         },
 
@@ -122,7 +122,7 @@ isHandle   True if the element passed in triggers<br />
      * @return {Object} data The custom data
      */
         getTargetFromEvent : function(e){
-            var t = Ext.lib.Event.getTarget(e);
+            var t = Ext2.lib.Event.getTarget(e);
             return t ? elements[t.id] || handles[t.id] : null;
         }
     };

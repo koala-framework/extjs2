@@ -153,28 +153,28 @@ Date.formatCodeToRegex = function(character, currentGroup) {
       Date.parseCodes[character] = p; // reassign function result to prevent repeated execution
     }
 
-    return p? Ext.applyIf({
+    return p? Ext2.applyIf({
       c: p.c? xf(p.c, currentGroup || "{0}") : p.c
     }, p) : {
         g:0,
         c:null,
-        s:Ext.escapeRe(character) // treat unrecognised characters as literals
+        s:Ext2.escapeRe(character) // treat unrecognised characters as literals
     }
 }
 
 // private shorthand for Date.formatCodeToRegex since we'll be using it fairly often
 var $f = Date.formatCodeToRegex;
 
-Ext.apply(Date, {
+Ext2.apply(Date, {
     /**
      * <p>An object hash in which each property is a date parsing function. The property name is the
      * format string which that function parses.</p>
      * <p>This object is automatically populated with date parsing functions as
-     * date formats are requested for Ext standard formatting strings.</p>
+     * date formats are requested for Ext2 standard formatting strings.</p>
      * <p>Custom parsing functions may be inserted into this object, keyed by a name which from then on
      * may be used as a format string to {@link #parseDate}.<p>
      * <p>Example:</p><code><pre>
-Date.parseFunctions['x-date-format'] = myDateParser;
+Date.parseFunctions['x2-date-format'] = myDateParser;
 </pre></code>
      * <p>A parsing function should return a Date object, and is passed the following parameters:<div class="mdetail-params"><ul>
      * <li><code>date</code> : String<div class="sub-desc">The date string to parse.</div></li>
@@ -203,10 +203,10 @@ Date.parseFunctions['x-date-format'] = myDateParser;
      * <p>An object hash in which each property is a date formatting function. The property name is the
      * format string which corresponds to the produced formatted date string.</p>
      * <p>This object is automatically populated with date formatting functions as
-     * date formats are requested for Ext standard formatting strings.</p>
+     * date formats are requested for Ext2 standard formatting strings.</p>
      * <p>Custom formatting functions may be inserted into this object, keyed by a name which from then on
      * may be used as a format string to {@link #format}. Example:</p><code><pre>
-Date.formatFunctions['x-date-format'] = myDateFormatter;
+Date.formatFunctions['x2-date-format'] = myDateFormatter;
 </pre></code>
      * <p>A formatting function should return a string repesentation of the passed Date object:<div class="mdetail-params"><ul>
      * <li><code>date</code> : Date<div class="sub-desc">The Date to format.</div></li>
@@ -614,16 +614,16 @@ dt = Date.parseDate("2006-02-29 03:20:01", "Y-m-d H:i:s", true); // returns null
                     // (note: clearTime() handles Daylight Saving Time automatically)
                     "dt = (new Date()).clearTime();",
 
-                    // date calculations (note: these calculations create a dependency on Ext.num())
-                    "y = y >= 0? y : Ext.num(def.y, dt.getFullYear());",
-                    "m = m >= 0? m : Ext.num(def.m - 1, dt.getMonth());",
-                    "d = d >= 0? d : Ext.num(def.d, dt.getDate());",
+                    // date calculations (note: these calculations create a dependency on Ext2.num())
+                    "y = y >= 0? y : Ext2.num(def.y, dt.getFullYear());",
+                    "m = m >= 0? m : Ext2.num(def.m - 1, dt.getMonth());",
+                    "d = d >= 0? d : Ext2.num(def.d, dt.getDate());",
 
-                    // time calculations (note: these calculations create a dependency on Ext.num())
-                    "h  = h || Ext.num(def.h, dt.getHours());",
-                    "i  = i || Ext.num(def.i, dt.getMinutes());",
-                    "s  = s || Ext.num(def.s, dt.getSeconds());",
-                    "ms = ms || Ext.num(def.ms, dt.getMilliseconds());",
+                    // time calculations (note: these calculations create a dependency on Ext2.num())
+                    "h  = h || Ext2.num(def.h, dt.getHours());",
+                    "i  = i || Ext2.num(def.i, dt.getMinutes());",
+                    "s  = s || Ext2.num(def.s, dt.getSeconds());",
+                    "ms = ms || Ext2.num(def.ms, dt.getMilliseconds());",
 
                     "if(z >= 0 && y >= 0){",
                         // both the year and zero-based day of year are defined and >= 0.
@@ -754,7 +754,7 @@ dt = Date.parseDate("2006-02-29 03:20:01", "Y-m-d H:i:s", true); // returns null
         },
         M: function() {
             for (var a = [], i = 0; i < 12; a.push(Date.getShortMonthName(i)), ++i); // get localised short month names
-            return Ext.applyIf({
+            return Ext2.applyIf({
                 s:"(" + a.join("|") + ")"
             }, $f("F"));
         },
@@ -926,7 +926,7 @@ dt = Date.parseDate("2006-02-29 03:20:01", "Y-m-d H:i:s", true); // returns null
 
 }());
 
-Ext.apply(Date.prototype, {
+Ext2.apply(Date.prototype, {
     // private
     dateFormat : function(format) {
         if (Date.formatFunctions[format] == null) {
@@ -1254,8 +1254,8 @@ Date.prototype.format = Date.prototype.dateFormat;
 
 
 // private
-if (Ext.isSafari && (navigator.userAgent.match(/WebKit\/(\d+)/)[1] || NaN) < 420) {
-    Ext.apply(Date.prototype, {
+if (Ext2.isSafari && (navigator.userAgent.match(/WebKit\/(\d+)/)[1] || NaN) < 420) {
+    Ext2.apply(Date.prototype, {
         _xMonth : Date.prototype.setMonth,
         _xDate  : Date.prototype.setDate,
 

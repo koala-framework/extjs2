@@ -6,32 +6,32 @@
  * http://extjs.com/license
  */
 
-.x-menu {
+.x2-menu {
 	border: 1px solid #718bb7;
 	z-index: 15000;
 	zoom: 1;
 	background: #f0f0f0 url(../images/default/menu/menu.gif) repeat-y;
 	padding: 2px;
 }
-.x-menu a {
+.x2-menu a {
     text-decoration: none !important;
 }
-.ext-ie .x-menu {
+.ext2-ie .x2-menu {
     zoom:1;
     overflow:hidden;
 }
-.x-menu-list{
+.x2-menu-list{
 	background:transparent;
 	border:0 none;
 }
-.x-menu li{
+.x2-menu li{
 	line-height:100%;
 }
-.x-menu li.x-menu-sep-li{
+.x2-menu li.x2-menu-sep-li{
 	font-size:1px;
 	line-height:1px;
 }
-.x-menu-list-item{
+.x2-menu-list-item{
 	font:normal 11px tahoma,arial, sans-serif;
     white-space: nowrap;
     -moz-user-select:none;
@@ -40,10 +40,10 @@
 	display:block;
 	padding:1px;
 }
-.x-menu-item-arrow{
+.x2-menu-item-arrow{
 	background:transparent url(../images/default/menu/menu-parent.gif) no-repeat right;
 }
-.x-menu-sep {
+.x2-menu-sep {
 	display:block;
 	font-size:1px;
 	line-height:1px;
@@ -52,7 +52,7 @@
 	border-bottom:1px solid #fff;
     overflow:hidden;
 }
-.x-menu-focus {
+.x2-menu-focus {
 	position:absolute;
 	left:-1px;
 	top:-1px;
@@ -68,7 +68,7 @@
     overflow:hidden;
     display:block;
 }
-.x-menu a.x-menu-item {
+.x2-menu a.x2-menu-item {
 	display:block;
 	line-height:16px;
 	padding:3px 21px 3px 27px;
@@ -80,16 +80,16 @@
 	cursor:pointer;
     position: relative; 
 }
-.x-menu-item-active {
+.x2-menu-item-active {
 	background: #ebf3fd url(../images/default/menu/item-over.gif) repeat-x left bottom;
 	border:1px solid #aaccf6;
 	padding: 0;
 }
-.x-menu-item-active a.x-menu-item {
+.x2-menu-item-active a.x2-menu-item {
     color: #233d6d;
 }
 
-.x-menu-item-icon {
+.x2-menu-item-icon {
 	border: 0 none;
 	height: 16px;
 	padding: 0;
@@ -102,57 +102,57 @@
     background-position:center;
 }
 
-.ext-ie .x-menu-item-icon {
+.ext2-ie .x2-menu-item-icon {
     left: -24px;
 }
-.ext-strict .x-menu-item-icon {
+.ext2-strict .x2-menu-item-icon {
     left: 3px;
 }
 
-.ext-ie6 .x-menu-item-icon {
+.ext2-ie6 .x2-menu-item-icon {
     left: -24px;
 }
 
-.x-menu-check-item .x-menu-item-icon{
+.x2-menu-check-item .x2-menu-item-icon{
 	background: transparent url(../images/default/menu/unchecked.gif) no-repeat center;
 }
 
-.x-menu-item-checked .x-menu-item-icon{
+.x2-menu-item-checked .x2-menu-item-icon{
 	background-image:url(../images/default/menu/checked.gif);
 }
-.x-menu-group-item .x-menu-item-icon{
+.x2-menu-group-item .x2-menu-item-icon{
 	background: transparent;
 }
 
-.x-menu-item-checked .x-menu-group-item .x-menu-item-icon{
+.x2-menu-item-checked .x2-menu-group-item .x2-menu-item-icon{
     background: transparent url(../images/default/menu/group-checked.gif) no-repeat center;
 }
 
-.x-menu-plain {
+.x2-menu-plain {
 	background:#fff !important;
 }
-.x-menu-date-item{
+.x2-menu-date-item{
 	padding:0;
 }
 
-.x-menu .x-color-palette, .x-menu .x-date-picker{
+.x2-menu .x2-color-palette, .x2-menu .x2-date-picker{
     margin-left: 26px;
 	 margin-right:4px;
 }
-.x-menu .x-date-picker{
+.x2-menu .x2-date-picker{
     border:1px solid #a3bad9;
     margin-top:2px;
     margin-bottom:2px;
 }
-.x-menu-plain .x-color-palette, .x-menu-plain .x-date-picker{
+.x2-menu-plain .x2-color-palette, .x2-menu-plain .x2-date-picker{
 	 margin: 0;
 	 border: 0 none;
 }
-.x-date-menu {
+.x2-date-menu {
    padding:0 !important;
 }
 
-.x-cycle-menu .x-menu-item-checked {
+.x2-cycle-menu .x2-menu-item-checked {
     border:1px dotted #a3bae9 !important;
     background:#DFE8F6;
 	padding:0;

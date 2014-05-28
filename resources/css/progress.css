@@ -6,16 +6,16 @@
  * http://extjs.com/license
  */
 
-.x-progress-wrap {
+.x2-progress-wrap {
     border:1px solid #6593cf;
     overflow:hidden;
 }
-.x-progress-inner {
+.x2-progress-inner {
     height:18px;
     background: #e0e8f3 url(../images/default/qtip/bg.gif) repeat-x;
     position:relative;
 }
-.x-progress-bar {
+.x2-progress-bar {
     height:18px;
     float:left;
     width:0;
@@ -24,7 +24,7 @@
     border-bottom:1px solid #7FA9E4;
     border-right:1px solid #7FA9E4;
 }
-.x-progress-text {
+.x2-progress-text {
     font-size:11px;
     font-weight:bold;
     color:#fff;
@@ -34,10 +34,10 @@
     left:0;
     text-align:center;
 }
-.x-progress-text-back {
+.x2-progress-text-back {
     color:#396095;
     line-height:16px;
 }
-.ext-ie .x-progress-text-back {
+.ext2-ie .x2-progress-text-back {
     line-height:15px;
 }

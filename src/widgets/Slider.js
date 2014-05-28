@@ -7,14 +7,14 @@
  */
 
 /**
- * @class Ext.Slider
- * @extends Ext.BoxComponent
+ * @class Ext2.Slider
+ * @extends Ext2.BoxComponent
  * Slider which supports vertical or horizontal orientation, keyboard adjustments, 
  * configurable snapping, axis clicking and animation. Can be added as an item to
  * any container. Example usage:
 <pre><code>
-new Ext.Slider({
-    renderTo: Ext.getBody(),
+new Ext2.Slider({
+    renderTo: Ext2.getBody(),
     width: 200,
     value: 50,
     increment: 10,
@@ -23,7 +23,7 @@ new Ext.Slider({
 });
 </code></pre>
  */
-Ext.Slider = Ext.extend(Ext.BoxComponent, {
+Ext2.Slider = Ext2.extend(Ext2.BoxComponent, {
 	/**
 	 * @cfg {Number} value The value to initialize the slider with. Defaults to minValue.
 	 */
@@ -69,14 +69,14 @@ Ext.Slider = Ext.extend(Ext.BoxComponent, {
         if(this.value === undefined){
             this.value = this.minValue;
         }
-        Ext.Slider.superclass.initComponent.call(this);
+        Ext2.Slider.superclass.initComponent.call(this);
         this.keyIncrement = Math.max(this.increment, this.keyIncrement); 
         this.addEvents(
             /**
              * @event beforechange
              * Fires before the slider value is changed. By returning false from an event handler, 
              * you can cancel the event and prevent the slider from changing.
-			 * @param {Ext.Slider} slider The slider
+			 * @param {Ext2.Slider} slider The slider
 			 * @param {Number} newValue The new value which the slider is being changed to.
 			 * @param {Number} oldValue The old value which the slider was previously.
              */		
@@ -84,52 +84,52 @@ Ext.Slider = Ext.extend(Ext.BoxComponent, {
 			/**
 			 * @event change
 			 * Fires when the slider value is changed.
-			 * @param {Ext.Slider} slider The slider
+			 * @param {Ext2.Slider} slider The slider
 			 * @param {Number} newValue The new value which the slider has been changed to.
 			 */
 			'change',
 			/**
 			 * @event changecomplete
 			 * Fires when the slider value is changed by the user and any drag operations have completed.
-			 * @param {Ext.Slider} slider The slider
+			 * @param {Ext2.Slider} slider The slider
 			 * @param {Number} newValue The new value which the slider has been changed to.
 			 */
 			'changecomplete',
 			/**
 			 * @event dragstart
              * Fires after a drag operation has started.
-			 * @param {Ext.Slider} slider The slider
-			 * @param {Ext.EventObject} e The event fired from Ext.dd.DragTracker
+			 * @param {Ext2.Slider} slider The slider
+			 * @param {Ext2.EventObject} e The event fired from Ext2.dd.DragTracker
 			 */
 			'dragstart', 
 			/**
 			 * @event drag
              * Fires continuously during the drag operation while the mouse is moving.
-			 * @param {Ext.Slider} slider The slider
-			 * @param {Ext.EventObject} e The event fired from Ext.dd.DragTracker
+			 * @param {Ext2.Slider} slider The slider
+			 * @param {Ext2.EventObject} e The event fired from Ext2.dd.DragTracker
 			 */
 			'drag', 
 			/**
 			 * @event dragend
              * Fires after the drag operation has completed.
-			 * @param {Ext.Slider} slider The slider
-			 * @param {Ext.EventObject} e The event fired from Ext.dd.DragTracker
+			 * @param {Ext2.Slider} slider The slider
+			 * @param {Ext2.EventObject} e The event fired from Ext2.dd.DragTracker
 			 */
 			'dragend'
 		);
 
         if(this.vertical){
-            Ext.apply(this, Ext.Slider.Vertical);
+            Ext2.apply(this, Ext2.Slider.Vertical);
         }
     },
 
 	// private override
     onRender : function(){
         this.autoEl = {
-            cls: 'x-slider ' + (this.vertical ? 'x-slider-vert' : 'x-slider-horz'),
-            cn:{cls:'x-slider-end',cn:{cls:'x-slider-inner',cn:[{cls:'x-slider-thumb'},{tag:'a', cls:'x-slider-focus', href:"#", tabIndex: '-1', hidefocus:'on'}]}}
+            cls: 'x2-slider ' + (this.vertical ? 'x2-slider-vert' : 'x2-slider-horz'),
+            cn:{cls:'x2-slider-end',cn:{cls:'x2-slider-inner',cn:[{cls:'x2-slider-thumb'},{tag:'a', cls:'x2-slider-focus', href:"#", tabIndex: '-1', hidefocus:'on'}]}}
         };
-        Ext.Slider.superclass.onRender.apply(this, arguments);
+        Ext2.Slider.superclass.onRender.apply(this, arguments);
         this.endEl = this.el.first();
         this.innerEl = this.endEl.first();
         this.thumb = this.innerEl.first();
@@ -140,13 +140,13 @@ Ext.Slider = Ext.extend(Ext.BoxComponent, {
 
 	// private override
     initEvents : function(){
-        this.thumb.addClassOnOver('x-slider-thumb-over');
+        this.thumb.addClassOnOver('x2-slider-thumb-over');
         this.el.on('mousedown', this.onMouseDown, this);
         this.el.on('keydown', this.onKeyDown, this);
 
         this.focusEl.swallowEvent("click", true);
 
-        this.tracker = new Ext.dd.DragTracker({
+        this.tracker = new Ext2.dd.DragTracker({
             onBeforeStart: this.onBeforeDragStart.createDelegate(this),
             onStart: this.onDragStart.createDelegate(this),
             onDrag: this.onDrag.createDelegate(this),
@@ -223,7 +223,7 @@ Ext.Slider = Ext.extend(Ext.BoxComponent, {
 	
 	// private
     afterRender : function(){
-        Ext.Slider.superclass.afterRender.apply(this, arguments);
+        Ext2.Slider.superclass.afterRender.apply(this, arguments);
         if(this.value !== undefined){
             var v = this.normalizeValue(this.value);
             if(v !== this.value){
@@ -303,7 +303,7 @@ Ext.Slider = Ext.extend(Ext.BoxComponent, {
 
 	// private
     onDragStart: function(e){
-        this.thumb.addClass('x-slider-thumb-drag');
+        this.thumb.addClass('x2-slider-thumb-drag');
         this.dragging = true;
         this.dragStartValue = this.value;
         this.fireEvent('dragstart', this, e);
@@ -318,7 +318,7 @@ Ext.Slider = Ext.extend(Ext.BoxComponent, {
 	
 	// private
     onDragEnd: function(e){
-        this.thumb.removeClass('x-slider-thumb-drag');
+        this.thumb.removeClass('x2-slider-thumb-drag');
         this.dragging = false;
         this.fireEvent('dragend', this, e);
         if(this.dragStartValue != this.value){
@@ -328,16 +328,16 @@ Ext.Slider = Ext.extend(Ext.BoxComponent, {
     
     //private
     onDisable: function(){
-        Ext.Slider.superclass.onDisable.call(this);
+        Ext2.Slider.superclass.onDisable.call(this);
         this.thumb.addClass(this.disabledClass);
-        if(Ext.isIE){
+        if(Ext2.isIE){
             //IE breaks when using overflow visible and opacity other than 1.
             //Create a place holder for the thumb and display it.
             var xy = this.thumb.getXY();
             this.thumb.hide();
             this.innerEl.addClass(this.disabledClass).dom.disabled = true;
             if (!this.thumbHolder){
-                this.thumbHolder = this.endEl.createChild({cls: 'x-slider-thumb ' + this.disabledClass});    
+                this.thumbHolder = this.endEl.createChild({cls: 'x2-slider-thumb ' + this.disabledClass});    
             }
             this.thumbHolder.show().setXY(xy);
         }
@@ -345,9 +345,9 @@ Ext.Slider = Ext.extend(Ext.BoxComponent, {
     
     //private
     onEnable: function(){
-        Ext.Slider.superclass.onEnable.call(this);
+        Ext2.Slider.superclass.onEnable.call(this);
         this.thumb.removeClass(this.disabledClass);
-        if(Ext.isIE){
+        if(Ext2.isIE){
             this.innerEl.removeClass(this.disabledClass).dom.disabled = false;
             if (this.thumbHolder){
                 this.thumbHolder.hide();
@@ -383,10 +383,10 @@ Ext.Slider = Ext.extend(Ext.BoxComponent, {
         return this.value;
     }
 });
-Ext.reg('slider', Ext.Slider);
+Ext2.reg('slider', Ext2.Slider);
 
 // private class to support vertical sliders
-Ext.Slider.Vertical = {
+Ext2.Slider.Vertical = {
     onResize : function(w, h){
         this.innerEl.setHeight(h - (this.el.getPadding('t') + this.endEl.getPadding('b')));
         this.syncThumb();

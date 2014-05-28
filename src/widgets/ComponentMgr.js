@@ -7,28 +7,28 @@
  */
 
 /**
- * @class Ext.ComponentMgr
- * <p>Provides a registry of all Components (instances of {@link Ext.Component} or any subclass
+ * @class Ext2.ComponentMgr
+ * <p>Provides a registry of all Components (instances of {@link Ext2.Component} or any subclass
  * thereof) on a page so that they can be easily accessed by component id (see {@link #get}, or
- * the convenience method {@link Ext#getCmp Ext.getCmp}).</p>
+ * the convenience method {@link Ext#getCmp Ext2.getCmp}).</p>
  * <p>This object also provides a registry of available Component <i>classes</i>
- * indexed by a mnemonic code known as the Component's {@link Ext.Component#xtype xtype}.
+ * indexed by a mnemonic code known as the Component's {@link Ext2.Component#xtype xtype}.
  * The <tt>xtype</tt> provides a way to avoid instantiating child Components
- * when creating a full, nested config object for a complete Ext page.</p>
+ * when creating a full, nested config object for a complete Ext2 page.</p>
  * <p>A child Component may be specified simply as a <i>config object</i>
  * as long as the correct xtype is specified so that if and when the Component
  * needs rendering, the correct type can be looked up for lazy instantiation.</p>
- * <p>For a list of all available xtypes, see {@link Ext.Component}.</p>
+ * <p>For a list of all available xtypes, see {@link Ext2.Component}.</p>
  * @singleton
  */
-Ext.ComponentMgr = function(){
-    var all = new Ext.util.MixedCollection();
+Ext2.ComponentMgr = function(){
+    var all = new Ext2.util.MixedCollection();
     var types = {};
 
     return {
         /**
          * Registers a component.
-         * @param {Ext.Component} c The component
+         * @param {Ext2.Component} c The component
          */
         register : function(c){
             all.add(c);
@@ -36,7 +36,7 @@ Ext.ComponentMgr = function(){
 
         /**
          * Unregisters a component.
-         * @param {Ext.Component} c The component
+         * @param {Ext2.Component} c The component
          */
         unregister : function(c){
             all.remove(c);
@@ -45,7 +45,7 @@ Ext.ComponentMgr = function(){
         /**
          * Returns a component by id
          * @param {String} id The component id
-         * @return Ext.Component
+         * @return Ext2.Component
          */
         get : function(id){
             return all.get(id);
@@ -75,10 +75,10 @@ Ext.ComponentMgr = function(){
 
         /**
          * <p>Registers a new Component constructor, keyed by a new
-         * {@link Ext.Component#xtype}.</p>
-         * <p>Use this method to register new subclasses of {@link Ext.Component} so
+         * {@link Ext2.Component#xtype}.</p>
+         * <p>Use this method to register new subclasses of {@link Ext2.Component} so
          * that lazy instantiation may be used when specifying child Components.
-         * see {@link Ext.Container#items}</p>
+         * see {@link Ext2.Container#items}</p>
          * @param {String} xtype The mnemonic string by which the Component class
          * may be looked up.
          * @param {Constructor} cls The new Component class.
@@ -90,11 +90,11 @@ Ext.ComponentMgr = function(){
 
         /**
          * Creates a new Component from the specified config object using the
-         * config object's {@link Ext.component#xtype xtype} to determine the class to instantiate.
+         * config object's {@link Ext2.component#xtype xtype} to determine the class to instantiate.
          * @param {Object} config A configuration object for the Component you wish to create.
          * @param {Constructor} defaultType The constructor to provide the default Component type if
          * the config object does not contain an xtype. (Optional if the config contains an xtype).
-         * @return {Ext.Component} The newly instantiated Component.
+         * @return {Ext2.Component} The newly instantiated Component.
          */
         create : function(config, defaultType){
             return new types[config.xtype || defaultType](config);
@@ -103,11 +103,11 @@ Ext.ComponentMgr = function(){
 }();
 
 /**
- * Shorthand for {@link Ext.ComponentMgr#registerType}
+ * Shorthand for {@link Ext2.ComponentMgr#registerType}
  * @param {String} xtype The mnemonic string by which the Component class
  * may be looked up.
  * @param {Constructor} cls The new Component class.
  * @member Ext
  * @method reg
  */
-Ext.reg = Ext.ComponentMgr.registerType; // this will be called a lot internally, shorthand to keep the bytes down
+Ext2.reg = Ext2.ComponentMgr.registerType; // this will be called a lot internally, shorthand to keep the bytes down

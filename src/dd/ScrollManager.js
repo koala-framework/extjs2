@@ -7,27 +7,27 @@
  */
 
 /**
- * @class Ext.dd.ScrollManager
+ * @class Ext2.dd.ScrollManager
  * <p>Provides automatic scrolling of overflow regions in the page during drag operations.</p>
  * <p>The ScrollManager configs will be used as the defaults for any scroll container registered with it,
  * but you can also override most of the configs per scroll container by adding a 
  * <tt>ddScrollConfig</tt> object to the target element that contains these properties: {@link #hthresh},
  * {@link #vthresh}, {@link #increment} and {@link #frequency}.  Example usage:
  * <pre><code>
-var el = Ext.get('scroll-ct');
+var el = Ext2.get('scroll-ct');
 el.ddScrollConfig = {
     vthresh: 50,
     hthresh: -1,
     frequency: 100,
     increment: 200
 };
-Ext.dd.ScrollManager.register(el);
+Ext2.dd.ScrollManager.register(el);
 </code></pre>
  * <b>Note: This class uses "Point Mode" and is untested in "Intersect Mode".</b>
  * @singleton
  */
-Ext.dd.ScrollManager = function(){
-    var ddm = Ext.dd.DragDropMgr;
+Ext2.dd.ScrollManager = function(){
+    var ddm = Ext2.dd.DragDropMgr;
     var els = {};
     var dragEl = null;
     var proc = {};
@@ -45,7 +45,7 @@ Ext.dd.ScrollManager = function(){
     
     var doScroll = function(){
         if(ddm.dragCurrent){
-            var dds = Ext.dd.ScrollManager;
+            var dds = Ext2.dd.ScrollManager;
             var inc = proc.el.ddScrollConfig ?
                       proc.el.ddScrollConfig.increment : dds.increment;
             if(!dds.animate){
@@ -72,21 +72,21 @@ Ext.dd.ScrollManager = function(){
         proc.el = el;
         proc.dir = dir;
         var freq = (el.ddScrollConfig && el.ddScrollConfig.frequency) ? 
-                el.ddScrollConfig.frequency : Ext.dd.ScrollManager.frequency;
+                el.ddScrollConfig.frequency : Ext2.dd.ScrollManager.frequency;
         proc.id = setInterval(doScroll, freq);
     };
     
     var onFire = function(e, isDrop){
         if(isDrop || !ddm.dragCurrent){ return; }
-        var dds = Ext.dd.ScrollManager;
+        var dds = Ext2.dd.ScrollManager;
         if(!dragEl || dragEl != ddm.dragCurrent){
             dragEl = ddm.dragCurrent;
             // refresh regions on drag start
             dds.refreshCache();
         }
         
-        var xy = Ext.lib.Event.getXY(e);
-        var pt = new Ext.lib.Point(xy[0], xy[1]);
+        var xy = Ext2.lib.Event.getXY(e);
+        var pt = new Ext2.lib.Point(xy[0], xy[1]);
         for(var id in els){
             var el = els[id], r = el._region;
             var c = el.ddScrollConfig ? el.ddScrollConfig : dds;
@@ -126,12 +126,12 @@ Ext.dd.ScrollManager = function(){
          * @param {Mixed/Array} el The id of or the element to be scrolled or an array of either
          */
         register : function(el){
-            if(Ext.isArray(el)){
+            if(Ext2.isArray(el)){
                 for(var i = 0, len = el.length; i < len; i++) {
                 	this.register(el[i]);
                 }
             }else{
-                el = Ext.get(el);
+                el = Ext2.get(el);
                 els[el.id] = el;
             }
         },
@@ -141,12 +141,12 @@ Ext.dd.ScrollManager = function(){
          * @param {Mixed/Array} el The id of or the element to be removed or an array of either
          */
         unregister : function(el){
-            if(Ext.isArray(el)){
+            if(Ext2.isArray(el)){
                 for(var i = 0, len = el.length; i < len; i++) {
                 	this.unregister(el[i]);
                 }
             }else{
-                el = Ext.get(el);
+                el = Ext2.get(el);
                 delete els[el.id];
             }
         },
@@ -184,7 +184,7 @@ Ext.dd.ScrollManager = function(){
         
         /**
          * The animation duration in seconds - 
-         * MUST BE less than Ext.dd.ScrollManager.frequency! (defaults to .4)
+         * MUST BE less than Ext2.dd.ScrollManager.frequency! (defaults to .4)
          * @type Number
          */
         animDuration: .4,

@@ -8,17 +8,17 @@
 
 
 /**
- * @class Ext.state.CookieProvider
- * @extends Ext.state.Provider
+ * @class Ext2.state.CookieProvider
+ * @extends Ext2.state.Provider
  * The default Provider implementation which saves state via cookies.
  * <br />Usage:
  <pre><code>
-   var cp = new Ext.state.CookieProvider({
+   var cp = new Ext2.state.CookieProvider({
        path: "/cgi-bin/",
        expires: new Date(new Date().getTime()+(1000*60*60*24*30)), //30 days
        domain: "extjs.com"
    });
-   Ext.state.Manager.setProvider(cp);
+   Ext2.state.Manager.setProvider(cp);
  </code></pre>
  * @cfg {String} path The path for which the cookie is active (defaults to root '/' which makes it active for all pages in the site)
  * @cfg {Date} expires The cookie expiration date (defaults to 7 days from now)
@@ -31,17 +31,17 @@
  * Create a new CookieProvider
  * @param {Object} config The configuration object
  */
-Ext.state.CookieProvider = function(config){
-    Ext.state.CookieProvider.superclass.constructor.call(this);
+Ext2.state.CookieProvider = function(config){
+    Ext2.state.CookieProvider.superclass.constructor.call(this);
     this.path = "/";
     this.expires = new Date(new Date().getTime()+(1000*60*60*24*7)); //7 days
     this.domain = null;
     this.secure = false;
-    Ext.apply(this, config);
+    Ext2.apply(this, config);
     this.state = this.readCookies();
 };
 
-Ext.extend(Ext.state.CookieProvider, Ext.state.Provider, {
+Ext2.extend(Ext2.state.CookieProvider, Ext2.state.Provider, {
     // private
     set : function(name, value){
         if(typeof value == "undefined" || value === null){
@@ -49,13 +49,13 @@ Ext.extend(Ext.state.CookieProvider, Ext.state.Provider, {
             return;
         }
         this.setCookie(name, value);
-        Ext.state.CookieProvider.superclass.set.call(this, name, value);
+        Ext2.state.CookieProvider.superclass.set.call(this, name, value);
     },
 
     // private
     clear : function(name){
         this.clearCookie(name);
-        Ext.state.CookieProvider.superclass.clear.call(this, name);
+        Ext2.state.CookieProvider.superclass.clear.call(this, name);
     },
 
     // private

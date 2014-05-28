@@ -6,32 +6,32 @@
  * http://extjs.com/license
  */
 
-#x-debug-browser .x-tree .x-tree-node a span {
+#x-debug-browser .x2-tree .x2-tree-node a span {
     color:#222297;
     font-size:11px;
     padding-top:2px;
     font-family:"monotype","courier new",sans-serif;
     line-height:18px;
 }
-#x-debug-browser .x-tree a i {
+#x-debug-browser .x2-tree a i {
     color:#FF4545;
     font-style:normal;
 }
-#x-debug-browser .x-tree a em {
+#x-debug-browser .x2-tree a em {
     color:#999;
 }
-#x-debug-browser .x-tree .x-tree-node .x-tree-selected a span{
+#x-debug-browser .x2-tree .x2-tree-node .x2-tree-selected a span{
     background:#c3daf9;
 }
-#x-debug-browser  .x-tool-toggle {
+#x-debug-browser  .x2-tool-toggle {
     background-position:0 -75px;
 }
-#x-debug-browser  .x-tool-toggle-over {
+#x-debug-browser  .x2-tool-toggle-over {
     background-position:-15px -75px;
 }
-#x-debug-browser.x-panel-collapsed .x-tool-toggle {
+#x-debug-browser.x2-panel-collapsed .x2-tool-toggle {
     background-position:0 -60px;
 }
-#x-debug-browser.x-panel-collapsed .x-tool-toggle-over {
+#x-debug-browser.x2-panel-collapsed .x2-tool-toggle-over {
     background-position:-15px -60px;
 }

@@ -6,12 +6,12 @@
  * http://extjs.com/license
  */
 
-Ext.tree.TreeEventModel = function(tree){
+Ext2.tree.TreeEventModel = function(tree){
     this.tree = tree;
     this.tree.on('render', this.initEvents, this);
 }
 
-Ext.tree.TreeEventModel.prototype = {
+Ext2.tree.TreeEventModel.prototype = {
     initEvents : function(){
         var el = this.tree.getTreeEl();
         el.on('click', this.delegateClick, this);
@@ -25,8 +25,8 @@ Ext.tree.TreeEventModel.prototype = {
 
     getNode : function(e){
         var t;
-        if(t = e.getTarget('.x-tree-node-el', 10)){
-            var id = Ext.fly(t, '_treeEvents').getAttributeNS('ext', 'tree-node-id');
+        if(t = e.getTarget('.x2-tree-node-el', 10)){
+            var id = Ext2.fly(t, '_treeEvents').getAttributeNS('ext', 'tree-node-id');
             if(id){
                 return this.tree.getNodeById(id);
             }
@@ -35,9 +35,9 @@ Ext.tree.TreeEventModel.prototype = {
     },
 
     getNodeTarget : function(e){
-        var t = e.getTarget('.x-tree-node-icon', 1);
+        var t = e.getTarget('.x2-tree-node-icon', 1);
         if(!t){
-            t = e.getTarget('.x-tree-node-el', 6);
+            t = e.getTarget('.x2-tree-node-el', 6);
         }
         return t;
     },
@@ -46,7 +46,7 @@ Ext.tree.TreeEventModel.prototype = {
         if(!this.beforeEvent(e)){
             return;
         }
-        if(e.getTarget('.x-tree-ec-icon', 1)){
+        if(e.getTarget('.x2-tree-ec-icon', 1)){
             var n = this.getNode(e);
             this.onIconOut(e, n);
             if(n == this.lastEcOver){
@@ -66,7 +66,7 @@ Ext.tree.TreeEventModel.prototype = {
             this.onIconOut(e, this.lastEcOver);
             delete this.lastEcOver;
         }
-        if(e.getTarget('.x-tree-ec-icon', 1)){
+        if(e.getTarget('.x2-tree-ec-icon', 1)){
             this.lastEcOver = this.getNode(e);
             this.onIconOver(e, this.lastEcOver);
         }
@@ -83,7 +83,7 @@ Ext.tree.TreeEventModel.prototype = {
         if(e.getTarget('input[type=checkbox]', 1)){
             this.onCheckboxClick(e, this.getNode(e));
         }
-        else if(e.getTarget('.x-tree-ec-icon', 1)){
+        else if(e.getTarget('.x2-tree-ec-icon', 1)){
             this.onIconClick(e, this.getNode(e));
         }
         else if(this.getNodeTarget(e)){
@@ -116,11 +116,11 @@ Ext.tree.TreeEventModel.prototype = {
     },
 
     onIconOver : function(e, node){
-        node.ui.addClass('x-tree-ec-over');
+        node.ui.addClass('x2-tree-ec-over');
     },
 
     onIconOut : function(e, node){
-        node.ui.removeClass('x-tree-ec-over');
+        node.ui.removeClass('x2-tree-ec-over');
     },
 
     onIconClick : function(e, node){

@@ -7,35 +7,35 @@
  */
 
 /**
- * @class Ext.menu.BaseItem
- * @extends Ext.Component
+ * @class Ext2.menu.BaseItem
+ * @extends Ext2.Component
  * The base class for all items that render into menus.  BaseItem provides default rendering, activated state
  * management and base configuration options shared by all menu components.
  * @constructor
  * Creates a new BaseItem
  * @param {Object} config Configuration options
  */
-Ext.menu.BaseItem = function(config){
-    Ext.menu.BaseItem.superclass.constructor.call(this, config);
+Ext2.menu.BaseItem = function(config){
+    Ext2.menu.BaseItem.superclass.constructor.call(this, config);
 
     this.addEvents(
         /**
          * @event click
          * Fires when this item is clicked
-         * @param {Ext.menu.BaseItem} this
-         * @param {Ext.EventObject} e
+         * @param {Ext2.menu.BaseItem} this
+         * @param {Ext2.EventObject} e
          */
         'click',
         /**
          * @event activate
          * Fires when this item is activated
-         * @param {Ext.menu.BaseItem} this
+         * @param {Ext2.menu.BaseItem} this
          */
         'activate',
         /**
          * @event deactivate
          * Fires when this item is deactivated
-         * @param {Ext.menu.BaseItem} this
+         * @param {Ext2.menu.BaseItem} this
          */
         'deactivate'
     );
@@ -45,7 +45,7 @@ Ext.menu.BaseItem = function(config){
     }
 };
 
-Ext.extend(Ext.menu.BaseItem, Ext.Component, {
+Ext2.extend(Ext2.menu.BaseItem, Ext2.Component, {
     /**
      * @cfg {Function} handler
      * A function that will handle the click event of this menu item (optional).
@@ -63,9 +63,9 @@ Ext.extend(Ext.menu.BaseItem, Ext.Component, {
      */
     canActivate : false,
     /**
-     * @cfg {String} activeClass The CSS class to use when the item becomes activated (defaults to "x-menu-item-active")
+     * @cfg {String} activeClass The CSS class to use when the item becomes activated (defaults to "x2-menu-item-active")
      */
-    activeClass : "x-menu-item-active",
+    activeClass : "x2-menu-item-active",
     /**
      * @cfg {Boolean} hideOnClick True to hide the containing menu after this item is clicked (defaults to true)
      */
@@ -76,7 +76,7 @@ Ext.extend(Ext.menu.BaseItem, Ext.Component, {
     hideDelay : 100,
 
     // private
-    ctype: "Ext.menu.BaseItem",
+    ctype: "Ext2.menu.BaseItem",
 
     // private
     actionMode : "container",
@@ -89,7 +89,7 @@ Ext.extend(Ext.menu.BaseItem, Ext.Component, {
         if (this.menu) {
             this.menu.destroy();
         }
-        Ext.menu.BaseItem.superclass.destroy.call(this);
+        Ext2.menu.BaseItem.superclass.destroy.call(this);
     },
 
     // private
@@ -97,16 +97,16 @@ Ext.extend(Ext.menu.BaseItem, Ext.Component, {
         /**
          * The parent Menu of this Item.
          * @property parentMenu
-         * @type Ext.menu.Menu
+         * @type Ext2.menu.Menu
          */
         this.parentMenu = parentMenu;
-        Ext.menu.BaseItem.superclass.render.call(this, container);
+        Ext2.menu.BaseItem.superclass.render.call(this, container);
         this.container.menuItemId = this.id;
     },
 
     // private
     onRender : function(container, position){
-        this.el = Ext.get(this.el);
+        this.el = Ext2.get(this.el);
         if(this.id){
             this.el.id = this.id;
         }

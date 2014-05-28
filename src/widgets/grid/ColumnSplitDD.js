@@ -8,20 +8,20 @@
 
 // private
 // This is a support class used internally by the Grid components
-Ext.grid.SplitDragZone = function(grid, hd, hd2){
+Ext2.grid.SplitDragZone = function(grid, hd, hd2){
     this.grid = grid;
     this.view = grid.getView();
     this.proxy = this.view.resizeProxy;
-    Ext.grid.SplitDragZone.superclass.constructor.call(this, hd,
+    Ext2.grid.SplitDragZone.superclass.constructor.call(this, hd,
         "gridSplitters" + this.grid.getGridEl().id, {
-        dragElId : Ext.id(this.proxy.dom), resizeFrame:false
+        dragElId : Ext2.id(this.proxy.dom), resizeFrame:false
     });
-    this.setHandleElId(Ext.id(hd));
-    this.setOuterHandleElId(Ext.id(hd2));
+    this.setHandleElId(Ext2.id(hd));
+    this.setOuterHandleElId(Ext2.id(hd2));
     this.scroll = false;
 };
-Ext.extend(Ext.grid.SplitDragZone, Ext.dd.DDProxy, {
-    fly: Ext.Element.fly,
+Ext2.extend(Ext2.grid.SplitDragZone, Ext2.dd.DDProxy, {
+    fly: Ext2.Element.fly,
 
     b4StartDrag : function(x, y){
         this.view.headersDisabled = true;
@@ -34,26 +34,26 @@ Ext.extend(Ext.grid.SplitDragZone, Ext.dd.DDProxy, {
         this.minX = x - minw;
         this.maxX = x + 1000;
         this.startPos = x;
-        Ext.dd.DDProxy.prototype.b4StartDrag.call(this, x, y);
+        Ext2.dd.DDProxy.prototype.b4StartDrag.call(this, x, y);
     },
 
 
     handleMouseDown : function(e){
-        ev = Ext.EventObject.setEvent(e);
+        ev = Ext2.EventObject.setEvent(e);
         var t = this.fly(ev.getTarget());
-        if(t.hasClass("x-grid-split")){
+        if(t.hasClass("x2-grid-split")){
             this.cellIndex = this.view.getCellIndex(t.dom);
             this.split = t.dom;
             this.cm = this.grid.colModel;
             if(this.cm.isResizable(this.cellIndex) && !this.cm.isFixed(this.cellIndex)){
-                Ext.grid.SplitDragZone.superclass.handleMouseDown.apply(this, arguments);
+                Ext2.grid.SplitDragZone.superclass.handleMouseDown.apply(this, arguments);
             }
         }
     },
 
     endDrag : function(e){
         this.view.headersDisabled = false;
-        var endX = Math.max(this.minX, Ext.lib.Event.getPageX(e));
+        var endX = Math.max(this.minX, Ext2.lib.Event.getPageX(e));
         var diff = endX - this.startPos;
         this.view.onColumnSplitterMoved(this.cellIndex, this.cm.getColumnWidth(this.cellIndex)+diff);
     },

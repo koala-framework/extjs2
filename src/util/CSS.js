@@ -7,11 +7,11 @@
  */
 
 /**
- * @class Ext.util.CSS
+ * @class Ext2.util.CSS
  * Utility class for manipulating CSS rules
  * @singleton
  */
-Ext.util.CSS = function(){
+Ext2.util.CSS = function(){
 	var rules = null;
    	var doc = document;
 
@@ -34,7 +34,7 @@ Ext.util.CSS = function(){
        if(id){
            rules.setAttribute("id", id);
        }
-       if(Ext.isIE){
+       if(Ext2.isIE){
            head.appendChild(rules);
            ss = rules.styleSheet;
            ss.cssText = cssText;
@@ -124,7 +124,7 @@ Ext.util.CSS = function(){
     */
    getRule : function(selector, refreshCache){
    		var rs = this.getRules(refreshCache);
-   		if(!Ext.isArray(selector)){
+   		if(!Ext2.isArray(selector)){
    		    return rs[selector];
    		}
    		for(var i = 0; i < selector.length; i++){
@@ -144,7 +144,7 @@ Ext.util.CSS = function(){
     * @return {Boolean} true If a rule was found and updated
     */
    updateRule : function(selector, property, value){
-   		if(!Ext.isArray(selector)){
+   		if(!Ext2.isArray(selector)){
    			var rule = this.getRule(selector);
    			if(rule){
    				rule.style[property.replace(camelRe, camelFn)] = value;

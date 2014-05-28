@@ -10,7 +10,7 @@
 
 var libFlyweight;
 
-Ext.lib.Dom = {
+Ext2.lib.Dom = {
     getViewWidth : function(full){
         return full ? this.getDocumentWidth() : this.getViewportWidth();
     },
@@ -33,7 +33,7 @@ Ext.lib.Dom = {
         var height = self.innerHeight;
         var mode = document.compatMode;
 
-        if ( (mode || Ext.isIE) && !Ext.isOpera ) {
+        if ( (mode || Ext2.isIE) && !Ext2.isOpera ) {
             height = (mode == "CSS1Compat") ?
                     document.documentElement.clientHeight : // Standards
                     document.body.clientHeight; // Quirks
@@ -46,7 +46,7 @@ Ext.lib.Dom = {
         var width = self.innerWidth;  // Safari
         var mode = document.compatMode;
 
-        if (mode || Ext.isIE) { // IE, Gecko, Opera
+        if (mode || Ext2.isIE) { // IE, Gecko, Opera
             width = (mode == "CSS1Compat") ?
                     document.documentElement.clientWidth : // Standards
                     document.body.clientWidth; // Quirks
@@ -55,11 +55,11 @@ Ext.lib.Dom = {
     },
 
     isAncestor : function(p, c){ // missing from prototype?
-        p = Ext.getDom(p);
-        c = Ext.getDom(c);
+        p = Ext2.getDom(p);
+        c = Ext2.getDom(c);
         if (!p || !c) {return false;}
 
-        if(p.contains && !Ext.isWebKit) {
+        if(p.contains && !Ext2.isWebKit) {
             return p.contains(c);
         }else if(p.compareDocumentPosition) {
             return !!(p.compareDocumentPosition(c) & 16);
@@ -79,7 +79,7 @@ Ext.lib.Dom = {
     },
 
     getRegion : function(el){
-        return Ext.lib.Region.getRegion(el);
+        return Ext2.lib.Region.getRegion(el);
     },
 
     getY : function(el){
@@ -92,7 +92,7 @@ Ext.lib.Dom = {
 
     getXY : function(el){ // this initially used Position.cumulativeOffset but it is not accurate enough
         var p, pe, b, scroll, bd = (document.body || document.documentElement);
-        el = Ext.getDom(el);
+        el = Ext2.getDom(el);
 
         if(el == bd){
             return [0, 0];
@@ -118,7 +118,7 @@ Ext.lib.Dom = {
                 hasAbsolute = true;
             }
 
-            if (Ext.isGecko) {
+            if (Ext2.isGecko) {
                 pe = fly(p);
 
                 var bt = parseInt(pe.getStyle("borderTopWidth"), 10) || 0;
@@ -137,12 +137,12 @@ Ext.lib.Dom = {
             p = p.offsetParent;
         }
 
-        if (Ext.isWebKit && hasAbsolute) {
+        if (Ext2.isWebKit && hasAbsolute) {
             x -= bd.offsetLeft;
             y -= bd.offsetTop;
         }
 
-        if (Ext.isGecko && !hasAbsolute) {
+        if (Ext2.isGecko && !hasAbsolute) {
             var dbd = fly(bd);
             x += parseInt(dbd.getStyle("borderLeftWidth"), 10) || 0;
             y += parseInt(dbd.getStyle("borderTopWidth"), 10) || 0;
@@ -150,7 +150,7 @@ Ext.lib.Dom = {
 
         p = el.parentNode;
         while (p && p != bd) {
-            if (!Ext.isOpera || (p.tagName != 'TR' && fly(p).getStyle("display") != "inline")) {
+            if (!Ext2.isOpera || (p.tagName != 'TR' && fly(p).getStyle("display") != "inline")) {
                 x -= p.scrollLeft;
                 y -= p.scrollTop;
             }
@@ -160,7 +160,7 @@ Ext.lib.Dom = {
     },
 
     setXY : function(el, xy){ // this initially used Position.cumulativeOffset but it is not accurate enough
-        el = Ext.fly(el, '_setXY');
+        el = Ext2.fly(el, '_setXY');
         el.position();
         var pts = el.translatePoints(xy);
         if(xy[0] !== false){
@@ -180,7 +180,7 @@ Ext.lib.Dom = {
     }
 };
 
-Ext.lib.Event = {
+Ext2.lib.Event = {
     getPageX : function(e){
         return Event.pointerX(e.browserEvent || e);
     },
@@ -270,7 +270,7 @@ Ext.lib.Event = {
     }
 };
 
-Ext.lib.Ajax = function(){
+Ext2.lib.Ajax = function(){
     var createSuccess = function(cb){
          return cb.success ? function(xhr){
             cb.success.call(cb.scope||window, {
@@ -278,7 +278,7 @@ Ext.lib.Ajax = function(){
                 responseXML : xhr.responseXML,
                 argument: cb.argument
             });
-         } : Ext.emptyFn;
+         } : Ext2.emptyFn;
     };
     var createFailure = function(cb){
          return cb.failure ? function(xhr){
@@ -287,7 +287,7 @@ Ext.lib.Ajax = function(){
                 responseXML : xhr.responseXML,
                 argument: cb.argument
             });
-         } : Ext.emptyFn;
+         } : Ext2.emptyFn;
     };
     return {
         request : function(method, uri, cb, data, options){
@@ -316,7 +316,7 @@ Ext.lib.Ajax = function(){
                     if (!hs || !hs['Content-Type']){
                         o.contentType = 'application/json';
                     }
-                    o.postBody = typeof options.jsonData == 'object' ? Ext.encode(options.jsonData) : options.jsonData;
+                    o.postBody = typeof options.jsonData == 'object' ? Ext2.encode(options.jsonData) : options.jsonData;
                     delete o.parameters;
                 }
             }
@@ -325,7 +325,7 @@ Ext.lib.Ajax = function(){
 
         formRequest : function(form, uri, cb, data, isUpload, sslUri){
             new Ajax.Request(uri, {
-                method: Ext.getDom(form).method ||'POST',
+                method: Ext2.getDom(form).method ||'POST',
                 parameters: Form.serialize(form)+(data?'&'+data:''),
                 timeout: cb.timeout,
                 onSuccess: createSuccess(cb),
@@ -348,7 +348,7 @@ Ext.lib.Ajax = function(){
 }();
 
 
-Ext.lib.Anim = function(){
+Ext2.lib.Anim = function(){
     
     var easings = {
         easeOut: function(pos) {
@@ -369,7 +369,7 @@ Ext.lib.Anim = function(){
             },
 
             proxyCallback : function(){
-                Ext.callback(cb, scope);
+                Ext2.callback(cb, scope);
             }
         };
     };
@@ -377,7 +377,7 @@ Ext.lib.Anim = function(){
         scroll : function(el, args, duration, easing, cb, scope){
             // not supported so scroll immediately?
             var anim = createAnim(cb, scope);
-            el = Ext.getDom(el);
+            el = Ext2.getDom(el);
             if(typeof args.scroll.to[0] == 'number'){
                 el.scrollLeft = args.scroll.to[0];
             }
@@ -401,7 +401,7 @@ Ext.lib.Anim = function(){
             for(var k in args){
                 switch(k){   // scriptaculous doesn't support, so convert these
                     case 'points':
-                        var by, pts, e = Ext.fly(el, '_animrun');
+                        var by, pts, e = Ext2.fly(el, '_animrun');
                         e.position();
                         if(by = args.points.by){
                             var xy = e.getXY();
@@ -427,7 +427,7 @@ Ext.lib.Anim = function(){
                 }
             }
             var anim = createAnim(cb, scope);
-            anim.effect = new Effect.Morph(Ext.id(el), {
+            anim.effect = new Effect.Morph(Ext2.id(el), {
                 duration: duration,
                 afterFinish: anim.proxyCallback,
                 transition: easings[easing] || Effect.Transitions.linear,
@@ -442,13 +442,13 @@ Ext.lib.Anim = function(){
 // all lib flyweight calls use their own flyweight to prevent collisions with developer flyweights
 function fly(el){
     if(!libFlyweight){
-        libFlyweight = new Ext.Element.Flyweight();
+        libFlyweight = new Ext2.Element.Flyweight();
     }
     libFlyweight.dom = el;
     return libFlyweight;
 }
     
-Ext.lib.Region = function(t, r, b, l) {
+Ext2.lib.Region = function(t, r, b, l) {
     this.top = t;
     this[1] = t;
     this.right = r;
@@ -457,7 +457,7 @@ Ext.lib.Region = function(t, r, b, l) {
     this[0] = l;
 };
 
-Ext.lib.Region.prototype = {
+Ext2.lib.Region.prototype = {
     contains : function(region) {
         return ( region.left   >= this.left   &&
                  region.right  <= this.right  &&
@@ -477,7 +477,7 @@ Ext.lib.Region.prototype = {
         var l = Math.max( this.left,   region.left   );
 
         if (b >= t && r >= l) {
-            return new Ext.lib.Region(t, r, b, l);
+            return new Ext2.lib.Region(t, r, b, l);
         } else {
             return null;
         }
@@ -488,7 +488,7 @@ Ext.lib.Region.prototype = {
         var b = Math.max( this.bottom, region.bottom );
         var l = Math.min( this.left,   region.left   );
 
-        return new Ext.lib.Region(t, r, b, l);
+        return new Ext2.lib.Region(t, r, b, l);
     },
 
     constrainTo : function(r) {
@@ -508,19 +508,19 @@ Ext.lib.Region.prototype = {
     }
 };
 
-Ext.lib.Region.getRegion = function(el) {
-    var p = Ext.lib.Dom.getXY(el);
+Ext2.lib.Region.getRegion = function(el) {
+    var p = Ext2.lib.Dom.getXY(el);
 
     var t = p[1];
     var r = p[0] + el.offsetWidth;
     var b = p[1] + el.offsetHeight;
     var l = p[0];
 
-    return new Ext.lib.Region(t, r, b, l);
+    return new Ext2.lib.Region(t, r, b, l);
 };
 
-Ext.lib.Point = function(x, y) {
-   if (Ext.isArray(x)) {
+Ext2.lib.Point = function(x, y) {
+   if (Ext2.isArray(x)) {
       y = x[1];
       x = x[0];
    }
@@ -528,11 +528,11 @@ Ext.lib.Point = function(x, y) {
     this.y = this.top = this.bottom = this[1] = y;
 };
 
-Ext.lib.Point.prototype = new Ext.lib.Region();
+Ext2.lib.Point.prototype = new Ext2.lib.Region();
 
 
 // prevent IE leaks
-if(Ext.isIE) {
+if(Ext2.isIE) {
     function fnCleanUp() {
         var p = Function.prototype;
         delete p.createSequence;

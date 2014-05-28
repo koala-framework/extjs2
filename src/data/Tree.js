@@ -7,14 +7,14 @@
  */
 
 /**
- * @class Ext.data.Tree
- * @extends Ext.util.Observable
+ * @class Ext2.data.Tree
+ * @extends Ext2.util.Observable
  * Represents a tree data structure and bubbles all the events for its nodes. The nodes
  * in the tree have most standard DOM functionality.
  * @constructor
  * @param {Node} root (optional) The root node
  */
-Ext.data.Tree = function(root){
+Ext2.data.Tree = function(root){
    this.nodeHash = {};
    /**
     * The root node for this tree
@@ -98,10 +98,10 @@ Ext.data.Tree = function(root){
        "beforeinsert"
    );
 
-    Ext.data.Tree.superclass.constructor.call(this);
+    Ext2.data.Tree.superclass.constructor.call(this);
 };
 
-Ext.extend(Ext.data.Tree, Ext.util.Observable, {
+Ext2.extend(Ext2.data.Tree, Ext2.util.Observable, {
     /**
      * @cfg {String} pathSeparator
      * The token used to separate paths in node ids (defaults to '/').
@@ -159,14 +159,14 @@ Ext.extend(Ext.data.Tree, Ext.util.Observable, {
 });
 
 /**
- * @class Ext.data.Node
- * @extends Ext.util.Observable
+ * @class Ext2.data.Node
+ * @extends Ext2.util.Observable
  * @cfg {Boolean} leaf true if this node is a leaf and does not have children
  * @cfg {String} id The id for this node. If one is not specified, one is generated.
  * @constructor
  * @param {Object} attributes The attributes/config for the node
  */
-Ext.data.Node = function(attributes){
+Ext2.data.Node = function(attributes){
     /**
      * The attributes supplied for the node. You can use this property to access any custom attributes you supplied.
      * @type {Object}
@@ -178,7 +178,7 @@ Ext.data.Node = function(attributes){
      */
     this.id = this.attributes.id;
     if(!this.id){
-        this.id = Ext.id(null, "ynode-");
+        this.id = Ext2.id(null, "ynode-");
         this.attributes.id = this.id;
     }
     /**
@@ -288,14 +288,14 @@ Ext.data.Node = function(attributes){
        "beforeinsert" : true
    });
     this.listeners = this.attributes.listeners;
-    Ext.data.Node.superclass.constructor.call(this);
+    Ext2.data.Node.superclass.constructor.call(this);
 };
 
-Ext.extend(Ext.data.Node, Ext.util.Observable, {
+Ext2.extend(Ext2.data.Node, Ext2.util.Observable, {
     // private
     fireEvent : function(evtName){
         // first do standard event for this node
-        if(Ext.data.Node.superclass.fireEvent.apply(this, arguments) === false){
+        if(Ext2.data.Node.superclass.fireEvent.apply(this, arguments) === false){
             return false;
         }
         // then bubble it up to the tree if the event wasn't cancelled
@@ -367,7 +367,7 @@ Ext.extend(Ext.data.Node, Ext.util.Observable, {
      */
     appendChild : function(node){
         var multi = false;
-        if(Ext.isArray(node)){
+        if(Ext2.isArray(node)){
             multi = node;
         }else if(arguments.length > 1){
             multi = arguments;

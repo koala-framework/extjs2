@@ -7,11 +7,11 @@
  */
 
 /**
- * @class Ext.DomHelper
+ * @class Ext2.DomHelper
  * Utility class for working with DOM and/or Templates. It transparently supports using HTML fragments or DOM.<br>
  * This is an example, where an unordered list with 5 children items is appended to an existing element with id 'my-div':<br>
  <pre><code>
-var dh = Ext.DomHelper;
+var dh = Ext2.DomHelper;
 var list = dh.append('my-div', {
     id: 'my-ul', tag: 'ul', cls: 'my-list', children: [
         {tag: 'li', id: 'item0', html: 'List Item 0'},
@@ -34,7 +34,7 @@ dh.append('my-ul', [
  * For more information and examples, see <a href="http://extjs.com/learn/Tutorial:DomHelper_Blog/">the ExtJs tutorial page</a>.
  * @singleton
  */
-Ext.DomHelper = function(){
+Ext2.DomHelper = function(){
     var tempTableEl = null;
     var emptyTags = /^(?:br|frame|hr|img|input|link|meta|range|spacer|wbr|area|param|col)$/i;
     var tableRe = /^table|tbody|tr|td$/i;
@@ -45,7 +45,7 @@ Ext.DomHelper = function(){
             return o;
         }
         var b = "";
-        if (Ext.isArray(o)) {
+        if (Ext2.isArray(o)) {
             for (var i = 0, l = o.length; i < l; i++) {
                 b += createHtml(o[i]);
             }
@@ -102,7 +102,7 @@ Ext.DomHelper = function(){
     /** @ignore */
     var createDom = function(o, parentNode){
         var el;
-        if (Ext.isArray(o)) {                       // Allow Arrays of siblings to be inserted
+        if (Ext2.isArray(o)) {                       // Allow Arrays of siblings to be inserted
             el = document.createDocumentFragment(); // in one shot using a DocumentFragment
             for(var i = 0, l = o.length; i < l; i++) {
                 createDom(o[i], el);
@@ -121,7 +121,7 @@ Ext.DomHelper = function(){
                     else el[attr] = o[attr];
                 }
             }
-            Ext.DomHelper.applyStyles(el, o.style);
+            Ext2.DomHelper.applyStyles(el, o.style);
             var cn = o.children || o.cn;
             if(cn){
                 createDom(cn, el);
@@ -240,7 +240,7 @@ Ext.DomHelper = function(){
      */
     applyStyles : function(el, styles){
         if(styles){
-           el = Ext.fly(el);
+           el = Ext2.fly(el);
            if(typeof styles == "string"){
                var re = /\s?([a-z\-]*)\:\s?([^;]*);?/gi;
                var matches;
@@ -252,7 +252,7 @@ Ext.DomHelper = function(){
                   el.setStyle(style, styles[style]);
                }
            }else if (typeof styles == "function"){
-                Ext.DomHelper.applyStyles(el, styles.call());
+                Ext2.DomHelper.applyStyles(el, styles.call());
            }
         }
     },
@@ -330,8 +330,8 @@ Ext.DomHelper = function(){
      * Creates new DOM element(s) and inserts them before el.
      * @param {Mixed} el The context element
      * @param {Object/String} o The DOM object spec (and children) or raw HTML blob
-     * @param {Boolean} returnElement (optional) true to return a Ext.Element
-     * @return {HTMLElement/Ext.Element} The new node
+     * @param {Boolean} returnElement (optional) true to return a Ext2.Element
+     * @return {HTMLElement/Ext2.Element} The new node
      */
     insertBefore : function(el, o, returnElement){
         return this.doInsert(el, o, returnElement, "beforeBegin");
@@ -341,8 +341,8 @@ Ext.DomHelper = function(){
      * Creates new DOM element(s) and inserts them after el.
      * @param {Mixed} el The context element
      * @param {Object} o The DOM object spec (and children)
-     * @param {Boolean} returnElement (optional) true to return a Ext.Element
-     * @return {HTMLElement/Ext.Element} The new node
+     * @param {Boolean} returnElement (optional) true to return a Ext2.Element
+     * @return {HTMLElement/Ext2.Element} The new node
      */
     insertAfter : function(el, o, returnElement){
         return this.doInsert(el, o, returnElement, "afterEnd", "nextSibling");
@@ -352,8 +352,8 @@ Ext.DomHelper = function(){
      * Creates new DOM element(s) and inserts them as the first child of el.
      * @param {Mixed} el The context element
      * @param {Object/String} o The DOM object spec (and children) or raw HTML blob
-     * @param {Boolean} returnElement (optional) true to return a Ext.Element
-     * @return {HTMLElement/Ext.Element} The new node
+     * @param {Boolean} returnElement (optional) true to return a Ext2.Element
+     * @return {HTMLElement/Ext2.Element} The new node
      */
     insertFirst : function(el, o, returnElement){
         return this.doInsert(el, o, returnElement, "afterBegin", "firstChild");
@@ -361,7 +361,7 @@ Ext.DomHelper = function(){
 
     // private
     doInsert : function(el, o, returnElement, pos, sibling){
-        el = Ext.getDom(el);
+        el = Ext2.getDom(el);
         var newNode;
         if(this.useDom){
             newNode = createDom(o, null);
@@ -370,18 +370,18 @@ Ext.DomHelper = function(){
             var html = createHtml(o);
             newNode = this.insertHtml(pos, el, html);
         }
-        return returnElement ? Ext.get(newNode, true) : newNode;
+        return returnElement ? Ext2.get(newNode, true) : newNode;
     },
 
     /**
      * Creates new DOM element(s) and appends them to el.
      * @param {Mixed} el The context element
      * @param {Object/String} o The DOM object spec (and children) or raw HTML blob
-     * @param {Boolean} returnElement (optional) true to return a Ext.Element
-     * @return {HTMLElement/Ext.Element} The new node
+     * @param {Boolean} returnElement (optional) true to return a Ext2.Element
+     * @return {HTMLElement/Ext2.Element} The new node
      */
     append : function(el, o, returnElement){
-        el = Ext.getDom(el);
+        el = Ext2.getDom(el);
         var newNode;
         if(this.useDom){
             newNode = createDom(o, null);
@@ -390,30 +390,30 @@ Ext.DomHelper = function(){
             var html = createHtml(o);
             newNode = this.insertHtml("beforeEnd", el, html);
         }
-        return returnElement ? Ext.get(newNode, true) : newNode;
+        return returnElement ? Ext2.get(newNode, true) : newNode;
     },
 
     /**
      * Creates new DOM element(s) and overwrites the contents of el with them.
      * @param {Mixed} el The context element
      * @param {Object/String} o The DOM object spec (and children) or raw HTML blob
-     * @param {Boolean} returnElement (optional) true to return a Ext.Element
-     * @return {HTMLElement/Ext.Element} The new node
+     * @param {Boolean} returnElement (optional) true to return a Ext2.Element
+     * @return {HTMLElement/Ext2.Element} The new node
      */
     overwrite : function(el, o, returnElement){
-        el = Ext.getDom(el);
+        el = Ext2.getDom(el);
         el.innerHTML = createHtml(o);
-        return returnElement ? Ext.get(el.firstChild, true) : el.firstChild;
+        return returnElement ? Ext2.get(el.firstChild, true) : el.firstChild;
     },
 
     /**
-     * Creates a new Ext.Template from the DOM object spec.
+     * Creates a new Ext2.Template from the DOM object spec.
      * @param {Object} o The DOM object spec (and children)
-     * @return {Ext.Template} The new template
+     * @return {Ext2.Template} The new template
      */
     createTemplate : function(o){
         var html = createHtml(o);
-        return new Ext.Template(html);
+        return new Ext2.Template(html);
     }
     };
 }();

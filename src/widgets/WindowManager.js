@@ -7,12 +7,12 @@
  */
 
 /**
- * @class Ext.WindowGroup
- * An object that represents a group of {@link Ext.Window} instances and provides z-order management
+ * @class Ext2.WindowGroup
+ * An object that represents a group of {@link Ext2.Window} instances and provides z-order management
  * and window activation behavior.
  * @constructor
  */
-Ext.WindowGroup = function(){
+Ext2.WindowGroup = function(){
     var list = {};
     var accessList = [];
     var front = null;
@@ -86,8 +86,8 @@ Ext.WindowGroup = function(){
 
         /**
          * Gets a registered window by id.
-         * @param {String/Object} id The id of the window or a {@link Ext.Window} instance
-         * @return {Ext.Window}
+         * @param {String/Object} id The id of the window or a {@link Ext2.Window} instance
+         * @return {Ext2.Window}
          */
         get : function(id){
             return typeof id == "object" ? id : list[id];
@@ -95,7 +95,7 @@ Ext.WindowGroup = function(){
 
         /**
          * Brings the specified window to the front of any other active windows.
-         * @param {String/Object} win The id of the window or a {@link Ext.Window} instance
+         * @param {String/Object} win The id of the window or a {@link Ext2.Window} instance
          * @return {Boolean} True if the dialog was brought to the front, else false
          * if it was already in front
          */
@@ -111,8 +111,8 @@ Ext.WindowGroup = function(){
 
         /**
          * Sends the specified window to the back of other active windows.
-         * @param {String/Object} win The id of the window or a {@link Ext.Window} instance
-         * @return {Ext.Window} The window
+         * @param {String/Object} win The id of the window or a {@link Ext2.Window} instance
+         * @return {Ext2.Window} The window
          */
         sendToBack : function(win){
             win = this.get(win);
@@ -134,7 +134,7 @@ Ext.WindowGroup = function(){
 
         /**
          * Gets the currently-active window in the group.
-         * @return {Ext.Window} The active window
+         * @return {Ext2.Window} The active window
          */
         getActive : function(){
             return front;
@@ -142,7 +142,7 @@ Ext.WindowGroup = function(){
 
         /**
          * Returns zero or more windows in the group using the custom search function passed to this method.
-         * The function should accept a single {@link Ext.Window} reference as its only argument and should
+         * The function should accept a single {@link Ext2.Window} reference as its only argument and should
          * return true if the window matches the search criteria, otherwise it should return false.
          * @param {Function} fn The search function
          * @param {Object} scope (optional) The scope in which to execute the function (defaults to the window
@@ -180,10 +180,10 @@ Ext.WindowGroup = function(){
 
 
 /**
- * @class Ext.WindowMgr
- * @extends Ext.WindowGroup
+ * @class Ext2.WindowMgr
+ * @extends Ext2.WindowGroup
  * The default global window group that is available automatically.  To have more than one group of windows
- * with separate z-order stacks, create additional instances of {@link Ext.WindowGroup} as needed.
+ * with separate z-order stacks, create additional instances of {@link Ext2.WindowGroup} as needed.
  * @singleton
  */
-Ext.WindowMgr = new Ext.WindowGroup();
+Ext2.WindowMgr = new Ext2.WindowGroup();

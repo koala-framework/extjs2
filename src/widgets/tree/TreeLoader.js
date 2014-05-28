@@ -7,9 +7,9 @@
  */
 
 /**
- * @class Ext.tree.TreeLoader
- * @extends Ext.util.Observable
- * A TreeLoader provides for lazy loading of an {@link Ext.tree.TreeNode}'s child
+ * @class Ext2.tree.TreeLoader
+ * @extends Ext2.util.Observable
+ * A TreeLoader provides for lazy loading of an {@link Ext2.tree.TreeNode}'s child
  * nodes from a specified URL. The response must be a JavaScript Array definition
  * whose elements are node definition objects. eg:
  * <pre><code>
@@ -45,16 +45,16 @@
  * Creates a new Treeloader.
  * @param {Object} config A config object containing config properties.
  */
-Ext.tree.TreeLoader = function(config){
+Ext2.tree.TreeLoader = function(config){
     this.baseParams = {};
-    Ext.apply(this, config);
+    Ext2.apply(this, config);
 
     this.addEvents(
         /**
          * @event beforeload
          * Fires before a network request is made to retrieve the Json text which specifies a node's children.
          * @param {Object} This TreeLoader object.
-         * @param {Object} node The {@link Ext.tree.TreeNode} object being loaded.
+         * @param {Object} node The {@link Ext2.tree.TreeNode} object being loaded.
          * @param {Object} callback The callback function specified in the {@link #load} call.
          */
         "beforeload",
@@ -62,7 +62,7 @@ Ext.tree.TreeLoader = function(config){
          * @event load
          * Fires when the node has been successfuly loaded.
          * @param {Object} This TreeLoader object.
-         * @param {Object} node The {@link Ext.tree.TreeNode} object being loaded.
+         * @param {Object} node The {@link Ext2.tree.TreeNode} object being loaded.
          * @param {Object} response The response object containing the data from the server.
          */
         "load",
@@ -70,23 +70,23 @@ Ext.tree.TreeLoader = function(config){
          * @event loadexception
          * Fires if the network request failed.
          * @param {Object} This TreeLoader object.
-         * @param {Object} node The {@link Ext.tree.TreeNode} object being loaded.
+         * @param {Object} node The {@link Ext2.tree.TreeNode} object being loaded.
          * @param {Object} response The response object containing the data from the server.
          */
         "loadexception"
     );
 
-    Ext.tree.TreeLoader.superclass.constructor.call(this);
+    Ext2.tree.TreeLoader.superclass.constructor.call(this);
 };
 
-Ext.extend(Ext.tree.TreeLoader, Ext.util.Observable, {
+Ext2.extend(Ext2.tree.TreeLoader, Ext2.util.Observable, {
     /**
     * @cfg {String} dataUrl The URL from which to request a Json string which
     * specifies an array of node definition objects representing the child nodes
     * to be loaded.
     */
     /**
-     * @cfg {String} requestMethod The HTTP request method for loading data (defaults to the value of {@link Ext.Ajax#method}).
+     * @cfg {String} requestMethod The HTTP request method for loading data (defaults to the value of {@link Ext2.Ajax#method}).
      */
     /**
      * @cfg {String} url Equivalent to {@link #dataUrl}.
@@ -105,7 +105,7 @@ Ext.extend(Ext.tree.TreeLoader, Ext.util.Observable, {
     */
     /**
     * @cfg {Object} uiProviders (optional) An object containing properties which
-    * specify custom {@link Ext.tree.TreeNodeUI} implementations. If the optional
+    * specify custom {@link Ext2.tree.TreeNodeUI} implementations. If the optional
     * <i>uiProvider</i> attribute of a returned child node is a string rather
     * than a reference to a TreeNodeUI implementation, then that string value
     * is used as a property name in the uiProviders object.
@@ -119,10 +119,10 @@ Ext.extend(Ext.tree.TreeLoader, Ext.util.Observable, {
     clearOnLoad : true,
 
     /**
-     * Load an {@link Ext.tree.TreeNode} from the URL specified in the constructor.
+     * Load an {@link Ext2.tree.TreeNode} from the URL specified in the constructor.
      * This is called automatically when a node is expanded, but may be used to reload
      * a node (or append new children if the {@link #clearOnLoad} option is false.)
-     * @param {Ext.tree.TreeNode} node
+     * @param {Ext2.tree.TreeNode} node
      * @param {Function} callback
      */
     load : function(node, callback){
@@ -172,7 +172,7 @@ Ext.extend(Ext.tree.TreeLoader, Ext.util.Observable, {
 
     requestData : function(node, callback){
         if(this.fireEvent("beforeload", this, node, callback) !== false){
-            this.transId = Ext.Ajax.request({
+            this.transId = Ext2.Ajax.request({
                 method:this.requestMethod,
                 url: this.dataUrl||this.url,
                 success: this.handleResponse,
@@ -196,7 +196,7 @@ Ext.extend(Ext.tree.TreeLoader, Ext.util.Observable, {
 
     abort : function(){
         if(this.isLoading()){
-            Ext.Ajax.abort(this.transId);
+            Ext2.Ajax.abort(this.transId);
         }
     },
 
@@ -204,18 +204,18 @@ Ext.extend(Ext.tree.TreeLoader, Ext.util.Observable, {
     * <p>Override this function for custom TreeNode node implementation, or to
     * modify the attributes at creation time.</p>
     * Example:<code><pre>
-new Ext.tree.TreePanel({
+new Ext2.tree.TreePanel({
     ...
-    loader: new Ext.tree.TreeLoader({
+    loader: new Ext2.tree.TreeLoader({
         url: 'dataUrl',
         createNode: function(attr) {
 //          Allow consolidation consignments to have
 //          consignments dropped into them.
             if (attr.isConsolidation) {
-                attr.iconCls = 'x-consol',
+                attr.iconCls = 'x2-consol',
                 attr.allowDrop = true;
             }
-            return Ext.tree.TreeLoader.prototype.createNode.call(this, attr);
+            return Ext2.tree.TreeLoader.prototype.createNode.call(this, attr);
         }
     }),
     ...
@@ -226,7 +226,7 @@ new Ext.tree.TreePanel({
     createNode : function(attr){
         // apply baseAttrs, nice idea Corey!
         if(this.baseAttrs){
-            Ext.applyIf(attr, this.baseAttrs);
+            Ext2.applyIf(attr, this.baseAttrs);
         }
         if(this.applyLoader !== false){
             attr.loader = this;
@@ -235,11 +235,11 @@ new Ext.tree.TreePanel({
            attr.uiProvider = this.uiProviders[attr.uiProvider] || eval(attr.uiProvider);
         }
         if(attr.nodeType){
-            return new Ext.tree.TreePanel.nodeTypes[attr.nodeType](attr);
+            return new Ext2.tree.TreePanel.nodeTypes[attr.nodeType](attr);
         }else{
             return attr.leaf ?
-                        new Ext.tree.TreeNode(attr) :
-                        new Ext.tree.AsyncTreeNode(attr);
+                        new Ext2.tree.TreeNode(attr) :
+                        new Ext2.tree.AsyncTreeNode(attr);
         }
     },
 

@@ -7,13 +7,13 @@
  */
 
 /**
- * @class Ext.util.JSON
+ * @class Ext2.util.JSON
  * Modified version of Douglas Crockford"s json.js that doesn"t
  * mess with the Object prototype
  * http://www.json.org/js.html
  * @singleton
  */
-Ext.util.JSON = new (function(){
+Ext2.util.JSON = new (function(){
     var useHasOwn = !!{}.hasOwnProperty;
 
     // crashes Safari in some instances
@@ -62,7 +62,7 @@ Ext.util.JSON = new (function(){
                         if (b) {
                             a.push(',');
                         }
-                        a.push(v === null ? "null" : Ext.util.JSON.encode(v));
+                        a.push(v === null ? "null" : Ext2.util.JSON.encode(v));
                         b = true;
                 }
             }
@@ -87,10 +87,10 @@ Ext.util.JSON = new (function(){
     this.encode = function(o){
         if(typeof o == "undefined" || o === null){
             return "null";
-        }else if(Ext.isArray(o)){
+        }else if(Ext2.isArray(o)){
             return encodeArray(o);
-        }else if(Ext.isDate(o)){
-            return Ext.util.JSON.encodeDate(o);
+        }else if(Ext2.isDate(o)){
+            return Ext2.util.JSON.encodeDate(o);
         }else if(typeof o == "string"){
             return encodeString(o);
         }else if(typeof o == "number"){
@@ -132,18 +132,18 @@ Ext.util.JSON = new (function(){
     };
 })();
 /**
- * Shorthand for {@link Ext.util.JSON#encode}
+ * Shorthand for {@link Ext2.util.JSON#encode}
  * @param {Mixed} o The variable to encode
  * @return {String} The JSON string
  * @member Ext
  * @method encode
  */
-Ext.encode = Ext.util.JSON.encode;
+Ext2.encode = Ext2.util.JSON.encode;
 /**
- * Shorthand for {@link Ext.util.JSON#decode}
+ * Shorthand for {@link Ext2.util.JSON#decode}
  * @param {String} json The JSON string
  * @return {Object} The resulting object
  * @member Ext
  * @method decode
  */
-Ext.decode = Ext.util.JSON.decode;
+Ext2.decode = Ext2.util.JSON.decode;

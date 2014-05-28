@@ -7,18 +7,18 @@
  */
 
 /**
- * @class Ext.SplitButton
- * @extends Ext.Button
+ * @class Ext2.SplitButton
+ * @extends Ext2.Button
  * A split button that provides a built-in dropdown arrow that can fire an event separately from the default
  * click event of the button.  Typically this would be used to display a dropdown menu that provides additional
  * options to the primary button action, but any custom handler can provide the arrowclick implementation.  Example usage:
  * <pre><code>
 // display a dropdown menu:
-new Ext.SplitButton({
+new Ext2.SplitButton({
 	renderTo: 'button-ct', // the container id
    	text: 'Options',
    	handler: optionsHandler, // handle a click on the button itself
-   	menu: new Ext.menu.Menu({
+   	menu: new Ext2.menu.Menu({
         items: [
         	// these items will render as dropdown menu items when the arrow is clicked:
 	        {text: 'Item 1', handler: item1Handler},
@@ -29,7 +29,7 @@ new Ext.SplitButton({
 
 // Instead of showing a menu, you provide any type of custom
 // functionality you want when the dropdown arrow is clicked:
-new Ext.SplitButton({
+new Ext2.SplitButton({
 	renderTo: 'button-ct',
    	text: 'Options',
    	handler: optionsHandler,
@@ -42,13 +42,13 @@ new Ext.SplitButton({
  * Create a new menu button
  * @param {Object} config The config object
  */
-Ext.SplitButton = Ext.extend(Ext.Button, {
+Ext2.SplitButton = Ext2.extend(Ext2.Button, {
 	// private
     arrowSelector : 'button:last',
 
     // private
     initComponent : function(){
-        Ext.SplitButton.superclass.initComponent.call(this);
+        Ext2.SplitButton.superclass.initComponent.call(this);
         /**
          * @event arrowclick
          * Fires when this button's arrow is clicked
@@ -61,13 +61,13 @@ Ext.SplitButton = Ext.extend(Ext.Button, {
     // private
     onRender : function(ct, position){
         // this is one sweet looking template!
-        var tpl = new Ext.Template(
-            '<table cellspacing="0" class="x-btn-menu-wrap x-btn"><tr><td>',
-            '<table cellspacing="0" class="x-btn-wrap x-btn-menu-text-wrap"><tbody>',
-            '<tr><td class="x-btn-left"><i>&#160;</i></td><td class="x-btn-center"><button class="x-btn-text" type="{1}">{0}</button></td></tr>',
+        var tpl = new Ext2.Template(
+            '<table cellspacing="0" class="x2-btn-menu-wrap x2-btn"><tr><td>',
+            '<table cellspacing="0" class="x2-btn-wrap x2-btn-menu-text-wrap"><tbody>',
+            '<tr><td class="x2-btn-left"><i>&#160;</i></td><td class="x2-btn-center"><button class="x2-btn-text" type="{1}">{0}</button></td></tr>',
             "</tbody></table></td><td>",
-            '<table cellspacing="0" class="x-btn-wrap x-btn-menu-arrow-wrap"><tbody>',
-            '<tr><td class="x-btn-center"><button class="x-btn-menu-arrow-el" type="button">&#160;</button></td><td class="x-btn-right"><i>&#160;</i></td></tr>',
+            '<table cellspacing="0" class="x2-btn-wrap x2-btn-menu-arrow-wrap"><tbody>',
+            '<tr><td class="x2-btn-center"><button class="x2-btn-menu-arrow-el" type="button">&#160;</button></td><td class="x2-btn-right"><i>&#160;</i></td></tr>',
             "</tbody></table></td></tr></table>"
         );
         var btn, targs = [this.text || '&#160;', this.type];
@@ -93,11 +93,11 @@ Ext.SplitButton = Ext.extend(Ext.Button, {
             var tbl2 = this.el.child("table:last");
             this.el.setWidth("auto");
             tbl.setWidth("auto");
-            if(Ext.isIE7 && Ext.isStrict){
+            if(Ext2.isIE7 && Ext2.isStrict){
                 var ib = this.btnEl;
                 if(ib && ib.getWidth() > 20){
                     ib.clip();
-                    ib.setWidth(Ext.util.TextMetrics.measure(ib, this.text).width+ib.getFrameWidth('lr'));
+                    ib.setWidth(Ext2.util.TextMetrics.measure(ib, this.text).width+ib.getFrameWidth('lr'));
                 }
             }
             if(this.minWidth){
@@ -123,7 +123,7 @@ Ext.SplitButton = Ext.extend(Ext.Button, {
     onClick : function(e){
         e.preventDefault();
         if(!this.disabled){
-            if(e.getTarget(".x-btn-menu-arrow-wrap")){
+            if(e.getTarget(".x2-btn-menu-arrow-wrap")){
                 if(this.menu && !this.menu.isVisible() && !this.ignoreNextClick){
                     this.showMenu();
                 }
@@ -152,7 +152,7 @@ Ext.SplitButton = Ext.extend(Ext.Button, {
     },
     
     onDisableChange: function(disabled){
-        Ext.SplitButton.superclass.onDisableChange.call(this, disabled);
+        Ext2.SplitButton.superclass.onDisableChange.call(this, disabled);
         if(this.arrowEl){
             this.arrowEl.dom.disabled = disabled;
         }
@@ -170,13 +170,13 @@ Ext.SplitButton = Ext.extend(Ext.Button, {
 
     // private
     onDestroy : function(){
-        Ext.destroy(this.arrowBtnTable);
-        Ext.SplitButton.superclass.onDestroy.call(this);
+        Ext2.destroy(this.arrowBtnTable);
+        Ext2.SplitButton.superclass.onDestroy.call(this);
     }
 });
 
 // backwards compat
-Ext.MenuButton = Ext.SplitButton;
+Ext2.MenuButton = Ext2.SplitButton;
 
 
-Ext.reg('splitbutton', Ext.SplitButton);
+Ext2.reg('splitbutton', Ext2.SplitButton);

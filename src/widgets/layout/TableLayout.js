@@ -7,14 +7,14 @@
  */
 
 /**
- * @class Ext.layout.TableLayout
- * @extends Ext.layout.ContainerLayout
+ * @class Ext2.layout.TableLayout
+ * @extends Ext2.layout.ContainerLayout
  * <p>This layout allows you to easily render content into an HTML table.  The total number of columns can be
  * specified, and rowspan and colspan can be used to create complex layouts within the table.
- * This class is intended to be extended or created via the layout:'table' {@link Ext.Container#layout} config,
+ * This class is intended to be extended or created via the layout:'table' {@link Ext2.Container#layout} config,
  * and should generally not need to be created directly via the new keyword.</p>
  * <p>Note that when creating a layout via config, the layout-specific config properties must be passed in via
- * the {@link Ext.Container#layoutConfig} object which will then be applied internally to the layout.  In the
+ * the {@link Ext2.Container#layoutConfig} object which will then be applied internally to the layout.  In the
  * case of TableLayout, the only valid layout config property is {@link #columns}.  However, the items added to a
  * TableLayout can supply the following table-specific config properties:</p>
  * <ul>
@@ -39,7 +39,7 @@
 // |        |--------+--------|
 // |        |   C    |   D    |
 // +--------+--------+--------+
-var table = new Ext.Panel({
+var table = new Ext2.Panel({
     title: 'Table Layout',
     layout:'table',
     defaults: {
@@ -65,7 +65,7 @@ var table = new Ext.Panel({
 });
 </code></pre>
  */
-Ext.layout.TableLayout = Ext.extend(Ext.layout.ContainerLayout, {
+Ext2.layout.TableLayout = Ext2.extend(Ext2.layout.ContainerLayout, {
     /**
      * @cfg {Number} columns
      * The total number of columns to create in the table for this layout.  If not specified, all panels added to
@@ -77,7 +77,7 @@ Ext.layout.TableLayout = Ext.extend(Ext.layout.ContainerLayout, {
 
     // private
     setContainer : function(ct){
-        Ext.layout.TableLayout.superclass.setContainer.call(this, ct);
+        Ext2.layout.TableLayout.superclass.setContainer.call(this, ct);
 
         this.currentRow = 0;
         this.currentColumn = 0;
@@ -89,10 +89,10 @@ Ext.layout.TableLayout = Ext.extend(Ext.layout.ContainerLayout, {
         var cs = ct.items.items, len = cs.length, c, i;
 
         if(!this.table){
-            target.addClass('x-table-layout-ct');
+            target.addClass('x2-table-layout-ct');
 
             this.table = target.createChild(
-                {tag:'table', cls:'x-table-layout', cellspacing: 0, cn: {tag: 'tbody'}}, null, true);
+                {tag:'table', cls:'x2-table-layout', cellspacing: 0, cn: {tag: 'tbody'}}, null, true);
         }
         this.renderAll(ct, target);
     },
@@ -123,7 +123,7 @@ Ext.layout.TableLayout = Ext.extend(Ext.layout.ContainerLayout, {
 		if(c.cellId){
 			td.id = c.cellId;
 		}
-		var cls = 'x-table-layout-cell';
+		var cls = 'x2-table-layout-cell';
 		if(c.cellCls){
 			cls += ' ' + c.cellCls;
 		}
@@ -174,4 +174,4 @@ Ext.layout.TableLayout = Ext.extend(Ext.layout.ContainerLayout, {
      */
 });
 
-Ext.Container.LAYOUTS['table'] = Ext.layout.TableLayout;
+Ext2.Container.LAYOUTS['table'] = Ext2.layout.TableLayout;

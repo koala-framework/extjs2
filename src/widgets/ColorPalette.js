@@ -7,12 +7,12 @@
  */
 
 /**
- * @class Ext.ColorPalette
- * @extends Ext.Component
+ * @class Ext2.ColorPalette
+ * @extends Ext2.Component
  * Simple color palette class for choosing colors.  The palette can be rendered to any container.<br />
  * Here's an example of typical usage:
  * <pre><code>
-var cp = new Ext.ColorPalette({value:'993300'});  // initial selected color
+var cp = new Ext2.ColorPalette({value:'993300'});  // initial selected color
 cp.render('my-div');
 
 cp.on('select', function(palette, selColor){
@@ -23,8 +23,8 @@ cp.on('select', function(palette, selColor){
  * Create a new ColorPalette
  * @param {Object} config The config object
  */
-Ext.ColorPalette = function(config){
-    Ext.ColorPalette.superclass.constructor.call(this, config);
+Ext2.ColorPalette = function(config){
+    Ext2.ColorPalette.superclass.constructor.call(this, config);
     this.addEvents(
         /**
 	     * @event select
@@ -39,15 +39,15 @@ Ext.ColorPalette = function(config){
         this.on("select", this.handler, this.scope, true);
     }
 };
-Ext.extend(Ext.ColorPalette, Ext.Component, {
+Ext2.extend(Ext2.ColorPalette, Ext2.Component, {
 	/**
 	 * @cfg {String} tpl An existing XTemplate instance to be used in place of the default template for rendering the component.
 	 */
     /**
      * @cfg {String} itemCls
-     * The CSS class to apply to the containing element (defaults to "x-color-palette")
+     * The CSS class to apply to the containing element (defaults to "x2-color-palette")
      */
-    itemCls : "x-color-palette",
+    itemCls : "x2-color-palette",
     /**
      * @cfg {String} value
      * The initial color to highlight (should be a valid 6-digit color hex code without the # symbol).  Note that
@@ -56,7 +56,7 @@ Ext.extend(Ext.ColorPalette, Ext.Component, {
     value : null,
     clickEvent:'click',
     // private
-    ctype: "Ext.ColorPalette",
+    ctype: "Ext2.ColorPalette",
 
     /**
      * @cfg {Boolean} allowReselect If set to true then reselecting a color that is already selected fires the {@link #select} event
@@ -66,17 +66,17 @@ Ext.extend(Ext.ColorPalette, Ext.Component, {
     /**
      * <p>An array of 6-digit color hex code strings (without the # symbol).  This array can contain any number
      * of colors, and each hex code should be unique.  The width of the palette is controlled via CSS by adjusting
-     * the width property of the 'x-color-palette' class (or assigning a custom class), so you can balance the number
+     * the width property of the 'x2-color-palette' class (or assigning a custom class), so you can balance the number
      * of colors with the width setting until the box is symmetrical.</p>
      * <p>You can override individual colors if needed:</p>
      * <pre><code>
-var cp = new Ext.ColorPalette();
+var cp = new Ext2.ColorPalette();
 cp.colors[0] = "FF0000";  // change the first box to red
 </code></pre>
 
 Or you can provide a custom array of your own for complete control:
 <pre><code>
-var cp = new Ext.ColorPalette();
+var cp = new Ext2.ColorPalette();
 cp.colors = ["000000", "993300", "333300"];
 </code></pre>
      * @type Array
@@ -91,7 +91,7 @@ cp.colors = ["000000", "993300", "333300"];
 
     // private
     onRender : function(container, position){
-        var t = this.tpl || new Ext.XTemplate(
+        var t = this.tpl || new Ext2.XTemplate(
             '<tpl for="."><a href="#" class="color-{.}" hidefocus="on"><em><span style="background:#{.}" unselectable="on">&#160;</span></em></a></tpl>'
         );
         var el = document.createElement("div");
@@ -99,16 +99,16 @@ cp.colors = ["000000", "993300", "333300"];
         el.className = this.itemCls;
         t.overwrite(el, this.colors);
         container.dom.insertBefore(el, position);
-        this.el = Ext.get(el);
+        this.el = Ext2.get(el);
         this.el.on(this.clickEvent, this.handleClick,  this, {delegate: "a"});
         if(this.clickEvent != 'click'){
-            this.el.on('click', Ext.emptyFn,  this, {delegate: "a", preventDefault:true});
+            this.el.on('click', Ext2.emptyFn,  this, {delegate: "a", preventDefault:true});
         }
     },
 
     // private
     afterRender : function(){
-        Ext.ColorPalette.superclass.afterRender.call(this);
+        Ext2.ColorPalette.superclass.afterRender.call(this);
         if(this.value){
             var s = this.value;
             this.value = null;
@@ -134,9 +134,9 @@ cp.colors = ["000000", "993300", "333300"];
         if(color != this.value || this.allowReselect){
             var el = this.el;
             if(this.value){
-                el.child("a.color-"+this.value).removeClass("x-color-palette-sel");
+                el.child("a.color-"+this.value).removeClass("x2-color-palette-sel");
             }
-            el.child("a.color-"+color).addClass("x-color-palette-sel");
+            el.child("a.color-"+color).addClass("x2-color-palette-sel");
             this.value = color;
             this.fireEvent("select", this, color);
         }
@@ -146,4 +146,4 @@ cp.colors = ["000000", "993300", "333300"];
      * @cfg {String} autoEl @hide
      */
 });
-Ext.reg('colorpalette', Ext.ColorPalette);
+Ext2.reg('colorpalette', Ext2.ColorPalette);

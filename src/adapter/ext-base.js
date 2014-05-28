@@ -9,7 +9,7 @@
 (function() {
     var libFlyweight;
 
-    Ext.lib.Dom = {
+    Ext2.lib.Dom = {
         getViewWidth : function(full) {
             return full ? this.getDocumentWidth() : this.getViewportWidth();
         },
@@ -29,8 +29,8 @@
         },
 
         getViewportHeight: function(){
-            if(Ext.isIE){
-                return Ext.isStrict ? document.documentElement.clientHeight :
+            if(Ext2.isIE){
+                return Ext2.isStrict ? document.documentElement.clientHeight :
                          document.body.clientHeight;
             }else{
                 return self.innerHeight;
@@ -38,8 +38,8 @@
         },
 
         getViewportWidth: function() {
-            if(Ext.isIE){
-                return Ext.isStrict ? document.documentElement.clientWidth :
+            if(Ext2.isIE){
+                return Ext2.isStrict ? document.documentElement.clientWidth :
                          document.body.clientWidth;
             }else{
                 return self.innerWidth;
@@ -47,13 +47,13 @@
         },
 
         isAncestor : function(p, c) {
-            p = Ext.getDom(p);
-            c = Ext.getDom(c);
+            p = Ext2.getDom(p);
+            c = Ext2.getDom(c);
             if (!p || !c) {
                 return false;
             }
 
-            if (p.contains && !Ext.isWebKit) {
+            if (p.contains && !Ext2.isWebKit) {
                 return p.contains(c);
             } else if (p.compareDocumentPosition) {
                 return !!(p.compareDocumentPosition(c) & 16);
@@ -73,7 +73,7 @@
         },
 
         getRegion : function(el) {
-            return Ext.lib.Region.getRegion(el);
+            return Ext2.lib.Region.getRegion(el);
         },
 
         getY : function(el) {
@@ -87,7 +87,7 @@
 
         getXY : function(el) {
             var p, pe, b, scroll, bd = (document.body || document.documentElement);
-            el = Ext.getDom(el);
+            el = Ext2.getDom(el);
 
             if(el == bd){
                 return [0, 0];
@@ -113,7 +113,7 @@
                     hasAbsolute = true;
                 }
 
-                if (Ext.isGecko) {
+                if (Ext2.isGecko) {
                     pe = fly(p);
 
                     var bt = parseInt(pe.getStyle("borderTopWidth"), 10) || 0;
@@ -132,12 +132,12 @@
                 p = p.offsetParent;
             }
 
-            if (Ext.isWebKit && hasAbsolute) {
+            if (Ext2.isWebKit && hasAbsolute) {
                 x -= bd.offsetLeft;
                 y -= bd.offsetTop;
             }
 
-            if (Ext.isGecko && !hasAbsolute) {
+            if (Ext2.isGecko && !hasAbsolute) {
                 var dbd = fly(bd);
                 x += parseInt(dbd.getStyle("borderLeftWidth"), 10) || 0;
                 y += parseInt(dbd.getStyle("borderTopWidth"), 10) || 0;
@@ -145,7 +145,7 @@
 
             p = el.parentNode;
             while (p && p != bd) {
-                if (!Ext.isOpera || (p.tagName != 'TR' && fly(p).getStyle("display") != "inline")) {
+                if (!Ext2.isOpera || (p.tagName != 'TR' && fly(p).getStyle("display") != "inline")) {
                     x -= p.scrollLeft;
                     y -= p.scrollTop;
                 }
@@ -155,7 +155,7 @@
         },
 
         setXY : function(el, xy) {
-            el = Ext.fly(el, '_setXY');
+            el = Ext2.fly(el, '_setXY');
             el.position();
             var pts = el.translatePoints(xy);
             if (xy[0] !== false) {
@@ -181,7 +181,7 @@
  * YUI licensed under the BSD License:
  * http://developer.yahoo.net/yui/license.txt
  */
-    Ext.lib.Event = function() {
+    Ext2.lib.Event = function() {
         var loadComplete = false;
         var listeners = [];
         var unloadListeners = [];
@@ -225,7 +225,7 @@
 
 
             addListener: function(el, eventName, fn) {
-                el = Ext.getDom(el);
+                el = Ext2.getDom(el);
                 if (!el || !fn) {
                     return false;
                 }
@@ -238,7 +238,7 @@
 
                 // prevent unload errors with simple check
                 var wrappedFn = function(e) {
-                    return typeof Ext != 'undefined' ? fn(Ext.lib.Event.getEvent(e)) : false;
+                    return typeof Ext2 != 'undefined' ? fn(Ext2.lib.Event.getEvent(e)) : false;
                 };
 
                 var li = [el, eventName, fn, wrappedFn];
@@ -255,7 +255,7 @@
             removeListener: function(el, eventName, fn) {
                 var i, len;
 
-                el = Ext.getDom(el);
+                el = Ext2.getDom(el);
 
                 if(!fn) {
                     return this.purgeElement(el, false, eventName);
@@ -314,7 +314,7 @@
 
 
             resolveTextNode: function(node) {
-                if (Ext.isWebKit && node && 3 == node.nodeType) {
+                if (Ext2.isWebKit && node && 3 == node.nodeType) {
                     return node.parentNode;
                 } else {
                     return node;
@@ -328,7 +328,7 @@
                 if (!x && 0 !== x) {
                     x = ev.clientX || 0;
 
-                    if (Ext.isIE) {
+                    if (Ext2.isIE) {
                         x += this.getScroll()[1];
                     }
                 }
@@ -343,7 +343,7 @@
                 if (!y && 0 !== y) {
                     y = ev.clientY || 0;
 
-                    if (Ext.isIE) {
+                    if (Ext2.isIE) {
                         y += this.getScroll()[0];
                     }
                 }
@@ -467,10 +467,10 @@
 
             _load: function(e) {
                 loadComplete = true;
-                var EU = Ext.lib.Event;
+                var EU = Ext2.lib.Event;
 
 
-                if (Ext.isIE) {
+                if (Ext2.isIE) {
                     EU.doRemove(window, "load", EU._load);
                 }
             },
@@ -589,7 +589,7 @@
 
             _unload: function(e) {
 
-                var EU = Ext.lib.Event, i, j, l, len, index;
+                var EU = Ext2.lib.Event, i, j, l, len, index;
 
                 for (i = 0,len = unloadListeners.length; i < len; ++i) {
                     l = unloadListeners[i];
@@ -678,7 +678,7 @@
 
     }();
 
-    var E = Ext.lib.Event;
+    var E = Ext2.lib.Event;
     E.on = E.addListener;
     E.un = E.removeListener;
     if(document && document.body) {
@@ -689,7 +689,7 @@
     E.doAdd(window, "unload", E._unload);
     E._tryPreloadAttach();
 
-    Ext.lib.Ajax = {
+    Ext2.lib.Ajax = {
         request : function(method, uri, cb, data, options) {
             if(options){
                 var hs = options.headers;
@@ -711,7 +711,7 @@
                         this.initHeader('Content-Type', 'application/json', false);
                     }
                     method = (method ? method : (options.method ? options.method : 'POST'));
-                    data = typeof options.jsonData == 'object' ? Ext.encode(options.jsonData) : options.jsonData;
+                    data = typeof options.jsonData == 'object' ? Ext2.encode(options.jsonData) : options.jsonData;
                 }
             }
 
@@ -954,7 +954,7 @@
                 httpStatus = 13030;
             }
 
-            if ((httpStatus >= 200 && httpStatus < 300) || (Ext.isIE && httpStatus == 1223)) {
+            if ((httpStatus >= 200 && httpStatus < 300) || (Ext2.isIE && httpStatus == 1223)) {
                 responseObject = this.createResponseObject(o, callback.argument);
                 if (callback.success) {
                     if (!callback.scope) {
@@ -1164,7 +1164,7 @@
     };
 
 
-    Ext.lib.Region = function(t, r, b, l) {
+    Ext2.lib.Region = function(t, r, b, l) {
         this.top = t;
         this[1] = t;
         this.right = r;
@@ -1173,7 +1173,7 @@
         this[0] = l;
     };
 
-    Ext.lib.Region.prototype = {
+    Ext2.lib.Region.prototype = {
         contains : function(region) {
             return ( region.left >= this.left &&
                      region.right <= this.right &&
@@ -1193,7 +1193,7 @@
             var l = Math.max(this.left, region.left);
 
             if (b >= t && r >= l) {
-                return new Ext.lib.Region(t, r, b, l);
+                return new Ext2.lib.Region(t, r, b, l);
             } else {
                 return null;
             }
@@ -1204,7 +1204,7 @@
             var b = Math.max(this.bottom, region.bottom);
             var l = Math.min(this.left, region.left);
 
-            return new Ext.lib.Region(t, r, b, l);
+            return new Ext2.lib.Region(t, r, b, l);
         },
 
         constrainTo : function(r) {
@@ -1224,19 +1224,19 @@
         }
     };
 
-    Ext.lib.Region.getRegion = function(el) {
-        var p = Ext.lib.Dom.getXY(el);
+    Ext2.lib.Region.getRegion = function(el) {
+        var p = Ext2.lib.Dom.getXY(el);
 
         var t = p[1];
         var r = p[0] + el.offsetWidth;
         var b = p[1] + el.offsetHeight;
         var l = p[0];
 
-        return new Ext.lib.Region(t, r, b, l);
+        return new Ext2.lib.Region(t, r, b, l);
     };
 
-    Ext.lib.Point = function(x, y) {
-        if (Ext.isArray(x)) {
+    Ext2.lib.Point = function(x, y) {
+        if (Ext2.isArray(x)) {
             y = x[1];
             x = x[0];
         }
@@ -1244,30 +1244,30 @@
         this.y = this.top = this.bottom = this[1] = y;
     };
 
-    Ext.lib.Point.prototype = new Ext.lib.Region();
+    Ext2.lib.Point.prototype = new Ext2.lib.Region();
 
 
-    Ext.lib.Anim = {
+    Ext2.lib.Anim = {
         scroll : function(el, args, duration, easing, cb, scope) {
-            return this.run(el, args, duration, easing, cb, scope, Ext.lib.Scroll);
+            return this.run(el, args, duration, easing, cb, scope, Ext2.lib.Scroll);
         },
 
         motion : function(el, args, duration, easing, cb, scope) {
-            return this.run(el, args, duration, easing, cb, scope, Ext.lib.Motion);
+            return this.run(el, args, duration, easing, cb, scope, Ext2.lib.Motion);
         },
 
         color : function(el, args, duration, easing, cb, scope) {
-            return this.run(el, args, duration, easing, cb, scope, Ext.lib.ColorAnim);
+            return this.run(el, args, duration, easing, cb, scope, Ext2.lib.ColorAnim);
         },
 
         run : function(el, args, duration, easing, cb, scope, type) {
-            type = type || Ext.lib.AnimBase;
+            type = type || Ext2.lib.AnimBase;
             if (typeof easing == "string") {
-                easing = Ext.lib.Easing[easing];
+                easing = Ext2.lib.Easing[easing];
             }
             var anim = new type(el, args, duration, easing);
             anim.animateX(function() {
-                Ext.callback(cb, scope);
+                Ext2.callback(cb, scope);
             });
             return anim;
         }
@@ -1276,14 +1276,14 @@
 
     function fly(el) {
         if (!libFlyweight) {
-            libFlyweight = new Ext.Element.Flyweight();
+            libFlyweight = new Ext2.Element.Flyweight();
         }
         libFlyweight.dom = el;
         return libFlyweight;
     }
 
 
-    if(Ext.isIE) {
+    if(Ext2.isIE) {
         function fnCleanUp() {
             var p = Function.prototype;
             delete p.createSequence;
@@ -1297,13 +1297,13 @@
         window.attachEvent("onunload", fnCleanUp);
     }
 
-    Ext.lib.AnimBase = function(el, attributes, duration, method) {
+    Ext2.lib.AnimBase = function(el, attributes, duration, method) {
         if (el) {
             this.init(el, attributes, duration, method);
         }
     };
 
-    Ext.lib.AnimBase.prototype = {
+    Ext2.lib.AnimBase.prototype = {
 
         toString: function() {
             var el = this.getEl();
@@ -1329,7 +1329,7 @@
                 val = (val > 0) ? val : 0;
             }
 
-            Ext.fly(this.getEl(), '_anim').setStyle(attr, val + unit);
+            Ext2.fly(this.getEl(), '_anim').setStyle(attr, val + unit);
         },
 
 
@@ -1426,7 +1426,7 @@
             var actualFrames = 0;
 
 
-            el = Ext.getDom(el);
+            el = Ext2.getDom(el);
 
 
             this.attributes = attributes || {};
@@ -1435,7 +1435,7 @@
             this.duration = duration || 1;
 
 
-            this.method = method || Ext.lib.Easing.easeNone;
+            this.method = method || Ext2.lib.Easing.easeNone;
 
 
             this.useSeconds = true;
@@ -1444,7 +1444,7 @@
             this.currentFrame = 0;
 
 
-            this.totalFrames = Ext.lib.AnimMgr.fps;
+            this.totalFrames = Ext2.lib.AnimMgr.fps;
 
 
             this.getEl = function() {
@@ -1471,9 +1471,9 @@
 
                 this.currentFrame = 0;
 
-                this.totalFrames = ( this.useSeconds ) ? Math.ceil(Ext.lib.AnimMgr.fps * this.duration) : this.duration;
+                this.totalFrames = ( this.useSeconds ) ? Math.ceil(Ext2.lib.AnimMgr.fps * this.duration) : this.duration;
 
-                Ext.lib.AnimMgr.registerElement(this);
+                Ext2.lib.AnimMgr.registerElement(this);
             };
 
 
@@ -1482,7 +1482,7 @@
                     this.currentFrame = this.totalFrames;
                     this._onTween.fire();
                 }
-                Ext.lib.AnimMgr.stop(this);
+                Ext2.lib.AnimMgr.stop(this);
             };
 
             var onStart = function() {
@@ -1546,12 +1546,12 @@
             };
 
 
-            this._onStart = new Ext.util.Event(this);
-            this.onStart = new Ext.util.Event(this);
-            this.onTween = new Ext.util.Event(this);
-            this._onTween = new Ext.util.Event(this);
-            this.onComplete = new Ext.util.Event(this);
-            this._onComplete = new Ext.util.Event(this);
+            this._onStart = new Ext2.util.Event(this);
+            this.onStart = new Ext2.util.Event(this);
+            this.onTween = new Ext2.util.Event(this);
+            this._onTween = new Ext2.util.Event(this);
+            this.onComplete = new Ext2.util.Event(this);
+            this._onComplete = new Ext2.util.Event(this);
             this._onStart.addListener(onStart);
             this._onTween.addListener(onTween);
             this._onComplete.addListener(onComplete);
@@ -1559,7 +1559,7 @@
     };
 
 
-    Ext.lib.AnimMgr = new function() {
+    Ext2.lib.AnimMgr = new function() {
 
         var thread = null;
 
@@ -1642,7 +1642,7 @@
                     tween._onTween.fire();
                 }
                 else {
-                    Ext.lib.AnimMgr.stop(tween, i);
+                    Ext2.lib.AnimMgr.stop(tween, i);
                 }
             }
         };
@@ -1679,7 +1679,7 @@
         };
     };
 
-    Ext.lib.Bezier = new function() {
+    Ext2.lib.Bezier = new function() {
 
         this.getPosition = function(points, t) {
             var n = points.length;
@@ -1702,14 +1702,14 @@
     };
     (function() {
 
-        Ext.lib.ColorAnim = function(el, attributes, duration, method) {
-            Ext.lib.ColorAnim.superclass.constructor.call(this, el, attributes, duration, method);
+        Ext2.lib.ColorAnim = function(el, attributes, duration, method) {
+            Ext2.lib.ColorAnim.superclass.constructor.call(this, el, attributes, duration, method);
         };
 
-        Ext.extend(Ext.lib.ColorAnim, Ext.lib.AnimBase);
+        Ext2.extend(Ext2.lib.ColorAnim, Ext2.lib.AnimBase);
 
 
-        var Y = Ext.lib;
+        var Y = Ext2.lib;
         var superclass = Y.ColorAnim.superclass;
         var proto = Y.ColorAnim.prototype;
 
@@ -1814,7 +1814,7 @@
     })();
 
 
-    Ext.lib.Easing = {
+    Ext2.lib.Easing = {
 
 
         easeNone: function (t, b, c, d) {
@@ -1967,7 +1967,7 @@
 
 
         bounceIn: function (t, b, c, d) {
-            return c - Ext.lib.Easing.bounceOut(d - t, 0, c, d) + b;
+            return c - Ext2.lib.Easing.bounceOut(d - t, 0, c, d) + b;
         },
 
 
@@ -1985,23 +1985,23 @@
 
         bounceBoth: function (t, b, c, d) {
             if (t < d / 2) {
-                return Ext.lib.Easing.bounceIn(t * 2, 0, c, d) * .5 + b;
+                return Ext2.lib.Easing.bounceIn(t * 2, 0, c, d) * .5 + b;
             }
-            return Ext.lib.Easing.bounceOut(t * 2 - d, 0, c, d) * .5 + c * .5 + b;
+            return Ext2.lib.Easing.bounceOut(t * 2 - d, 0, c, d) * .5 + c * .5 + b;
         }
     };
 
     (function() {
-        Ext.lib.Motion = function(el, attributes, duration, method) {
+        Ext2.lib.Motion = function(el, attributes, duration, method) {
             if (el) {
-                Ext.lib.Motion.superclass.constructor.call(this, el, attributes, duration, method);
+                Ext2.lib.Motion.superclass.constructor.call(this, el, attributes, duration, method);
             }
         };
 
-        Ext.extend(Ext.lib.Motion, Ext.lib.ColorAnim);
+        Ext2.extend(Ext2.lib.Motion, Ext2.lib.ColorAnim);
 
 
-        var Y = Ext.lib;
+        var Y = Ext2.lib;
         var superclass = Y.Motion.superclass;
         var proto = Y.Motion.prototype;
 
@@ -2057,7 +2057,7 @@
                 var end;
                 var i, len;
 
-                if (control.length > 0 && !Ext.isArray(control[0])) {
+                if (control.length > 0 && !Ext2.isArray(control[0])) {
                     control = [control];
                 } else {
                     var tmp = [];
@@ -2067,13 +2067,13 @@
                     control = tmp;
                 }
 
-                Ext.fly(el, '_anim').position();
+                Ext2.fly(el, '_anim').position();
 
                 if (isset(attributes['points']['from'])) {
-                    Ext.lib.Dom.setXY(el, attributes['points']['from']);
+                    Ext2.lib.Dom.setXY(el, attributes['points']['from']);
                 }
                 else {
-                    Ext.lib.Dom.setXY(el, Ext.lib.Dom.getXY(el));
+                    Ext2.lib.Dom.setXY(el, Ext2.lib.Dom.getXY(el));
                 }
 
                 start = this.getAttribute('points');
@@ -2082,7 +2082,7 @@
                 if (isset(attributes['points']['to'])) {
                     end = translateValues.call(this, attributes['points']['to'], start);
 
-                    var pageXY = Ext.lib.Dom.getXY(this.getEl());
+                    var pageXY = Ext2.lib.Dom.getXY(this.getEl());
                     for (i = 0,len = control.length; i < len; ++i) {
                         control[i] = translateValues.call(this, control[i], start);
                     }
@@ -2110,7 +2110,7 @@
         };
 
         var translateValues = function(val, start) {
-            var pageXY = Ext.lib.Dom.getXY(this.getEl());
+            var pageXY = Ext2.lib.Dom.getXY(this.getEl());
             val = [ val[0] - pageXY[0] + start[0], val[1] - pageXY[1] + start[1] ];
 
             return val;
@@ -2123,16 +2123,16 @@
 
 
     (function() {
-        Ext.lib.Scroll = function(el, attributes, duration, method) {
+        Ext2.lib.Scroll = function(el, attributes, duration, method) {
             if (el) {
-                Ext.lib.Scroll.superclass.constructor.call(this, el, attributes, duration, method);
+                Ext2.lib.Scroll.superclass.constructor.call(this, el, attributes, duration, method);
             }
         };
 
-        Ext.extend(Ext.lib.Scroll, Ext.lib.ColorAnim);
+        Ext2.extend(Ext2.lib.Scroll, Ext2.lib.ColorAnim);
 
 
-        var Y = Ext.lib;
+        var Y = Ext2.lib;
         var superclass = Y.Scroll.superclass;
         var proto = Y.Scroll.prototype;
 

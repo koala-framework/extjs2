@@ -8,11 +8,11 @@
 
 
 /**
- * @class Ext.data.SortTypes
+ * @class Ext2.data.SortTypes
  * @singleton
  * Defines the default sorting (casting?) comparison functions used when sorting data.
  */
-Ext.data.SortTypes = {
+Ext2.data.SortTypes = {
     /**
      * Default sort that does nothing
      * @param {Mixed} s The value being converted
@@ -65,7 +65,7 @@ Ext.data.SortTypes = {
         if(!s){
             return 0;
         }
-        if(Ext.isDate(s)){
+        if(Ext2.isDate(s)){
             return s.getTime();
         }
     	return Date.parse(String(s));

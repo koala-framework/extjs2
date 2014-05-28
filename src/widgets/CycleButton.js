@@ -7,14 +7,14 @@
  */
 
 /**
- * @class Ext.CycleButton
- * @extends Ext.SplitButton
- * A specialized SplitButton that contains a menu of {@link Ext.menu.CheckItem} elements.  The button automatically
+ * @class Ext2.CycleButton
+ * @extends Ext2.SplitButton
+ * A specialized SplitButton that contains a menu of {@link Ext2.menu.CheckItem} elements.  The button automatically
  * cycles through each menu item on click, raising the button's {@link #change} event (or calling the button's
  * {@link #changeHandler} function, if supplied) for the active menu item. Clicking on the arrow section of the
  * button displays the dropdown menu just like a normal SplitButton.  Example usage:
  * <pre><code>
-var btn = new Ext.CycleButton({
+var btn = new Ext2.CycleButton({
     showText: true,
     prependText: 'View as ',
     items: [{
@@ -26,7 +26,7 @@ var btn = new Ext.CycleButton({
         iconCls:'view-html'
     }],
     changeHandler:function(btn, item){
-        Ext.Msg.alert('Change View', item.text);
+        Ext2.Msg.alert('Change View', item.text);
     }
 });
 </code></pre>
@@ -34,9 +34,9 @@ var btn = new Ext.CycleButton({
  * Create a new split button
  * @param {Object} config The config object
  */
-Ext.CycleButton = Ext.extend(Ext.SplitButton, {
+Ext2.CycleButton = Ext2.extend(Ext2.SplitButton, {
     /**
-     * @cfg {Array} items An array of {@link Ext.menu.CheckItem} <b>config</b> objects to be used when creating the
+     * @cfg {Array} items An array of {@link Ext2.menu.CheckItem} <b>config</b> objects to be used when creating the
      * button's menu items (e.g., {text:'Foo', iconCls:'foo-icon'})
      */
     /**
@@ -50,7 +50,7 @@ Ext.CycleButton = Ext.extend(Ext.SplitButton, {
      * @cfg {Function} changeHandler A callback function that will be invoked each time the active menu
      * item in the button's menu has changed.  If this callback is not supplied, the SplitButton will instead
      * fire the {@link #change} event on active item change.  The changeHandler function will be called with the
-     * following argument list: (SplitButton this, Ext.menu.CheckItem item)
+     * following argument list: (SplitButton this, Ext2.menu.CheckItem item)
      */
     /**
      * @cfg {String} forceIcon A css class which sets an image to be used as the static icon for this button.  This
@@ -60,7 +60,7 @@ Ext.CycleButton = Ext.extend(Ext.SplitButton, {
     /**
      * @property menu
      * @type Menu
-     * The {@link Ext.menu.Menu Menu} object used to display the {@link Ext.menu.CheckItem CheckItems} representing the available choices.
+     * The {@link Ext2.menu.Menu Menu} object used to display the {@link Ext2.menu.CheckItem CheckItems} representing the available choices.
      */
 
     // private
@@ -78,7 +78,7 @@ Ext.CycleButton = Ext.extend(Ext.SplitButton, {
 
     /**
      * Sets the button's active menu item.
-     * @param {Ext.menu.CheckItem} item The item to activate
+     * @param {Ext2.menu.CheckItem} item The item to activate
      * @param {Boolean} suppressEvent True to prevent the button's change event from firing (defaults to false)
      */
     setActiveItem : function(item, suppressEvent){
@@ -111,7 +111,7 @@ Ext.CycleButton = Ext.extend(Ext.SplitButton, {
 
     /**
      * Gets the currently active menu item.
-     * @return {Ext.menu.CheckItem} The active item
+     * @return {Ext2.menu.CheckItem} The active item
      */
     getActiveItem : function(){
         return this.activeItem;
@@ -125,8 +125,8 @@ Ext.CycleButton = Ext.extend(Ext.SplitButton, {
              * Fires after the button's active menu item has changed.  Note that if a {@link #changeHandler} function
              * is set on this CycleButton, it will be called instead on active item change and this change event will
              * not be fired.
-             * @param {Ext.CycleButton} this
-             * @param {Ext.menu.CheckItem} item The menu item that was selected
+             * @param {Ext2.CycleButton} this
+             * @param {Ext2.menu.CheckItem} item The menu item that was selected
              */
             "change"
         );
@@ -138,7 +138,7 @@ Ext.CycleButton = Ext.extend(Ext.SplitButton, {
 
         this.itemCount = this.items.length;
 
-        this.menu = {cls:'x-cycle-menu', items:[]};
+        this.menu = {cls:'x2-cycle-menu', items:[]};
         var checked;
         for(var i = 0, len = this.itemCount; i < len; i++){
             var item = this.items[i];
@@ -153,7 +153,7 @@ Ext.CycleButton = Ext.extend(Ext.SplitButton, {
             }
         }
         this.setActiveItem(checked, true);
-        Ext.CycleButton.superclass.initComponent.call(this);
+        Ext2.CycleButton.superclass.initComponent.call(this);
 
         this.on('click', this.toggleSelected, this);
     },
@@ -186,4 +186,4 @@ Ext.CycleButton = Ext.extend(Ext.SplitButton, {
         }
     }
 });
-Ext.reg('cycle', Ext.CycleButton);
+Ext2.reg('cycle', Ext2.CycleButton);

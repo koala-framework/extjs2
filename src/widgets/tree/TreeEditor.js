@@ -7,20 +7,20 @@
  */
 
 /**
- * @class Ext.tree.TreeEditor
- * @extends Ext.Editor
- * Provides editor functionality for inline tree node editing.  Any valid {@link Ext.form.Field} subclass can be used
+ * @class Ext2.tree.TreeEditor
+ * @extends Ext2.Editor
+ * Provides editor functionality for inline tree node editing.  Any valid {@link Ext2.form.Field} subclass can be used
  * as the editor field.
  * @constructor
  * @param {TreePanel} tree
- * @param {Object} fieldConfig (optional) Either a prebuilt {@link Ext.form.Field} instance or a Field config object
- * that will be applied to the default field instance (defaults to a {@link Ext.form.TextField}).
+ * @param {Object} fieldConfig (optional) Either a prebuilt {@link Ext2.form.Field} instance or a Field config object
+ * that will be applied to the default field instance (defaults to a {@link Ext2.form.TextField}).
  * @param {Object} config (optional) A TreeEditor config object
  */
-Ext.tree.TreeEditor = function(tree, fc, config){
+Ext2.tree.TreeEditor = function(tree, fc, config){
     fc = fc || {};
-    var field = fc.events ? fc : new Ext.form.TextField(fc);
-    Ext.tree.TreeEditor.superclass.constructor.call(this, field, config);
+    var field = fc.events ? fc : new Ext2.form.TextField(fc);
+    Ext2.tree.TreeEditor.superclass.constructor.call(this, field, config);
 
     this.tree = tree;
 
@@ -31,10 +31,10 @@ Ext.tree.TreeEditor = function(tree, fc, config){
     }
 };
 
-Ext.extend(Ext.tree.TreeEditor, Ext.Editor, {
+Ext2.extend(Ext2.tree.TreeEditor, Ext2.Editor, {
     /**
      * @cfg {String} alignment
-     * The position to align to (see {@link Ext.Element#alignTo} for more details, defaults to "l-l").
+     * The position to align to (see {@link Ext2.Element#alignTo} for more details, defaults to "l-l").
      */
     alignment: "l-l",
     // inherit
@@ -46,9 +46,9 @@ Ext.extend(Ext.tree.TreeEditor, Ext.Editor, {
     hideEl : false,
     /**
      * @cfg {String} cls
-     * CSS class to apply to the editor (defaults to "x-small-editor x-tree-editor")
+     * CSS class to apply to the editor (defaults to "x2-small-editor x2-tree-editor")
      */
-    cls: "x-small-editor x-tree-editor",
+    cls: "x2-small-editor x2-tree-editor",
     /**
      * @cfg {Boolean} shim
      * True to shim the editor if selects/iframes could be displayed beneath it (defaults to false)
@@ -92,23 +92,23 @@ Ext.extend(Ext.tree.TreeEditor, Ext.Editor, {
     },
 
     /**
-     * Edit the text of the passed {@link Ext.tree.TreeNode TreeNode}.
-     * @param node {Ext.tree.TreeNode} The TreeNode to edit. The TreeNode must be {@link Ext.tree.TreeNode#editable editable}.
+     * Edit the text of the passed {@link Ext2.tree.TreeNode TreeNode}.
+     * @param node {Ext2.tree.TreeNode} The TreeNode to edit. The TreeNode must be {@link Ext2.tree.TreeNode#editable editable}.
      */
     triggerEdit : function(node, defer){
         this.completeEdit();
 		if(node.attributes.editable !== false){
            /**
-            * The {@link Ext.tree.TreeNode TreeNode} this editor is bound to. Read-only.
-            * @type Ext.tree.TreeNode
+            * The {@link Ext2.tree.TreeNode TreeNode} this editor is bound to. Read-only.
+            * @type Ext2.tree.TreeNode
             * @property editNode
             */
 			this.editNode = node;
             if(this.tree.autoScroll){
-                Ext.fly(node.ui.getEl()).scrollIntoView(this.tree.body);
+                Ext2.fly(node.ui.getEl()).scrollIntoView(this.tree.body);
             }
             var value = node.text || '';
-            if (!Ext.isGecko && Ext.isEmpty(node.text)){
+            if (!Ext2.isGecko && Ext2.isEmpty(node.text)){
                 node.setText('&nbsp;');
             }
             this.autoEditTimer = this.startEdit.defer(this.editDelay, this, [node.ui.textNode, value]);
@@ -142,7 +142,7 @@ Ext.extend(Ext.tree.TreeEditor, Ext.Editor, {
 
     // private
     onHide : function(){
-        Ext.tree.TreeEditor.superclass.onHide.call(this);
+        Ext2.tree.TreeEditor.superclass.onHide.call(this);
         if(this.editNode){
             this.editNode.ui.focus.defer(50, this.editNode.ui);
         }

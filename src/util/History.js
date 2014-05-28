@@ -7,15 +7,15 @@
  */
 
 /**
- * @class Ext.History
- * @extends Ext.util.Observable
+ * @class Ext2.History
+ * @extends Ext2.util.Observable
  * History management component that allows you to register arbitrary tokens that signify application
  * history state on navigation actions.  You can then handle the history {@link #change} event in order
  * to reset your application UI to the appropriate state when the user navigates forward or backward through
  * the browser history stack.
  * @singleton
  */
-Ext.History = (function () {
+Ext2.History = (function () {
     var iframe, hiddenField;
     var ready = false;
     var currentToken;
@@ -31,7 +31,7 @@ Ext.History = (function () {
 
     function handleStateChange(token) {
         currentToken = token;
-        Ext.History.fireEvent('change', token);
+        Ext2.History.fireEvent('change', token);
     }
 
     function updateIFrame (token) {
@@ -83,13 +83,13 @@ Ext.History = (function () {
 
         ready = true;
 
-        Ext.History.fireEvent('ready', Ext.History);
+        Ext2.History.fireEvent('ready', Ext2.History);
     }
 
     function startUp() {
         currentToken = hiddenField.value ? hiddenField.value : getHash();
         
-        if (Ext.isIE) {
+        if (Ext2.isIE6 || Ext2.isIE7) {
             checkIFrame();
         } else {
             var hash = getHash();
@@ -102,7 +102,7 @@ Ext.History = (function () {
                 }
             }, 50);
             ready = true;
-            Ext.History.fireEvent('ready', Ext.History);
+            Ext2.History.fireEvent('ready', Ext2.History);
         }
     }
 
@@ -112,13 +112,13 @@ Ext.History = (function () {
          * @type String
          * @property
          */
-        fieldId: 'x-history-field',
+        fieldId: 'x2-history-field',
         /**
          * The id of the iframe required by IE to manage the history stack.
          * @type String
          * @property
          */
-        iframeId: 'x-history-frame',
+        iframeId: 'x2-history-frame',
         
         events:{},
 
@@ -130,18 +130,18 @@ Ext.History = (function () {
          */
         init: function (onReady, scope) {
             if(ready) {
-                Ext.callback(onReady, scope, [this]);
+                Ext2.callback(onReady, scope, [this]);
                 return;
             }
-            if(!Ext.isReady){
-                Ext.onReady(function(){
-                    Ext.History.init(onReady, scope);
+            if(!Ext2.isReady){
+                Ext2.onReady(function(){
+                    Ext2.History.init(onReady, scope);
                 });
                 return;
             }
-            hiddenField = Ext.getDom(Ext.History.fieldId);
-			if (Ext.isIE) {
-                iframe = Ext.getDom(Ext.History.iframeId);
+            hiddenField = Ext2.getDom(Ext2.History.fieldId);
+			if (Ext2.isIE6 || Ext2.isIE7) {
+                iframe = Ext2.getDom(Ext2.History.iframeId);
             }
             this.addEvents('ready', 'change');
             if(onReady){
@@ -157,7 +157,7 @@ Ext.History = (function () {
          * <pre><code>
 // Handle tab changes on a TabPanel
 tabPanel.on('tabchange', function(tabPanel, tab){
-    Ext.History.add(tabPanel.id + ':' + tab.id);
+    Ext2.History.add(tabPanel.id + ':' + tab.id);
 });
 </code></pre>
          * @param {String} token The value that defines a particular application-specific history state
@@ -171,7 +171,7 @@ tabPanel.on('tabchange', function(tabPanel, tab){
                     return true;
                 }
             }
-            if (Ext.isIE) {
+            if (Ext2.isIE6 || Ext2.isIE7) {
                 return updateIFrame(token);
             } else {
                 top.location.hash = token;
@@ -202,4 +202,4 @@ tabPanel.on('tabchange', function(tabPanel, tab){
         }
     };
 })();
-Ext.apply(Ext.History, new Ext.util.Observable());
+Ext2.apply(Ext2.History, new Ext2.util.Observable());

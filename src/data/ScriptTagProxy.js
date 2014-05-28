@@ -7,9 +7,9 @@
  */
 
 /**
- * @class Ext.data.ScriptTagProxy
- * @extends Ext.data.DataProxy
- * An implementation of Ext.data.DataProxy that reads a data object from a URL which may be in a domain
+ * @class Ext2.data.ScriptTagProxy
+ * @extends Ext2.data.DataProxy
+ * An implementation of Ext2.data.DataProxy that reads a data object from a URL which may be in a domain
  * other than the originating domain of the running page.<br>
  * <p>
  * <b>Note that if you are retrieving data from a page that is in a domain that is NOT the same as the originating domain
@@ -45,9 +45,9 @@ if (scriptTag) {
  * @constructor
  * @param {Object} config A configuration object.
  */
-Ext.data.ScriptTagProxy = function(config){
-    Ext.data.ScriptTagProxy.superclass.constructor.call(this);
-    Ext.apply(this, config);
+Ext2.data.ScriptTagProxy = function(config){
+    Ext2.data.ScriptTagProxy.superclass.constructor.call(this);
+    Ext2.apply(this, config);
     this.head = document.getElementsByTagName("head")[0];
     
     /**
@@ -59,7 +59,7 @@ Ext.data.ScriptTagProxy = function(config){
      * <li><b>The load succeeded but the reader could not read the response.</b>  This means the server returned
      * data, but the configured Reader threw an error while reading the data.  In this case, this event will be 
      * raised and the caught error will be passed along as the fourth parameter of this event.</li></ul>
-     * Note that this event is also relayed through {@link Ext.data.Store}, so you can listen for it directly
+     * Note that this event is also relayed through {@link Ext2.data.Store}, so you can listen for it directly
      * on any Store instance.
      * @param {Object} this
      * @param {Object} options The loading options that were specified (see {@link #load} for details).  If the load
@@ -70,9 +70,9 @@ Ext.data.ScriptTagProxy = function(config){
      */
 };
 
-Ext.data.ScriptTagProxy.TRANS_ID = 1000;
+Ext2.data.ScriptTagProxy.TRANS_ID = 1000;
 
-Ext.extend(Ext.data.ScriptTagProxy, Ext.data.DataProxy, {
+Ext2.extend(Ext2.data.ScriptTagProxy, Ext2.data.DataProxy, {
     /**
      * @cfg {String} url The URL from which to request the data object.
      */
@@ -95,13 +95,13 @@ Ext.extend(Ext.data.ScriptTagProxy, Ext.data.DataProxy, {
 
     /**
      * Load data from the configured URL, read the data object into
-     * a block of Ext.data.Records using the passed Ext.data.DataReader implementation, and
+     * a block of Ext2.data.Records using the passed Ext2.data.DataReader implementation, and
      * process that block using the passed callback.
      * @param {Object} params An object containing properties which are to be used as HTTP parameters
      * for the request to the remote server.
-     * @param {Ext.data.DataReader} reader The Reader object which converts the data
-     * object into a block of Ext.data.Records.
-     * @param {Function} callback The function into which to pass the block of Ext.data.Records.
+     * @param {Ext2.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Ext2.data.Records.
+     * @param {Function} callback The function into which to pass the block of Ext2.data.Records.
      * The function must be passed <ul>
      * <li>The Record block object</li>
      * <li>The "arg" argument from the load function</li>
@@ -113,14 +113,14 @@ Ext.extend(Ext.data.ScriptTagProxy, Ext.data.DataProxy, {
     load : function(params, reader, callback, scope, arg){
         if(this.fireEvent("beforeload", this, params) !== false){
 
-            var p = Ext.urlEncode(Ext.apply(params, this.extraParams));
+            var p = Ext2.urlEncode(Ext2.apply(params, this.extraParams));
 
             var url = this.url;
             url += (url.indexOf("?") != -1 ? "&" : "?") + p;
             if(this.nocache){
                 url += "&_dc=" + (new Date().getTime());
             }
-            var transId = ++Ext.data.ScriptTagProxy.TRANS_ID;
+            var transId = ++Ext2.data.ScriptTagProxy.TRANS_ID;
             var trans = {
                 id : transId,
                 cb : "stcCallback"+transId,
@@ -219,6 +219,6 @@ Ext.extend(Ext.data.ScriptTagProxy, Ext.data.DataProxy, {
     // inherit docs
     destroy: function(){
         this.abort();
-        Ext.data.ScriptTagProxy.superclass.destroy.call(this);
+        Ext2.data.ScriptTagProxy.superclass.destroy.call(this);
     }
 });

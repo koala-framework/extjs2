@@ -6,13 +6,13 @@
  * http://extjs.com/license
  */
 
-.x-dd-drag-proxy{
+.x2-dd-drag-proxy{
 	position:absolute;
 	left:0;top:0;
 	visibility:hidden;
 	z-index:15000;
 }
-.x-dd-drag-ghost{
+.x2-dd-drag-ghost{
 	color: black;
 	font: normal 11px arial, helvetica, sans-serif;
 	-moz-opacity: 0.85;
@@ -27,7 +27,7 @@
 	background-color:white;
 	white-space:nowrap;
 }
-.x-dd-drag-repair .x-dd-drag-ghost{
+.x2-dd-drag-repair .x2-dd-drag-ghost{
 	-moz-opacity: 0.4;
    opacity:.4;
    filter: alpha(opacity=40);
@@ -35,10 +35,10 @@
 	padding:0;
 	background-color:transparent;
 }
-.x-dd-drag-repair .x-dd-drop-icon{
+.x2-dd-drag-repair .x2-dd-drop-icon{
 	visibility:hidden;
 }
-.x-dd-drop-icon{
+.x2-dd-drop-icon{
   position:absolute;
 	top:3px;
 	left:3px;
@@ -50,18 +50,18 @@
 	background-repeat: no-repeat;
 	z-index:1;
 }
-.x-dd-drop-nodrop .x-dd-drop-icon{
+.x2-dd-drop-nodrop .x2-dd-drop-icon{
   background-image: url(../images/default/dd/drop-no.gif);
 }
-.x-dd-drop-ok .x-dd-drop-icon{
+.x2-dd-drop-ok .x2-dd-drop-icon{
   background-image: url(../images/default/dd/drop-yes.gif);
 }
-.x-dd-drop-ok-add .x-dd-drop-icon{
+.x2-dd-drop-ok-add .x2-dd-drop-icon{
   background-image: url(../images/default/dd/drop-add.gif);
 }
 
 
-.x-view-selector {
+.x2-view-selector {
     position:absolute;
     left:0;
     top:0;

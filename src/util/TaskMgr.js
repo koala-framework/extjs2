@@ -7,26 +7,26 @@
  */
 
 /**
- * @class Ext.util.TaskRunner
+ * @class Ext2.util.TaskRunner
  * Provides the ability to execute one or more arbitrary tasks in a multithreaded manner.  Generally, you can use
- * the singleton {@link Ext.TaskMgr} instead, but if needed, you can create separate instances of TaskRunner.  Any
+ * the singleton {@link Ext2.TaskMgr} instead, but if needed, you can create separate instances of TaskRunner.  Any
  * number of separate tasks can be started at any time and will run independently of each other.  Example usage:
  * <pre><code>
 // Start a simple clock task that updates a div once per second
 var task = {
     run: function(){
-        Ext.fly('clock').update(new Date().format('g:i:s A'));
+        Ext2.fly('clock').update(new Date().format('g:i:s A'));
     },
     interval: 1000 //1 second
 }
-var runner = new Ext.util.TaskRunner();
+var runner = new Ext2.util.TaskRunner();
 runner.start(task);
 </code></pre>
  * @constructor
  * @param {Number} interval (optional) The minimum precision in milliseconds supported by this TaskRunner instance
  * (defaults to 10)
  */
-Ext.util.TaskRunner = function(interval){
+Ext2.util.TaskRunner = function(interval){
     interval = interval || 10;
     var tasks = [], removeQueue = [];
     var id = 0;
@@ -87,7 +87,7 @@ Ext.util.TaskRunner = function(interval){
     };
 
     /**
-     * @member Ext.util.TaskRunner
+     * @member Ext2.util.TaskRunner
      * @method start
      * Starts a new task.
      * @param {Object} task A config object that supports the following properties:<ul>
@@ -117,7 +117,7 @@ Ext.util.TaskRunner = function(interval){
     };
 
     /**
-     * @member Ext.util.TaskRunner
+     * @member Ext2.util.TaskRunner
      * @method stop
      * Stops an existing running task.
      * @param {Object} task The task to stop
@@ -129,7 +129,7 @@ Ext.util.TaskRunner = function(interval){
     };
 
     /**
-     * @member Ext.util.TaskRunner
+     * @member Ext2.util.TaskRunner
      * @method stopAll
      * Stops all tasks that are currently running.
      */
@@ -146,19 +146,19 @@ Ext.util.TaskRunner = function(interval){
 };
 
 /**
- * @class Ext.TaskMgr
- * @extends Ext.util.TaskRunner
- * A static {@link Ext.util.TaskRunner} instance that can be used to start and stop arbitrary tasks.
+ * @class Ext2.TaskMgr
+ * @extends Ext2.util.TaskRunner
+ * A static {@link Ext2.util.TaskRunner} instance that can be used to start and stop arbitrary tasks.
  * Example usage:<pre><code>
 // Start a simple clock task that updates a div once per second
 var task = {
     run: function(){
-        Ext.fly('clock').update(new Date().format('g:i:s A'));
+        Ext2.fly('clock').update(new Date().format('g:i:s A'));
     },
     interval: 1000 //1 second
 }
-Ext.TaskMgr.start(task);
+Ext2.TaskMgr.start(task);
 </code></pre>
  * @singleton
  */
-Ext.TaskMgr = new Ext.util.TaskRunner();
+Ext2.TaskMgr = new Ext2.util.TaskRunner();

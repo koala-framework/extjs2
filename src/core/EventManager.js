@@ -7,24 +7,24 @@
  */
 
 /**
- * @class Ext.EventManager
+ * @class Ext2.EventManager
  * Registers event handlers that want to receive a normalized EventObject instead of the standard browser event and provides
  * several useful events directly.
- * See {@link Ext.EventObject} for more details on normalized event objects.
+ * See {@link Ext2.EventObject} for more details on normalized event objects.
  * @singleton
  */
-Ext.EventManager = function(){
+Ext2.EventManager = function(){
     var docReadyEvent, docReadyProcId, docReadyState = false;
     var resizeEvent, resizeTask, textEvent, textSize;
-    var E = Ext.lib.Event;
-    var D = Ext.lib.Dom;
+    var E = Ext2.lib.Event;
+    var D = Ext2.lib.Dom;
     // fix parser confusion
     var xname = 'Ex' + 't';
 
     var elHash = {};
 
     var addListener = function(el, ename, fn, wrap, scope){
-        var id = Ext.id(el);
+        var id = Ext2.id(el);
         if(!elHash[id]){
             elHash[id] = {};
         }
@@ -50,14 +50,14 @@ Ext.EventManager = function(){
             });
         }
         if(ename == "mousedown" && el == document){ // fix stopped mousedowns on the document
-            Ext.EventManager.stoppedMouseDownEvent.addListener(wrap);
+            Ext2.EventManager.stoppedMouseDownEvent.addListener(wrap);
         }
     }
 
     var removeListener = function(el, ename, fn, scope){
-        el = Ext.getDom(el);
+        el = Ext2.getDom(el);
 
-        var id = Ext.id(el), es = elHash[id], wrap;
+        var id = Ext2.id(el), es = elHash[id], wrap;
         if(es){
             var ls = es[ename], l;
             if(ls){
@@ -76,13 +76,13 @@ Ext.EventManager = function(){
             el.removeEventListener("DOMMouseScroll", wrap, false);
         }
         if(ename == "mousedown" && el == document && wrap){ // fix stopped mousedowns on the document
-            Ext.EventManager.stoppedMouseDownEvent.removeListener(wrap);
+            Ext2.EventManager.stoppedMouseDownEvent.removeListener(wrap);
         }
     }
 
     var removeAll = function(el){
-        el = Ext.getDom(el);
-        var id = Ext.id(el), es = elHash[id], ls;
+        el = Ext2.getDom(el);
+        var id = Ext2.id(el), es = elHash[id], ls;
         if(es){
             for(var ename in es){
                 if(es.hasOwnProperty(ename)){
@@ -102,14 +102,14 @@ Ext.EventManager = function(){
     var fireDocReady = function(){
         if(!docReadyState){
             docReadyState = true;
-            Ext.isReady = true;
+            Ext2.isReady = true;
             if(docReadyProcId){
                 clearInterval(docReadyProcId);
             }
-            if(Ext.isGecko || Ext.isOpera) {
+            if(Ext2.isGecko || Ext2.isOpera) {
                 document.removeEventListener("DOMContentLoaded", fireDocReady, false);
             }
-            if(Ext.isIE){
+            if(Ext2.isIE){
                 var defer = document.getElementById("ie-deferred-loader");
                 if(defer){
                     defer.onreadystatechange = null;
@@ -124,10 +124,10 @@ Ext.EventManager = function(){
     };
 
     var initDocReady = function(){
-        docReadyEvent = new Ext.util.Event();
-        if(Ext.isGecko || Ext.isOpera) {
+        docReadyEvent = new Ext2.util.Event();
+        if(Ext2.isGecko || Ext2.isOpera) {
             document.addEventListener("DOMContentLoaded", fireDocReady, false);
-        }else if(Ext.isIE){
+        }else if(Ext2.isIE){
             document.write("<s"+'cript id="ie-deferred-loader" defer="defer" src="/'+'/:"></s'+"cript>");
             var defer = document.getElementById("ie-deferred-loader");
             defer.onreadystatechange = function(){
@@ -135,7 +135,7 @@ Ext.EventManager = function(){
                     fireDocReady();
                 }
             };
-        }else if(Ext.isWebKit){
+        }else if(Ext2.isWebKit){
             docReadyProcId = setInterval(function(){
                 var rs = document.readyState;
                 if(rs == "complete") {
@@ -148,17 +148,17 @@ Ext.EventManager = function(){
     };
 
     var createBuffered = function(h, o){
-        var task = new Ext.util.DelayedTask(h);
+        var task = new Ext2.util.DelayedTask(h);
         return function(e){
             // create new event object impl so new events don't wipe out properties
-            e = new Ext.EventObjectImpl(e);
+            e = new Ext2.EventObjectImpl(e);
             task.delay(o.buffer, h, null, [e]);
         };
     };
 
     var createSingle = function(h, el, ename, fn, scope){
         return function(e){
-            Ext.EventManager.removeListener(el, ename, fn, scope);
+            Ext2.EventManager.removeListener(el, ename, fn, scope);
             h(e);
         };
     };
@@ -166,7 +166,7 @@ Ext.EventManager = function(){
     var createDelayed = function(h, o){
         return function(e){
             // create new event object impl so new events don't wipe out properties
-            e = new Ext.EventObjectImpl(e);
+            e = new Ext2.EventObjectImpl(e);
             setTimeout(function(){
                 h(e);
             }, o.delay || 10);
@@ -176,7 +176,7 @@ Ext.EventManager = function(){
     var listen = function(element, ename, opt, fn, scope){
         var o = (!opt || typeof opt == "boolean") ? {} : opt;
         fn = fn || o.fn; scope = scope || o.scope;
-        var el = Ext.getDom(element);
+        var el = Ext2.getDom(element);
         if(!el){
             throw "Error listening for \"" + ename + '\". Element "' + element + '" doesn\'t exist.';
         }
@@ -185,7 +185,7 @@ Ext.EventManager = function(){
             if(!window[xname]){
                 return;
             }
-            e = Ext.EventObject.setEvent(e);
+            e = Ext2.EventObject.setEvent(e);
             var t;
             if(o.delegate){
                 t = e.getTarget(o.delegate, el);
@@ -232,13 +232,13 @@ Ext.EventManager = function(){
 
     /**
      * Appends an event handler to an element.  The shorthand version {@link #on} is equivalent.  Typically you will
-     * use {@link Ext.Element#addListener} directly on an Element in favor of calling this version.
+     * use {@link Ext2.Element#addListener} directly on an Element in favor of calling this version.
      * @param {String/HTMLElement} el The html element or id to assign the event handler to
      * @param {String} eventName The type of event to listen for
      * @param {Function} handler The handler function the event invokes This function is passed
      * the following parameters:<ul>
-     * <li>evt : EventObject<div class="sub-desc">The {@link Ext.EventObject EventObject} describing the event.</div></li>
-     * <li>t : Element<div class="sub-desc">The {@link Ext.Element Element} which was the target of the event.
+     * <li>evt : EventObject<div class="sub-desc">The {@link Ext2.EventObject EventObject} describing the event.</div></li>
+     * <li>t : Element<div class="sub-desc">The {@link Ext2.Element Element} which was the target of the event.
      * Note that this may be filtered by using the <tt>delegate</tt> option.</div></li>
      * <li>o : Object<div class="sub-desc">The options object from the addListener call.</div></li>
      * </ul>
@@ -251,14 +251,14 @@ Ext.EventManager = function(){
      * <li>stopEvent {Boolean} : True to stop the event. That is stop propagation, and prevent the default action.</li>
      * <li>preventDefault {Boolean} : True to prevent the default action</li>
      * <li>stopPropagation {Boolean} : True to prevent event propagation</li>
-     * <li>normalized {Boolean} : False to pass a browser event to the handler function instead of an Ext.EventObject</li>
+     * <li>normalized {Boolean} : False to pass a browser event to the handler function instead of an Ext2.EventObject</li>
      * <li>delay {Number} : The number of milliseconds to delay the invocation of the handler after te event fires.</li>
      * <li>single {Boolean} : True to add a handler to handle just the next firing of the event, and then remove itself.</li>
-     * <li>buffer {Number} : Causes the handler to be scheduled to run in an {@link Ext.util.DelayedTask} delayed
+     * <li>buffer {Number} : Causes the handler to be scheduled to run in an {@link Ext2.util.DelayedTask} delayed
      * by the specified number of milliseconds. If the event fires again within that time, the original
      * handler is <em>not</em> invoked, but the new handler is scheduled in its place.</li>
      * </ul><br>
-     * <p>See {@link Ext.Element#addListener} for examples of how to use these options.</p>
+     * <p>See {@link Ext2.Element#addListener} for examples of how to use these options.</p>
      */
         addListener : function(element, eventName, fn, scope, options){
             if(typeof eventName == "object"){
@@ -282,7 +282,7 @@ Ext.EventManager = function(){
 
         /**
          * Removes an event handler from an element.  The shorthand version {@link #un} is equivalent.  Typically
-         * you will use {@link Ext.Element#removeListener} directly on an Element in favor of calling this version.
+         * you will use {@link Ext2.Element#removeListener} directly on an Element in favor of calling this version.
          * @param {String/HTMLElement} el The id or html element from which to remove the event
          * @param {String} eventName The type of event
          * @param {Function} fn The handler function to remove
@@ -292,7 +292,7 @@ Ext.EventManager = function(){
         },
 
         /**
-         * Removes all event handers from an element.  Typically you will use {@link Ext.Element#removeAllListeners}
+         * Removes all event handers from an element.  Typically you will use {@link Ext2.Element#removeAllListeners}
          * directly on an Element in favor of calling this version.
          * @param {String/HTMLElement} el The id or html element from which to remove the event
          */
@@ -302,7 +302,7 @@ Ext.EventManager = function(){
 
         /**
          * Fires when the document is ready (before onload and before images are loaded). Can be
-         * accessed shorthanded as Ext.onReady().
+         * accessed shorthanded as Ext2.onReady().
          * @param {Function} fn The method the event invokes
          * @param {Object} scope (optional) An object that becomes the scope of the handler
          * @param {boolean} options (optional) An object containing standard {@link #addListener} options
@@ -343,8 +343,8 @@ Ext.EventManager = function(){
          */
         onWindowResize : function(fn, scope, options){
             if(!resizeEvent){
-                resizeEvent = new Ext.util.Event();
-                resizeTask = new Ext.util.DelayedTask(this.doResizeEvent);
+                resizeEvent = new Ext2.util.Event();
+                resizeTask = new Ext2.util.DelayedTask(this.doResizeEvent);
                 E.on(window, "resize", this.fireWindowResize, this);
             }
             resizeEvent.addListener(fn, scope, options);
@@ -353,7 +353,7 @@ Ext.EventManager = function(){
         // exposed only to allow manual firing
         fireWindowResize : function(){
             if(resizeEvent){
-                if((Ext.isIE||Ext.isAir) && resizeTask){
+                if((Ext2.isIE||Ext2.isAir) && resizeTask){
                     resizeTask.delay(50);
                 }else{
                     resizeEvent.fire(D.getViewWidth(), D.getViewHeight());
@@ -369,9 +369,9 @@ Ext.EventManager = function(){
          */
         onTextResize : function(fn, scope, options){
             if(!textEvent){
-                textEvent = new Ext.util.Event();
-                var textEl = new Ext.Element(document.createElement('div'));
-                textEl.dom.className = 'x-text-resize';
+                textEvent = new Ext2.util.Event();
+                var textEl = new Ext2.Element(document.createElement('div'));
+                textEl.dom.className = 'x2-text-resize';
                 textEl.dom.innerHTML = 'X';
                 textEl.appendTo(document.body);
                 textSize = textEl.dom.offsetHeight;
@@ -402,7 +402,7 @@ Ext.EventManager = function(){
             }
         },
         /**
-         * Url used for onDocumentReady with using SSL (defaults to Ext.SSL_SECURE_URL)
+         * Url used for onDocumentReady with using SSL (defaults to Ext2.SSL_SECURE_URL)
          */
         ieDeferSrc : false,
         /**
@@ -418,7 +418,7 @@ Ext.EventManager = function(){
      * @param {Object} scope (optional) The scope in which to execute the handler
      * function (the handler function's "this" context)
      * @param {Object} options (optional) An object containing standard {@link #addListener} options
-     * @member Ext.EventManager
+     * @member Ext2.EventManager
      * @method on
      */
     pub.on = pub.addListener;
@@ -428,23 +428,23 @@ Ext.EventManager = function(){
      * @param {String} eventName The type of event
      * @param {Function} fn The handler function to remove
      * @return {Boolean} True if a listener was actually removed, else false
-     * @member Ext.EventManager
+     * @member Ext2.EventManager
      * @method un
      */
     pub.un = pub.removeListener;
 
-    pub.stoppedMouseDownEvent = new Ext.util.Event();
+    pub.stoppedMouseDownEvent = new Ext2.util.Event();
     return pub;
 }();
 /**
-  * Fires when the document is ready (before onload and before images are loaded).  Shorthand of {@link Ext.EventManager#onDocumentReady}.
+  * Fires when the document is ready (before onload and before images are loaded).  Shorthand of {@link Ext2.EventManager#onDocumentReady}.
   * @param {Function} fn The method the event invokes
   * @param {Object} scope An object that becomes the scope of the handler
   * @param {boolean} options (optional) An object containing standard {@link #addListener} options
   * @member Ext
   * @method onReady
  */
-Ext.onReady = Ext.EventManager.onDocumentReady;
+Ext2.onReady = Ext2.EventManager.onDocumentReady;
 
 
 // Initialize doc classes
@@ -454,23 +454,23 @@ Ext.onReady = Ext.EventManager.onDocumentReady;
         var bd = document.body || document.getElementsByTagName('body')[0];
         if(!bd){ return false; }
         var cls = [' ',
-                Ext.isIE ? "ext-ie " + (Ext.isIE6 ? 'ext-ie6' : (Ext.isIE7 ? 'ext-ie7' : 'ext-ie8'))
-                : Ext.isGecko ? "ext-gecko " + (Ext.isGecko2 ? 'ext-gecko2' : 'ext-gecko3')
-                : Ext.isOpera ? "ext-opera"
-                : Ext.isSafari ? "ext-safari"
-                : Ext.isChrome ? "ext-chrome" : ""];
+                Ext2.isIE ? "ext-ie " + (Ext2.isIE6 ? 'ext-ie6' : (Ext2.isIE7 ? 'ext-ie7' : (Ext2.isIE8 ? 'ext-ie8' : 'ext-ie9')))
+                : Ext2.isGecko ? "ext-gecko " + (Ext2.isGecko2 ? 'ext-gecko2' : 'ext-gecko3')
+                : Ext2.isOpera ? "ext-opera"
+                : Ext2.isSafari ? "ext-safari"
+                : Ext2.isChrome ? "ext-chrome" : ""];
 
-        if(Ext.isMac){
+        if(Ext2.isMac){
             cls.push("ext-mac");
         }
-        if(Ext.isLinux){
+        if(Ext2.isLinux){
             cls.push("ext-linux");
         }
 
-        if(Ext.isStrict || Ext.isBorderBox){ // add to the parent to allow for selectors like ".ext-strict .ext-ie"
+        if(Ext2.isStrict || Ext2.isBorderBox){ // add to the parent to allow for selectors like ".ext2-strict .ext2-ie"
             var p = bd.parentNode;
             if(p){
-                p.className += Ext.isStrict ? ' ext-strict' : ' ext-border-box';
+                p.className += Ext2.isStrict ? ' ext-strict' : ' ext-border-box';
             }
         }
         bd.className += cls.join(' ');
@@ -478,31 +478,31 @@ Ext.onReady = Ext.EventManager.onDocumentReady;
     }
 
     if(!initExtCss()){
-        Ext.onReady(initExtCss);
+        Ext2.onReady(initExtCss);
     }
 })();
 
 /**
- * @class Ext.EventObject
+ * @class Ext2.EventObject
  * EventObject encapsulates a DOM event adjusting for browser differences.
  * Example:
  * <pre><code>
- function handleClick(e){ // e is not a standard event object, it is a Ext.EventObject
+ function handleClick(e){ // e is not a standard event object, it is a Ext2.EventObject
     e.preventDefault();
     var target = e.getTarget();
     ...
  }
- var myDiv = Ext.get("myDiv");
+ var myDiv = Ext2.get("myDiv");
  myDiv.on("click", handleClick);
  //or
- Ext.EventManager.on("myDiv", 'click', handleClick);
- Ext.EventManager.addListener("myDiv", 'click', handleClick);
+ Ext2.EventManager.on("myDiv", 'click', handleClick);
+ Ext2.EventManager.addListener("myDiv", 'click', handleClick);
  </code></pre>
  * @singleton
  */
-Ext.EventObject = function(){
+Ext2.EventObject = function(){
 
-    var E = Ext.lib.Event;
+    var E = Ext2.lib.Event;
 
     // safari keypress events for special keys return bad keycodes
     var safariKeys = {
@@ -519,16 +519,16 @@ Ext.EventObject = function(){
     };
 
     // normalize button clicks
-    var btnMap = Ext.isIE ? {1:0,4:1,2:2} :
-                (Ext.isWebKit ? {1:0,2:1,3:2} : {0:0,1:1,2:2});
+    var btnMap = Ext2.isIE ? {1:0,4:1,2:2} :
+                (Ext2.isWebKit ? {1:0,2:1,3:2} : {0:0,1:1,2:2});
 
-    Ext.EventObjectImpl = function(e){
+    Ext2.EventObjectImpl = function(e){
         if(e){
             this.setEvent(e.browserEvent || e);
         }
     };
 
-    Ext.EventObjectImpl.prototype = {
+    Ext2.EventObjectImpl.prototype = {
         /** The encapsulated browser event */
         browserEvent : null,
         /** The button pressed in a mouse event */
@@ -761,7 +761,7 @@ Ext.EventObject = function(){
         stopEvent : function(){
             if(this.browserEvent){
                 if(this.browserEvent.type == 'mousedown'){
-                    Ext.EventManager.stoppedMouseDownEvent.fire(this);
+                    Ext2.EventManager.stoppedMouseDownEvent.fire(this);
                 }
                 E.stopEvent(this.browserEvent);
             }
@@ -779,13 +779,13 @@ Ext.EventObject = function(){
         /** @private */
         isNavKeyPress : function(){
             var k = this.keyCode;
-            k = Ext.isSafari ? (safariKeys[k] || k) : k;
+            k = Ext2.isSafari ? (safariKeys[k] || k) : k;
             return (k >= 33 && k <= 40) || k == this.RETURN || k == this.TAB || k == this.ESC;
         },
 
         isSpecialKey : function(){
             var k = this.keyCode;
-            k = Ext.isSafari ? (safariKeys[k] || k) : k;
+            k = Ext2.isSafari ? (safariKeys[k] || k) : k;
             return (this.type == 'keypress' && this.ctrlKey) ||
 		this.isNavKeyPress() ||
         (k == this.BACKSPACE) || // Backspace
@@ -799,7 +799,7 @@ Ext.EventObject = function(){
         stopPropagation : function(){
             if(this.browserEvent){
                 if(this.browserEvent.type == 'mousedown'){
-                    Ext.EventManager.stoppedMouseDownEvent.fire(this);
+                    Ext2.EventManager.stoppedMouseDownEvent.fire(this);
                 }
                 E.stopPropagation(this.browserEvent);
             }
@@ -819,7 +819,7 @@ Ext.EventObject = function(){
          */
         getKey : function(){
             var k = this.keyCode || this.charCode;
-            return Ext.isSafari ? (safariKeys[k] || k) : k;
+            return Ext2.isSafari ? (safariKeys[k] || k) : k;
         },
 
         /**
@@ -862,11 +862,11 @@ Ext.EventObject = function(){
          * @param {String} selector (optional) A simple selector to filter the target or look for an ancestor of the target
          * @param {Number/Mixed} maxDepth (optional) The max depth to
                 search as a number or element (defaults to 10 || document.body)
-         * @param {Boolean} returnEl (optional) True to return a Ext.Element object instead of DOM node
+         * @param {Boolean} returnEl (optional) True to return a Ext2.Element object instead of DOM node
          * @return {HTMLelement}
          */
         getTarget : function(selector, maxDepth, returnEl){
-            return selector ? Ext.fly(this.target).findParent(selector, maxDepth, returnEl) : (returnEl ? Ext.get(this.target) : this.target);
+            return selector ? Ext2.fly(this.target).findParent(selector, maxDepth, returnEl) : (returnEl ? Ext2.get(this.target) : this.target);
         },
 
         /**
@@ -907,33 +907,33 @@ Ext.EventObject = function(){
          * Returns true if the target of this event is a child of el.  Unless the allowEl parameter is set, it will return false if if the target is el.
          * Example usage:<pre><code>
 // Handle click on any child of an element
-Ext.getBody().on('click', function(e){
+Ext2.getBody().on('click', function(e){
     if(e.within('some-el')){
         alert('Clicked on a child of some-el!');
     }
 });
 
 // Handle click directly on an element, ignoring clicks on child nodes
-Ext.getBody().on('click', function(e,t){
+Ext2.getBody().on('click', function(e,t){
     if((t.id == 'some-el') && !e.within(t, true)){
         alert('Clicked directly on some-el!');
     }
 });
 </code></pre>
-         * @param {Mixed} el The id, DOM element or Ext.Element to check
+         * @param {Mixed} el The id, DOM element or Ext2.Element to check
          * @param {Boolean} related (optional) true to test if the related target is within el instead of the target
          * @param {Boolean} allowEl {optional} true to also check if the passed element is the target or related target
          * @return {Boolean}
          */
         within : function(el, related, allowEl){
             var t = this[related ? "getRelatedTarget" : "getTarget"]();
-            return t && ((allowEl ? (t === Ext.getDom(el)) : false) || Ext.fly(el).contains(t));
+            return t && ((allowEl ? (t === Ext2.getDom(el)) : false) || Ext2.fly(el).contains(t));
         },
 
         getPoint : function(){
-            return new Ext.lib.Point(this.xy[0], this.xy[1]);
+            return new Ext2.lib.Point(this.xy[0], this.xy[1]);
         }
     };
 
-    return new Ext.EventObjectImpl();
+    return new Ext2.EventObjectImpl();
 }();

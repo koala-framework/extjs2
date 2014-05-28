@@ -11,26 +11,26 @@
  * By Vladas Saulis, October 18, 2007
  */
 
-Ext.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Kraunasi...</div>';
+Ext2.UpdateManager.defaults.indicatorText = '<div class="loading-indicator">Kraunasi...</div>';
 
-if(Ext.View){
-  Ext.View.prototype.emptyText = "";
+if(Ext2.View){
+  Ext2.View.prototype.emptyText = "";
 }
 
-if(Ext.grid.GridPanel){
-  Ext.grid.GridPanel.prototype.ddText = "{0} pažymėta";
+if(Ext2.grid.GridPanel){
+  Ext2.grid.GridPanel.prototype.ddText = "{0} pažymėta";
 }
 
-if(Ext.TabPanelItem){
-  Ext.TabPanelItem.prototype.closeText = "Uždaryti šią užsklandą";
+if(Ext2.TabPanelItem){
+  Ext2.TabPanelItem.prototype.closeText = "Uždaryti šią užsklandą";
 }
 
-if(Ext.form.Field){
-  Ext.form.Field.prototype.invalidText = "Šio lauko reikšmė neteisinga";
+if(Ext2.form.Field){
+  Ext2.form.Field.prototype.invalidText = "Šio lauko reikšmė neteisinga";
 }
 
-if(Ext.LoadMask){
-  Ext.LoadMask.prototype.msg = "Kraunasi...";
+if(Ext2.LoadMask){
+  Ext2.LoadMask.prototype.msg = "Kraunasi...";
 }
 
 Date.monthNames = [
@@ -98,8 +98,8 @@ Date.getShortDayName = function(day) {
   return Date.dayNames[day].substring(0, 3);
 };
 
-if(Ext.MessageBox){
-  Ext.MessageBox.buttonText = {
+if(Ext2.MessageBox){
+  Ext2.MessageBox.buttonText = {
     ok     : "Gerai",
     cancel : "Atsisakyti",
     yes    : "Taip",
@@ -107,16 +107,16 @@ if(Ext.MessageBox){
   };
 }
 
-if(Ext.util.Format){
-  Ext.util.Format.date = function(v, format){
+if(Ext2.util.Format){
+  Ext2.util.Format.date = function(v, format){
     if(!v) return "";
     if(!(v instanceof Date)) v = new Date(Date.parse(v));
     return v.dateFormat(format || "Y-m-d");
   };
 }
 
-if(Ext.DatePicker){
-  Ext.apply(Ext.DatePicker.prototype, {
+if(Ext2.DatePicker){
+  Ext2.apply(Ext2.DatePicker.prototype, {
     todayText         : "Šiandien",
     minText           : "Ši data yra mažesnė už leistiną",
     maxText           : "Ši data yra didesnė už leistiną",
@@ -135,8 +135,8 @@ if(Ext.DatePicker){
   });
 }
 
-if(Ext.PagingToolbar){
-  Ext.apply(Ext.PagingToolbar.prototype, {
+if(Ext2.PagingToolbar){
+  Ext2.apply(Ext2.PagingToolbar.prototype, {
     beforePageText : "Puslapis",
     afterPageText  : "iš {0}",
     firstText      : "Pirmas puslapis",
@@ -149,8 +149,8 @@ if(Ext.PagingToolbar){
   });
 }
 
-if(Ext.form.TextField){
-  Ext.apply(Ext.form.TextField.prototype, {
+if(Ext2.form.TextField){
+  Ext2.apply(Ext2.form.TextField.prototype, {
     minLengthText : "Minimalus šio lauko ilgis yra {0}",
     maxLengthText : "Maksimalus šio lauko ilgis yra {0}",
     blankText     : "Šis laukas yra reikalingas",
@@ -159,16 +159,16 @@ if(Ext.form.TextField){
   });
 }
 
-if(Ext.form.NumberField){
-  Ext.apply(Ext.form.NumberField.prototype, {
+if(Ext2.form.NumberField){
+  Ext2.apply(Ext2.form.NumberField.prototype, {
     minText : "Minimalus šio lauko ilgis yra {0}",
     maxText : "Maksimalus šio lauko ilgis yra {0}",
     nanText : "{0} yra neleistina reikšmė"
   });
 }
 
-if(Ext.form.DateField){
-  Ext.apply(Ext.form.DateField.prototype, {
+if(Ext2.form.DateField){
+  Ext2.apply(Ext2.form.DateField.prototype, {
     disabledDaysText  : "Neprieinama",
     disabledDatesText : "Neprieinama",
     minText           : "Šiame lauke data turi būti didesnė už {0}",
@@ -179,15 +179,15 @@ if(Ext.form.DateField){
   });
 }
 
-if(Ext.form.ComboBox){
-  Ext.apply(Ext.form.ComboBox.prototype, {
+if(Ext2.form.ComboBox){
+  Ext2.apply(Ext2.form.ComboBox.prototype, {
     loadingText       : "Kraunasi...",
     valueNotFoundText : undefined
   });
 }
 
-if(Ext.form.VTypes){
-  Ext.apply(Ext.form.VTypes, {
+if(Ext2.form.VTypes){
+  Ext2.apply(Ext2.form.VTypes, {
     emailText    : 'Šiame lauke turi būti el.pašto adresas formatu "user@domain.com"',
     urlText      : 'Šiame lauke turi būti nuoroda (URL) formatu "http:/'+'/www.domain.com"',
     alphaText    : 'Šiame lauke gali būti tik raidės ir ženklas "_"',
@@ -195,86 +195,86 @@ if(Ext.form.VTypes){
   });
 }
 
-if(Ext.form.HtmlEditor){
-  Ext.apply(Ext.form.HtmlEditor.prototype, {
+if(Ext2.form.HtmlEditor){
+  Ext2.apply(Ext2.form.HtmlEditor.prototype, {
     createLinkText : 'Įveskite URL šiai nuorodai:',
     buttonTips : {
       bold : {
         title: 'Bold (Ctrl+B)',
         text: 'Teksto paryškinimas.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       italic : {
         title: 'Italic (Ctrl+I)',
         text: 'Kursyvinis tekstas.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       underline : {
         title: 'Underline (Ctrl+U)',
         text: 'Teksto pabraukimas.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       increasefontsize : {
         title: 'Padidinti šriftą',
         text: 'Padidinti šrifto dydį.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       decreasefontsize : {
         title: 'Sumažinti šriftą',
         text: 'Sumažinti šrifto dydį.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       backcolor : {
         title: 'Nuspalvinti teksto foną',
         text: 'Pakeisti teksto fono spalvą.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       forecolor : {
         title: 'Teksto spalva',
         text: 'Pakeisti pažymėto teksto spalvą.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifyleft : {
         title: 'Išlyginti kairen',
         text: 'Išlyginti tekstą į kairę.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifycenter : {
         title: 'Centruoti tekstą',
         text: 'Centruoti tektą redaktoriaus lange.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       justifyright : {
         title: 'Išlyginti dešinėn',
         text: 'Išlyginti tekstą į dešinę.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       insertunorderedlist : {
         title: 'Paprastas sąrašas',
         text: 'Pradėti neorganizuotą sąrašą.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       insertorderedlist : {
         title: 'Numeruotas sąrašas',
         text: 'Pradėti numeruotą sąrašą.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       createlink : {
         title: 'Nuoroda',
         text: 'Padaryti pažymėta tekstą nuoroda.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       },
       sourceedit : {
         title: 'Išeities tekstas',
         text: 'Persijungti į išeities teksto koregavimo režimą.',
-        cls: 'x-html-editor-tip'
+        cls: 'x2-html-editor-tip'
       }
     }
   });
 }
 
-if(Ext.grid.GridView){
-  Ext.apply(Ext.grid.GridView.prototype, {
+if(Ext2.grid.GridView){
+  Ext2.apply(Ext2.grid.GridView.prototype, {
     sortAscText  : "Rūšiuoti didėjančia tvarka",
     sortDescText : "Rūšiuoti mažėjančia tvarka",
     lockText     : "Užfiksuoti stulpelį",
@@ -283,24 +283,24 @@ if(Ext.grid.GridView){
   });
 }
 
-if(Ext.grid.GroupingView){
-  Ext.apply(Ext.grid.GroupingView.prototype, {
+if(Ext2.grid.GroupingView){
+  Ext2.apply(Ext2.grid.GroupingView.prototype, {
     emptyGroupText : '(Nėra)',
     groupByText    : 'Grupuoti pagal šį lauką',
     showGroupsText : 'Rodyti grupėse'
   });
 }
 
-if(Ext.grid.PropertyColumnModel){
-  Ext.apply(Ext.grid.PropertyColumnModel.prototype, {
+if(Ext2.grid.PropertyColumnModel){
+  Ext2.apply(Ext2.grid.PropertyColumnModel.prototype, {
     nameText   : "Pavadinimas",
     valueText  : "Reikšmė",
     dateFormat : "Y-m-d"
   });
 }
 
-if(Ext.layout.BorderLayout && Ext.layout.BorderLayout.SplitRegion){
-  Ext.apply(Ext.layout.BorderLayout.SplitRegion.prototype, {
+if(Ext2.layout.BorderLayout && Ext2.layout.BorderLayout.SplitRegion){
+  Ext2.apply(Ext2.layout.BorderLayout.SplitRegion.prototype, {
     splitTip            : "Patraukite juostelę.",
     collapsibleSplitTip : "Patraukite juostelę arba Paspauskite dvigubai kad paslėpti."
   });
