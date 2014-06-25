@@ -2315,14 +2315,14 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
             this._mask.remove();
         }
 
-        this._mask = Ext2.DomHelper.append(this.dom, {cls:"ext-el-mask"}, true);
+        this._mask = Ext2.DomHelper.append(this.dom, {cls:"ext2-el-mask"}, true);
 
         this.addClass("x2-masked");
         this._mask.setDisplayed(true);
         if(typeof msg == 'string'){
-            this._maskMsg = Ext2.DomHelper.append(this.dom, {cls:"ext-el-mask-msg", cn:{tag:'div'}}, true);
+            this._maskMsg = Ext2.DomHelper.append(this.dom, {cls:"ext2-el-mask-msg", cn:{tag:'div'}}, true);
             var mm = this._maskMsg;
-            mm.dom.className = msgCls ? "ext-el-mask-msg " + msgCls : "ext-el-mask-msg";
+            mm.dom.className = msgCls ? "ext2-el-mask-msg " + msgCls : "ext2-el-mask-msg";
             mm.dom.firstChild.innerHTML = msg;
             mm.setDisplayed(true);
             mm.center(this);
@@ -2364,7 +2364,7 @@ el.alignTo("other-el", "c-bl", [-6, 0]);
     createShim : function(){
         var el = document.createElement('iframe');
         el.frameBorder = '0';
-        el.className = 'ext-shim';
+        el.className = 'ext2-shim';
         if(Ext2.isIE && Ext2.isSecure){
             el.src = Ext2.SSL_SECURE_URL;
         }

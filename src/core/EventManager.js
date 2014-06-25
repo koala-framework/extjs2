@@ -454,17 +454,17 @@ Ext2.onReady = Ext2.EventManager.onDocumentReady;
         var bd = document.body || document.getElementsByTagName('body')[0];
         if(!bd){ return false; }
         var cls = [' ',
-                Ext2.isIE ? "ext-ie " + (Ext2.isIE6 ? 'ext-ie6' : (Ext2.isIE7 ? 'ext-ie7' : (Ext2.isIE8 ? 'ext-ie8' : 'ext-ie9')))
-                : Ext2.isGecko ? "ext-gecko " + (Ext2.isGecko2 ? 'ext-gecko2' : 'ext-gecko3')
-                : Ext2.isOpera ? "ext-opera"
-                : Ext2.isSafari ? "ext-safari"
-                : Ext2.isChrome ? "ext-chrome" : ""];
+                Ext2.isIE ? "ext2-ie " + (Ext2.isIE6 ? 'ext2-ie6' : (Ext2.isIE7 ? 'ext2-ie7' : (Ext2.isIE8 ? 'ext2-ie8' : 'ext2-ie9')))
+                : Ext2.isGecko ? "ext2-gecko " + (Ext2.isGecko2 ? 'ext2-gecko2' : 'ext2-gecko3')
+                : Ext2.isOpera ? "ext2-opera"
+                : Ext2.isSafari ? "ext2-safari"
+                : Ext2.isChrome ? "ext2-chrome" : ""];
 
         if(Ext2.isMac){
-            cls.push("ext-mac");
+            cls.push("ext2-mac");
         }
         if(Ext2.isLinux){
-            cls.push("ext-linux");
+            cls.push("ext2-linux");
         }
 
         if(Ext2.isStrict || Ext2.isBorderBox){ // add to the parent to allow for selectors like ".ext2-strict .ext2-ie"

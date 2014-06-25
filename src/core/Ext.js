@@ -186,11 +186,11 @@ Ext2.addBehaviors({
         /**
          * Generates unique ids. If the element already has an id, it is unchanged
          * @param {Mixed} el (optional) The element to generate an id for
-         * @param {String} prefix (optional) Id prefix (defaults "ext-gen")
+         * @param {String} prefix (optional) Id prefix (defaults "ext2-gen")
          * @return {String} The generated Id.
          */
         id : function(el, prefix){
-            prefix = prefix || "ext-gen";
+            prefix = prefix || "ext2-gen";
             el = Ext2.getDom(el);
             var id = prefix + (++idSeed);
             return el ? (el.id ? el.id : (el.id = id)) : id;

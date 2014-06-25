@@ -673,7 +673,7 @@ Ext2.Foo = Ext2.extend(Ext2.Bar, {
 
     // private
     getStateId : function(){
-        return this.stateId || ((this.id.indexOf('ext-comp-') == 0 || this.id.indexOf('ext-gen') == 0) ? null : this.id);
+        return this.stateId || ((this.id.indexOf('ext2-comp-') == 0 || this.id.indexOf('ext2-gen') == 0) ? null : this.id);
     },
 
     // private
@@ -823,7 +823,7 @@ Ext2.Foo = Ext2.extend(Ext2.Bar, {
      * @return {String}
      */
     getId : function(){
-        return this.id || (this.id = "ext-comp-" + (++Ext2.Component.AUTO_ID));
+        return this.id || (this.id = "ext2-comp-" + (++Ext2.Component.AUTO_ID));
     },
 
     /**

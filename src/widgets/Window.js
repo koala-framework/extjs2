@@ -252,7 +252,7 @@ Ext2.Window = Ext2.extend(Ext2.Panel, {
         this.proxy.enableDisplayMode('block');
 
         if(this.modal){
-            this.mask = this.container.createChild({cls:"ext-el-mask"}, this.el.dom);
+            this.mask = this.container.createChild({cls:"ext2-el-mask"}, this.el.dom);
             this.mask.enableDisplayMode("block");
             this.mask.hide();
             this.mask.on('click', this.focus, this);

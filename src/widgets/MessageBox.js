@@ -139,7 +139,7 @@ Ext2.MessageBox = function(){
                 dlg.getEl().addClass('x2-window-dlg');
                 mask = dlg.mask;
                 bodyEl = dlg.body.createChild({
-                    html:'<div class="ext-mb-icon"></div><div class="ext-mb-content"><span class="ext-mb-text"></span><br /><div class="ext-mb-fix-cursor"><input type="text" class="ext-mb-input" /><textarea class="ext-mb-textarea"></textarea></div></div>'
+                    html:'<div class="ext2-mb-icon"></div><div class="ext2-mb-content"><span class="ext2-mb-text"></span><br /><div class="ext2-mb-fix-cursor"><input type="text" class="ext2-mb-input" /><textarea class="ext2-mb-textarea"></textarea></div></div>'
                 });
                 iconEl = Ext2.get(bodyEl.dom.firstChild);
                 var contentEl = bodyEl.dom.childNodes[1];
@@ -392,7 +392,7 @@ Ext2.Msg.show({
         },
 
         /**
-         * Adds the specified icon to the dialog.  By default, the class 'ext-mb-icon' is applied for default
+         * Adds the specified icon to the dialog.  By default, the class 'ext2-mb-icon' is applied for default
          * styling, and the class passed in is expected to supply the background image url. Pass in empty string ('')
          * to clear any existing icon.  The following built-in icon classes are supported, but you can also pass
          * in a custom class name:
@@ -567,22 +567,22 @@ Ext2.MessageBox.ERROR
          * The CSS class that provides the INFO icon image
          * @type String
          */
-        INFO : 'ext-mb-info',
+        INFO : 'ext2-mb-info',
         /**
          * The CSS class that provides the WARNING icon image
          * @type String
          */
-        WARNING : 'ext-mb-warning',
+        WARNING : 'ext2-mb-warning',
         /**
          * The CSS class that provides the QUESTION icon image
          * @type String
          */
-        QUESTION : 'ext-mb-question',
+        QUESTION : 'ext2-mb-question',
         /**
          * The CSS class that provides the ERROR icon image
          * @type String
          */
-        ERROR : 'ext-mb-error',
+        ERROR : 'ext2-mb-error',
 
         /**
          * The default height in pixels of the message box's multiline textarea if displayed (defaults to 75)
