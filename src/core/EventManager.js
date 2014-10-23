@@ -128,13 +128,16 @@ Ext2.EventManager = function(){
         if(Ext2.isGecko || Ext2.isOpera) {
             document.addEventListener("DOMContentLoaded", fireDocReady, false);
         }else if(Ext2.isIE){
-            document.write("<s"+'cript id="ie-deferred-loader" defer="defer" src="/'+'/:"></s'+"cript>");
-            var defer = document.getElementById("ie-deferred-loader");
-            defer.onreadystatechange = function(){
-                if(this.readyState == "complete"){
+            var script = document.createElement( 'script');
+            script.id = "ie-deferred-loader";
+            script.src = '//:';
+            script.defer = 'defer';
+            script.onreadystatechange = function(){
+                if(this.readyState == 'loaded'){
                     fireDocReady();
                 }
             };
+            document.getElementsByTagName( 'head')[0].appendChild( script);
         }else if(Ext2.isWebKit){
             docReadyProcId = setInterval(function(){
                 var rs = document.readyState;
