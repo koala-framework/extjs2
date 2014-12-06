@@ -81,7 +81,7 @@ Ext2.form.TimeField = Ext2.extend(Ext2.form.ComboBox, {
     // private - This is the date to use when generating time values in the absence of either minValue
     // or maxValue.  Using the current date causes DST issues on DST boundary dates, so this is an 
     // arbitrary "safe" date that can be any date aside from DST boundary dates.
-    initDate: '1/1/2008',
+    initDate: '2/1/2008',
 
     // private
     initComponent : function(){
