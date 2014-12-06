@@ -1521,7 +1521,7 @@ fieldset.x2-panel-collapsed .x2-fieldset-bwrap {
 	background-image: url(../images/default/grid/page-last-disabled.gif) !important;
 }
 .x2-item-disabled .x2-tbar-page-next{
-	background-image: url(../images/default/grid/page-n.ext2-disabled.gif) !important;
+	background-image: url(../images/default/grid/page-next-disabled.gif) !important;
 }
 .x2-item-disabled .x2-tbar-page-prev{
 	background-image: url(../images/default/grid/page-prev-disabled.gif) !important;
