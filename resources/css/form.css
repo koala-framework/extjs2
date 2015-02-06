@@ -531,7 +531,6 @@ fieldset.x2-panel-collapsed .x2-fieldset-bwrap {
         
 .ext2-gecko .x2-window-body .x2-form-item {
     -moz-outline: none;
-    overflow: auto;
 }
 
 .ext2-gecko .x2-form-item {
