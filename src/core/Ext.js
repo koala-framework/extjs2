@@ -7,7 +7,8 @@
  */
 
 
-Ext2 = {version: '2.3.0'};
+if (typeof Ext2 == 'undefined') Ext2 = {};
+Ext2.version = '2.3.0';
 
 // for old browsers
 window["undefined"] = window["undefined"];
