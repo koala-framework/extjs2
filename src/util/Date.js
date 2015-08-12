@@ -602,6 +602,10 @@ dt = Date.parseDate("2006-02-29 03:20:01", "Y-m-d H:i:s", true); // returns null
             "var dt, y, m, d, h, i, s, ms, o, z, zz, u, v,",
                 "def = Date.defaults,",
                 "results = String(input).match(Date.parseRegexes[{0}]);", // either null, or an array of matched strings
+            "var ExtNum = function(v, defaultValue){",
+            "    v = Number(v == null || typeof v == 'boolean'? NaN : v);",
+            "    return isNaN(v)? defaultValue : v;",
+            "};",
 
             "if(results){",
                 "{1}",
@@ -614,16 +618,14 @@ dt = Date.parseDate("2006-02-29 03:20:01", "Y-m-d H:i:s", true); // returns null
                     // (note: clearTime() handles Daylight Saving Time automatically)
                     "dt = (new Date()).clearTime();",
 
-                    // date calculations (note: these calculations create a dependency on Ext2.num())
-                    "y = y >= 0? y : Ext2.num(def.y, dt.getFullYear());",
-                    "m = m >= 0? m : Ext2.num(def.m - 1, dt.getMonth());",
-                    "d = d >= 0? d : Ext2.num(def.d, dt.getDate());",
+                    "y = y >= 0? y : ExtNum(def.y, dt.getFullYear());",
+                    "m = m >= 0? m : ExtNum(def.m - 1, dt.getMonth());",
+                    "d = d >= 0? d : ExtNum(def.d, dt.getDate());",
 
-                    // time calculations (note: these calculations create a dependency on Ext2.num())
-                    "h  = h || Ext2.num(def.h, dt.getHours());",
-                    "i  = i || Ext2.num(def.i, dt.getMinutes());",
-                    "s  = s || Ext2.num(def.s, dt.getSeconds());",
-                    "ms = ms || Ext2.num(def.ms, dt.getMilliseconds());",
+                    "h  = h || ExtNum(def.h, dt.getHours());",
+                    "i  = i || ExtNum(def.i, dt.getMinutes());",
+                    "s  = s || ExtNum(def.s, dt.getSeconds());",
+                    "ms = ms || ExtNum(def.ms, dt.getMilliseconds());",
 
                     "if(z >= 0 && y >= 0){",
                         // both the year and zero-based day of year are defined and >= 0.
