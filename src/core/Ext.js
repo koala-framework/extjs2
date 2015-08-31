@@ -59,8 +59,9 @@ Ext2.apply = function(o, c, defaults){
         isIE8 = isIE && check(/msie 8/),
         isIE9 = isIE && check(/msie 9/),
         isIE10 = isIE && check(/msie 10/),
-        isIE11 = isIE && check(/msie 11/),
+        isIE11 = check(/Trident/) && check(/rv:11/),
         isIE6 = isIE && !isIE7 && !isIE8 && !isIE9 && !isIE10 && !isIE11,
+        isMSEdge = check(/edge/),
         isGecko = !isWebKit && check(/gecko/),
         isGecko2 = isGecko && check(/rv:1\.8/),
         isGecko3 = isGecko && check(/rv:1\.9/),
@@ -695,6 +696,11 @@ Ext2.urlDecode("foo=1&bar=2&bar=3&bar=4", false); // returns {foo: "1", bar: ["2
          * @type Boolean
          */
         isIE11 : isIE11,
+        /**
+         * True if the detected browser is Internet Explorer 11.x.
+         * @type Boolean
+         */
+        isMSEdge : isMSEdge,
         /**
          * True if the detected browser uses the Gecko layout engine (e.g. Mozilla, Firefox).
          * @type Boolean
