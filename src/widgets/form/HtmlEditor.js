@@ -394,7 +394,7 @@ Ext2.form.HtmlEditor = Ext2.extend(Ext2.form.Field, {
         iframe.name = Ext2.id();
         iframe.frameBorder = '0';
 
-        iframe.src = Ext2.isIE ? Ext2.SSL_SECURE_URL : "javascript:;";
+        iframe.src = Ext2.isIE || Ext2.isIE11 ? Ext2.SSL_SECURE_URL : "javascript:;";
 
         this.wrap.dom.appendChild(iframe);
 
