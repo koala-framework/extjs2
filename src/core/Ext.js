@@ -754,7 +754,7 @@ Ext2.urlDecode("foo=1&bar=2&bar=3&bar=4", false); // returns {foo: "1", bar: ["2
     Ext2.ns = Ext2.namespace;
 })();
 
-Ext2.ns("Ext", "Ext2.util", "Ext2.grid", "Ext2.dd", "Ext2.tree", "Ext2.data",
+Ext2.ns("Ext2", "Ext2.util", "Ext2.grid", "Ext2.dd", "Ext2.tree", "Ext2.data",
                 "Ext2.form", "Ext2.menu", "Ext2.state", "Ext2.lib", "Ext2.layout", "Ext2.app", "Ext2.ux");
 
 
