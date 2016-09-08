@@ -185,9 +185,9 @@ Ext2.EventManager = function(){
         }
         var h = function(e){
             // prevent errors while unload occurring
-            if(!window[xname]){
-                return;
-            }
+            //if(!window[xname]){
+            //    return; commented out because this doesn't work in namespaced web
+            //}
             e = Ext2.EventObject.setEvent(e);
             var t;
             if(o.delegate){
