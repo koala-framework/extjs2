@@ -79,7 +79,7 @@ function createConsole(){
 }
 
 
-Ext2.apply(Ext, {
+Ext2.apply(Ext2, {
     log : function(){
         if(!cp){
             createConsole();
