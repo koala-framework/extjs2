@@ -276,7 +276,7 @@ Ext2.extend(T, Ext2.BoxComponent, {
         Ext2.Toolbar.superclass.onDestroy.call(this);
         if(this.rendered){
             if(this.items){ // rendered?
-                Ext2.destroy.apply(Ext, this.items.items);
+                Ext2.destroy.apply(Ext2, this.items.items);
             }
             Ext2.Element.uncache(this.tr);
         }

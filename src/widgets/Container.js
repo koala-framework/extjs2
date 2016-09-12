@@ -514,7 +514,7 @@ myTabPanel.setActiveTab(myNewGrid);
     // private
     beforeDestroy : function(){
         if(this.items){
-            Ext2.destroy.apply(Ext, this.items.items);
+            Ext2.destroy.apply(Ext2, this.items.items);
         }
         if(this.monitorResize){
             Ext2.EventManager.removeResizeListener(this.doLayout, this);
