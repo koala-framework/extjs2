@@ -202,7 +202,7 @@ Ext2.XTemplate = function(){
        }
        if(name){
            switch(name){
-               case '.': name = new Function('values', 'parent', 'with(values){ return values; }'); break;
+               case '.': name = new Function('values', 'parent', 'return values;'); break;
                case '..': name = new Function('values', 'parent', 'with(values){ return parent; }'); break;
                default: name = new Function('values', 'parent', 'with(values){ return '+name+'; }');
            }
