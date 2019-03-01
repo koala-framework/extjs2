@@ -4,5 +4,8 @@
 	"homepage": "http://www.sencha.com/products/extjs/",
 	"license": "GPL",
 	"support": {
+	},
+	"require": {
+		"koala-framework/koala-framework": "~5.2"
 	}
 }
